@@ -1,0 +1,13 @@
+<?xml version='1.0' encoding='utf-8'?>
+<e:Skin class="skins.comment"
+	 width="200"
+	height="40" xmlns:e="http://ns.egret.com/eui" states="normal,fire" >
+	<e:Group percentHeight="100" percentWidth="100">
+		<e:Image width="40" height="40" includeIn="fire" x="41" y="16" source="icons_json#fire"/>
+		<e:Label id="txt" text="{data}" percentWidth="100" percentHeight="100" verticalAlign="middle" size="22" multiline="true" wordWrap="true" textAlign.fire="center"/>
+        <e:Image width="40" height="40" includeIn="fire" x="41" y="16" source="icons_json#fire"/>
+		<e:layout>
+			<e:HorizontalLayout/>
+		</e:layout>
+	</e:Group>
+</e:Skin>

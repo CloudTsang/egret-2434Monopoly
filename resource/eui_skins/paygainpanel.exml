@@ -1,0 +1,16 @@
+<?xml version='1.0' encoding='utf-8'?>
+<e:Skin class="skins.paygainpanel"
+	 width="500"
+	height="260" xmlns:e="http://ns.egret.com/eui" states="win,lose" >
+	<e:Rect percentHeight="100" percentWidth="100" x="0" y="0" fillAlpha="0.7" ellipseWidth="100"/>
+	<e:Group percentHeight="100" percentWidth="100" x="0" y="0">
+    <e:Group percentHeight="5"/>
+		<e:Label id="txtTitle" text="《游戏》收支" x="183" y="67" text.win="帕青哥收支"/>
+		<e:Group percentHeight="25"/>
+		<e:Label id="txtNum" text="0" x="212" y="161" size="60" textColor.lose="0xCB0D0D" textColor.win="0xD3A413"/>
+		
+		<e:layout>
+			<e:VerticalLayout horizontalAlign="center"/>
+		</e:layout>
+	</e:Group>
+</e:Skin>

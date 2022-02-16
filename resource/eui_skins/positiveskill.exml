@@ -1,0 +1,10 @@
+<?xml version='1.0' encoding='utf-8'?>
+<e:Skin class="skins.positiveskill"
+	 width="320"
+	height="60" xmlns:e="http://ns.egret.com/eui" states="positive,negative,hidden" >
+	<e:Group percentHeight="100" percentWidth="100" x="0" y="0">
+		<e:Rect percentHeight="100" percentWidth="100" x="0" y="0" fillColor="0x4F79AD" blendMode="normal" scaleX="1" scaleY="1" fillColor.negative="0x9E2E2E" fillColor.hidden="0xEABB12"/>
+		<e:Image width="80" x="-16.193" y="-11.335"  scaleX="1" scaleY="1" height="80" source="icons_json#pskill" source.negative="icons_json#nskill" source.hidden="icons_json#hskill"/>
+		<e:Label id="txtskillname" height="45" scaleX="1" scaleY="1" left="80"  verticalCenter="0" verticalAlign="middle" text="{data.name}"  size="36" textColor.hidden="0xDF880D"/>
+	</e:Group>
+</e:Skin>

@@ -1,0 +1,6 @@
+<?xml version='1.0' encoding='utf-8'?>
+<e:Skin class="skins.rollresutl"
+	 width="250"
+	height="100" xmlns:e="http://ns.egret.com/eui" states="NORMAL,BIG_SUCCESS,SUCCESS,FAIL,BIG_FAIL" >
+	<e:Label text="" percentHeight="100" percentWidth="100" text.BIG_SUCCESS="大成功!!" size.BIG_SUCCESS="50" verticalCenter.BIG_SUCCESS="0" textColor.BIG_SUCCESS="0xF2C601" verticalAlign.BIG_SUCCESS="middle" border.BIG_SUCCESS="false" stroke.BIG_SUCCESS="5" text.SUCCESS="成功!" size.SUCCESS="50" verticalCenter.SUCCESS="0" verticalAlign.SUCCESS="middle" border.SUCCESS="false" stroke.SUCCESS="5" textColor.SUCCESS="0xFFE46B" text.FAIL="失败…" verticalAlign.FAIL="middle" size.FAIL="50" textColor.FAIL="0xA2A2A2" stroke.FAIL="5" text.BIG_FAIL="大失败……" verticalAlign.BIG_FAIL="middle" size.BIG_FAIL="50" stroke.BIG_FAIL="5" textColor.BIG_FAIL="0x6E6D6D"/>
+</e:Skin>

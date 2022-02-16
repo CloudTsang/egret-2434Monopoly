@@ -1,0 +1,9 @@
+<?xml version='1.0' encoding='utf-8'?>
+<e:Skin class="skins.logpanel"
+	 width="560"
+	height="240" xmlns:e="http://ns.egret.com/eui">
+	<e:Rect percentHeight="100" percentWidth="100" x="0" y="0" ellipseWidth="50"/>
+	<e:Label id="txtDes" percentHeight="90" percentWidth="90" y="0" verticalAlign="middle" textAlign="center" text="{data.txt}" horizontalCenter="0" wordWrap="false" touchEnabled="false"/>
+	<e:Label text="点击继续" percentWidth="90" textAlign="center" horizontalCenter="0" bottom="10" textColor="0xC2B9B9" size="24" touchEnabled="false"/>
+	<e:Image id="img" width="200" height="200" y="-220" horizontalCenter="0" touchEnabled="false"/>
+</e:Skin>

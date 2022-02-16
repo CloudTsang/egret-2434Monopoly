@@ -1,0 +1,18 @@
+{
+    "options": {
+        "useExtension": 0,
+        "layoutGap": 2,
+        "extend": 0,
+        "layoutMath": "3",
+        "sizeMode": "free"
+    },
+    "files": [
+        "./neta2/eurogacha.png",
+        "./neta2/africagacha.png",
+        "./neta2/numagacha.png",
+        "./neta2/normalgacha.png",
+        "./neta2/msmr.jpg"
+    ],
+    "version": 5,
+    "projectName": "neta2"
+}

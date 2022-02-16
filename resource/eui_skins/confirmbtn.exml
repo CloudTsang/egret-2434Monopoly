@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<e:Skin class="skins.confirmbtn"
+	 width="100"
+	height="100" xmlns:e="http://ns.egret.com/eui" states="disabled,up,down" >
+	<e:Image x="0" y='0' percentWidth="100" percentHeight="100"
+    source="icons_json#btnok" source.down="icons_json#btnokdisabled" source.disabled='icons_json#btnokdisable'  touchEnabled.up="true" touchEnabled.disabled="false"/>
+</e:Skin>

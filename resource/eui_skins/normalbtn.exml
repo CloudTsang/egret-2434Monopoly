@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<e:Skin class="skins.normalbtn"
+	 width="160"
+	height="40" xmlns:e="http://ns.egret.com/eui" states="up,down,disabled" >
+	<e:Rect percentHeight="100" percentWidth="100" x="0" y="0" ellipseWidth="40" fillColor.up="0xDE9015" fillColor.down="0xC58606" fillColor="0xDE9015" fillColor.disabled="0x9E660E" touchEnabled.disabled="false" touchChildren.disabled="false"/>
+	<e:Label id="labelDisplay" percentHeight="100" percentWidth="90" horizontalCenter="0" verticalAlign="middle" textAlign="center" size="30"/>
+</e:Skin>

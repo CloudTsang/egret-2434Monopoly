@@ -1,0 +1,24 @@
+<?xml version='1.0' encoding='utf-8'?>
+<e:Skin class="skins.mainstage"
+	 width="480"
+	height="480" xmlns:e="http://ns.egret.com/eui" xmlns:ns1="*" xmlns:w="http://ns.egret.com/wing">
+	<e:Group percentWidth="100" percentHeight="100" locked="true">
+		<e:Rect percentHeight="100" percentWidth="100" x="0" y="0" fillAlpha="1" scaleX="1" scaleY="1" fillColor="0xECECEC"/>
+		<e:Image source="icons_json#2434logo" verticalCenter="0" horizontalCenter="0" x="240" y="240" scaleX="1" scaleY="1"/>
+	</e:Group>
+	<e:Group id="mapContainer" x="0" y="0" locked="true">
+		<e:Group id="cellContainer" percentHeight="100" percentWidth="100" x="0" y="0"/>
+	</e:Group>
+	<e:Group id="bottomBar" percentWidth="100" height="0" bottom="0" right="0" touchEnabled="false" touchChildren="true">
+		<ns1:VRBtn id="vrbtn" width="100" height="100" bottom="20" right="20" scaleX="1" scaleY="1" touchEnabled="true"/>
+		<ns1:RollBtn id="rollbtn" width="150" height="120" horizontalCenter="0" bottom="0" touchEnabled="true"/>
+		<ns1:LiverInfoBtn id="infobtn" width="100" height="60" scaleX="1" scaleY="1" left="20" bottom="20"/>
+		<ns1:Subscribe id="subs" width="200" height="120" left="20" bottom="150"/>
+		<ns1:Money id="money" width="200" height="60" left="20" bottom="90"/>
+		<e:Image id="bagbtn" width="60" height="60" left="140" bottom="20" source="icons_json#bag"/>
+	</e:Group>
+	<e:Group id="tmpContainer" percentWidth="100" percentHeight="100"  x="0" y="0" touchEnabled="false" touchChildren="false" locked="true"/>
+	<e:Group id="menuContainer" percentWidth="100" percentHeight="100" x="0" y="0" touchEnabled="false" touchChildren="true" locked="true"/>
+	<ns1:LiversMenu id="liverMenu" width="100" height="400" left="0" top="0" locked="true"/>
+	<e:Group id="topContainer" percentWidth="100" percentHeight="100" x="0" y="0" touchEnabled="false" touchChildren="false" locked="true"/>
+</e:Skin>

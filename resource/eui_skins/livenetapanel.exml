@@ -1,0 +1,77 @@
+<?xml version='1.0' encoding='utf-8'?>
+<e:Skin class="skins.livenetapanel"
+	 width="800"
+	height="200" maxHeight="300" xmlns:e="http://ns.egret.com/eui" states="beforestream,onstream" >
+	<e:Group percentHeight="100" percentWidth="100" x="0" y="0">
+		<e:Rect percentHeight="100" percentWidth="100" x="0" y="0" fillColor="0x000000" fillAlpha="0.75"/>
+		<e:Group percentHeight="100" percentWidth="100" x="0" y="0">
+		<e:Group percentHeight="100" percentWidth="65">
+			<e:Label id="txtTip" bottom="5" horizontalCenter="0" size="22" includeIn="beforestream"/>
+			<e:Group percentWidth="94" percentHeight="75" horizontalCenter="0" top="10">
+			<e:Rect percentWidth="100" percentHeight="100" horizontalCenter="0" fillAlpha="0.6"/>
+			<e:Scroller id="itemScroller" percentWidth="100" percentHeight="100" horizontalCenter="0">
+				<e:List id="itemContainer" percentWidth="100" percentHeight="100" x="0" y="0" itemRendererSkinName="skins.streamlistobj">
+				<e:layout>
+					<e:HorizontalLayout verticalAlign="middle"/>
+				</e:layout>
+				</e:List>
+			</e:Scroller>
+			</e:Group>
+		</e:Group>
+			<e:Group percentHeight="96" percentWidth="35" includeIn="onstream" x="610">
+				<e:Scroller id="commentScroller" percentWidth="100" percentHeight="100" verticalCenter="0">
+					<e:Group>
+						<e:List id="commentList" percentHeight="100" percentWidth="100" verticalCenter="0"/>
+					</e:Group>
+				</e:Scroller>
+			</e:Group>
+		<e:Group percentHeight="100" percentWidth="25" includeIn="beforestream">
+			<e:layout>
+			<e:VerticalLayout gap="3"/>
+			</e:layout>
+			<e:Group percentWidth="100" percentHeight="25">
+			<e:Image source="icons_json#neta" left="0" width="100" height="30" verticalCenter="0"/>
+			<e:Label id="txtNeta" text="0" verticalCenter="0" right="30"/>
+			</e:Group>
+			<e:Group percentWidth="100" percentHeight="25">
+			<e:Image source="icons_json#pop" left="0" width="100" height="30" verticalCenter="0"/>
+			<e:Label id="txtPop" text="0" verticalCenter="0" right="30"/>
+			</e:Group>
+			<e:Group percentWidth="100" percentHeight="25">
+			<e:Image source="icons_json#safe" left="0" width="100" height="30" verticalCenter="0"/>
+			<e:Label id="txtSafe" text="0" verticalCenter="0" right="30"/>
+			</e:Group>
+			<e:Group percentWidth="100" percentHeight="25">
+			<e:Image source="icons_json#meme" left="0" width="100" height="30" verticalCenter="0"/>
+			<e:Label id="txtMeme" text="0" verticalCenter="0" right="30"/>
+			</e:Group>
+		</e:Group>
+		<e:Group id="btnContainer" percentHeight="100" percentWidth="10" includeIn="beforestream">
+			<e:Component id="btnCancel" percentWidth="100" percentHeight="50" skinName="skins.cancelbtn"/>
+			<e:Button id="btnConfirm" percentWidth="100" percentHeight="50" skinName="skins.confirmbtn" visible="true" currentState="disabled"/>
+			<e:layout>
+			<e:VerticalLayout/>
+			</e:layout>
+		</e:Group>
+		<e:layout>
+			<e:HorizontalLayout verticalAlign.onstream="middle"/>
+		</e:layout>
+		</e:Group>
+	</e:Group>
+	<e:Group id="streamResultContainer" percentWidth="100" height="80" y="200" visible="true" includeIn="onstream">
+		<e:Rect  percentHeight="100" percentWidth="100" x="0" y="0"  fillColor="0x000000" fillAlpha="0.75"/>
+		<e:Label id="txtDAdd" x="328" y="40" textColor="0x1DE3FF" alpha="0" textAlign="right" bold="true"/>
+        <e:Label id="txtDSpd" x="696" y="40" textColor="0x1DE3FF" alpha="0" textAlign="right" bold="true"/>
+		<e:Group percentWidth="100" percentHeight="100">
+			<e:Label text="直播效果：" x="33" size="32" scaleX="1" scaleY="1" verticalCenter="0"/>
+			<e:Label id="txtSubAdd" x="216" y="29" size="32" width="200" verticalAlign="justify" textAlign="center" text="0"/>
+			<e:Group width="30"  percentHeight="100"/>
+            <e:Label text="增长速度：" x="33" size="32" scaleX="1" scaleY="1" verticalCenter="0"/>
+			<e:Label id="txtSubSpd" x="216" y="29" size="32" width="140" text="0" textAlign="center"/>
+			<e:layout>
+				<e:HorizontalLayout verticalAlign="middle" paddingLeft="20" paddingRight="20"/>
+			</e:layout>
+		</e:Group>
+	</e:Group>
+
+</e:Skin>

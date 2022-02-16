@@ -1,0 +1,52 @@
+<?xml version='1.0' encoding='utf-8'?>
+<e:Skin class="skins.netapanel"
+	 width="600"
+	height="200" xmlns:e="http://ns.egret.com/eui">
+	<e:Group percentHeight="100" percentWidth="100" x="0" y="0">
+		<e:Rect percentHeight="100" percentWidth="100" x="0" y="0" ellipseWidth="50" fillColor="0x000000" fillAlpha="0.75"/>
+		<e:Group percentHeight="100" percentWidth="100" x="0" y="0">
+			<e:Group percentWidth="25" percentHeight="100" x="12" y="41">
+				<e:Image id="img" width="120" height="120" verticalCenter="0" horizontalCenter="0"/>
+				<e:Image id="imgType" width="50" height="50" x="10" y="15" source="icons_json#game"/>
+			</e:Group>
+			<e:Group percentWidth="75" percentHeight="100" x="327" y="38">
+				
+				<e:Group id="statContainer" percentWidth="100" minHeight="60" scaleX="1" scaleY="1" horizontalCenter="0" bottom="0" visible="false">
+					<e:layout>
+						<e:HorizontalLayout/>
+					</e:layout>
+					<e:Group percentWidth="33" percentHeight="100" x="186" y="154" visible="false">
+						<e:Image width="80" height="40" left="0" source="icons_json#pop" verticalCenter="0"/>
+						<e:Label id="txtPop" size="38" verticalCenter="0" right="30"/>
+					</e:Group>
+                    <e:Group percentWidth="33" percentHeight="100" x="186" y="154" visible="false">
+                        <e:Image width="80" height="40" y="22" left="0" source="icons_json#safe" verticalCenter="0"/>
+                        <e:Label id="txtSafe" size="38" verticalCenter="0" right="30"/>
+					</e:Group>
+                    <e:Group percentWidth="33" percentHeight="100" x="186" y="154" visible="false">
+                     <e:Image width="80" height="40" y="22" left="0" source="icons_json#meme" verticalCenter="0"/>
+                     <e:Label id="txtMeme" size="38" verticalCenter="0" right="30"/>
+                    </e:Group>
+				</e:Group>
+				<e:Group percentWidth="90"  top="0" horizontalCenter="0">
+                <e:Label id="txtName" percentWidth="100" height="50" textAlign="center" verticalAlign="bottom" size="34" horizontalCenter="0" y="0"/>
+				<e:Label id="txtDes" percentWidth="100"  size="28" top="0"/>
+					<e:layout>
+						<e:VerticalLayout/>
+					</e:layout>
+				</e:Group>
+				<e:layout>
+					<e:BasicLayout/>
+				</e:layout>
+			</e:Group>
+			<e:layout>
+				<e:HorizontalLayout/>
+			</e:layout>
+		</e:Group>
+		<e:Image id="iconGet" width="100" height="60" right="0" bottom="0" source="icons_json#get"/>
+	</e:Group>
+	<e:Group id="iconGift" width="200" height="50" y="-40" visible="true" horizontalCenter="0">
+		<e:Rect percentHeight="100" percentWidth="100" ellipseWidth="50" fillColor="0xE151EA"/>
+		<e:Label text="Liver赠礼" percentHeight="100" percentWidth="100" verticalAlign="middle" textAlign="center" />
+	</e:Group>
+</e:Skin>

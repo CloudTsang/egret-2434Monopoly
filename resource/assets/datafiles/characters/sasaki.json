@@ -1,0 +1,98 @@
+{
+  "id": "sasaki",
+  "name": "笹木咲",
+  "chessR": "chess_json#sasakir",
+  "chessV": "chess_json#sasakiv",
+   "iconUrl":"livers4_json#sasaki",
+  "data": {
+    "luck": 3,
+    "sense": 2,
+    "commu": 3,
+    "game": 5,
+    "sing": 1,
+    "talk": 2,
+    "tech": 3,
+    "strength": 2,
+    "money": 30000
+  },
+  "skill": [
+    {
+      "id": 1,
+      "name": "任任女孩",
+      "des": "专精老任游戏的gamer，游戏配信使用特定neta时直播效果上升",
+      "type": "POSITIVE",
+      "iconUrl": "",
+      "phrase": "USE_NETA",
+      "rate": "1",
+      "class": "SasakiSkill1",
+      "effect": [
+        {
+          "type": "STAT_CHANGE",
+          "data": "{stream.totSubAdd}+10000"
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "name": "稀世之里",
+      "des": "见识横纲的力量罢！每回合提升体力，提升量在直播后重置。",
+      "type": "POSITIVE",
+      "iconUrl": "",
+      "phrase": "TURN_START",
+      "rate": "1",
+      "class":"SasakiSkill2",
+      "effect": [
+        {
+          "type": "TEMP_STAT_CHANGE",
+          "data": "{mc.strength}+1"
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "name": "不悯",
+      "des": "sasa kids最爱的下饭菜，行动时一定几率运气降低",
+      "type": "NEGATIVE",
+      "iconUrl": "",
+      "phrase": "BEFORE_ACTION",
+      "rate": "0.15",
+      "effect": [
+        {
+          "type": "TEMP_STAT_CHANGE",
+          "data": "{mc.luck}-2"
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "name": "水族馆迷",
+      "des": "最喜欢面蛸！硬核的知识在联动中冷场，一定几率沟通力下降",
+      "type": "NEGATIVE",
+      "iconUrl": "",
+      "phrase": "IN_STREAM_COLLABO",
+      "rate": "0.2",
+      "effect": [
+        {
+          "type": "TEMP_STAT_CHANGE",
+          "data": "{mc.commu}-3"
+        }
+      ]
+    },
+    {
+      "id": 5,
+      "name": "笹木被○○所厌恶",
+      "des": "传说的名曲，直播中发生事故或炎上后的下次直播高概率发动，根据期间经过的回合数获得粉丝",
+      "type": "HIDDEN",
+      "iconUrl": "",
+      "phrase": "BEFORE_STREAM",
+      "rate": "0.85",
+      "class":"SasakiSkill5",
+      "effect": [
+        {
+          "type": "STAT_CHANGE",
+          "data": "{mc.subscribe}+5000"
+        }
+      ]
+    }
+  ]
+}

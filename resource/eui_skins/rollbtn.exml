@@ -1,0 +1,13 @@
+<?xml version='1.0' encoding='utf-8'?>
+<e:Skin class="skins.rollbtn"
+	 width="80"
+	height="80" xmlns:e="http://ns.egret.com/eui" xmlns:ns1="*">
+	<e:Group percentHeight="100" percentWidth="100">
+		<e:Label id="txtRollNum" horizontalCenter="0" x="0" scaleX="1" scaleY="1" text="0" size="80" textColor="0xE46E07" bold="true" border="false" stroke="3" bottom="-100" touchEnabled="false"/>
+		<e:Image id="btn" percentHeight="100" percentWidth="100" x="0" y="0" source="icons_json#roll1"/>
+		<e:layout>
+			<e:BasicLayout/>
+		</e:layout>
+	</e:Group>
+	<ns1:RollResultLabel id="result" width="500" height="100" x="139" y="-72" touchEnabled="false" touchChildren="false"/>
+</e:Skin>

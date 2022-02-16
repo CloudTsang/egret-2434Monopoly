@@ -1,0 +1,8 @@
+<?xml version='1.0' encoding='utf-8'?>
+<e:Skin class="skins.money"
+	 width="300"
+	height="80" xmlns:e="http://ns.egret.com/eui">
+	<e:Rect percentHeight="70" percentWidth="100" x="0" verticalCenter="0" fillAlpha="0.65" ellipseWidth="50"/>
+	<e:Image percentHeight="100" x="-13" y="0" source="icons_json#money"/>
+	<e:Label id="txtMoney" text="0" percentWidth="60" verticalCenter="0" right="30" textAlign="right" verticalAlign="middle" multiline="false" wordWrap="false"/>
+</e:Skin>

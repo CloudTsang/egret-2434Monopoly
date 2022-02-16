@@ -1,0 +1,14 @@
+<?xml version='1.0' encoding='utf-8'?>
+<e:Skin class="skins.liversmenu"
+	 width="100"
+	height="400" xmlns:e="http://ns.egret.com/eui">
+	<e:Group percentHeight="100" percentWidth="100" x="10" y="10">
+		<e:Group id="iconContainer0" percentWidth="100" percentHeight="25"/>
+		<e:Group id="iconContainer1" percentWidth="100" percentHeight="25"/>
+		<e:Group id="iconContainer2" percentWidth="100" percentHeight="25"/>
+		<e:Group id="iconContainer3" percentWidth="100" percentHeight="25"/>
+		<e:layout>
+			<e:VerticalLayout/>
+		</e:layout>
+	</e:Group>
+</e:Skin>

@@ -1,0 +1,6 @@
+<?xml version='1.0' encoding='utf-8'?>
+<e:Skin class="skins.liverinfobtn"
+	 width="100"
+	height="60" xmlns:e="http://ns.egret.com/eui">
+	<e:Image percentHeight="100" percentWidth="100" x="0" y="0" source="icons_json#infobtn"/>
+</e:Skin>

@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<e:Skin class="skins.streamlistobj"
+	 width="140"
+	height="140" xmlns:e="http://ns.egret.com/eui" states="normal,accident,fire" >
+	<e:Image id="icon" percentHeight="100" percentWidth="100" x="0" y="0" source="{data.iconUrl}"/>
+	<e:Label id="txtStat" percentWidth="100" percentHeight="100" verticalAlign="middle" textAlign="center" size="60" textColor.accident="0x585454" text.accident="事故" bold.accident="true" text.fire="炎上" bold="true" textColor.fire="0xCE3B0D"/>
+</e:Skin>

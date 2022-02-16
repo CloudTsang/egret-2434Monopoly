@@ -1,0 +1,28 @@
+{
+    "projectName": "mapicon",
+    "files": [
+        "./elfmori.png",
+        "./buildshop.png",
+        "./buildpck.png",
+        "./buildjojoen.png",
+        "./buildchurch.png",
+        "./build2434.png",
+        "./build.png",
+        "./eventr.png",
+        "./makai.png",
+        "./daikai.png",
+        "./rire.png",
+        "./ban.png",
+        "./rest.png",
+        "./tete.png",
+        "./2434logo2.png"
+    ],
+    "options": {
+        "layoutMath": "4",
+        "sizeMode": "free",
+        "useExtension": 0,
+        "layoutGap": 2,
+        "extend": 0
+    },
+    "version": 5
+}

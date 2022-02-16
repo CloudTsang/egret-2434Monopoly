@@ -1,0 +1,21 @@
+{
+    "projectName": "chess",
+    "files": [
+        "./rionv.png",
+        "./rionr.png",
+        "./mitov.png",
+        "./mitor.png",
+        "./toya.png",
+        "./toko.png",
+        "./sasakiv.png",
+        "./sasakir.png"
+    ],
+    "options": {
+        "layoutMath": "3",
+        "sizeMode": "free",
+        "useExtension": 0,
+        "layoutGap": 2,
+        "extend": 0
+    },
+    "version": 5
+}
