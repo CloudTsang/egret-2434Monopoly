@@ -4,7 +4,7 @@ class ToyaSkill2 extends Skill{
 	}
 
 	public triggerStream(stream:Stream){
-		const tot = stream.totalPop + stream.totalMeme
+		const tot = Math.min(stream.totalPop , stream.totalMeme)
 		if(tot > 10){
 			return
 		}

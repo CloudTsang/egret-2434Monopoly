@@ -131,7 +131,7 @@ class WorldController {
 				const mc = ctrller.players[ctrller.currentPlayer]
 				const ty2 = e.data.ty2
 				ctrller.menu && ctrller.map.removeMenu(ctrller.menu)
-				ctrller.stream = new Stream(mc, ctrller.curTurn, ty2, ctrller.cellDatas.getCell(ctrller.chessCurIndex).getNpc(mc.npc))
+				ctrller.stream = new Stream(mc, ctrller.curTurn, ty2, ctrller.cellDatas.getCell(ctrller.chessCurIndex).getNpc(mc.npc.npcs))
 				ctrller.stream.addEventListener(GameEvents.STREAM_END, this.onStreamEnd,this)
 
 				let menu = new StreamPreparePanel(mc.netaBag, ty2)

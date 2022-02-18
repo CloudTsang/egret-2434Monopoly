@@ -588,6 +588,10 @@
                                         {
                                             "type":"GET_BUFF",
                                             "data":"Sleep"
+                                        },
+                                        {
+                                            "type":"STAT_CHANGE",
+                                            "data":"{mc.npc.ruru}+1"
                                         }
                                     ]
                                 },

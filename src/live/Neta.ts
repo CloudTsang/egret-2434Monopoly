@@ -31,7 +31,7 @@ interface NetaBaseProp{
 	public owner:string
 	public constructor(obj:any) {
 		super()		
-		this.ID = obj['id']
+		this.ID = egret.getQualifiedClassName(this)//obj['id']
 		this.name = obj['name']
 		this.des = obj['des']
 		this.type = this.str2type(obj['type'])
@@ -81,6 +81,7 @@ interface NetaBaseProp{
 				const cr = this.checkReq(ef['req'], obj)
 				if(!cr) continue
 			}
+			console.log(ef)
 			this.handle(ef.type, ef.data, obj)
 		}
 	}

@@ -1,4 +1,4 @@
-class NetaDeviceMinePC extends Device {
+class NetaDeviceMinePC extends PC {
 	private counter:number
 	public constructor(obj:any) {
 		super(obj)

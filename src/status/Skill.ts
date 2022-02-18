@@ -78,6 +78,7 @@ class Skill extends EffectHandler{
 		WorldMap.showSkillBar(this)
 		this.triggered = true
 		const obj = {
+			player:this.mc,
 			mc:this.mc.ddata,
 			bag:this.mc.netaBag
 		}
@@ -98,6 +99,7 @@ class Skill extends EffectHandler{
 		}
 		
 		const obj = {
+			player:this.mc,
 			neta:neta,
 			mc:this.mc.ddata,
 			stream:stream
@@ -119,6 +121,7 @@ class Skill extends EffectHandler{
 		}
 		
 		const obj = {
+			player:this.mc,
 			stream:stream,
 			mc:this.mc.ddata
 		}

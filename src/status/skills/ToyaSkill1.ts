@@ -3,7 +3,7 @@ class ToyaSkill1 extends Skill {
 	
 	public constructor(mc:MainCharacter, data:any) {
 		super(mc, data)
-		this._cd = 0
+		this._cd = 3
 	}
 	public cd(){
 		

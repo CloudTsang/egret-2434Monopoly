@@ -62,9 +62,9 @@ class MapEvent extends BaseObj{
 			let cn = egret.getDefinitionByName(this.className)
 			let ep:EvtPanel
 			if(this.selections){
-				ep = new EvtPanel(new cn(this.selections), this.name, this.des, cell.getNpc(mc.npc))
+				ep = new EvtPanel(new cn(this.selections), this.name, this.des, cell.getNpc(mc.npc.npcs))
 			}else{
-				ep = new EvtPanel(new cn(), this.name, this.des, cell.getNpc(mc.npc))
+				ep = new EvtPanel(new cn(), this.name, this.des, cell.getNpc(mc.npc.npcs))
 			}
 			ep.addEventListener(GameEvents.ACTION_CONFIRM, this.onSelected, this)
 			return ep

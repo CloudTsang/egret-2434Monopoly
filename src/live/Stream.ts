@@ -63,6 +63,16 @@ class Stream extends egret.EventDispatcher{
 			[NetaType.SPEC]:0,
 			[NetaType.PRESENT]:0,
 		}
+
+		this.baseRate = this.getBaseRate()
+		this.accidentBaseRate = 0
+		this.enjoBaseRate = 1
+		if(this.ty == StreamType.GAME){
+			this.accidentBaseRate = 1
+		}
+		if(this.ty == StreamType.TALK){
+			this.enjoBaseRate = 1.5
+		}
 	}
 
 	public get type(){
@@ -89,17 +99,6 @@ class Stream extends egret.EventDispatcher{
 		st.superchat = 0
 		st.rollCb = rollCallBack
 		st.comment = new CommentFactory()
-
-		st.baseRate = st.getBaseRate()
-		st.accidentBaseRate = 0
-		st.enjoBaseRate = 1
-		if(st.ty == StreamType.GAME){
-			st.accidentBaseRate = 1
-		}
-		if(st.ty == StreamType.TALK){
-			st.enjoBaseRate = 1.5
-		}
-
 
 		st.getIfCollabo()
 		if(st.collaboMems.length>0){

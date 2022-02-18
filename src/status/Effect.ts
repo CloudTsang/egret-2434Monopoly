@@ -45,7 +45,7 @@ class EffectHandler extends BaseObj{
                 }
 				break
 			case EffectType.GET_BUFF:
-				const cname = data['class']
+				const cname = data
 				if(!cname) return
 				const fn = egret.getDefinitionByName(cname)
 				if(!fn || !target.player) return
@@ -65,10 +65,12 @@ class EffectHandler extends BaseObj{
 			}
 			const prop:string = marr[0] 
             const propArr:string[] = prop.substr(1,prop.length-2).split('.')
+			console.log(target, propArr[0], target[propArr[0]], target[propArr[0]][propArr[1]])
 			if(!target[propArr[0]]) return
 			
 			const ori = target[propArr[0]][propArr[1]]
 			const evalS = s.replace(marr[0], ori)
+			console.log(evalS)
 			target[propArr[0]][propArr[1]] = eval(evalS)
 		}
 	}

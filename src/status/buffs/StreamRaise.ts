@@ -32,6 +32,7 @@ class StreamRaise extends Buff{
 		const b1:StreamRaise = b as StreamRaise
 		if(!b1)return
 		this._rate += b1.rate
+		console.log(`${this.name}的效果叠加至${this._rate}`)
 	}
 
 	public get rate(){

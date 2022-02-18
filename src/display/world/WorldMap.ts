@@ -392,6 +392,21 @@ class WorldMap extends eui.Component{
 		ins.topContainer.addChild(p)
 		return p
 	}
+
+	public static showPlayerSelect(players:MainCharacter[], current:number):PlayerSelectPanel{
+		if(!WorldMap.instance) return null
+		let urls:string[] = []
+		for(let p of players){
+			urls.push(p.iconUrl)
+		}
+		const ins = WorldMap.instance
+		const p = new PlayerSelectPanel(urls, current)
+		p.x = (ins.width - p.width)/2
+		p.y = (ins.height-p.height)/2
+		ins.menuContainer.addChild(p)
+		return p
+
+	}
 }
 
 /**走棋坐标数据 */

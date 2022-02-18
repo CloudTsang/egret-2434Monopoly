@@ -6,6 +6,7 @@
         "value": 100000,
         "type":"device", 
         "iconUrl":"netaicons_json#pc",
+        "class":"PC",
         "data":{
             "times":-1,
             "effect":[
@@ -24,6 +25,7 @@
         "value":200000,
         "type":"device", 
         "iconUrl":"netaicons_json#hpc",
+        "class":"PC",
         "data":{
             "times":-1,
             "effect":[
@@ -42,6 +44,7 @@
         "value": 1000000,
         "type":"device", 
         "iconUrl":"netaicons_json#veda",
+        "class":"PC",
         "data":{
             "times":-1,
             "effect":[
@@ -60,6 +63,7 @@
         "value": 100000,
         "type":"device", 
         "iconUrl":"netaicons_json#mac",
+        "class":"PC",
         "data":{
             "times":-1,
             "effect":[
@@ -99,6 +103,7 @@
         "value": 2000000,
         "type":"device", 
         "iconUrl":"netaicons_json#eniark",
+        "class":"PC",
         "data":{
             "times":-1,
             "effect":[
@@ -239,16 +244,12 @@
                 {
                     "type":"GET_BUFF",
                     "trigger":"use",
-                    "data":{
-                        "class":"StreamRaise_SING"
-                    }
+                    "data":"StreamRaise_SING"
                 },
                 {
                     "type":"GET_BUFF",
                     "trigger":"use",
-                    "data":{
-                        "class":"StreamRaise_TALK"
-                    }
+                    "data":"StreamRaise_TALK"
                 }
             ]
         }   

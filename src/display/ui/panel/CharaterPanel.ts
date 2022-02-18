@@ -84,10 +84,11 @@ class CharaterPanel extends eui.Component  implements IDisposable{
 		panel.setTextColor(panel.txtSing, "game")
 		panel.setTextColor(panel.txtTech, "tech")
 
+		let bufficonX = 0
 		for(let i=0;i<mc.buffs.length;i++){
 			const b:Buff = mc.buffs[i]
 			if(b.iconUrl && b.iconUrl!=''){
-				panel.buffIcon(b.iconUrl, i)
+				bufficonX = panel.buffIcon(b.iconUrl, i, bufficonX)
 			}
 		}
 	}
@@ -170,7 +171,7 @@ class CharaterPanel extends eui.Component  implements IDisposable{
 		panel.containerTips.y = e.stageY - this.y
 	}
 
-	private buffIcon(url:string, i:number){
+	private buffIcon(url:string, i:number, curx:number=0):number{
 		let bmp = new egret.Bitmap()
 		bmp.texture = RES.getRes(url) as egret.Texture
 		bmp.name = 'buff_'+i
@@ -179,9 +180,10 @@ class CharaterPanel extends eui.Component  implements IDisposable{
 		const scale = bmp.height/bmp.width
 		bmp.height = ch
 		bmp.width = bmp.height/scale
-
+		bmp.x = curx + 10
 		bmp.y = (ch-bmp.height)/2
 		bmp.touchEnabled = true
+		return bmp.x + bmp.width
 	}
 
 

@@ -9,8 +9,9 @@ class CellData extends egret.EventDispatcher{
 		this.npcs = []
 	}
 
-	public getNpc(favors:NpcFavour|{[key:string]:number}):NpcObj[]{
+	public getNpc(favors:{[key:string]:number}):NpcObj[]{
 		let ret:NpcObj[] = []
+		
 		for(let index of this.npcs){
 			const liver = Liver.allLivers[index]
 			const f = favors[liver.id]

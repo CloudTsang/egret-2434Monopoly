@@ -29,7 +29,12 @@ class CData {
 	private _tech:number = 0
 	public techLock:boolean = false
 
-	 constructor(obj:any=null){
+	private _minusLock:boolean
+	/**
+	 * @param minusLock 修改值是否不可小于0
+	 */
+	 constructor(obj:any=null, minusLock:boolean=false){
+		 this._minusLock = minusLock
 		 if(obj){
 			for(let k in obj){
 				this[k] = obj[k]
@@ -42,7 +47,7 @@ class CData {
 		 return this._commu;
 	 }
 	 public set commu(v : number) {
-		 if(v<0)return
+		 if(v<0 && this._minusLock)return
 		 if(this.commuLock || this.allLock) return
 		 this._commu = v;
 	 }
@@ -51,7 +56,7 @@ class CData {
 		 return this._game;
 	 }
 	 public set game(v : number) {
-		 if(v<0)return
+		  if(v<0 && this._minusLock)return
 		 if(this.gameLock || this.allLock) return
 		 this._game = v;
 	 }
@@ -60,7 +65,7 @@ class CData {
 		 return this._luck;
 	 }
 	 public set luck(v : number) {
-		 if(v<0)return
+		  if(v<0 && this._minusLock)return
 		 if(this.luckLock || this.allLock) return
 		 this._luck = v;
 	 }
@@ -78,7 +83,7 @@ class CData {
 		 return this._sense;
 	 }
 	 public set sense(v : number) {
-		 if(v<0)return
+		 if(v<0 && this._minusLock)return
 		 if(this.senseLock || this.allLock) return
 		 this._sense = v;
 	 }
@@ -87,7 +92,7 @@ class CData {
 		 return this._sing;
 	 }
 	 public set sing(v : number) {
-		 if(v<0)return
+		 if(v<0 && this._minusLock)return
 		 if(this.singLock || this.allLock) return
 		 this._sing = v;
 	 }
@@ -96,7 +101,7 @@ class CData {
 		 return this._strength;
 	 }
 	 public set strength(v : number) {
-		 if(v<0)return
+		 if(v<0 && this._minusLock)return
 		 if(this.strengthLock || this.allLock) return
 		 this._strength = v;
 	 }
@@ -105,7 +110,7 @@ class CData {
 		 return this._talk;
 	 }
 	 public set talk(v : number) {
-		 if(v<0)return
+		 if(v<0 && this._minusLock)return
 		 if(this.talkLock || this.allLock) return
 		 this._talk = v;
 	 }
@@ -114,7 +119,7 @@ class CData {
 		 return this._tech;
 	 }
 	 public set tech(v : number) {
-		 if(v<0)return
+		 if(v<0 && this._minusLock)return
 		 if(this.techLock || this.allLock) return
 		 this._tech = v;
 	 }

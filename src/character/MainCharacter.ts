@@ -39,7 +39,7 @@ class MainCharacter extends Liver{
 		this.index = index
 		this.ID = obj['id']
 		this.name = obj['name']
-		this.data = new CData(obj['data'])
+		this.data = new CData(obj['data'], true)
 		this.ddata = new CData()
 		this.edata = new EventData()
 		this.iconUrl = obj['iconUrl']
@@ -71,6 +71,7 @@ class MainCharacter extends Liver{
 		//test
 		// this.getBuff(new Enjo(this, 3))
 		// this.data.money = 5000000
+		// this.getBuff(new MechLock(this,3))
 	}
 
 	public checkIfSkillsTriggered(p:string, v:number=0):SkillsTrigger{
@@ -88,7 +89,7 @@ class MainCharacter extends Liver{
 
 	public getBuff(nb:Buff){
 		for(let b of this.buffs){
-			if(b.name == nb.name){
+			if(b.name == nb.name){				
 				b.add(nb)
 				return
 			}
@@ -181,41 +182,41 @@ class MainCharacter extends Liver{
 
 	public get game(){
 		const r =  this.data.game + this.ddata.game
-        return r<0?0:r
+        return r<=0?0:r
 	}
 	
 	public get commu(){
 		const r =  this.data.commu + this.ddata.commu
-        return r<0?0:r
+        return r<=0?0:r
 	}
 
 	public get luck(){
 		const r =  this.data.luck + this.ddata.luck
-        return r<0?0:r
+        return r<=0?0:r
 	}
 
 	public get sense(){
 		const r = this.data.sense + this.ddata.sense
-		return r<0?0:r
+		return r<=0?0:r
 	}
 
 	public get sing(){
 		const r =  this.data.sing + this.ddata.sing
-        return r<0?0:r
+        return r<=0?0:r
 	}
 	public get strength(){
 		let r =  this.data.strength + this.ddata.strength
 		if(r > 10) r = 10
-		else if(r < 0) r = 0
+		else if(r<=0) r = 0
         return r
 	}
 	public get talk(){
 		const r =  this.data.talk + this.ddata.talk
-        return r<0?0:r
+        return r<=0?0:r
 	}
 	public get tech(){
 		const r =  this.data.tech + this.ddata.tech
-        return r<0?0:r
+        return r<=0?0:r
 	}
 
 	public get money(){

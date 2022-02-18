@@ -1,6 +1,6 @@
 class NpcFavour {
 	protected gift:{[key:number]:number}
-	protected npcs:{[key:number]:number}
+	public npcs:{[key:number]:number}
 	public constructor() {
 		this.gift = {}
 		this.npcs = {}

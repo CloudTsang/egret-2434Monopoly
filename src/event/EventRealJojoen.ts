@@ -89,7 +89,7 @@ class EventRealJojoen  extends MapEvent{
 			for(let n of this._cell.npcs){
 				mc.npc[Liver.allLivers[n].id]+=favor
 			}
-			const objs:NpcObj[] = this._cell.getNpc(this._mc.npc)
+			const objs:NpcObj[] = this._cell.getNpc(this._mc.npc.npcs)
 			const np = WorldMap.showNpcPanel(objs)
 		})
 		.wait(500)

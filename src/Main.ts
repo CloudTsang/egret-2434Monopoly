@@ -130,8 +130,8 @@ class Main extends egret.DisplayObjectContainer {
 
         Liver.init()
 
-        const mcs = ['mito_json', 'toya_json', 'rion_json', 'sasaki_json']
-        //  const mcs = ['rion_json']
+        // const mcs = ['mito_json', 'toya_json', 'rion_json', 'sasaki_json']
+         const mcs = ['toya_json']
         const world = new WorldController(this.stage)
         world.initMap()
         world.initPlayer(mcs)
