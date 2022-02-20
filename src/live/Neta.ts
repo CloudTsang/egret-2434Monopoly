@@ -81,7 +81,6 @@ interface NetaBaseProp{
 				const cr = this.checkReq(ef['req'], obj)
 				if(!cr) continue
 			}
-			console.log(ef)
 			this.handle(ef.type, ef.data, obj)
 		}
 	}

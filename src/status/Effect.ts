@@ -17,6 +17,7 @@ interface TargetObj{
 	mc2?:CData
 	npc?:Liver	
 	player?:MainCharacter
+	tgtPlayer?:MainCharacter[]
 }
 
 class EffectHandler extends BaseObj{
@@ -32,7 +33,6 @@ class EffectHandler extends BaseObj{
 			case EffectType.STAT_CHANGE:
 			case EffectType.TEMP_STAT_CHANGE:
 				try{
-					
 					this.onStatChange(data, target)
 				}catch(err){
 					console.error(err)
@@ -48,9 +48,17 @@ class EffectHandler extends BaseObj{
 				const cname = data
 				if(!cname) return
 				const fn = egret.getDefinitionByName(cname)
-				if(!fn || !target.player) return
-				const buff = new fn(target.player)
-				target.player.getBuff(buff)
+				if(!fn || (!target.player && !target.tgtPlayer)) return
+				if(!target.tgtPlayer){
+					const buff = new fn(target.player)
+					target.player.getBuff(buff)
+				}else{
+					for(let tp of target.tgtPlayer){
+						const buff = new fn(tp)
+						tp.getBuff(buff)
+					}
+				}
+				
 				break
 		}
 	}
@@ -65,12 +73,10 @@ class EffectHandler extends BaseObj{
 			}
 			const prop:string = marr[0] 
             const propArr:string[] = prop.substr(1,prop.length-2).split('.')
-			console.log(target, propArr[0], target[propArr[0]], target[propArr[0]][propArr[1]])
 			if(!target[propArr[0]]) return
 			
 			const ori = target[propArr[0]][propArr[1]]
 			const evalS = s.replace(marr[0], ori)
-			console.log(evalS)
 			target[propArr[0]][propArr[1]] = eval(evalS)
 		}
 	}

@@ -1,6 +1,7 @@
 {
     "projectName": "icons",
     "files": [
+        "./curseidol.png",
         "./fireguard.png",
         "./luckbuff.png",
         "./full.png",
@@ -40,7 +41,8 @@
         "./heart3.png",
         "./heart4.png",
         "./sleep.png",
-        "./raise.png"
+        "./raise.png",
+        "./cursed.png"
     ],
     "options": {
         "layoutMath": "3",

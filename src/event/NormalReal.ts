@@ -11,7 +11,10 @@ class NormalReal extends MapEvent{
 		const i = e.data.index
 
 		const {n, r} = Roll.random(this._mc)
+		/**roll后马上执行的方法 */
 		let fn:()=>void = null
+		/**点击对话框后执行的方法 */
+		let fn2:()=>void = null
 
 		egret.Tween.get(this)
 		.wait(200)
@@ -28,7 +31,7 @@ class NormalReal extends MapEvent{
 				case "commu|money":		
 					const rate2 = rate * 10000 * (1 + this._mc.strength/10)							
 					log = this.getLog(r, log, dataStr)
-					fn = ()=>{
+					fn2 = ()=>{
 						this._mc.data.commu = rate
 						this._mc.money += rate2
 						setTimeout(()=>{this.onLogTap()}, 200)
@@ -54,7 +57,7 @@ class NormalReal extends MapEvent{
 						getNeta = NetaFactory.getNetaWhichStatBetween(-1, 3)			
 							break
 					}
-					fn = ()=>{
+					fn2 = ()=>{
 						this._mc.netaBag.modifyNeta(getNeta, 'get', true)
 						this._el.dispose()
 						this._el = null
@@ -71,7 +74,9 @@ class NormalReal extends MapEvent{
 					if(rate == 0) rate = 0.5
 					log = this.getLog(r, log, prop)
 					fn = ()=>{
-						this._mc.data[prop] + rate
+						this._mc.data[prop] += rate
+					}
+					fn2 = ()=>{
 						this.onLogTap()
 					}
 					break
@@ -79,6 +84,8 @@ class NormalReal extends MapEvent{
 					log = this.getLog(r, log, '')
 					fn=()=>{
 						this._mc.data[dataStr] += rate
+					}
+					fn2 = ()=>{
 						this.onLogTap()
 					}
 					break
@@ -86,8 +93,10 @@ class NormalReal extends MapEvent{
 			
 			const evtLog = WorldMap.showEvtLog(log)
 			this._el = evtLog
+			fn && fn()
 			evtLog.addEventListener("touchTap", (e)=>{
-				fn()
+				fn2 && fn2()
+				
 			}, this)
 		})
 	}

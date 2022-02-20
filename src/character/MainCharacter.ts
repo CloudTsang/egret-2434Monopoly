@@ -72,6 +72,7 @@ class MainCharacter extends Liver{
 		// this.getBuff(new Enjo(this, 3))
 		// this.data.money = 5000000
 		// this.getBuff(new MechLock(this,3))
+		this.subscribe = 50000
 	}
 
 	public checkIfSkillsTriggered(p:string, v:number=0):SkillsTrigger{

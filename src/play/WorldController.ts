@@ -3,6 +3,7 @@ class WorldController {
 	public map:WorldMap
 	public cPanel:CharaterPanel
 	public bagPanel:StreamPreparePanel
+	public playerSelectPanel:PlayerSelectPanel
 
 	public menu:IDisposable
 	public menus:IDisposable[]
@@ -16,6 +17,9 @@ class WorldController {
 	private cellDatas:MapData
 	private stream:Stream
 	private chessCurIndex:number
+
+	/**正在处理效果中的道具  */
+	private _handlingDevice:Device
 
 	private _lock:boolean
 	private _handling:boolean
@@ -43,18 +47,24 @@ class WorldController {
         for(let i=0;i<arr.length;i++){
             let mcdata = RES.getRes(arr[i])
             let mc = new MainCharacter(mcdata, i)
-			mc.addEventListener(GameEvents.STAT_CHANGE, this.onLiverStatChange, this)
-			mc.addEventListener(GameEvents.PLAYER_READY, this.onPlayerReady, this)
+			// mc.addEventListener(GameEvents.STAT_CHANGE, this.onLiverStatChange, this)
+			// mc.addEventListener(GameEvents.PLAYER_READY, this.onPlayerReady, this)
             mcarr.push(mc)
 
 			this.map.addChess(mc.dispObj, mc.index)
         }
 		this.players = mcarr
 		this.currentPlayer = 0
-		this.players[0].onTurnStart()
-		this.map.subs.setNum(this.players[0].subscribe)
-		this.map.money.setNum(this.players[0].money)
+
+		const fp = this.players[0]
+		this.map.subs.setNum(fp.subscribe)
+		this.map.money.setNum(fp.money)
 		this.map.focusTo(0)
+		fp.addEventListener(GameEvents.STAT_CHANGE, this.onLiverStatChange, this)
+		fp.addEventListener(GameEvents.PLAYER_READY, this.onPlayerReady, this)
+		fp.onTurnStart()
+		
+		
 
 		this.cellDatas.shuffleLiver(this.players)
 	}
@@ -76,7 +86,6 @@ class WorldController {
 	}
 
 	protected onChessStep(curIndex:number, finish:boolean){
-		
 		this.chessCurIndex = curIndex
 		const cell:CellData = this.cellDatas.getCell(curIndex)
 		if(curIndex == 0){
@@ -127,7 +136,6 @@ class WorldController {
 		switch(ty){
 			case GameEvents.STREAM_PREPARE:
 				//进入直播准备
-
 				const mc = ctrller.players[ctrller.currentPlayer]
 				const ty2 = e.data.ty2
 				ctrller.menu && ctrller.map.removeMenu(ctrller.menu)
@@ -175,7 +183,6 @@ class WorldController {
 	}
 
 	protected onEventStart(e:egret.Event){
-		console.log("onEventStart")
 		this.popMenu()
 	}
 
@@ -200,7 +207,14 @@ class WorldController {
 		cell.removeEventListener(GameEvents.EVENT_FINISH, this.onEventFinish, this)
 
 		const ctrller = this
-		ctrller.players[ctrller.currentPlayer].onTurnEnd()
+		ctrller.onHideBag(null)
+		ctrller.onHideLiver(null)
+
+		const cp = ctrller.players[ctrller.currentPlayer]
+		cp.removeEventListener(GameEvents.STAT_CHANGE, this.onLiverStatChange, this)
+		cp.removeEventListener(GameEvents.PLAYER_READY, this.onPlayerReady, this)
+		cp.onTurnEnd()
+
 		ctrller.currentPlayer ++
 		for(let m of ctrller.menus){
 			m && m.dispose()
@@ -224,6 +238,8 @@ class WorldController {
 		ctrller.map.liverMenu.current = ctrller.currentPlayer
 		ctrller.map.focusToLiver(ctrller.currentPlayer, true)	
 
+		p.addEventListener(GameEvents.STAT_CHANGE, this.onLiverStatChange, this)
+		p.addEventListener(GameEvents.PLAYER_READY, this.onPlayerReady, this)
 		p.onTurnStart()
 		
 	}
@@ -241,12 +257,12 @@ class WorldController {
 
 	protected onLiverStatChange(e:any=null){
 		const ty = e.data
-		// console.log('this.curPlayer : ', this.curPlayer, this.curPlayer.money)
 		switch(ty){
 			case "money":
 				this.map.money.setTween2Num(this.curPlayer.money)
 				break
 			case "subscribe":
+				console.log("subscribe : ",this.curPlayer.subscribe)
 				this.map.subs.setTween2Num(this.curPlayer.subscribe)
 				break
 			default:
@@ -291,7 +307,9 @@ class WorldController {
 		ctrller.cPanel = cpanel
 		ctrller.stage.addChild(cpanel)
 	}
+
 	protected onHideLiver(e:any){
+		if(!this.cPanel)return
 		this.cPanel.removeEventListener(GameEvents.MENU_CANCEL, this.onHideLiver, this)
 		this.cPanel.dispose()
 		this.cPanel = null
@@ -312,18 +330,84 @@ class WorldController {
 	}
 
 	protected onUseNeta(e:egret.Event){
-		const n:Neta = e.data.neta
+		const ctrller = this
+		if(ctrller._handling) return
+		const n:Device = e.data.neta
+		const bp = this.bagPanel
+		const mc:MainCharacter = ctrller.curPlayer
+		n.addEventListener(GameEvents.DEVICE_FINISH, ctrller.onUseFinish, ctrller)
+		switch(n.target){
+			case EffectTarget.SELF:
+				n.onUse({player:mc, mc:mc.ddata, mc2:mc.data})
+				break
+			case EffectTarget.SELECT_ONE:
+				//选择使用对象是先隐藏当前菜单
+				// if(ctrller.menu) ctrller.map.removeMenu(ctrller.menu)
+				this.map.setMenuLayerVisible(false)
+				const psp:PlayerSelectPanel = WorldMap.showPlayerSelect(ctrller.players, ctrller.currentPlayer)
+				psp.addEventListener(GameEvents.PLAYER_SELECTED, ctrller.onSelectPlayer, ctrller)
+				psp.addEventListener(GameEvents.PLAYER_SELECT_CANCEL, ctrller.onCancelSelectPlayer, ctrller)
+				// ctrller.onHideBag(null)
+				this.stage.removeChild(this.bagPanel)
+				ctrller.map.addChild(psp)
+				ctrller.playerSelectPanel = psp
+				ctrller._handlingDevice = n
+				break
+			case EffectTarget.OTHER_ALL:
+				this.map.setMenuLayerVisible(false)
+				ctrller.onHideBag(null)
+				let tgts:MainCharacter[] = []
+				for(let p of this.players){
+					if(p == mc) continue
+					tgts.push(p)
+				}
+				n.onUse({player:mc, mc:mc.ddata, mc2:mc.data, tgtPlayer:tgts})
+				break
+		}
+	}
+
+	protected onSelectPlayer(e:egret.Event){
+		if(!this._handlingDevice)return
+		if(this.playerSelectPanel) {
+			this.playerSelectPanel.dispose()
+		}
+		const i = e.data.index
 		const mc:MainCharacter = this.curPlayer
-		n.onUse({player:mc, mc:mc.ddata, mc2:mc.data})
+		const tgtp:MainCharacter[] = [this.players[i]]
+		this._handlingDevice.onUse({player:mc, mc:mc.ddata, mc2:mc.data, tgtPlayer:tgtp})
+	}
+
+	protected onCancelSelectPlayer(e:egret.Event){
+		this.map.setMenuLayerVisible(true)
+		if(this.playerSelectPanel) {
+			this.playerSelectPanel.dispose()
+		}
+		if(this.bagPanel){
+			this.stage.addChild(this.bagPanel)
+		}
+	}
+
+	protected onUseFinish(e:egret.Event){
+		const n:Neta = e.target
+		n.removeEventListener(GameEvents.DEVICE_FINISH, this.onUseFinish, this)
+		const mc:MainCharacter = this.curPlayer
 		mc.netaBag.modifyNeta(n, 'use', false, 1, false)
-		this.bagPanel.setNeta(n)
-		this.bagPanel.netaSelectPanel.refresh({
-			neta:n,
-			selected:false
-		})
+		if(this.menu) this.map.addMenu(this.menu)
+		if(this.bagPanel){
+			this.bagPanel.setNeta(n)
+			this.bagPanel.netaSelectPanel.refresh({
+				neta:n,
+				selected:false
+			})
+		}
+		this._handlingDevice = null
+		// this.popMenu()
+		this.map.setMenuLayerVisible(true)
+		
 	}
 
 	protected onHideBag(e:any){
+		if(!this.bagPanel) return
 		this.bagPanel.removeEventListener(GameEvents.MENU_CANCEL, this.onHideBag, this)
 		this.bagPanel.removeEventListener(GameEvents.NETA_CONFIRM, this.onUseNeta, this)
 		this.bagPanel.dispose()
@@ -335,7 +419,6 @@ class WorldController {
 		e.target.dispose()
 		e.target.removeEventListener(GameEvents.MENU_CANCEL, this.onMenuClosed, this)
 		if(e.target == this.bagPanel){
-			
 			this.bagPanel = null
 		}else if(e.target == this.cPanel){
 			this.cPanel = null

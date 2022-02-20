@@ -108,13 +108,14 @@ class NormalVirtual extends MapEvent {
 		const {n, r} = Roll.random(this._mc)
 		let rate = this.getUpRate(r)
 		const arr = ['commu','talk','strength','sense','sing','game','tech']
-		const i = Roll.random2(arr.length)
+		const i = Math.floor(Math.random()*arr.length)
 		const prop = arr[i]
 		if(rate == 0) rate = 0.5
 		const log = this.getLog(oriLog, r, prop)
 		let fn:()=>void = ()=>{
-			this._mc.data[prop] + rate
-			this.onLogTap()
+			console.log(`${prop}+${rate}`)
+			this._mc.data[prop] += rate
+			
 		}
 
 		egret.Tween.get(this)
@@ -124,10 +125,12 @@ class NormalVirtual extends MapEvent {
 		})
 		.wait(500)
 		.call(()=>{
+			fn()
 			const evtLog = WorldMap.showEvtLog(log)
 			this._el = evtLog
 			evtLog.addEventListener("touchTap", (e)=>{
-				fn()
+				
+				this.onLogTap()
 			}, this)
 
 		})
@@ -141,6 +144,7 @@ class NormalVirtual extends MapEvent {
 	}
 
 	private getLog(oriLog:string, r:RollResult, prop:string=''){
+		console.log(oriLog, r, prop)
 		switch(prop){
 			case "commu":
 				return oriLog.replace("{result}", "交流力")
@@ -157,6 +161,7 @@ class NormalVirtual extends MapEvent {
 			case "tech":
 				return oriLog.replace("{result}", "技术力")	
 		}
+		return `err : ${oriLog}_${r}_${prop}`
 	}
 
 	private getUpRate(r:RollResult){

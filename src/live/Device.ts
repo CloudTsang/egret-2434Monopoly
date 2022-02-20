@@ -1,11 +1,13 @@
 class Device extends Neta{
 	protected _useable:boolean
 	protected _trigger:boolean
+	public target:string
 	public constructor(obj:any) {
 		super(obj)
 		const data = obj['data']
 		this._trigger = true
 		this._useable = data['use']?data['use']:false
+		this.target = data['tgt']?data['tgt']:EffectTarget.SELF
 	}
 	/**持有时发生的效果 */
 	public onHold(obj:TargetObj):any{
@@ -20,6 +22,11 @@ class Device extends Neta{
 			}
 			this.handle(ef.type, ef.data, obj)
 		}
+	}
+
+	public onUse(obj:TargetObj):any{
+		super.onUse(obj)
+		this.dispatchEvent(new egret.Event(GameEvents.DEVICE_FINISH))
 	}
 
 	public get useable(){

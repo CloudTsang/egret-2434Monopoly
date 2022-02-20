@@ -18,7 +18,8 @@ class NetaBag {
 	public test(){
 		const jsonFile = ['neta_spec_1_json', 'netas_daily_1_json', 'netas_game_1_json',
 		'netas_present_1_json', 'netas_song_1_json',
-						'device_1_json','device_2_json','device_spec_json']
+						// 'device_1_json',
+						'device_2_json','device_spec_json']
 		for(let jsonu of jsonFile){
 			const arr = RES.getRes(jsonu)
 			if(!arr)continue
@@ -26,6 +27,9 @@ class NetaBag {
 				// if(Math.random()>0.5)continue
 				const n = NetaFactory.getNetaFromObj(obj)
 				this.modifyNeta(n, 'get', false, 1, false)
+				if(jsonu == 'netas_daily_1_json'){
+					break
+				}
 			}
 		}
 	}
@@ -110,7 +114,7 @@ class NetaBag {
 		
 	}
 
-	/**随机丢失neta
+	/**随机丢失一个neta
 	 * @param ty neta类型
 	 * @param n 丢失数量，默认-1为全部丢失
 	 */
@@ -122,9 +126,12 @@ class NetaBag {
 		if(arr.length == 0)return
 		const i = Math.floor(Math.random()*arr.length)
 		const neta = arr[i]
-		if(i !=-1 && neta.times > i){
+		if(n !=-1 && neta.times > n){
 			console.log(`neta ${neta.name} 使用次数减少 ${n}`)
-			neta.times -= i
+			neta.times -= n
+			if(neta.times <= 0){
+				arr.splice(i, 1)
+			}
 		}else{
 			console.log("丢失neta ：", neta.name)
 			arr.splice(i, 1)

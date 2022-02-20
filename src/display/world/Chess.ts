@@ -125,6 +125,23 @@ class Chess extends egret.Sprite{
 		}
 	}
 
+	public showAttacked(){
+		const oriX = this.x
+		const oriY = this.y
+		return egret.Tween.get(this, {
+			loop:false//true
+		})
+		.to({
+			x:oriX-20
+		},50)
+		.to({
+			x:oriX+20
+		}, 100)
+		.to({
+			x:oriX
+		}, 400, egret.Ease.elasticOut)
+	}
+
 	private loadPic(){
 		const chess = this
 		let vBmp = new egret.Bitmap()

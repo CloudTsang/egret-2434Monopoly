@@ -30,6 +30,11 @@ class GameEvents{
 	public static readonly EVENT_FINISH:string = 'EVENT_FINISH'
 	public static readonly NETA_INFO_FINISH:string = 'NETA_INFO_FINISH'
 	public static readonly NETA_CONFIRM:string = 'NETA_CONFIRM'
+
+	/**道具效果处理完毕 */
+	public static readonly DEVICE_FINISH:string = 'DEVICE_FINISH'
+	public static readonly PLAYER_SELECTED:string = 'PLAYER_SELECTED'
+	public static readonly PLAYER_SELECT_CANCEL:string = 'PLAYER_SELECT_CANCEL'
 }
 
 class GamePhrase{
@@ -77,6 +82,8 @@ class GamePhrase{
 class EffectType{
 	/**获得neta */
 	public static readonly GET_NETA = "GET_NETA"
+	/**获得neta */
+	public static readonly LOSE_NETA = "LOSE_NETA"
 	/**获得buff */
 	public static readonly GET_BUFF = 'GET_BUFF'
 	/**移除buff */
@@ -89,6 +96,8 @@ class EffectType{
 	public static readonly SHOW_MENU = 'SHOW_MENU'
 	/**显示对话框 */
 	public static readonly SHOW_LOG = 'SHOW_LOG'
+	/**粉丝转移 */
+	public static readonly SUBS_TRAN = 'SUBS_TRAN'
 }
 
 enum LiverStat{
@@ -144,3 +153,24 @@ class StreamType{
 	public static readonly PRESENT='PRESENT'
 }
 
+/**道具效果对象 */
+class EffectTarget{
+	/** 使用者*/
+	public static readonly SELF = 'SELF'
+	/** 全玩家*/
+	public static readonly ALL = 'ALL'
+	/** 选择一个其他玩家*/
+	public static readonly SELECT_ONE = 'SELECT_ONE'	
+	/** 全部其他玩家*/
+	public static readonly OTHER_ALL = 'OTHER_ALL'
+	/** 全玩家中随机一个*/
+	public static readonly RANDOM_ONE = 'RANDOM_ONE'
+	/** 其他玩家中随机一个*/
+	public static readonly OTHER_RANDOM_ONE = 'OTHER_RANDOM_ONE'
+	/** 选择一个NPC*/
+	public static readonly SELECT_ONE_NPC = 'SELECT_ONE_NPC'
+	/** 随机一个NPC*/
+	public static readonly RANDOM_ONE_NPC = 'RANDOM_ONE_NPC'
+	/** 一格内全部NPC*/
+	public static readonly ALL_NPC = 'ALL_NPC'
+}

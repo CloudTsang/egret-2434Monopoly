@@ -50,6 +50,10 @@ class WorldMap extends eui.Component{
 		menu.parent && menu.parent.removeChild(menu)
 	}
 
+	public setMenuLayerVisible(v:boolean){
+		this.menuContainer.visible = v
+	}
+
 	/**把棋子添加到棋盘上显示
 	 * @param c 棋子对象
 	 * @param index 棋子的索引（显示棋盘格子内划分的四个区域）
@@ -304,7 +308,6 @@ class WorldMap extends eui.Component{
 	}
 
 	private setIsDragging(v:boolean){
-		// console.log("setIsDragging")
 		this.bottomBar.touchEnabled = !v
 		this.bottomBar.touchChildren = !v
 	}
@@ -363,7 +366,7 @@ class WorldMap extends eui.Component{
 
 	public static showEvtLog(des:string, url:string='', cb:(any)=>void=null):EvtLog|null{
 		if(!WorldMap.instance) return null
-		console.log("event log : ", des)
+	
 		const ins = WorldMap.instance
 		const el = new EvtLog(des, url, cb)
 		el.x = (ins.width - el.width)/2
@@ -405,7 +408,44 @@ class WorldMap extends eui.Component{
 		p.y = (ins.height-p.height)/2
 		ins.menuContainer.addChild(p)
 		return p
+	}
 
+	public static showCurseEffect(cur:MainCharacter, tgt:MainCharacter, cb:()=>void=null){
+		if(!WorldMap.instance) return null
+		const ins = WorldMap.instance
+		const blackBack:BlackBack = new BlackBack(ins.width, ins.height)
+		ins.topContainer.addChild(blackBack)
+		blackBack.fadeIn()
+
+		const doll:CurseDoll = new CurseDoll()
+		doll.x = ins.width/2
+		doll.y = ins.height/2
+		ins.topContainer.addChild(doll)
+		let tw1 = doll.fadeIn()
+		if(cur.index == tgt.index){
+			tw1 = tw1.wait(500)
+		}else{
+			tw1 = tw1.call(()=>{
+				ins.focusToLiver(tgt.index, true)
+			})
+		}
+		tw1.wait(1000)
+		doll.fadeOut(tw1)
+		.call(()=>{
+			blackBack.fadeOut()
+			tgt.dispObj.showAttacked()
+		})
+		.wait(500)
+		.call(()=>{
+			ins.focusToLiver(cur.index, true)
+			cb&&cb()
+		})
+	}
+
+	public static focusToPlayer(p:MainCharacter){
+		if(!WorldMap.instance) return null
+		const ins = WorldMap.instance
+		return ins.focusToLiver(p.index, true)
 	}
 }
 

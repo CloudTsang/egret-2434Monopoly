@@ -7,7 +7,7 @@
 		<e:Group percentWidth="100" height="5"/>
 		<e:Label id="txtTips" text="请选择道具的使用对象" percentWidth="100" textAlign="center"/>
         <e:Group percentWidth="100" height="15"/>
-		<e:Group percentWidth="100" percentHeight="100">
+		<e:Group percentWidth="100" percentHeight="100" >
 			<e:Group percentHeight="100" percentWidth="33">
 				<e:Image id="img0" percentWidth="80" percentHeight="80" horizontalCenter="0" verticalCenter="0"/>
 			</e:Group>
@@ -21,8 +21,17 @@
 				<e:HorizontalLayout/>
 			</e:layout>
 		</e:Group>
+		<e:Group percentWidth="100" height="10"/>
 		<e:layout>
 			<e:VerticalLayout/>
 		</e:layout>
 	</e:Group>
+	<e:Button id="btnCancel" width="40" height="40" top="10" left="10" touchChildren="true">
+		<e:skinName>
+		<e:Skin states="up,down,disabled">
+			<e:Image width="100%" height="100%" source="icons_json#close" source.down="icons_json#close" source.disabled="icons_json#close"/>
+			<e:Label id="labelDisplay" horizontalCenter="0" verticalCenter="0"/>
+		</e:Skin>
+		</e:skinName>
+	</e:Button>
 </e:Skin>

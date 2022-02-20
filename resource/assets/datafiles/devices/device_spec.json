@@ -32,7 +32,13 @@
         "class":"RionSpec",  
         "data":{
             "use":true,
-            "times":1
+            "tgt":"OTHER_ALL",
+            "times":1,
+            "effect":[{
+                "type":"LOSE_NETA",
+                 "count":2,
+                "data":"{count}"
+            }]
         }
     },
      {
@@ -78,6 +84,7 @@
             "effect":[{
                 "type":"STAT_CHANGE",
                 "rate":"0.5",
+                "trigger":"use",
                 "data":"{mc2.game}+3"
             }]
         }
@@ -91,6 +98,7 @@
         "class":"HimaSpec",    
         "data":{
             "use":true,
+            "tgt":"SELECT_ONE",
             "times":1
         }
     },
@@ -104,12 +112,21 @@
         "data":{
             "use":true,
             "times":1,
-            "effect":[{
-                "type":"TEMP_STAT_CHANGE",
-                "data":"{mc.game}+1"
-            },{
+            "effect":[
+                {
                 "type":"STAT_CHANGE",
+                "trigger":"hold",
+                "data":"{mc2.game}+1"
+            },
+            {
+                "type":"STAT_CHANGE",
+                "trigger":"use",
                 "data":"{mc.money}+100000"
+            },
+            {
+                "type":"STAT_CHANGE",
+                "trigger":"hold",
+                "data":"{mc2.game}-1"
             }]
         }
     },
@@ -125,6 +142,7 @@
             "times":1,
             "effect":[{
                 "type":"GET_BUFF",
+                "trigger":"use",
                 "data":"StreamSafe"
             }]
         }
@@ -141,6 +159,7 @@
             "times":1,
             "effect":[{
                 "type":"TEMP_STAT_CHANGE",
+                "trigger":"use",
                 "data":"{mc.commu}+5"
             }]
         }
@@ -154,8 +173,10 @@
         "data":{
             "use":true,
             "times":1,
+            "tgt":"RANDOM_ONE_NPC",
             "effect":[{
                 "type":"STAT_CHANGE",
+                "trigger":"use",
                 "data":"{mc.npc.random}+5"
             }]
         }
@@ -244,6 +265,7 @@
             "effect":
              [{
                 "type":"STAT_CHANGE",
+                "trigger":"use",
                 "data":"{mc.anti}-150"
             }]
         }
@@ -257,7 +279,15 @@
         "class":"MaimotoSpec", 
         "data":{
             "use":true,
-            "times":1
+            "tgt":"SELECT_ONE",
+            "times":1,
+            "effect":[
+                {
+                    "type":"GET_BUFF",
+                    "trigger":"use",
+                    "data":"Enjo"
+                }
+            ]
         }
     },
     {
@@ -286,6 +316,7 @@
         "data":{
             "use":true,
             "times":1,
+            "tgt":"SELECT_ONE",
             "effect":
             [{
                 "type":"TEMP_STAT_CHANGE",
@@ -303,6 +334,7 @@
         "data":{
             "use":true,
             "times":1,
+            "tgt":"SELECT_ONE",
             "effect":[
                 {
                     "type":"GET_BUFF",

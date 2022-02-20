@@ -2,53 +2,74 @@
     {
         "id":1,
         "name":"石化的稻草人偶",
-        "des":"诅咒人偶，可以使诅咒对象停止一回合，但是小心诅咒反噬。",
+        "des":"诅咒人偶，可以使诅咒对象停止若干回合，但是小心诅咒反噬。",
         "value": 10000,
         "type":"device", 
         "class":"NetaDeviceCurse",
         "iconUrl":"netaicons_json#curse",
         "data":{
             "times":1,
-            "use":true
+            "use":true,
+            "effect":[{
+                "type":"GET_BUFF",
+                "count":1,
+                "data":"Stop"
+            }]
         }   
     },
     {
         "id":2,
         "name":"易燃的稻草人偶",
-        "des":"诅咒人偶，可以使诅咒对象炎上三回合，但是小心诅咒反噬。",
+        "des":"诅咒人偶，可以使诅咒对象炎上若干回合，但是小心诅咒反噬。",
         "value": 10000,
         "type":"device", 
         "iconUrl":"netaicons_json#curse",
         "class":"NetaDeviceCurse",
         "data":{
             "use":true,
-            "times":1
+            "times":1,
+            "effect":[{
+                "type":"GET_BUFF",
+                 "count":3,
+                "data":"Enjo"
+            }]
+            
         }   
     },
     {
         "id":3,
         "name":"印堂发黑的稻草人偶",
-        "des":"诅咒人偶，可以使诅咒对象运气大幅下降一回合，但是小心诅咒反噬。",
+        "des":"诅咒人偶，可以使诅咒对象运气大幅下降若干回合，但是小心诅咒反噬。",
         "value": 10000,
         "type":"device", 
         "iconUrl":"netaicons_json#curse",
         "class":"NetaDeviceCurse",
         "data":{
             "use":true,
-            "times":1
+            "times":1,
+            "effect":[{
+                "type":"GET_BUFF",
+                 "count":1,
+                "data":"LuckCursed"
+            }]
         }   
     },
     {
         "id":4,
         "name":"破破烂烂的稻草人偶",
-        "des":"诅咒人偶，可以使诅咒对象丢失一个neta，但是小心诅咒反噬。",
+        "des":"诅咒人偶，可以使诅咒对象丢失若干个neta，但是小心诅咒反噬。",
         "value": 10000,
         "type":"device", 
         "iconUrl":"netaicons_json#curse",
         "class":"NetaDeviceCurse",
         "data":{
             "use":true,
-            "times":1
+            "times":1,
+            "effect":[{
+                "type":"LOSE_NETA",
+                "count":1,
+                "data":"{count}"
+            }]
         }   
     },
     {
@@ -61,7 +82,13 @@
         "class":"NetaDeviceCurse",
         "data":{
             "use":true,
-            "times":1
+            "times":1,
+            
+            "effect":[{
+                "type":"SUBS_TRAN",
+                "count":10000,
+                "data":"subscribe"
+            }]
         }   
     },
     {
@@ -71,12 +98,12 @@
         "value": 8000,
         "type":"device", 
         "iconUrl":"netaicons_json#curse",
-        "class":"NetaDeviceCurse",
         "data":{
             "times":-1,
             "effect":[
                 {
                     "type":"STAT_CHANGE",
+                    "trigger":"hold",
                     "data":"{mc.sense}+1"
                 }
             ]
