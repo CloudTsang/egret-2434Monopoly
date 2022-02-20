@@ -119,7 +119,6 @@ interface NetaBaseProp{
 				return NetaType.PRESENT
 			case "device":
 				return NetaType.DEVICE
-
 		}
 	} 
 }
@@ -132,12 +131,13 @@ class SongNeta extends Neta{
 	protected curCD:number
 	public constructor(obj:any) {
 		super(obj)
-		this.songReq = obj['songReq']
-		this.cd = obj['cd']
+		this.songReq = obj['songReq']?obj['songReq']:1
+		this.cd = obj['cd']?obj['cd']:3
+		this.curCD = 0
 	}
 
 	public startCD(){
-		this.curCD = this.cd
+		this.curCD = this.cd+1
 	}
 
 	public onCD(){

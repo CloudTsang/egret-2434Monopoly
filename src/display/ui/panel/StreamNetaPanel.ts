@@ -168,9 +168,9 @@ class StreamNetaPanel extends eui.Component  implements IDisposable{
 	private getTip(t:string){
 		switch(t){
 			case StreamType.TALK:
-				return "杂谈直播需要选择至少3个谈话或特殊neta"
+				return "杂谈直播需要选择至少3个杂谈或特殊neta"
 			case StreamType.SING:
-				return "歌回直播需要选择至少5个歌曲neta"
+				return "歌回直播需要选择至少3个歌曲neta"
 			case StreamType.GAME:
 				return "游戏直播需要选择1个游戏neta"
 			case StreamType.PRESENT:

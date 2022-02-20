@@ -7,7 +7,6 @@ class ItemListObj extends eui.ItemRenderer{
 		super();
 		this.touchEnabled  = true
 		this.skinName = 'resource/eui_skins/itemListObj.exml';
-		
 	}
 
 	protected dataChanged(){
@@ -15,7 +14,18 @@ class ItemListObj extends eui.ItemRenderer{
 		if(this.txtNum.text == '-1'){
 			this.txtNum.text = '∞'
 		}
-		this.enabled = this.data.neta.times != 0
+		const neta:Neta = this.data.neta
+		if(neta.type == NetaType.SONG){
+			if((neta as SongNeta).usable){
+				this.currentState = 'up'
+				this.checkbox.enabled = true
+			}else{
+				this.currentState = 'disabled'
+				this.checkbox.enabled = false
+			}
+		}else{
+			this.enabled = neta.times != 0
+		}
 	}
 }
 

@@ -143,6 +143,11 @@ class MainCharacter extends Liver{
 			i++
 		}
 
+		//歌曲neta转cd
+		for(let sn of this.netaBag.song){
+			sn.onCD()
+		}
+
 		this.subscribe += newSub		
 
 		let evt = new egret.Event(GameEvents.PLAYER_READY)
@@ -150,9 +155,21 @@ class MainCharacter extends Liver{
 			moveable: movable
 		}
 
+		const evtHasNeta = this.edata.checkHasNewNeta()
+		if(evtHasNeta){
+			const evtNeta = NetaFactory.getEvtNeta(evtHasNeta)
+			this.netaBag.modifyNeta(evtNeta, 'get')
+			const ngp = WorldMap.showGetNeta(evtNeta)
+			ngp.addEventListener(eui.UIEvent.REMOVED_FROM_STAGE,(uie)=>{
+				this.dispatchEvent(evt)
+			}, this)
+			return
+		}
+
 		const npcHasGift = this.npc.checkHasGift()
 		if(npcHasGift){
 			const giftNeta = NetaFactory.getGiftNeta(npcHasGift)
+			this.netaBag.modifyNeta(giftNeta, 'get')
 			const ngp = WorldMap.showGetNeta(giftNeta)
 			ngp.addEventListener(eui.UIEvent.REMOVED_FROM_STAGE,(uie)=>{
 				this.dispatchEvent(evt)

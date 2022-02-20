@@ -15,6 +15,7 @@ class WorldMap extends eui.Component{
 	public money:Money
 	public liverMenu:LiversMenu
 
+	private skillBars:SkillBar[]
 	private cellsArr:MapCell[]
 	private cellsMap:{[key:string]:number}
 	private chesses:Chess[]
@@ -35,6 +36,7 @@ class WorldMap extends eui.Component{
 		this.width = egret.MainContext.instance.stage.stageWidth
 		this.height = egret.MainContext.instance.stage.stageHeight
 		this.chesses = []
+		this.skillBars = []
 		this.data = data
 		
 
@@ -256,6 +258,37 @@ class WorldMap extends eui.Component{
 		this.vrbtn.removeEventListener("touchTap", this.onVRBtnClicked, this)
 	}
 
+	public showSkillBar(s:Skill){
+		const sb = new SkillBar(s)
+		const sbs:SkillBar[] = this.skillBars
+		let position = sbs.length
+		for(let i=0;i<sbs.length;i++){
+			if(sbs[i] == null){
+				position = i
+				break
+			}
+		}
+		sb.x = this.width 
+		sb.y = 100 + position * (sb.height+10)
+		
+		sbs[position] = sb
+		this.topContainer.addChild(sb)
+		sb.addEventListener(eui.UIEvent.REMOVED_FROM_STAGE, this.onSkillBarRemoved, this)
+		return sb
+	}
+
+	private onSkillBarRemoved(e:egret.Event){
+		const sb:SkillBar = e.target
+		const sbs:SkillBar[] = this.skillBars
+		const i = sbs.indexOf(sb)
+		sbs[i] = null
+		for(let tsb of sbs){
+			if(tsb) return
+		}
+		// console.log("清空技能显示")
+		this.skillBars = []
+	}
+
 	private onComplete(e:eui.UIEvent=null){
 		const map = this
 
@@ -341,11 +374,7 @@ class WorldMap extends eui.Component{
 	public static showSkillBar(s:Skill):SkillBar|null{
 		if(!WorldMap.instance) return null
 		const ins = WorldMap.instance
-		const sb = new SkillBar(s)
-		sb.x = ins.width 
-		sb.y = 100
-		ins.topContainer.addChild(sb)
-		return sb
+		return ins.showSkillBar(s)
 	}
 
 	public static showGetNeta(n:Neta):NetaGetPanel|null{

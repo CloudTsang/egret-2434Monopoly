@@ -56,21 +56,9 @@
             "long":false,
             "effect":[
                 {
-                    "type":"GET_NETA",
-                    "data":{
-                        "id":5,
-                        "name":"异度之刃2-第七、八章",
-                        "des":"尼娅和大家和最燃的高潮",
-                        "type":"game",     
-                        "iconUrl":"netaicons_json#xb278",
-                        "data":{
-                            "times":1,
-                            "pop":3,
-                            "safe":4,
-                            "meme":3,
-                            "long":false
-                        }
-                    }
+                    "type":"STAT_CHANGE",
+                    "trigger":"use",
+                    "data":"{mc3.xb2}+1"
                 }
             ]
         }
@@ -123,7 +111,7 @@
         "name":"十三机兵防卫圈",
         "des":"还没有liver播过的超神作，制作者私心塞进来了。",
         "type":"game",  
-        "class":"NetaGame13",  
+        "class":"NetaGameAegis13",  
         "iconUrl":"netaicons_json#aegis13", 
         "data":{
             "times":-1,
@@ -133,23 +121,9 @@
             "long":true,
             "effect":[
                 {
-                    "type":"GET_NETA",
-                    "data":{
-                        "id":13,
-                        "name":"海滨假日",
-                        "des":"爱的ME·LO·DY",
-                        "type":"song", 
-                        "iconUrl":"netaicons_json#seasidevoca",
-                        "cd":2,
-                        "songReq":3,    
-                        "data":{
-                            "times":-1,
-                            "pop":1,
-                            "safe":4,
-                            "meme":2,
-                            "long":true
-                        }
-                    }
+                    "type":"STAT_CHANGE",
+                    "trigger":"use",
+                    "data":"{mc3.aegis13}+1"
                 }
             ]
         }
@@ -188,6 +162,7 @@
         "des":"知名共斗游戏，当然一个人也是可以玩的。",
         "type":"game",    
         "iconUrl":"netaicons_json#mh", 
+        "class":"NetaGameMH",
         "data":{
             "times":-1,
             "pop":4,

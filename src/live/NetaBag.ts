@@ -2,7 +2,7 @@
 class NetaBag {
 	public talk:Neta[]
 	public game:Neta[]
-	public song:Neta[]
+	public song:SongNeta[]
 	public spec:Neta[]
 	public present:Neta[]
 	public device:Device[]

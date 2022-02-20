@@ -32,7 +32,10 @@ class NetaFactory {
 		let fn = Neta
 		if(obj['type'] == 'device'){
 			fn = Device
+		}else if(obj['type'] == 'song'){
+			fn = SongNeta
 		}
+		
 		if(obj['class']){
 			const fn2 = egret.getDefinitionByName(obj['class'])
 			if(fn2) fn = fn2
@@ -72,7 +75,7 @@ class NetaFactory {
 	}
 
 	public static getGiftNeta(name:string){
-		const urls = ['device_spec_json', 'netas_spec_1_json']
+		const urls = ['device_spec_json', 'neta_spec_1_json']
 		for(let u of urls){
 			const objs:any[] = RES.getRes(u)
 			for(let obj of objs){
@@ -81,7 +84,19 @@ class NetaFactory {
 				}
 			}
 		}
-		
+	}
+
+	/**需要满足触发过特定事件才能获得的neta */
+	public static getEvtNeta(name:string){
+		const urls = ['neta_spec_2_json']
+		for(let u of urls){
+			const objs:any[] = RES.getRes(u)
+			for(let obj of objs){
+				if(obj['req'] && obj['req'] == name){
+					return NetaFactory.getNetaFromObj(obj)
+				}
+			}
+		}
 	}
 
 }

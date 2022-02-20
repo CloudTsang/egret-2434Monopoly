@@ -99,14 +99,7 @@
             "pop":2,
             "safe":3,
             "meme":1,
-            "long":false,
-            "effect":[
-                {
-                    "type":"GET_BUFF",
-                    "rate":"1-0.5*{mc.strength}/10",
-                    "data":"Stop"
-                }
-            ]
+            "long":false
         }
     },
      {
@@ -290,7 +283,7 @@
             "times":1,
             "pop":2,
             "safe":4,
-            "meme":4,
+            "meme":3,
             "long":false
         }
     },
@@ -318,7 +311,7 @@
         "cd":1,
         "songReq":1,    
         "data":{
-            "times":1,
+            "times":-1,
             "pop":1,
             "safe":5,
             "meme":2,
@@ -367,10 +360,10 @@
         "cd":3,
         "songReq":5,    
         "data":{
-            "times":1,
+            "times":-1,
             "pop":3,
             "safe":4,
-            "meme":1,
+            "meme":2,
             "long":false
         }
     },
@@ -380,13 +373,13 @@
         "owner":"kanda",
 		"des":"最终回……又开始了?!",
         "type":"song",     
-        "cd":1,
-        "songReq":2,    
+        "cd":2,
+        "songReq":1,    
         "data":{
-            "times":1,
+            "times":-1,
             "pop":2,
             "safe":3,
-            "meme":4
+            "meme":3
         }
     },
 

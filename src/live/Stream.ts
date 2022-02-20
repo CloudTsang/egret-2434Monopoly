@@ -40,6 +40,7 @@ class Stream extends egret.EventDispatcher{
 	public curAccident:boolean
 	public curEnjo:boolean
 	
+	private tgtObj:TargetObj
 
 	public constructor(mc:MainCharacter, turn:number, ty:string, npcs:NpcObj[]) {
 		super()
@@ -114,12 +115,21 @@ class Stream extends egret.EventDispatcher{
 			st.panel.setCollabo(u)
 		}
 
+		const mc = this.mc
+		st.tgtObj = {
+			player:mc,
+			stream:st,
+			mc:mc.ddata,
+			mc2:mc.data,
+			mc3:mc.edata
+		}
+
 		for(let b of st.mc.buffs){
-			b.effect({stream:this})
+			b.effect(st.tgtObj)
 		}
 
 		for(let d of st.mc.netaBag.device){
-			d.onHold({stream:this})
+			d.onHold(st.tgtObj)
 		}
 
 		console.log('====================')
@@ -156,7 +166,13 @@ class Stream extends egret.EventDispatcher{
 		if(st.rollCb){
 			st.rollCb(n, r)
 		}
+		neta.onUse(st.tgtObj)
+		if(neta.type == NetaType.SONG){
+			(neta as SongNeta).startCD()
+		}
 		st.mc.netaBag.modifyNeta(neta, "use")
+
+
 		const accident = st.getIfAccident()
 		const enjo = accident || r == RollResult.BIG_SUCCESS?false:st.getIfEnjo(neta.safe)
 
@@ -304,6 +320,12 @@ class Stream extends egret.EventDispatcher{
 				break
 			case NetaType.SONG:
 				rate = mc.sing/10
+				const n2 = n as SongNeta
+				//歌力未达到要求时效果减半
+				if(mc.sing < n2.songReq) {
+					console.log(`${mc.name}的歌力${mc.sing}未达到歌曲${n2.name}的要求${n2.songReq}`)
+					rate /= 2
+				}
 				break
 			case NetaType.TALK:
 				rate = mc.talk/10
@@ -384,6 +406,14 @@ class Stream extends egret.EventDispatcher{
 	private onNetaChanged(e:egret.Event){
 		const st = this
 		const obj:INetaSelectObj = e.data
+
+		if(obj.neta.type == NetaType.SONG){
+			const sn = obj.neta as SongNeta
+			if(!sn.usable && st.panel){
+				st.panel.setNeta(obj.neta)
+				return
+			}
+		}
 		
 		obj.selected = !obj.selected
 		
@@ -439,7 +469,7 @@ class Stream extends egret.EventDispatcher{
 			case StreamType.PRESENT:
 				return this.netaNumMap[NetaType.PRESENT] == 1
 			case StreamType.SING:
-				return this.netaNumMap[NetaType.SONG] >= 1
+				return this.netaNumMap[NetaType.SONG] >= 3
 			case StreamType.TALK:
 				return this.netaNumMap[NetaType.TALK] >= 3
 			case StreamType.GAME:

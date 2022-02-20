@@ -15,6 +15,8 @@ interface TargetObj{
 	mc?:CData
 	/** 永久数据*/
 	mc2?:CData
+	/**事件数据 */
+	mc3?:EventData
 	npc?:Liver	
 	player?:MainCharacter
 	tgtPlayer?:MainCharacter[]

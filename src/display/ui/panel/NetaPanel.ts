@@ -7,7 +7,9 @@ class NetaPanel extends eui.Component  implements IDisposable{
 	private txtSafe:eui.Label
 	private txtMeme:eui.Label
 	private txtHold:eui.Label
+	private txtSongTip:eui.Label
 	private statContainer:eui.Group
+	private dataContainer:eui.Group
 	private btn:eui.Button
 
 	private _neta:Neta
@@ -55,6 +57,12 @@ class NetaPanel extends eui.Component  implements IDisposable{
 		panel.imgType.source = RES.getRes(panel.getTypeIcon(n.type))
 		if(n.iconUrl && n.iconUrl != ''){
 			panel.img.source = RES.getRes(n.iconUrl)
+		}
+		if(n.type == NetaType.SONG){
+			//歌曲neta是否冷却中
+			panel.txtSongTip.visible = !(n as SongNeta).usable
+		}else{
+			panel.txtSongTip.visible = false
 		}
 	
 		if(panel._shop){
