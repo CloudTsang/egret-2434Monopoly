@@ -1,8 +1,8 @@
 用egret白鹭引擎做的一个2434Liver的大富翁游戏，主要玩法是游戏中存在<现实>和<虚拟>两个棋盘，控制liver在<现实>中提升能力和收集直播用neta（这部分比较接近一般大富翁游戏），在<虚拟>中使用neta进行直播提升粉丝数。
 
-![pic](https://raw.githubusercontent.com/CloudTsang/egret-2434Monopoly/main/screenshot/01.png)
+![pic](https://gitee.com/cloudtsang/egret-2434Monopoly/raw/main/screenshot/01.png)
 
-![pic](https://raw.githubusercontent.com/CloudTsang/egret-2434Monopoly/main/screenshot/02.jpg)
+![pic](https://gitee.com/cloudtsang/egret-2434Monopoly/raw/main/screenshot/02.jpg)
 
 
 运行
@@ -124,10 +124,10 @@ safe（安全值）：影响直播炎上概率，这个概率的计算式我其�
 
 
 
-![pic](https://raw.githubusercontent.com/CloudTsang/egret-2434Monopoly/main/screenshot/03.jpg)
+![pic](https://gitee.com/cloudtsang/egret-2434Monopoly/raw/main/screenshot/03.jpg)
 
-![pic](https://raw.githubusercontent.com/CloudTsang/egret-2434Monopoly/main/screenshot/04.jpg)
+![pic](https://gitee.com/cloudtsang/egret-2434Monopoly/raw/main/screenshot/04.jpg)
 
-![pic](https://raw.githubusercontent.com/CloudTsang/egret-2434Monopoly/main/screenshot/05.jpg)
+![pic](https://gitee.com/cloudtsang/egret-2434Monopoly/raw/main/screenshot/05.jpg)
 
-![pic](https://raw.githubusercontent.com/CloudTsang/egret-2434Monopoly/main/screenshot/06.jpg)
+![pic](https://gitee.com/cloudtsang/egret-2434Monopoly/raw/main/screenshot/06.jpg)
