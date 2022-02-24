@@ -17,7 +17,7 @@ interface TargetObj{
 	mc2?:CData
 	/**事件数据 */
 	mc3?:EventData
-	npc?:Liver	
+	npc?:Liver|BaseLiver	
 	player?:MainCharacter
 	tgtPlayer?:MainCharacter[]
 }
@@ -41,7 +41,7 @@ class EffectHandler extends BaseObj{
 				}
 				break
 			case EffectType.GET_NETA:
-				const newNeta:Neta = new Neta(data)
+				const newNeta = NetaFactory.getNetaFromObj(data)
                 if(target.bag){
                     target.bag.modifyNeta(newNeta, "get" ,true)
                 }
@@ -60,8 +60,9 @@ class EffectHandler extends BaseObj{
 						tp.getBuff(buff)
 					}
 				}
-				
 				break
+			case EffectType.PLAY_BGS:
+				SoundManager.instance.playBgs(data)
 		}
 	}
 
@@ -95,7 +96,6 @@ class EffectHandler extends BaseObj{
             const propArr:string[] = prop.substr(1,prop.length-2).split('.')
 			const ori = target[propArr[0]][propArr[1]]
 			const evalS = s.replace(marr[0], ori)
-			console.log(evalS)
 			const result = eval(evalS)
 			if(!result) return false
 		}

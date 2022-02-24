@@ -55,7 +55,6 @@ class NetaGetPanel extends eui.Component  implements IDisposable {
 		const n = NetaGetPanel.netas[0]
 		panel.txtName.text = n.name
 		panel.txtDes.text = n.des
-		console.log("n.owner : ",n.owner)
 		panel.iconGift.visible = n.owner!=null
 
 		panel.imgType.source = RES.getRes(panel.getTypeIcon(n.type))

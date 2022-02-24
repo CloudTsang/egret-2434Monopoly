@@ -87,9 +87,9 @@ class EventRealJojoen  extends MapEvent{
 			const buff = new StomachFull(mc, buffTime)
 			mc.getBuff(buff)
 			for(let n of this._cell.npcs){
-				mc.npc[Liver.allLivers[n].id]+=favor
+				mc.npc[Liver.allLivers[n].ID]+=favor
 			}
-			const objs:NpcObj[] = this._cell.getNpc(this._mc.npc.npcs)
+			const objs:NpcObj[] = this._cell.getNpc(this._mc.npc)
 			const np = WorldMap.showNpcPanel(objs)
 		})
 		.wait(500)

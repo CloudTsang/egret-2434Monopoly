@@ -37,9 +37,6 @@ interface NetaBaseProp{
 		this.type = this.str2type(obj['type'])
 
 		const data = obj['data']
-		this.pop = data['pop']
-		this.safe = data['safe']
-		this.meme = data['meme']
 		this.owner = obj['owner']?obj['owner']:null
 		this._times = data['times']
 		this.effect = data['effect']?data['effect']:[]
@@ -56,12 +53,17 @@ interface NetaBaseProp{
 				this.value = 0
 			}
 		}
-
-		this._oriData = {
-			pop:this.pop,
-			safe:this.safe,
-			meme:this.meme
+		if(this.type!=NetaType.DEVICE){
+			this.pop = data['pop']
+			this.safe = data['safe']
+			this.meme = data['meme']
+			this._oriData = {
+				pop:this.pop,
+				safe:this.safe,
+				meme:this.meme
+			}
 		}
+		
 	}
 
 	public set times(v:number){

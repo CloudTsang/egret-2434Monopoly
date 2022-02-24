@@ -87,17 +87,6 @@ class StreamPreparePanel extends egret.Sprite  implements IDisposable{
 		this.streamPanel.finishStream()
 	}
 
-	/**
-	 * 显示neta效果
-	 * @param t1 总直播效果
-	 * @param t2 直播效果增加量
-	 * @param t3 总增长速度
-	 * @param t4 增长速度增加量
-	 */
-	public useNeta(n:number, t1:number, t2:number, t3:number, t4:number,accident:boolean, enjo:boolean,  cb:()=>void, thisObj:any){
-		this.streamPanel.useNeta(n,t1,t2,t3,t4, accident, enjo, cb, thisObj)
-	}
-
 	public showComment(n:string[]){
 		this.streamPanel.showComment(n)
 	}

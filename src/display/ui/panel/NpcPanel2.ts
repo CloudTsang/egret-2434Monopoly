@@ -53,7 +53,7 @@ class NpcPanel2 extends eui.Component{
 				return "icons_json#heart2"
 			case 3:
 				return "icons_json#heart3"
-			case 4:
+			default:
 				return "icons_json#heart4"
 			
 		}

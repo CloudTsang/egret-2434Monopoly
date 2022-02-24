@@ -1,6 +1,8 @@
 {
     "projectName": "icons",
     "files": [
+        "./mic.png",
+        "./cupon.png",
         "./curseidol.png",
         "./fireguard.png",
         "./luckbuff.png",
@@ -42,14 +44,15 @@
         "./heart4.png",
         "./sleep.png",
         "./raise.png",
-        "./cursed.png"
+        "./cursed.png",
+        "./light.png"
     ],
     "options": {
+        "extend": 0,
         "layoutMath": "3",
         "sizeMode": "free",
         "useExtension": 0,
-        "layoutGap": 2,
-        "extend": 0
+        "layoutGap": 2
     },
     "version": 5
 }

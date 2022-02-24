@@ -39,6 +39,7 @@ class NetaFactory {
 		if(obj['class']){
 			const fn2 = egret.getDefinitionByName(obj['class'])
 			if(fn2) fn = fn2
+			
 		}
 		return new fn(obj)
 	}
@@ -53,7 +54,6 @@ class NetaFactory {
 			// console.log(obj.name , s)
 			return (lower==-1 || s>lower) && (higher==-1 || s<=higher)
 		})
-		console.log(objs)
 		const tmp = objs[Math.floor(Math.random()*objs.length)]
 		if(tmp['class']){
 			const tmpfn = egret.getDefinitionByName(tmp['class'])
@@ -86,6 +86,28 @@ class NetaFactory {
 		}
 	}
 
+	public static getGiftNeta2(names:string[]){
+		const urls = ['device_spec_json', 'neta_spec_1_json']
+		let gnObjs:any[] = []
+		outer:
+		for(let u of urls){
+			const objs:any[] = RES.getRes(u)
+			for(let obj of objs){
+				if(obj['owner'] && names.indexOf(obj['owner'])>=0){
+					gnObjs.push(obj)
+				}
+				if(gnObjs.length == 3){
+					break outer;
+				}
+			}
+		}
+		if(gnObjs.length==0){
+			return null
+		}
+		const i = Math.floor(Math.random()*gnObjs.length)
+		return NetaFactory.getNetaFromObj(gnObjs[i])
+	}
+
 	/**需要满足触发过特定事件才能获得的neta */
 	public static getEvtNeta(name:string){
 		const urls = ['neta_spec_2_json']
@@ -98,5 +120,4 @@ class NetaFactory {
 			}
 		}
 	}
-
 }

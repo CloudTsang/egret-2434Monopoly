@@ -123,7 +123,6 @@ class EventRealGacha extends MapEvent{
 		&& !check1
 		){
 			//恶魔逼氪处理
-			// console.log("here")
 			mp._isdevil = true
 			egret.Tween.get(mp)
 			.to({

@@ -20,7 +20,9 @@ class EventSpecial extends MapEvent{
 		let i = Math.floor(Math.random()*jsonArr.length)
 		const objs:any[] = RES.getRes(jsonArr[i])
 		i = Math.floor(Math.random()*objs.length)
-		const obj = objs[2]
+		//test
+		// const obj = objs[7]
+		const obj = objs[i]
 		let fn = MapEvent
 		
 		if(obj['class']) fn = egret.getDefinitionByName(obj['class'])

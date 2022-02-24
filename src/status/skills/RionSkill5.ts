@@ -20,7 +20,6 @@ class RionSkill5  extends Skill{
 			}
 			
 		}
-
 		return super.shouldTrigger(phrase)
 	}
 

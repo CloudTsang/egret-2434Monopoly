@@ -25,6 +25,9 @@ class NetaDeviceCurse  extends Device{
 
 		egret.Tween.get(this)
 		.call(()=>{
+			if(rate < 0){
+				SoundManager.instance.playBgs('dededon_short_mp3')
+			}
 			WorldMap.showRollNum(n, r)
 		})
 		.wait(500)

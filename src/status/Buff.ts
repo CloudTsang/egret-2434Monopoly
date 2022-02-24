@@ -46,7 +46,10 @@ class Buff extends BaseObj{
 
 	protected cd(){
 		this.time[0] -- 
-		if(this.time[0] < 0){
+		let min = 0
+		//cd按回合算的buff在下回合失效
+		if(this.time[1] == 'T') min = -1
+		if(this.time[0] <= min){
 			this.off()
 			this.overed = true
 		}

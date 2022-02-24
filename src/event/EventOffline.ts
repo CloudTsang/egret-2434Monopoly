@@ -21,10 +21,10 @@ class EventOffline extends MapEvent{
 		}
 		
 		for(let i of npcs){
-			this._mc.npc[Liver.allLivers[i].id] += 1
+			this._mc.npc[Liver.allLivers[i].ID] += 1
 		}
 		
-		const objs:NpcObj[] = this._cell.getNpc(this._mc.npc.npcs)
+		const objs:NpcObj[] = this._cell.getNpc(this._mc.npc)
 		const np = WorldMap.showNpcPanel(objs)
 		np.addEventListener(eui.UIEvent.REMOVED_FROM_STAGE, (e)=>{
 			this.dispatchEvent(new egret.Event(GameEvents.EVENT_FINISH))

@@ -110,7 +110,7 @@ class StreamNetaPanel extends eui.Component  implements IDisposable{
 		.to({
 			txtDAlpha:1,
 			txtDY:p1,
-			curNetaScale: scale
+			curNetaScale: scale 
 		}, 400)
 		.to({
 			txtDAlpha:0

@@ -27,6 +27,7 @@ class RionSpec  extends Device {
 		if(tw){
 			tw.wait(100)
 			.call(()=>{
+				SoundManager.instance.playBgs("sword_mp3")
 				tp.netaBag.lostNeta(NetaType.TALK)
 				tp.netaBag.lostNeta(NetaType.TALK)
 				tp.dispObj.showAttacked()

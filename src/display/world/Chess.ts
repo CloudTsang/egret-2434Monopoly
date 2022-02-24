@@ -4,7 +4,7 @@ class Chess extends egret.Sprite{
 	protected vBmp:egret.Bitmap
 	protected rBmp:egret.Bitmap
 
-	protected fireBmp:egret.Bitmap
+	protected fireBmp:EnjoFire//egret.Bitmap
 	protected sleepBmp:egret.Bitmap
 	protected banBmp:egret.Bitmap
 
@@ -97,17 +97,23 @@ class Chess extends egret.Sprite{
 
 	public showFire(v:boolean){
 		if(v && !this.fireBmp){
-			let bmp = new egret.Bitmap()
-			bmp.texture = RES.getRes("icons_json#fire2")
-			bmp.width = this.vBmp.width
+			SoundManager.instance.playBgs("fire_mp3")
+			let bmp = new EnjoFire(this.vBmp.width)
 			bmp.y = this.height-bmp.height
-			bmp.x = -this.vBmp.width/2
-			// bmp.alpha = 1
 			this.addChild(bmp)
 			this.fireBmp = bmp
 		}else if(!v && this.fireBmp){
-			this.fireBmp.parent && this.fireBmp.parent.removeChild(this.fireBmp)
+			this.fireBmp.dispose()
 			this.fireBmp = null
+		}
+	}
+
+	public showLight(v:boolean){
+		if(v){
+			let filter = new  egret.GlowFilter(0xFFFFFF, 0.7, 200, 200, 5)
+			this.filters = [filter]
+		}else{
+			this.filters = []
 		}
 	}
 

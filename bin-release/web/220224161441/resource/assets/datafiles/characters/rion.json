@@ -1,0 +1,98 @@
+{
+  "id": "rion",
+  "name": "鹰宫莉音",
+  "chessR": "chess_json#rionr",
+  "chessV": "chess_json#rionv",
+   "iconUrl":"livers3_json#rion",
+  "data": {
+    "luck": 3,
+    "sense": 3,
+    "commu": 4,
+    "game": 1,
+    "sing": 4,
+    "talk": 3,
+    "tech": 1,
+    "strength": 3,
+    "money": 50000
+  },
+  "skill": [
+    {
+      "id": 1,
+      "name": "蛮族debuff",
+      "des": "场面一片混乱！联动时一定几率根据联动人数提升直播效果",
+      "type": "POSITIVE",
+      "iconUrl": "",
+      "phrase": "IN_STREAM_COLLABO",
+      "rate": "{mc.commu}/10",
+      "class":"RionSkill1",
+      "effect": [
+        {
+          "type": "STAT_CHANGE",
+          "data": "{stream.totSubAdd}+{stream.collaboMems.length}*10000"
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "name": "狂热的安利",
+      "des": "○○○○，看了吗？使用特定neta直播时neta的人气和谜因值上升。",
+      "type": "POSITIVE",
+      "iconUrl": "",
+      "phrase": "USE_NETA",
+      "rate": "1",
+      "class":"RionSkill2",
+      "effect": [
+        {
+          "type": "STAT_CHANGE",
+          "data": "{neta.pop}+1,{neta.meme}+2"
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "name": "金憨憨",
+      "des": "<to be continue|持续发生中，一定几率行动中降低数项能力",
+      "type": "NEGATIVE",
+      "iconUrl": "",
+      "phrase": "IN_ACTION",
+      "rate": "(10-{mc.luck})/10/2",
+      "effect": [
+        {
+          "type": "TEMP_STAT_CHANGE",
+          "data": "{mc.sense}-1,{mc.game}-3,{mc.tech}-3"
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "name": "三分钟热度",
+      "des": "虽然行动力是很强啦……一定几率额外减少使用的neta次数",
+      "type": "NEGATIVE",
+      "iconUrl": "",
+      "phrase": "USE_NETA",
+      "rate": "0.2",
+      "effect": [
+        {
+          "type": "STAT_CHANGE",
+          "data": "{neta.times}-1"
+        }
+      ]
+    },
+    {
+      "id": 5,
+      "name": "好用（意味深）",
+      "class": "RionSkill5",
+      "des": "健身环yyds！直播后一定几率增加一个“好用的切片”计数，每隔一定回合数根据“好用的切片”的数量收获粉丝数",
+      "type": "HIDDEN",
+      "iconUrl": "",
+      "phrase": "AFTER_STREAM",
+      "rate": "0.2",
+      "effect": [
+        {
+          "type": "STAT_CHANGE",
+          "data": "{mc.niceClip}+1"
+        }
+      ]
+    }
+  ]
+}

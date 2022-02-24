@@ -27,6 +27,12 @@ class RollBtn extends eui.Component{
 	public showRolledNum(n:number, r:string){
 		let txt = this.txtRollNum
 		this.result.currentState = r
+
+		if(r == RollResult.BIG_SUCCESS){
+			SoundManager.instance.playBgs('success_mp3')
+		}else if(r == RollResult.BIG_FAIL){
+			// SoundManager.instance.playBgs('dededon_short_mp3')
+		}
 		
 		if(this._tw){
 			this._tw.pause()

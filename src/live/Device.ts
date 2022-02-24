@@ -20,6 +20,7 @@ class Device extends Neta{
 				const cr = this.checkReq(ef['req'], obj)
 				if(!cr) continue
 			}
+			console.log(`${this.name} 发动效果`)
 			this.handle(ef.type, ef.data, obj)
 		}
 	}
@@ -45,4 +46,19 @@ class PC extends Device{
 	public constructor(obj:any) {
 		super(obj)
 	}
+}
+
+/**随回合经过变化的道具接口 */
+interface ChangeableDevice{
+	/**经过一回合
+	 * @return 变化数据
+	 */
+	passTurn():ChangeObj[]
+}
+
+interface ChangeObj{
+	/**变成的新道具 */
+	newNeta:Device,
+	/**数量  */
+	num:number
 }

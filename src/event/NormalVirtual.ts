@@ -44,7 +44,7 @@ class NormalVirtual extends MapEvent {
 				//全部liver好感度上升1，且获得杂谈neta 
 				log = this.selections[index].evt[4].log
 				for(let l of livers){
-					mc.npc[l.id] += 1
+					mc.npc[l.ID] += 1
 				}
 				fn = ()=>{
 					const getNeta = NetaFactory.getNeta(NetaType.TALK)
@@ -60,26 +60,26 @@ class NormalVirtual extends MapEvent {
 				//全部liver好感度上升1
 				log = this.selections[index].evt[3].log
 				for(let l of livers){
-					mc.npc[l.id] += 1
+					mc.npc[l.ID] += 1
 				}
 				break
 			case RollResult.NORMAL:
 				//随机单个liver好感度上升1
 				log = this.selections[index].evt[2].log
 				const n = Math.floor(Math.random()*livers.length)
-				mc.npc[livers[n].id] += 1
+				mc.npc[livers[n].ID] += 1
 				break
 			case RollResult.FAIL:
 				//随机单个liver好感度少许上升0.5
 				log = this.selections[index].evt[1].log
 				const m = Math.floor(Math.random()*livers.length)
-				mc.npc[livers[m].id] += 0.5
+				mc.npc[livers[m].ID] += 0.5
 				break
 			case RollResult.BIG_FAIL:
 				//全部liver好感度上升0.1
 				log = this.selections[index].evt[0].log
 				for(let l of livers){
-					mc.npc[l.id] += 0.1
+					mc.npc[l.ID] += 0.1
 				}
 				break
 		}
@@ -91,7 +91,7 @@ class NormalVirtual extends MapEvent {
 		})
 		.wait(500)
 		.call(()=>{
-			const objs:NpcObj[] = this._cell.getNpc(this._mc.npc.npcs)
+			const objs:NpcObj[] = this._cell.getNpc(this._mc.npc)
 			const np = WorldMap.showNpcPanel(objs)
 			const evtLog = WorldMap.showEvtLog(log)
 			this._el = evtLog
@@ -144,7 +144,6 @@ class NormalVirtual extends MapEvent {
 	}
 
 	private getLog(oriLog:string, r:RollResult, prop:string=''){
-		console.log(oriLog, r, prop)
 		switch(prop){
 			case "commu":
 				return oriLog.replace("{result}", "交流力")

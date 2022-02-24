@@ -20,6 +20,11 @@ class PlayerSelectPanel extends eui.Component implements IDisposable{
 		super.childrenCreated()
 		this.scaleX = 0
 		this.scaleY = 0
+		if(this._cur == -1){
+			this.currentState = 'allplayer'
+		}else{
+			this.currentState = 'other'
+		}
 	}
 
 	public dispose(){
@@ -60,6 +65,11 @@ class PlayerSelectPanel extends eui.Component implements IDisposable{
 				continue
 			}
 			const u = panel._iconUrls[i]
+			if(!u){
+				i++
+				imgs.push(null)
+				continue
+			}
 			const img = panel[`img${j}`] as eui.Image
 			img.texture = RES.getRes(u)
 			img.addEventListener('touchTap', panel.onClick, panel)

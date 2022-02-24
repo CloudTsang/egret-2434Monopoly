@@ -50,7 +50,7 @@ class Main extends egret.DisplayObjectContainer {
             egret.ticker.pause();
         }
 
-        egret.lifecycle.onResume = () => {
+        egret.lifecycle.onResume = () => { 
             egret.ticker.resume();
         }
 
@@ -109,6 +109,8 @@ class Main extends egret.DisplayObjectContainer {
      * Create a game scene
      */
     private createGameScene() {
+
+        LifecycleCallback.regist()
        
         const stageW = this.stage.stageWidth
         const stageH = this.stage.stageHeight
@@ -128,10 +130,10 @@ class Main extends egret.DisplayObjectContainer {
 
         // return
 
-        Liver.init()
+        
 
-        // const mcs = ['mito_json', 'toya_json', 'rion_json', 'sasaki_json']
-         const mcs = ['toya_json']
+        const mcs = ['mito_json', 'toya_json', 'rion_json', 'sasaki_json']
+        //  const mcs = [ 'mito_json']
         const world = new WorldController(this.stage)
         world.initMap()
         world.initPlayer(mcs)

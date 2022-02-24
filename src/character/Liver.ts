@@ -1,7 +1,11 @@
 class Liver extends BaseObj{
 	public static allLivers:BaseLiver[]
-	public static init(){
-		Liver.allLivers = RES.getRes("alllivers_json")
+	public static init(playersID:string[]){
+		let arr:BaseLiver[] = RES.getRes("alllivers_json")
+		arr = arr.filter((v:BaseLiver)=>{
+			return playersID.indexOf(v.ID) < 0
+		})
+		Liver.allLivers = arr
 	}
 	public constructor() {
 		super()
@@ -9,7 +13,7 @@ class Liver extends BaseObj{
 }
 
 interface BaseLiver{
-	id:string,
+	ID:string,
 	name:string,
 	des:string,
 	iconUrl:string,

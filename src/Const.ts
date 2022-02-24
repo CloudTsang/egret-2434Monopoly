@@ -35,6 +35,11 @@ class GameEvents{
 	public static readonly DEVICE_FINISH:string = 'DEVICE_FINISH'
 	public static readonly PLAYER_SELECTED:string = 'PLAYER_SELECTED'
 	public static readonly PLAYER_SELECT_CANCEL:string = 'PLAYER_SELECT_CANCEL'
+
+	/**直播炎上 */
+	public static readonly STREAM_ENJO:string = 'STREAM_ENJO'
+	/**直播事故 */
+	public static readonly STREAM_ACCIDENT:string = 'STREAM_ACCIDENT'
 }
 
 class GamePhrase{
@@ -98,6 +103,8 @@ class EffectType{
 	public static readonly SHOW_LOG = 'SHOW_LOG'
 	/**粉丝转移 */
 	public static readonly SUBS_TRAN = 'SUBS_TRAN'
+	/**播放音效 */
+	public static readonly PLAY_BGS = 'PLAY_BGS'
 }
 
 enum LiverStat{
@@ -157,10 +164,14 @@ class StreamType{
 class EffectTarget{
 	/** 使用者*/
 	public static readonly SELF = 'SELF'
+	/** 使用者(需要隐藏菜单)*/
+	public static readonly SELF_ROLL = 'SELF_ROLL'
 	/** 全玩家*/
 	public static readonly ALL = 'ALL'
 	/** 选择一个其他玩家*/
 	public static readonly SELECT_ONE = 'SELECT_ONE'	
+	/** 所有玩家中选择一个*/
+	public static readonly ALL_SELECT_ONE = 'ALL_SELECT_ONE'	
 	/** 全部其他玩家*/
 	public static readonly OTHER_ALL = 'OTHER_ALL'
 	/** 全玩家中随机一个*/

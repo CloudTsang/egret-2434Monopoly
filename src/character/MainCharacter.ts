@@ -65,14 +65,21 @@ class MainCharacter extends Liver{
 		this.income = 50000
 		this.stream = []
 		this.buffs = []
-		this.netaBag = new NetaBag()
+		this.netaBag = new NetaBag(this)
 		this.netaBag.test()
 
 		//test
 		// this.getBuff(new Enjo(this, 3))
+		// this.getBuff(new Light(this, 3))
 		// this.data.money = 5000000
+		// this.increase = 1
 		// this.getBuff(new MechLock(this,3))
-		this.subscribe = 50000
+		// this.edata.major = true
+		// this.subscribe = 99999
+		// this.data.sing = 10
+		// this.npc['kaede'] = 4
+		// this.npc['rin'] = 3
+
 	}
 
 	public checkIfSkillsTriggered(p:string, v:number=0):SkillsTrigger{
@@ -89,6 +96,11 @@ class MainCharacter extends Liver{
 	}
 
 	public getBuff(nb:Buff){
+		if(nb.ID == 'Stop' || nb.ID == 'Sleep'){
+			let evt = new egret.Event(GameEvents.STAT_CHANGE)
+			evt.data = "skip"
+			this.dispatchEvent(evt)
+		}
 		for(let b of this.buffs){
 			if(b.name == nb.name){				
 				b.add(nb)
@@ -108,6 +120,16 @@ class MainCharacter extends Liver{
 				return
 			}
 		}
+	}
+
+	/**检查buff和道具，获取固定移动步数，返回0时使用Roll */
+	public checkStepNum(){
+		for(let b of this.buffs){
+			if(b.ID == "Lunpapa"){
+				return 1
+			}
+		}
+		return 0
 	}
 
 	public onTurnStart(){
@@ -145,8 +167,11 @@ class MainCharacter extends Liver{
 
 		//歌曲neta转cd
 		for(let sn of this.netaBag.song){
+			// console.log(sn.name)
 			sn.onCD()
 		}
+
+		this.netaBag.checkDeviceChange()
 
 		this.subscribe += newSub		
 
@@ -155,29 +180,44 @@ class MainCharacter extends Liver{
 			moveable: movable
 		}
 
+		let ngp:NetaGetPanel;
+
+		
+		
+		if(this.subscribe >= 100000 && !this.edata.has3D){
+			this.edata.has3D = true
+			const neta3d = NetaFactory.getPresentNeta('3D披露') 
+			this.netaBag.modifyNeta(neta3d, 'get')
+			ngp = WorldMap.showGetNeta(neta3d)
+		}
+
 		const evtHasNeta = this.edata.checkHasNewNeta()
 		if(evtHasNeta){
 			const evtNeta = NetaFactory.getEvtNeta(evtHasNeta)
-			this.netaBag.modifyNeta(evtNeta, 'get')
-			const ngp = WorldMap.showGetNeta(evtNeta)
-			ngp.addEventListener(eui.UIEvent.REMOVED_FROM_STAGE,(uie)=>{
-				this.dispatchEvent(evt)
-			}, this)
-			return
+			if(evtNeta){
+				this.netaBag.modifyNeta(evtNeta, 'get')
+				ngp = WorldMap.showGetNeta(evtNeta)
+			}
 		}
 
 		const npcHasGift = this.npc.checkHasGift()
 		if(npcHasGift){
 			const giftNeta = NetaFactory.getGiftNeta(npcHasGift)
-			this.netaBag.modifyNeta(giftNeta, 'get')
-			const ngp = WorldMap.showGetNeta(giftNeta)
+			if(giftNeta){
+				this.netaBag.modifyNeta(giftNeta, 'get')
+				ngp = WorldMap.showGetNeta(giftNeta)
+			}
+			
+		}
+		if(ngp){
 			ngp.addEventListener(eui.UIEvent.REMOVED_FROM_STAGE,(uie)=>{
 				this.dispatchEvent(evt)
 			}, this)
-			return
+		}else{
+			this.dispatchEvent(evt)
 		}
 		
-		this.dispatchEvent(evt)
+		
 	}
 
 	public onTurnEnd(){
@@ -262,6 +302,7 @@ class MainCharacter extends Liver{
 		return this._anti
 	}
 	public set anti(v:number){
+		console.log(`${this.name} 的anti变化至 ${v}`)
 		if(v<0)return 
 		this._anti = v
 	}

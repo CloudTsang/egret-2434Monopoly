@@ -5,7 +5,7 @@ class ToyaSkill5 extends Skill{
 		let lolis:string[]=[]
 		for(let liver of Liver.allLivers){
 			if(liver.tag && liver.tag.indexOf("loli") >= 0){
-				lolis.push(liver.id)
+				lolis.push(liver.ID)
 			}
 		}
 		this.loliLivers = lolis

@@ -374,6 +374,17 @@ class WorldMap extends eui.Component{
 	public static showSkillBar(s:Skill):SkillBar|null{
 		if(!WorldMap.instance) return null
 		const ins = WorldMap.instance
+		switch(s.type){
+			case SkillType.POSITIVE:
+				// SoundManager.instance.playBgs('success2_mp3')
+				break
+			case SkillType.NEGATIVE:
+				// SoundManager.instance.playBgs('dededon_short_mp3')
+				break
+			case SkillType.HIDDEN:
+				SoundManager.instance.playBgs('success_mp3')
+				break
+		}
 		return ins.showSkillBar(s)
 	}
 
@@ -450,6 +461,8 @@ class WorldMap extends eui.Component{
 		doll.x = ins.width/2
 		doll.y = ins.height/2
 		ins.topContainer.addChild(doll)
+		SoundManager.instance.pause()
+		SoundManager.instance.playBgs('horror_mp3')
 		let tw1 = doll.fadeIn()
 		if(cur.index == tgt.index){
 			tw1 = tw1.wait(500)
@@ -467,6 +480,7 @@ class WorldMap extends eui.Component{
 		.wait(500)
 		.call(()=>{
 			ins.focusToLiver(cur.index, true)
+			SoundManager.instance.resume()
 			cb&&cb()
 		})
 	}

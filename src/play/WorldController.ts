@@ -16,10 +16,13 @@ class WorldController {
 
 	private cellDatas:MapData
 	private stream:Stream
-	private chessCurIndex:number
+	/**当前玩家所在棋子的索引 */
+	private chessCellIndexes:number[]
 
 	/**正在处理效果中的道具  */
 	private _handlingDevice:Device
+	/**是否跳过行动，用于事件中途、使用道具时得到<停止><睡眠>状态时直接跳过回合 */
+	private _shouldSkip:boolean
 
 	private _lock:boolean
 	private _handling:boolean
@@ -44,15 +47,25 @@ class WorldController {
 
 	public initPlayer(arr:string[]){
         let mcarr:MainCharacter[] = []
-        for(let i=0;i<arr.length;i++){
-            let mcdata = RES.getRes(arr[i])
-            let mc = new MainCharacter(mcdata, i)
-			// mc.addEventListener(GameEvents.STAT_CHANGE, this.onLiverStatChange, this)
-			// mc.addEventListener(GameEvents.PLAYER_READY, this.onPlayerReady, this)
-            mcarr.push(mc)
+		this.chessCellIndexes = [0,0,0,0]
 
-			this.map.addChess(mc.dispObj, mc.index)
+		let mcdatas:any[] = []
+		let pIDs:string[] = []
+
+        for(let i=0;i<arr.length;i++){
+            const mcdata = RES.getRes(arr[i])
+            mcdatas.push(mcdata)
+			pIDs.push(mcdata['id'])
         }
+		Liver.init(pIDs)
+
+		for(let i=0;i<mcdatas.length;i++){
+			const mcdata = mcdatas[i]
+			let mc = new MainCharacter(mcdata, i)
+            mcarr.push(mc)
+			this.map.addChess(mc.dispObj, mc.index)
+		}
+
 		this.players = mcarr
 		this.currentPlayer = 0
 
@@ -64,14 +77,19 @@ class WorldController {
 		fp.addEventListener(GameEvents.PLAYER_READY, this.onPlayerReady, this)
 		fp.onTurnStart()
 		
-		
-
-		this.cellDatas.shuffleLiver(this.players)
+		this.cellDatas.shuffleLiver()
 	}
 
 	public initUI(){
 		this.menus = []
 		this.map.liverMenu.setPlayers(this.players)
+
+		this.stage.addEventListener("touchTap", this.onSound, this)
+	}
+
+	private onSound(e:any){
+		this.stage.removeEventListener("touchTap", this.onSound, this)
+		SoundManager.instance.play('vtl1_mp3', true)
 	}
 
 	protected onStartRoll(e:any){
@@ -80,7 +98,10 @@ class WorldController {
 		}
 		this._lock = true
 		this.phrase = GamePhrase.DICE_ROLL
-		const {n, r} = Roll.random(this.curPlayer)
+		let n = this.curPlayer.checkStepNum()
+		if(n == 0){
+			n = Roll.random(this.curPlayer).n
+		}
 		this.map.showRollNum(n, RollResult.NORMAL)
 		this.map.walkChess(this.currentPlayer, n, (i:number, v:boolean)=>{this.onChessStep(i,v)})
 	}
@@ -139,7 +160,7 @@ class WorldController {
 				const mc = ctrller.players[ctrller.currentPlayer]
 				const ty2 = e.data.ty2
 				ctrller.menu && ctrller.map.removeMenu(ctrller.menu)
-				ctrller.stream = new Stream(mc, ctrller.curTurn, ty2, ctrller.cellDatas.getCell(ctrller.chessCurIndex).getNpc(mc.npc.npcs))
+				ctrller.stream = new Stream(mc, ctrller.curTurn, ty2, ctrller.cellDatas.getCell(ctrller.chessCurIndex).getNpc(mc.npc))
 				ctrller.stream.addEventListener(GameEvents.STREAM_END, this.onStreamEnd,this)
 
 				let menu = new StreamPreparePanel(mc.netaBag, ty2)
@@ -148,9 +169,7 @@ class WorldController {
 
 				ctrller.stream.streamPreparePanel = menu
 				ctrller.pushMenu({data:menu})
-		
 				break
-
 			default:
 				break
 		}
@@ -158,6 +177,12 @@ class WorldController {
 
 	protected onStreamStart(e:any=null){
 		const ctrller = this
+
+		if(ctrller.stream.type == StreamType.PRESENT){
+			SoundManager.instance.play('vtl3_mp3', false)
+		}else{
+			SoundManager.instance.play('vtl2_mp3', false)
+		}
 		
 		let stg2 = ctrller.players[ctrller.currentPlayer].checkIfSkillsTriggered(GamePhrase.BEFORE_STREAM, Roll.random3())
 		stg2.triggerStream(ctrller.stream)
@@ -175,6 +200,7 @@ class WorldController {
 		}
 		this.menus = []
 		setTimeout(()=>{
+			SoundManager.instance.play('vtl1_mp3', true)
 			this.nextPlayer()
 		}, 2000);
 		// const streamData:StreamBaseInfo = e.data
@@ -202,6 +228,7 @@ class WorldController {
 
 	protected nextPlayer(){
 		this._handling = false
+		this._shouldSkip = false
 		const cell:CellData = this.cellDatas.getCell(this.chessCurIndex )
 		cell.removeEventListener(GameEvents.EVENT_START, this.onEventStart, this)
 		cell.removeEventListener(GameEvents.EVENT_FINISH, this.onEventFinish, this)
@@ -220,11 +247,18 @@ class WorldController {
 			m && m.dispose()
 		}
 		ctrller.menus = []
+		ctrller.menu = null
+
 		if(ctrller.currentPlayer == ctrller.players.length){
 			//下回合
 			ctrller.currentPlayer = 0
 			ctrller.curTurn ++
+
+			//重新打乱npc分布？
+			ctrller.cellDatas.shuffleLiver()
 		}
+
+
 		const p = ctrller.players[ctrller.currentPlayer]
 		const cur = ctrller.stageMode[ctrller.currentPlayer]
 		ctrller.phrase = GamePhrase.TURN_START
@@ -262,8 +296,10 @@ class WorldController {
 				this.map.money.setTween2Num(this.curPlayer.money)
 				break
 			case "subscribe":
-				console.log("subscribe : ",this.curPlayer.subscribe)
 				this.map.subs.setTween2Num(this.curPlayer.subscribe)
+				break
+			case "skip":
+				this._shouldSkip = true
 				break
 			default:
 				break
@@ -332,26 +368,36 @@ class WorldController {
 	protected onUseNeta(e:egret.Event){
 		const ctrller = this
 		if(ctrller._handling) return
+		if(ctrller._handlingDevice) return
 		const n:Device = e.data.neta
 		const bp = this.bagPanel
 		const mc:MainCharacter = ctrller.curPlayer
 		n.addEventListener(GameEvents.DEVICE_FINISH, ctrller.onUseFinish, ctrller)
+		ctrller._handlingDevice = n
+
 		switch(n.target){
 			case EffectTarget.SELF:
 				n.onUse({player:mc, mc:mc.ddata, mc2:mc.data})
 				break
+			case EffectTarget.SELF_ROLL:
+				ctrller.onHideBag(null)
+				n.onUse({player:mc, mc:mc.ddata, mc2:mc.data})
+				break
 			case EffectTarget.SELECT_ONE:
-				//选择使用对象是先隐藏当前菜单
+			case EffectTarget.ALL_SELECT_ONE:
+				//选择使用对象时先隐藏当前菜单
 				// if(ctrller.menu) ctrller.map.removeMenu(ctrller.menu)
 				this.map.setMenuLayerVisible(false)
-				const psp:PlayerSelectPanel = WorldMap.showPlayerSelect(ctrller.players, ctrller.currentPlayer)
+				let tmp:number = ctrller.currentPlayer
+				if(n.target == EffectTarget.ALL_SELECT_ONE) tmp = -1
+				const psp:PlayerSelectPanel = WorldMap.showPlayerSelect(ctrller.players, tmp)
 				psp.addEventListener(GameEvents.PLAYER_SELECTED, ctrller.onSelectPlayer, ctrller)
 				psp.addEventListener(GameEvents.PLAYER_SELECT_CANCEL, ctrller.onCancelSelectPlayer, ctrller)
 				// ctrller.onHideBag(null)
 				this.stage.removeChild(this.bagPanel)
 				ctrller.map.addChild(psp)
 				ctrller.playerSelectPanel = psp
-				ctrller._handlingDevice = n
+				
 				break
 			case EffectTarget.OTHER_ALL:
 				this.map.setMenuLayerVisible(false)
@@ -362,6 +408,18 @@ class WorldController {
 					tgts.push(p)
 				}
 				n.onUse({player:mc, mc:mc.ddata, mc2:mc.data, tgtPlayer:tgts})
+				break
+			case EffectTarget.RANDOM_ONE_NPC:
+				const cell = ctrller.cellDatas.getCell(ctrller.chessCurIndex)
+				const npcs = cell.npcs
+				let tgtNpc:number
+				if(npcs.length == 0) {
+					tgtNpc = Math.floor(Math.random()*Liver.allLivers.length)
+				}else{
+					tgtNpc = npcs[Math.floor(Math.random()*npcs.length)]
+				}
+				const npc = Liver.allLivers[tgtNpc]
+				n.onUse({player:mc, mc:mc.ddata, mc2:mc.data, npc:npc})
 				break
 		}
 	}
@@ -391,8 +449,9 @@ class WorldController {
 		const n:Neta = e.target
 		n.removeEventListener(GameEvents.DEVICE_FINISH, this.onUseFinish, this)
 		const mc:MainCharacter = this.curPlayer
-		mc.netaBag.modifyNeta(n, 'use', false, 1, false)
+		
 		if(this.menu) this.map.addMenu(this.menu)
+		mc.netaBag.modifyNeta(n, 'use', false, 1, false)
 		if(this.bagPanel){
 			this.bagPanel.setNeta(n)
 			this.bagPanel.netaSelectPanel.refresh({
@@ -400,9 +459,15 @@ class WorldController {
 				selected:false
 			})
 		}
+		
 		this._handlingDevice = null
 		// this.popMenu()
 		this.map.setMenuLayerVisible(true)
+
+		//使用道具完毕后检测到陷入停止状态时轮到下一位玩家
+		if(this._shouldSkip){
+			this.nextPlayer()
+		}
 		
 	}
 
@@ -445,5 +510,12 @@ class WorldController {
 
 	public get curPlayer():MainCharacter{
 		return this.players[this.currentPlayer]
+	}
+
+	private set chessCurIndex(v:number){
+		this.chessCellIndexes[this.currentPlayer] = v
+	}
+	private get chessCurIndex(){
+		return this.chessCellIndexes[this.currentPlayer]
 	}
 }

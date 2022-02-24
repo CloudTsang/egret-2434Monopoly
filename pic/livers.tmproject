@@ -1,0 +1,20 @@
+{
+    "options": {
+        "layoutGap": 2,
+        "extend": 0,
+        "layoutMath": "3",
+        "sizeMode": "free",
+        "useExtension": 0
+    },
+    "files": [
+        "./liver/azuma.png",
+        "./liver/ib.png",
+        "./liver/kira.png",
+        "./liver/fuwa.png",
+        "./liver/tomoe.png",
+        "./liver/natsume.png",
+        "./liver/kaida.png"
+    ],
+    "projectName": "livers",
+    "version": 5
+}

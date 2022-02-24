@@ -6,20 +6,23 @@ class NetaBag {
 	public spec:Neta[]
 	public present:Neta[]
 	public device:Device[]
-	public constructor() {
+	private mc:MainCharacter
+	public constructor(mc:MainCharacter=null) {
 		this.talk = []
 		this.game = []
 		this.song = []
 		this.spec = []
 		this.present = []
 		this.device = []
+		this.mc = mc
 	}
 
 	public test(){
 		const jsonFile = ['neta_spec_1_json', 'netas_daily_1_json', 'netas_game_1_json',
 		'netas_present_1_json', 'netas_song_1_json',
-						// 'device_1_json',
-						'device_2_json','device_spec_json']
+						'device_1_json',
+						'device_2_json',
+						'device_spec_json']
 		for(let jsonu of jsonFile){
 			const arr = RES.getRes(jsonu)
 			if(!arr)continue
@@ -27,9 +30,6 @@ class NetaBag {
 				// if(Math.random()>0.5)continue
 				const n = NetaFactory.getNetaFromObj(obj)
 				this.modifyNeta(n, 'get', false, 1, false)
-				if(jsonu == 'netas_daily_1_json'){
-					break
-				}
 			}
 		}
 	}
@@ -104,9 +104,20 @@ class NetaBag {
 		}
 
 		if(ty == 'get' && checkEffect){
-			n.onGain({
+			let tobj:TargetObj = {
 				bag:this
-			})
+			}
+			if(this.mc){
+				const mc = this.mc
+				tobj = {
+					...tobj,
+					mc:mc.ddata,
+					mc2:mc.data,
+					mc3:mc.edata,
+					player:mc
+				}
+			}
+			n.onGain(tobj)
 		}
 		
 		return np
@@ -135,9 +146,21 @@ class NetaBag {
 		}else{
 			console.log("丢失neta ：", neta.name)
 			arr.splice(i, 1)
+		}		
+	}
+
+	/**检查道具过期情况 */
+	public checkDeviceChange(){
+		const devices:Device[] = this.device.filter((d:Device)=>{ return d['passTurn']!=undefined })
+		for(let d of devices){
+			const cos:ChangeObj[] = d['passTurn']()
+			if(cos){
+				for(let co of cos){
+					this.modifyNeta(co.newNeta, 'get', true, co.num)
+					this.modifyNeta(d, 'use', false, co.num)
+				}
+			}
 		}
-		
-		
 	}
 
 

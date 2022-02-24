@@ -9,14 +9,14 @@ class CellData extends egret.EventDispatcher{
 		this.npcs = []
 	}
 
-	public getNpc(favors:{[key:string]:number}):NpcObj[]{
+	public getNpc(favors:NpcFavour|{[key:string]:number}):NpcObj[]{
 		let ret:NpcObj[] = []
 		
 		for(let index of this.npcs){
 			const liver = Liver.allLivers[index]
-			const f = favors[liver.id]
+			const f = favors[liver.ID]
 			ret.push({
-				id:liver.id,
+				ID:liver.ID,
 				name:liver.name,
 				des:liver.des,
 				iconUrl:liver.iconUrl,
@@ -114,7 +114,7 @@ class MapData {
 		}
 		indexes.splice(0,data.len/4-1)
 		//test
-		// arr2[1] = 3
+		// arr2[1] = 2
 
 		//确保每个事件出现至少一次
 		let i=0
@@ -227,11 +227,11 @@ class MapData {
 	}
 
 	/**分配npc位置 */
-	public shuffleLiver(players:MainCharacter[]){
+	public shuffleLiver(){
 		const data = this
 		const cells = data.datas
 		const l = Liver.allLivers.length - 4
-		data.getAllNpcsList(players)
+		data.getAllNpcsList()
 
 		for(let cell of cells){
 			cell.npcs = []
@@ -256,21 +256,12 @@ class MapData {
 		
 	}
 
-	private getAllNpcsList(players:MainCharacter[]){
+	private getAllNpcsList(){
 		if(this.allNpcIndexes){
 			return
 		}
 		let npcIndexes = []
 		for(let i=0;i<Liver.allLivers.length; i++){
-			const liver = Liver.allLivers[i]
-			let isPlayer:boolean = false
-			for(let liver2 of players){
-				if(liver.name == liver2.name){
-					isPlayer = true
-					break
-				}
-			}
-			if(isPlayer) continue
 			npcIndexes.push(i)
 		}
 		this.allNpcIndexes = npcIndexes

@@ -1,18 +1,31 @@
 {
     "options": {
-        "useExtension": 0,
         "layoutGap": 2,
         "extend": 0,
         "layoutMath": "3",
-        "sizeMode": "free"
+        "sizeMode": "free",
+        "useExtension": 0
     },
     "files": [
+        "./neta2/rionspec.jpg",
+        "./neta2/tamkispec.jpg",
+        "./neta2/himaspec.jpg",
+        "./neta2/elispec.jpg",
+        "./neta2/fumispec.jpg",
+        "./neta2/angespec.jpg",
+        "./neta2/karudaspec.jpg",
+        "./neta2/levispec.jpg",
+        "./neta2/moiraspec.jpg",
+        "./neta2/mitospec.jpg",
         "./neta2/eurogacha.png",
         "./neta2/africagacha.png",
         "./neta2/numagacha.png",
         "./neta2/normalgacha.png",
-        "./neta2/msmr.jpg"
+        "./neta2/msmr.jpg",
+        "./neta2/BQ.jpg",
+        "./neta2/daipan.jpg",
+        "./neta2/nju.jpg"
     ],
-    "version": 5,
-    "projectName": "neta2"
+    "projectName": "neta2",
+    "version": 5
 }

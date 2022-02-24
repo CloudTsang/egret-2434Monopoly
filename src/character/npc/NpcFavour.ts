@@ -1,18 +1,29 @@
 class NpcFavour {
 	protected gift:{[key:number]:number}
-	public npcs:{[key:number]:number}
+	private keyArr:string[]
 	public constructor() {
 		this.gift = {}
-		this.npcs = {}
+		this.keyArr = []
 		for(let k of Liver.allLivers){
-			this.npcs[k.id] = 1
-			this.gift[k.id] = 0
+			this[k.ID] = 1
+			this.keyArr.push(k.ID)
+			this.gift[k.ID] = 0
 		}
 	}
 
+	public get IDs(){
+		return this.keyArr
+	}
+
+	// public *iterator() {
+	// 	for (let key of this.keyArr) {
+	// 		yield this[key];
+	// 	}
+	// }
+
 	public checkHasGift():string{
-		for(let key in this.npcs){
-			if(this.gift[key] == 0 && this.npcs[key] >= 3){
+		for(let key of this.keyArr){
+			if( this.gift[key]  == 0 && this[key] >= 3){
 				return key
 			}
 		}
@@ -20,11 +31,11 @@ class NpcFavour {
 	}
 
 	public set all(v:number){
-		for(let k of Liver.allLivers){
-			const f:number = this.npcs[k.id]
+		for(let k of this.keyArr){
+			const f:number = this[k]
 			let f2 = f+v
 			if(f2<0) f2 = 0
-			this.npcs[k.id] = f2 
+			this[k] = f2 
 		}
 	}
 
@@ -33,12 +44,12 @@ class NpcFavour {
 	}
 
 	public set random(v:number){
-		const i = Math.floor(Math.random()*Liver.allLivers.length)
-		const k = Liver.allLivers[i]
-		const f:number = this.npcs[k.id]
+		const i = Math.floor(Math.random()*this.keyArr.length)
+		const k = this.keyArr[i]
+		const f:number = this[k]
 		let f2 = f+v
 		if(f2<0) f2 = 0
-		this.npcs[k.id] = f2 
+		this[k] = f2 
 	}
 
 	public get random(){
