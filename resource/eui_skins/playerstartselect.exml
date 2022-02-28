@@ -1,0 +1,14 @@
+<?xml version='1.0' encoding='utf-8'?>
+<e:Skin class="skins.playerstartselect"
+	 width="200"
+	height="250" xmlns:e="http://ns.egret.com/eui" states="usable,disable" >
+	<e:Rect percentHeight="100" percentWidth="100" fillColor="0xCECECE"/>
+	<e:Image id="img" width="200" height="200" x="0" y="0"/>
+	<e:Group id="pcontainer" width="200" height="50" includeIn="usable" x="0" y="200">
+		<e:layout>
+			<e:VerticalLayout horizontalAlign="center" verticalAlign="middle"/>
+		</e:layout>
+	</e:Group>
+	<e:Rect percentHeight="100" percentWidth="100" fillColor="0xCECECE" includeIn="disable" x="0" y="0" fillAlpha="0.5"/>
+	<e:Label text="待更新" includeIn="disable" textColor="0x383636" bold="true" horizontalCenter="0" verticalCenter="0"/>
+</e:Skin>

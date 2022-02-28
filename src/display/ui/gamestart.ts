@@ -1,0 +1,4 @@
+class gamestart {
+	public constructor() {
+	}
+}

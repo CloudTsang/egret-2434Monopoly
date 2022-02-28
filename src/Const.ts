@@ -1,4 +1,9 @@
 class GameEvents{
+	/**前往角色选择页面 */
+	public static readonly TO_PLAYER_SELECT:string = 'TO_PLAYER_SELECT'
+	/**游戏开始 */
+	public static readonly GAME_START:string = 'GAME_START'
+
 	public static readonly VR_SWITCH:string = 'VR_SWITCH'
 	public static readonly START_ROLL:string = 'START_ROLL'
 	public static readonly ACTION_CONFIRM:string = 'ACTION_CONFIRM'

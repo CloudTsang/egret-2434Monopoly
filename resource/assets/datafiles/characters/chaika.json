@@ -4,6 +4,7 @@
   "chessR": "chaikarmor_png",
   "chessV": "chaika_png",
   "iconUrl":"livers1_json#chaika",
+  "disable":true,
   "data": {
     "luck": 3,
     "sense": 2,

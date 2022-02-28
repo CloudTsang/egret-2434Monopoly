@@ -28,9 +28,9 @@
 //////////////////////////////////////////////////////////////////////////////////////
 
 class Main extends egret.DisplayObjectContainer {
-
-
-
+    private currentScene:egret.DisplayObject
+    private stageW:number
+    private stageH:number
     public constructor() {
         super();
         this.addEventListener(egret.Event.ADDED_TO_STAGE, this.onAddToStage, this);
@@ -112,11 +112,11 @@ class Main extends egret.DisplayObjectContainer {
 
         LifecycleCallback.regist()
        
-        const stageW = this.stage.stageWidth
-        const stageH = this.stage.stageHeight
+        this.stageW = this.stage.stageWidth
+        this.stageH = this.stage.stageHeight
         const bg = new egret.Shape()
         bg.graphics.beginFill(0xBBBBBB)
-        bg.graphics.drawRect(0,0,stageW,stageH)
+        bg.graphics.drawRect(0,0,this.stageW,this.stageH)
         bg.graphics.endFill()
         this.addChild(bg)
 
@@ -130,26 +130,48 @@ class Main extends egret.DisplayObjectContainer {
 
         // return
 
-        
+        // const dpanel = new DescriptPanel()
+        // dpanel.x = (stageW - dpanel.width)/2
+        // dpanel.y = (stageH - dpanel.height)/2
+        // this.addChild(dpanel)
+        // return
 
-        const mcs = ['mito_json', 'toya_json', 'rion_json', 'sasaki_json']
+        this.toTitle(null)
+        return
+
+    }
+
+    protected toTitle(e:egret.Event){
+        const title = new TitlePage()
+        title.width = this.stageW
+        title.height = this.stageH
+        this.currentScene = title
+        this.addChild(title)
+
+        title.once(GameEvents.TO_PLAYER_SELECT, this.toPlayerSelect, this)
+
+    }
+
+    protected toPlayerSelect(e:egret.Event){
+        this.removeChild(this.currentScene)
+
+        const playSelect:StartSelectPanel = new StartSelectPanel()
+        playSelect.width = this.stageW
+        playSelect.height = this.stageH
+        playSelect.once(GameEvents.GAME_START, this.toWorld, this)
+        this.currentScene = playSelect
+        this.addChild(playSelect)
+    }
+
+    protected toWorld(e:egret.Event){
+         this.removeChild(this.currentScene)
+
+        const mcs = e.data.livers//['mito_json', 'toya_json', 'rion_json', 'sasaki_json']
+        if(!mcs)return
         //  const mcs = [ 'mito_json']
         const world = new WorldController(this.stage)
         world.initMap()
         world.initPlayer(mcs)
         world.initUI()
-
-        // let c = new CharaterPanel(mitomc)
-        // c.x = 200
-        // this.addChild(c)
-
-        // let c = new NetaPanel()
-        // this.addChild(c)
-
-        // let c = new StreamPreparePanel(StreamType.SING)
-        // this.addChild(c)
-
-        // let c = new ActMenu()
-        // this.addChild(c)
     }
 }

@@ -14,23 +14,24 @@ class EventRealNJU  extends MapEvent{
 		let neta:Neta
 
 		let over4:number = 0
-		let over5:number = 0
-		//npc中一个达到最高5或两个达到4可以获得nju neta
+		let over3:number = 0
+		//npc中一个达到最高4或两个达到3可以获得nju neta
 		for(let id of mc.npc.IDs){
 			const f = mc.npc[id]
-			if(f >= 5){
-				over5 ++
+			if(f >= 3){
+				over3 ++
+			}
+			if(over3 >= 2){
 				break
 			}
 			if(f >= 4){
 				over4 ++ 
-			}
-			if(over4 >= 2){
 				break
 			}
+			
 		}
 
-		if(over4>=2 || over5>=1){
+		if(over4>=2 || over3>=2){
 			log = this.logs[1]
 			neta = NetaFactory.getNetaFromObj(this.netas[0])
 		}else{

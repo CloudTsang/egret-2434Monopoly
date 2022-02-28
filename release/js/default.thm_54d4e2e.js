@@ -709,6 +709,400 @@ window.skins=window.skins||{};
 		return t;
 	};
 	return custommenu;
+})(eui.Skin);generateEUI.paths['resource/eui_skins/descriptPanel.exml'] = window.skins.descriptPanel = (function (_super) {
+	__extends(descriptPanel, _super);
+	function descriptPanel() {
+		_super.call(this);
+		this.skinParts = ["contents","btnCancel"];
+		
+		this.height = 450;
+		this.width = 700;
+		this.elementsContent = [this._Rect1_i(),this.contents_i(),this.btnCancel_i()];
+		this._Label1_i();
+		
+		this._Label2_i();
+		
+		this._Label3_i();
+		
+		this._Image1_i();
+		
+		this._Group1_i();
+		
+		this._Image3_i();
+		
+		this._Image4_i();
+		
+		this._Group2_i();
+		
+		this._Group3_i();
+		
+		this._Image5_i();
+		
+		this._Group4_i();
+		
+		this._Group5_i();
+		
+		this.states = [
+			new eui.State ("p1",
+				[
+					new eui.AddItems("_Label3","contents",2,"_Group6"),
+					new eui.AddItems("_Image1","_Group6",0,""),
+					new eui.AddItems("_Group1","_Group6",1,""),
+					new eui.AddItems("_Image3","_Group6",1,"")
+				])
+			,
+			new eui.State ("p2",
+				[
+					new eui.AddItems("_Label2","contents",2,"_Group6"),
+					new eui.AddItems("_Image5","_Group4",0,""),
+					new eui.AddItems("_Group4","_Group6",1,""),
+					new eui.AddItems("_Group5","_Group6",1,""),
+					new eui.SetProperty("_Label2","text","在[现实]棋盘中，可以提升Liver的能力、触发特殊事件获取直播neta、购买道具等等。玩法接近普通大富翁游戏。")
+				])
+			,
+			new eui.State ("p3",
+				[
+					new eui.AddItems("_Label2","contents",2,"_Group6"),
+					new eui.AddItems("_Image5","_Group4",0,""),
+					new eui.AddItems("_Group4","_Group6",1,""),
+					new eui.AddItems("_Group5","_Group6",1,""),
+					new eui.SetProperty("_Label2","text","在[虚拟]棋盘中，可以进行消耗neta进行不同类型的直播，并且收获粉丝数。"),
+					new eui.SetProperty("_Image5","source","vmenu_jpg"),
+					new eui.SetProperty("_Label11","text","不同类型的直播\n对neta的需求不同"),
+					new eui.SetProperty("_Image6","source","nselect_jpg"),
+					new eui.SetProperty("_Image6","width",200),
+					new eui.SetProperty("_Image6","height",240),
+					new eui.SetProperty("_Label12","text","部分neta有数量消耗\n或使用冷却的设定")
+				])
+			,
+			new eui.State ("p4",
+				[
+					new eui.AddItems("_Label1","contents",2,"_Group6"),
+					new eui.AddItems("_Image4","_Group2",0,""),
+					new eui.AddItems("_Group2","_Group6",1,""),
+					new eui.AddItems("_Group3","_Group6",1,"")
+				])
+		];
+	}
+	var _proto = descriptPanel.prototype;
+
+	_proto._Rect1_i = function () {
+		var t = new eui.Rect();
+		t.ellipseWidth = 50;
+		t.fillAlpha = 0.8;
+		t.percentHeight = 100;
+		t.percentWidth = 100;
+		return t;
+	};
+	_proto.contents_i = function () {
+		var t = new eui.Group();
+		this.contents = t;
+		t.horizontalCenter = 0;
+		t.percentHeight = 90;
+		t.percentWidth = 95;
+		t.verticalCenter = 0;
+		t.layout = this._VerticalLayout1_i();
+		t.elementsContent = [this._Group6_i(),this._Label13_i()];
+		return t;
+	};
+	_proto._VerticalLayout1_i = function () {
+		var t = new eui.VerticalLayout();
+		return t;
+	};
+	_proto._Label1_i = function () {
+		var t = new eui.Label();
+		this._Label1 = t;
+		t.horizontalCenter = 0;
+		t.percentWidth = 100;
+		t.size = 28;
+		t.text = "~ 关于neta ~";
+		t.textAlign = "center";
+		t.y = 16;
+		return t;
+	};
+	_proto._Label2_i = function () {
+		var t = new eui.Label();
+		this._Label2 = t;
+		t.multiline = true;
+		t.percentWidth = 100;
+		t.size = 26;
+		t.wordWrap = true;
+		t.x = 166;
+		t.y = 47;
+		return t;
+	};
+	_proto._Label3_i = function () {
+		var t = new eui.Label();
+		this._Label3 = t;
+		t.percentWidth = 100;
+		t.size = 26;
+		t.text = "操纵Liver，在[虚拟]棋盘和[现实]棋盘间切换，点击[骰子]按钮开始行动。";
+		t.x = 38;
+		t.y = 24;
+		return t;
+	};
+	_proto._Group6_i = function () {
+		var t = new eui.Group();
+		this._Group6 = t;
+		t.percentHeight = 100;
+		t.percentWidth = 100;
+		t.x = 35;
+		t.y = 66;
+		t.layout = this._HorizontalLayout1_i();
+		t.elementsContent = [];
+		return t;
+	};
+	_proto._HorizontalLayout1_i = function () {
+		var t = new eui.HorizontalLayout();
+		t.horizontalAlign = "center";
+		t.verticalAlign = "middle";
+		return t;
+	};
+	_proto._Image1_i = function () {
+		var t = new eui.Image();
+		this._Image1 = t;
+		t.height = 200;
+		t.source = "chess_json#mitov";
+		t.width = 120;
+		t.x = 80;
+		t.y = 72;
+		return t;
+	};
+	_proto._Group1_i = function () {
+		var t = new eui.Group();
+		this._Group1 = t;
+		t.percentHeight = 100;
+		t.width = 130;
+		t.x = 350;
+		t.y = 124;
+		t.layout = this._VerticalLayout2_i();
+		t.elementsContent = [this._Label4_i(),this._Image2_i()];
+		return t;
+	};
+	_proto._VerticalLayout2_i = function () {
+		var t = new eui.VerticalLayout();
+		t.horizontalAlign = "center";
+		t.verticalAlign = "middle";
+		return t;
+	};
+	_proto._Label4_i = function () {
+		var t = new eui.Label();
+		t.horizontalCenter = 0;
+		t.size = 28;
+		t.text = "←切换→";
+		t.y = 64;
+		return t;
+	};
+	_proto._Image2_i = function () {
+		var t = new eui.Image();
+		t.height = 100;
+		t.horizontalCenter = 0;
+		t.scaleX = 1;
+		t.scaleY = 1;
+		t.source = "icons_json#vrbtn1";
+		t.width = 100;
+		t.y = 91;
+		return t;
+	};
+	_proto._Image3_i = function () {
+		var t = new eui.Image();
+		this._Image3 = t;
+		t.height = 200;
+		t.source = "chess_json#mitor";
+		t.width = 120;
+		t.x = 326;
+		t.y = 120;
+		return t;
+	};
+	_proto._Group2_i = function () {
+		var t = new eui.Group();
+		this._Group2 = t;
+		t.percentHeight = 100;
+		t.percentWidth = 40;
+		t.x = 368;
+		t.y = 108;
+		t.elementsContent = [];
+		return t;
+	};
+	_proto._Image4_i = function () {
+		var t = new eui.Image();
+		this._Image4 = t;
+		t.height = 240;
+		t.horizontalCenter = 0;
+		t.source = "netastat_jpg";
+		t.verticalCenter = 0;
+		t.width = 160;
+		return t;
+	};
+	_proto._Group3_i = function () {
+		var t = new eui.Group();
+		this._Group3 = t;
+		t.percentHeight = 100;
+		t.percentWidth = 60;
+		t.x = 384;
+		t.y = 120;
+		t.layout = this._VerticalLayout3_i();
+		t.elementsContent = [this._Label5_i(),this._Label6_i(),this._Label7_i(),this._Label8_i(),this._Label9_i(),this._Label10_i()];
+		return t;
+	};
+	_proto._VerticalLayout3_i = function () {
+		var t = new eui.VerticalLayout();
+		t.horizontalAlign = "center";
+		t.verticalAlign = "middle";
+		return t;
+	};
+	_proto._Label5_i = function () {
+		var t = new eui.Label();
+		t.percentWidth = 100;
+		t.size = 24;
+		t.text = "直播的最终效果将由neta的三个数值决定:";
+		t.x = 121;
+		t.y = 40;
+		return t;
+	};
+	_proto._Label6_i = function () {
+		var t = new eui.Label();
+		t.percentWidth = 100;
+		t.size = 24;
+		t.text = "POP(人气):直接提升直播增加的粉丝数";
+		t.x = 43;
+		t.y = 60;
+		return t;
+	};
+	_proto._Label7_i = function () {
+		var t = new eui.Label();
+		t.percentWidth = 100;
+		t.size = 24;
+		t.text = "SAFE(安全):影响直播发生炎上的概率";
+		t.x = 43;
+		t.y = 60;
+		return t;
+	};
+	_proto._Label8_i = function () {
+		var t = new eui.Label();
+		t.percentWidth = 100;
+		t.size = 20;
+		t.text = "※当前版本的基础炎上概率在无道具技能影响的情况下在5~10%之间";
+		t.textColor = 0x8E8585;
+		t.x = 43;
+		t.y = 60;
+		return t;
+	};
+	_proto._Label9_i = function () {
+		var t = new eui.Label();
+		t.percentWidth = 100;
+		t.size = 24;
+		t.text = "MEME(谜因):提升每回合开始时粉丝自动增长的数量";
+		t.x = 43;
+		t.y = 60;
+		return t;
+	};
+	_proto._Label10_i = function () {
+		var t = new eui.Label();
+		t.percentWidth = 100;
+		t.size = 20;
+		t.text = "※请理解为直播越[有梗]，切片带来的粉丝增长越高";
+		t.textColor = 0x8E8585;
+		t.x = 43;
+		t.y = 60;
+		return t;
+	};
+	_proto._Group4_i = function () {
+		var t = new eui.Group();
+		this._Group4 = t;
+		t.percentHeight = 100;
+		t.percentWidth = 50;
+		t.layout = this._VerticalLayout4_i();
+		t.elementsContent = [this._Label11_i()];
+		return t;
+	};
+	_proto._VerticalLayout4_i = function () {
+		var t = new eui.VerticalLayout();
+		t.horizontalAlign = "center";
+		t.verticalAlign = "middle";
+		return t;
+	};
+	_proto._Image5_i = function () {
+		var t = new eui.Image();
+		this._Image5 = t;
+		t.height = 240;
+		t.horizontalCenter = 0;
+		t.source = "rmenu_jpg";
+		t.top = 0;
+		t.width = 160;
+		return t;
+	};
+	_proto._Label11_i = function () {
+		var t = new eui.Label();
+		this._Label11 = t;
+		t.horizontalCenter = 0;
+		t.percentWidth = 100;
+		t.size = 24;
+		t.text = "不同选项提升的能力不同";
+		t.textAlign = "center";
+		t.y = 150;
+		return t;
+	};
+	_proto._Group5_i = function () {
+		var t = new eui.Group();
+		this._Group5 = t;
+		t.percentHeight = 100;
+		t.percentWidth = 50;
+		t.x = 358;
+		t.y = 62;
+		t.layout = this._VerticalLayout5_i();
+		t.elementsContent = [this._Image6_i(),this._Label12_i()];
+		return t;
+	};
+	_proto._VerticalLayout5_i = function () {
+		var t = new eui.VerticalLayout();
+		t.horizontalAlign = "center";
+		t.verticalAlign = "middle";
+		return t;
+	};
+	_proto._Image6_i = function () {
+		var t = new eui.Image();
+		this._Image6 = t;
+		t.height = 140;
+		t.horizontalCenter = 0;
+		t.source = "mapicons_json#eventr";
+		t.top = 20;
+		t.width = 140;
+		return t;
+	};
+	_proto._Label12_i = function () {
+		var t = new eui.Label();
+		this._Label12 = t;
+		t.horizontalCenter = 0;
+		t.percentWidth = 100;
+		t.size = 24;
+		t.text = "踏入[?]格子触发各种特殊事件";
+		t.textAlign = "center";
+		t.y = 150;
+		return t;
+	};
+	_proto._Label13_i = function () {
+		var t = new eui.Label();
+		t.percentWidth = 100;
+		t.size = 20;
+		t.text = "点击以继续";
+		t.textAlign = "center";
+		t.textColor = 0x8E8E8E;
+		t.x = 37;
+		t.y = 254;
+		return t;
+	};
+	_proto.btnCancel_i = function () {
+		var t = new eui.Image();
+		this.btnCancel = t;
+		t.height = 40;
+		t.source = "icons_json#close";
+		t.width = 40;
+		t.x = -20;
+		t.y = -20;
+		return t;
+	};
+	return descriptPanel;
 })(eui.Skin);generateEUI.paths['resource/eui_skins/evtpanel_shop.exml'] = window.skins.evtpanel_shop = (function (_super) {
 	__extends(evtpanel_shop, _super);
 	function evtpanel_shop() {
@@ -882,6 +1276,178 @@ window.skins=window.skins||{};
 		return t;
 	};
 	return evtpanel;
+})(eui.Skin);generateEUI.paths['resource/eui_skins/gameStartSetting.exml'] = window.skins.gameStartSetting = (function (_super) {
+	__extends(gameStartSetting, _super);
+	function gameStartSetting() {
+		_super.call(this);
+		this.skinParts = ["liver0","liver1","liver2","liver3","liver4","liver5","liver6","liver7","btnStart"];
+		
+		this.height = 720;
+		this.width = 1280;
+		this.elementsContent = [this._Rect1_i(),this._Group6_i()];
+	}
+	var _proto = gameStartSetting.prototype;
+
+	_proto._Rect1_i = function () {
+		var t = new eui.Rect();
+		t.fillColor = 0xECECEC;
+		t.percentHeight = 100;
+		t.percentWidth = 100;
+		return t;
+	};
+	_proto._Group6_i = function () {
+		var t = new eui.Group();
+		t.percentHeight = 100;
+		t.percentWidth = 100;
+		t.layout = this._VerticalLayout2_i();
+		t.elementsContent = [this._Group1_i(),this._Label1_i(),this._Group4_i(),this.btnStart_i(),this._Group5_i()];
+		return t;
+	};
+	_proto._VerticalLayout2_i = function () {
+		var t = new eui.VerticalLayout();
+		t.horizontalAlign = "center";
+		t.verticalAlign = "middle";
+		return t;
+	};
+	_proto._Group1_i = function () {
+		var t = new eui.Group();
+		t.percentHeight = 5;
+		t.width = 0;
+		t.x = 885;
+		t.y = 690;
+		return t;
+	};
+	_proto._Label1_i = function () {
+		var t = new eui.Label();
+		t.horizontalCenter = 0;
+		t.scaleX = 1;
+		t.scaleY = 1;
+		t.text = "拖动标签分配Liver操作顺序";
+		t.textColor = 0x2E2A2A;
+		t.top = 20;
+		t.x = 456.99999999999994;
+		t.y = 19.999999999999993;
+		return t;
+	};
+	_proto._Group4_i = function () {
+		var t = new eui.Group();
+		t.percentHeight = 100;
+		t.percentWidth = 100;
+		t.layout = this._VerticalLayout1_i();
+		t.elementsContent = [this._Group2_i(),this._Group3_i()];
+		return t;
+	};
+	_proto._VerticalLayout1_i = function () {
+		var t = new eui.VerticalLayout();
+		return t;
+	};
+	_proto._Group2_i = function () {
+		var t = new eui.Group();
+		t.percentHeight = 100;
+		t.percentWidth = 100;
+		t.layout = this._HorizontalLayout1_i();
+		t.elementsContent = [this.liver0_i(),this.liver1_i(),this.liver2_i(),this.liver3_i()];
+		return t;
+	};
+	_proto._HorizontalLayout1_i = function () {
+		var t = new eui.HorizontalLayout();
+		t.gap = 20;
+		t.horizontalAlign = "center";
+		t.verticalAlign = "middle";
+		return t;
+	};
+	_proto.liver0_i = function () {
+		var t = new PlayerIcon();
+		this.liver0 = t;
+		t.height = 250;
+		t.width = 200;
+		return t;
+	};
+	_proto.liver1_i = function () {
+		var t = new PlayerIcon();
+		this.liver1 = t;
+		t.height = 250;
+		t.width = 200;
+		return t;
+	};
+	_proto.liver2_i = function () {
+		var t = new PlayerIcon();
+		this.liver2 = t;
+		t.height = 250;
+		t.width = 200;
+		return t;
+	};
+	_proto.liver3_i = function () {
+		var t = new PlayerIcon();
+		this.liver3 = t;
+		t.height = 250;
+		t.width = 200;
+		return t;
+	};
+	_proto._Group3_i = function () {
+		var t = new eui.Group();
+		t.percentHeight = 100;
+		t.percentWidth = 100;
+		t.layout = this._HorizontalLayout2_i();
+		t.elementsContent = [this.liver4_i(),this.liver5_i(),this.liver6_i(),this.liver7_i()];
+		return t;
+	};
+	_proto._HorizontalLayout2_i = function () {
+		var t = new eui.HorizontalLayout();
+		t.gap = 20;
+		t.horizontalAlign = "center";
+		t.verticalAlign = "middle";
+		return t;
+	};
+	_proto.liver4_i = function () {
+		var t = new PlayerIcon();
+		this.liver4 = t;
+		t.height = 250;
+		t.width = 200;
+		return t;
+	};
+	_proto.liver5_i = function () {
+		var t = new PlayerIcon();
+		this.liver5 = t;
+		t.height = 250;
+		t.width = 200;
+		return t;
+	};
+	_proto.liver6_i = function () {
+		var t = new PlayerIcon();
+		this.liver6 = t;
+		t.height = 250;
+		t.width = 200;
+		return t;
+	};
+	_proto.liver7_i = function () {
+		var t = new PlayerIcon();
+		this.liver7 = t;
+		t.height = 250;
+		t.width = 200;
+		return t;
+	};
+	_proto.btnStart_i = function () {
+		var t = new eui.Button();
+		this.btnStart = t;
+		t.bottom = 40;
+		t.horizontalCenter = 0;
+		t.label = "开始游戏";
+		t.scaleX = 1;
+		t.scaleY = 1;
+		t.x = 560;
+		t.y = 640;
+		return t;
+	};
+	_proto._Group5_i = function () {
+		var t = new eui.Group();
+		t.percentHeight = 5;
+		t.width = 0;
+		t.x = 885;
+		t.y = 690;
+		return t;
+	};
+	return gameStartSetting;
 })(eui.Skin);generateEUI.paths['resource/eui_skins/itemlist.exml'] = window.skins.itemlist = (function (_super) {
 	__extends(itemlist, _super);
 	function itemlist() {
@@ -3827,6 +4393,90 @@ window.skins=window.skins||{};
 		return t;
 	};
 	return playerselectpanel;
+})(eui.Skin);generateEUI.paths['resource/eui_skins/playerstartselect.exml'] = window.skins.playerstartselect = (function (_super) {
+	__extends(playerstartselect, _super);
+	function playerstartselect() {
+		_super.call(this);
+		this.skinParts = ["img","pcontainer"];
+		
+		this.height = 250;
+		this.width = 200;
+		this.elementsContent = [this._Rect1_i(),this.img_i()];
+		this.pcontainer_i();
+		
+		this._Rect2_i();
+		
+		this._Label1_i();
+		
+		this.states = [
+			new eui.State ("usable",
+				[
+					new eui.AddItems("pcontainer","",1,"")
+				])
+			,
+			new eui.State ("disable",
+				[
+					new eui.AddItems("_Rect2","",1,""),
+					new eui.AddItems("_Label1","",1,"")
+				])
+		];
+	}
+	var _proto = playerstartselect.prototype;
+
+	_proto._Rect1_i = function () {
+		var t = new eui.Rect();
+		t.fillColor = 0xCECECE;
+		t.percentHeight = 100;
+		t.percentWidth = 100;
+		return t;
+	};
+	_proto.img_i = function () {
+		var t = new eui.Image();
+		this.img = t;
+		t.height = 200;
+		t.width = 200;
+		t.x = 0;
+		t.y = 0;
+		return t;
+	};
+	_proto.pcontainer_i = function () {
+		var t = new eui.Group();
+		this.pcontainer = t;
+		t.height = 50;
+		t.width = 200;
+		t.x = 0;
+		t.y = 200;
+		t.layout = this._VerticalLayout1_i();
+		return t;
+	};
+	_proto._VerticalLayout1_i = function () {
+		var t = new eui.VerticalLayout();
+		t.horizontalAlign = "center";
+		t.verticalAlign = "middle";
+		return t;
+	};
+	_proto._Rect2_i = function () {
+		var t = new eui.Rect();
+		this._Rect2 = t;
+		t.fillAlpha = 0.5;
+		t.fillColor = 0xCECECE;
+		t.percentHeight = 100;
+		t.percentWidth = 100;
+		t.x = 0;
+		t.y = 0;
+		return t;
+	};
+	_proto._Label1_i = function () {
+		var t = new eui.Label();
+		this._Label1 = t;
+		t.bold = true;
+		t.horizontalCenter = 0;
+		t.text = "待更新";
+		t.textColor = 0x383636;
+		t.verticalCenter = 0;
+		return t;
+	};
+	return playerstartselect;
 })(eui.Skin);generateEUI.paths['resource/eui_skins/positiveskill.exml'] = window.skins.positiveskill = (function (_super) {
 	__extends(positiveskill, _super);
 	function positiveskill() {
@@ -4231,6 +4881,101 @@ window.skins=window.skins||{};
 		return t;
 	};
 	return subscribe;
+})(eui.Skin);generateEUI.paths['resource/eui_skins/titlePage.exml'] = window.skins.titlePage = (function (_super) {
+	__extends(titlePage, _super);
+	function titlePage() {
+		_super.call(this);
+		this.skinParts = ["img1","img2","btnStart","btnDes"];
+		
+		this.height = 720;
+		this.width = 1280;
+		this.elementsContent = [this._Rect1_i(),this.img1_i(),this.img2_i(),this._Group1_i(),this.btnStart_i(),this.btnDes_i()];
+	}
+	var _proto = titlePage.prototype;
+
+	_proto._Rect1_i = function () {
+		var t = new eui.Rect();
+		t.fillColor = 0xECECEC;
+		t.percentHeight = 100;
+		t.percentWidth = 100;
+		return t;
+	};
+	_proto.img1_i = function () {
+		var t = new eui.Image();
+		this.img1 = t;
+		t.anchorOffsetX = 400;
+		t.anchorOffsetY = 180;
+		t.height = 360;
+		t.horizontalCenter = -300;
+		t.source = "title_nazono_png";
+		t.top = 20;
+		t.width = 400;
+		return t;
+	};
+	_proto.img2_i = function () {
+		var t = new eui.Image();
+		this.img2 = t;
+		t.height = 360;
+		t.horizontalCenter = 300;
+		t.rotation = 30;
+		t.source = "icons_json#2434logo";
+		t.top = -58;
+		t.width = 400;
+		return t;
+	};
+	_proto._Group1_i = function () {
+		var t = new eui.Group();
+		t.height = 200;
+		t.percentWidth = 100;
+		t.top = 120;
+		t.x = 0;
+		t.elementsContent = [this._Rect2_i(),this._Label1_i()];
+		return t;
+	};
+	_proto._Rect2_i = function () {
+		var t = new eui.Rect();
+		t.fillAlpha = 0.5;
+		t.fillColor = 0xECECEC;
+		t.percentHeight = 100;
+		t.percentWidth = 100;
+		t.scaleX = 1;
+		t.scaleY = 1;
+		t.y = 0;
+		return t;
+	};
+	_proto._Label1_i = function () {
+		var t = new eui.Label();
+		t.bold = true;
+		t.percentWidth = 100;
+		t.size = 80;
+		t.text = "NIJISANJI大富翁";
+		t.textAlign = "center";
+		t.textColor = 0x423939;
+		t.x = 0;
+		t.y = 59;
+		return t;
+	};
+	_proto.btnStart_i = function () {
+		var t = new eui.Button();
+		this.btnStart = t;
+		t.height = 85.09;
+		t.label = "开始游戏";
+		t.width = 271.89;
+		t.x = 492;
+		t.y = 473;
+		return t;
+	};
+	_proto.btnDes_i = function () {
+		var t = new eui.Button();
+		this.btnDes = t;
+		t.height = 85.09;
+		t.label = "玩法简介";
+		t.width = 271.89;
+		t.x = 492;
+		t.y = 598.23;
+		return t;
+	};
+	return titlePage;
 })(eui.Skin);generateEUI.paths['resource/eui_skins/vrbtn.exml'] = window.skins.vrbtn = (function (_super) {
 	__extends(vrbtn, _super);
 	function vrbtn() {
