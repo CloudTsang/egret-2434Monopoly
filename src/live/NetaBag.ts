@@ -19,7 +19,7 @@ class NetaBag {
 
 	public test(){
 		const jsonFile = ['neta_spec_1_json', 'netas_daily_1_json', 'netas_game_1_json',
-		'netas_present_1_json', 'netas_song_1_json',
+						'netas_present_1_json', 'netas_song_1_json',
 						'device_1_json',
 						'device_2_json',
 						'device_spec_json']

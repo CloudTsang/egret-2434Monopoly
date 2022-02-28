@@ -9,6 +9,6 @@
 		<e:Rect percentWidth="100" percentHeight="100" fillColor="0xECECEC" scaleX="1" scaleY="1" fillAlpha="0.5" y="0"/>
 		<e:Label text="NIJISANJI大富翁" x="0" y="59" textColor="0x423939" bold="true" size="80" percentWidth="100" textAlign="center"/>
 	</e:Group>
-	<e:Button id="btnStart" label="开始游戏" x="492" y="473" width="271.89" height="85.09"/>
-	<e:Button id="btnDes" label="玩法简介" x="492" y="598.23" width="271.89" height="85.09"/>
+	<e:Button id="btnStart" label="开始游戏" x="492" y="451.693" width="271.89" height="85.09"/>
+	<e:Button id="btnDes" label="玩法简介" x="492" y="570.367" width="271.89" height="85.09"/>
 </e:Skin>

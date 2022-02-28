@@ -31,6 +31,7 @@ class WorldController {
 		this.stageMode = [true,true,true,true]
 		// this.stageMode = [false,false,false,false]
 		this.curTurn = 1
+		window['testPlay'] = ()=>{this.testPlay()}
 	}
 
 	public initMap(){
@@ -517,5 +518,10 @@ class WorldController {
 	}
 	private get chessCurIndex(){
 		return this.chessCellIndexes[this.currentPlayer]
+	}
+
+	public testPlay(){
+		console.log(this, this.players, this.currentPlayer)
+		this.curPlayer.testPlay()
 	}
 }

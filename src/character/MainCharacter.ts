@@ -66,7 +66,6 @@ class MainCharacter extends Liver{
 		this.stream = []
 		this.buffs = []
 		this.netaBag = new NetaBag(this)
-		this.netaBag.test()
 
 		//test
 		// this.getBuff(new Enjo(this, 3))
@@ -80,6 +79,10 @@ class MainCharacter extends Liver{
 		// this.npc['kaede'] = 4
 		// this.npc['rin'] = 3
 
+	}
+
+	public testPlay(){
+		this.netaBag.test()
 	}
 
 	public checkIfSkillsTriggered(p:string, v:number=0):SkillsTrigger{

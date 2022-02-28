@@ -4962,7 +4962,7 @@ window.skins=window.skins||{};
 		t.label = "开始游戏";
 		t.width = 271.89;
 		t.x = 492;
-		t.y = 473;
+		t.y = 451.693;
 		return t;
 	};
 	_proto.btnDes_i = function () {
@@ -4972,7 +4972,7 @@ window.skins=window.skins||{};
 		t.label = "玩法简介";
 		t.width = 271.89;
 		t.x = 492;
-		t.y = 598.23;
+		t.y = 570.367;
 		return t;
 	};
 	return titlePage;
