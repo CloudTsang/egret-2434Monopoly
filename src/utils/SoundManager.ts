@@ -5,6 +5,7 @@ class SoundManager {
 	private _bgs:{[key:string]:egret.Sound}
 	private _curBgmName:string
 	private _curLoop:boolean
+	private _isPausing:boolean
 	private static _ins:SoundManager;
 
 	public constructor() {
@@ -46,6 +47,7 @@ class SoundManager {
 		this._bgm = RES.getRes(name)
 		this._bgm.type = egret.Sound.MUSIC;
 		try{
+			if(this._isPausing)return
 			this._bgmChannel = this._bgm.play(0, loops?0:1);
 		}catch(err){
 			console.error(err)
@@ -61,16 +63,16 @@ class SoundManager {
 			s = this._bgs[name]
 		}
 		if(!s)return
+		if(this._isPausing)return
 		s.play(0,1)
 	}
 
 	public resume(){
+		this._isPausing = false
 		if(!this._bgm || !this._bgmChannel){
 			return;	
 		}
-
 		this._bgmChannel = this._bgm.play(this._bgmPosition, 1);
-
 		this._bgmChannel.addEventListener(egret.Event.SOUND_COMPLETE, this.onResumeOver, this)
 
 	}
@@ -84,6 +86,7 @@ class SoundManager {
 	}
 
 	public pause(){
+		this._isPausing = true
 		if(this._bgm && this._bgmChannel){	
 			this._bgmPosition = this._bgmChannel.position
 			this._bgmChannel.stop();	

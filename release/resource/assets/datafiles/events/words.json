@@ -1,0 +1,33 @@
+{
+    "des":"用语集",
+    "propName":{
+        "commu":"交流力",
+        "talk":"杂谈力",
+        "strength":"体能",
+        "sense":"品位",
+        "sing":"歌唱力",
+        "game":"游戏力",
+        "tech":"技术力"
+    },
+    "log_prop":{
+        "BIG_SUCCESS":"大幅地",
+        "SUCCESS":"明显地",
+        "NORMAL":"坚实地",
+        "FAIL":"稍微",
+        "BIG_FAIL":"也许"
+    },
+    "log_neta":{
+        "BIG_SUCCESS":"斯巴拉西的",
+        "SUCCESS":"有趣的",
+        "NORMAL":"普通的",
+        "FAIL":"微妙的",
+        "BIG_FAIL":"只是在街上瞎逛，什么事情都没发生"
+    },
+    "log_baito":{
+        "BIG_SUCCESS":["大幅地","厚厚一叠的"],
+        "SUCCESS":["明显地","稍微多一些的"],
+        "NORMAL":["坚实地","一如既往的"],
+        "FAIL":["稍微","薄薄几张的"],
+        "BIG_FAIL":["也许","少得可怜的"]
+    }
+}

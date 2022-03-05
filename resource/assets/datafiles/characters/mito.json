@@ -64,7 +64,7 @@
       "effect": [
         {
           "type": "TEMP_STAT_CHANGE",
-          "data": "{mc.game}-2,{mc.tech}+1,{mc.sing}-1,{mc.strength}-2"
+          "data": "{mc.game}-2,{mc.tech}-1,{mc.sing}-1,{mc.strength}-2"
         }
       ]
     },
@@ -90,7 +90,7 @@
       "type": "HIDDEN",
       "iconUrl": "",
       "phrase": "BEFORE_STREAM",
-      "rate": "0.15",
+      "rate": "0.2",
       "req":"'{stream.ty}'=='TALK'",
       "effect": [
         {

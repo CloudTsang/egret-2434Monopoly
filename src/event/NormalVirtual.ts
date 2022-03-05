@@ -37,8 +37,11 @@ class NormalVirtual extends MapEvent {
 		}
 		let log:string = ''
 
-		let fn:()=>void
-		r = RollResult.BIG_SUCCESS
+		let fn:()=>void = ()=>{
+					this.onLogTap()
+				}
+		//test
+		// r = RollResult.BIG_SUCCESS
 		switch(r){
 			case RollResult.BIG_SUCCESS:
 				//全部liver好感度上升1，且获得杂谈neta 
@@ -53,7 +56,6 @@ class NormalVirtual extends MapEvent {
 						this._el && this._el.dispose()
 						np.addEventListener(GameEvents.NETA_INFO_FINISH, this.onLogTap, this)
 					}
-					
 				}
 				break
 			case RollResult.SUCCESS:
@@ -68,12 +70,14 @@ class NormalVirtual extends MapEvent {
 				log = this.selections[index].evt[2].log
 				const n = Math.floor(Math.random()*livers.length)
 				mc.npc[livers[n].ID] += 1
+				log = log.replace("{result}", livers[n].name)
 				break
 			case RollResult.FAIL:
 				//随机单个liver好感度少许上升0.5
 				log = this.selections[index].evt[1].log
 				const m = Math.floor(Math.random()*livers.length)
 				mc.npc[livers[m].ID] += 0.5
+				log = log.replace("{result}", livers[n].name)
 				break
 			case RollResult.BIG_FAIL:
 				//全部liver好感度上升0.1
@@ -144,23 +148,8 @@ class NormalVirtual extends MapEvent {
 	}
 
 	private getLog(oriLog:string, r:RollResult, prop:string=''){
-		switch(prop){
-			case "commu":
-				return oriLog.replace("{result}", "交流力")
-			case "talk":
-				return oriLog.replace("{result}", "杂谈力")
-			case "strength":
-				return oriLog.replace("{result}", "体力")
-			case "sense":
-				return oriLog.replace("{result}", "品位")
-			case "sing":
-				return oriLog.replace("{result}", "歌唱力")
-			case "game":
-				return oriLog.replace("{result}", "游戏力")
-			case "tech":
-				return oriLog.replace("{result}", "技术力")	
-		}
-		return `err : ${oriLog}_${r}_${prop}`
+		let words = RES.getRes("words_json")
+		return oriLog.replace("{result}", words['propName'][prop])
 	}
 
 	private getUpRate(r:RollResult){

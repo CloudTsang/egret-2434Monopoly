@@ -68,7 +68,7 @@
       "type": "NEGATIVE",
       "iconUrl": "",
       "phrase": "BEFORE_STREAM",
-      "rate": "(1-{mc.tech}/10)",
+      "rate": "(1-{mc.tech}/10)/2",
       "effect": [
         {
           "type": "STAT_CHANGE",
@@ -83,7 +83,7 @@
       "type": "NEGATIVE",
       "iconUrl": "",
       "phrase": "BEFORE_STREAM",
-      "rate": "0.3",
+      "rate": "0.2",
       "effect": [
         {
           "type": "TEMP_STAT_CHANGE",

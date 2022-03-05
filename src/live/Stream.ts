@@ -345,22 +345,22 @@ class Stream extends egret.EventDispatcher{
 		let matchID = ''
 		switch(st.ty){
 			case StreamType.GAME:
-				rate += st.mc.game/100
+				rate += st.mc.game/10
 				matchID = 'StreamBuffGame'
 				break
 			case StreamType.TALK:
-				rate += st.mc.talk/100
+				rate += st.mc.talk/10
 				matchID = 'StreamBuffTalk'
 				break
 			case StreamType.SING:
-				rate += st.mc.sing/100
+				rate += st.mc.sing/10
 				matchID = 'StreamBuffSing'
 				break
 			case StreamType.PRESENT:
-				rate = 1.05 + st.mc.tech/100
+				rate = 1.25 + st.mc.tech/10
 				break
 		} 
-
+		rate += st.mc.strength/50
 		for(let buff of st.mc.buffs){
 			if(buff.ID == matchID){
 				rate += 0.2

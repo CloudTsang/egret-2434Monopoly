@@ -126,84 +126,26 @@ class NormalReal extends MapEvent{
 	private getLog(r:RollResult, oriLog:string, prop:string=''){
 		let tmp = ''
 		let tmp2 = ''
+		let words = RES.getRes("words_json")
 		switch(prop){
 			case "":
-				switch(r){
-					case RollResult.BIG_SUCCESS:
-						tmp = '大幅地'
-						break
-					case RollResult.SUCCESS:
-						tmp = "明显地"
-						break
-					case RollResult.NORMAL:
-						tmp = "坚实地"
-						break
-					case RollResult.FAIL:
-						tmp = "稍微"
-						break
-					case RollResult.BIG_FAIL:
-						tmp = "也许"
-						break
-				}
+				tmp = words['log_prop'][r as string]
 				return oriLog.replace("{result}", tmp)
 			case "neta":
-				switch(r){
-					case RollResult.BIG_SUCCESS:
-						tmp = '斯巴拉西的'
-						break
-					case RollResult.SUCCESS:
-						tmp = "有趣的"
-						break
-					case RollResult.NORMAL:
-						tmp = "普通的"
-						break
-					case RollResult.FAIL:
-						tmp = "微妙的"
-						break
-					case RollResult.BIG_FAIL:
-						return "只是在街上瞎逛，什么事情都没发生"	
+				tmp = words['log_neta'][r as string]
+				if(r == RollResult.BIG_FAIL){
+					return tmp
 				}
 				return oriLog.replace("{result}", tmp)
 			
 			case "commu|money":
-				switch(r){
-					case RollResult.BIG_SUCCESS:
-						tmp = '大幅地'
-						tmp2 = "厚厚一叠的"
-						break
-					case RollResult.SUCCESS:
-						tmp = "明显地"
-						tmp2 = '稍微多一些的'
-						break
-					case RollResult.NORMAL:
-						tmp = "坚实地"
-						tmp2 = "一如既往的"
-						break
-					case RollResult.FAIL:
-						tmp = "稍微"
-						tmp2 = "薄薄几张的"
-						break
-					case RollResult.BIG_FAIL:
-						tmp = "也许"
-						tmp2 = "少得可怜的"
-						break
-				}
+				const obj1 = words['log_baito'][r as string]
+				tmp = obj1[0]
+				tmp2 = obj1[1]
 				return oriLog.replace("{result1}", tmp).replace("{result0}", tmp2)
 			//'commu','talk','strength','sense','sing','game','tech'
-			case "commu":
-				return oriLog.replace("{result}", "交流力")
-			case "talk":
-				return oriLog.replace("{result}", "杂谈力")
-			case "strength":
-				return oriLog.replace("{result}", "体力")
-			case "sense":
-				return oriLog.replace("{result}", "品位")
-			case "sing":
-				return oriLog.replace("{result}", "歌唱力")
-			case "game":
-				return oriLog.replace("{result}", "游戏力")
-			case "tech":
-				return oriLog.replace("{result}", "技术力")
+			default:
+				return oriLog.replace("{result}", words['propName'][prop])
 				
 		}
 

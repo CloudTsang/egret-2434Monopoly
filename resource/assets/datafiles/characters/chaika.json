@@ -61,7 +61,7 @@
       "type": "NEGATIVE",
       "iconUrl": "",
       "phrase": "AFTER_STREAM",
-      "rate": "1",
+      "rate": "0.1",
       "effect": [
         {
           "type": "GET_BUFF",
