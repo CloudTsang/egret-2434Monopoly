@@ -77,7 +77,7 @@ class NormalVirtual extends MapEvent {
 				log = this.selections[index].evt[1].log
 				const m = Math.floor(Math.random()*livers.length)
 				mc.npc[livers[m].ID] += 0.5
-				log = log.replace("{result}", livers[n].name)
+				log = log.replace("{result}", livers[m].name)
 				break
 			case RollResult.BIG_FAIL:
 				//全部liver好感度上升0.1

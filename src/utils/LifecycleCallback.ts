@@ -25,7 +25,6 @@ class LifecycleCallback{
 
     private static onPause(){     
         for(let i in LifecycleCallback.map){
-            console.log(i)
             LifecycleCallback.map[i].onPause();
         }
     }
