@@ -4,5 +4,5 @@ class WorldData {
 
 	public static cellSize = 160
 	/**棋盘格数 */
-	public static cellNum = 6
+	public static cellNum = 10
 }
