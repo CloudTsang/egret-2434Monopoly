@@ -9,37 +9,34 @@ class NormalReal extends MapEvent{
 		this.dispatchEvent(new egret.Event(GameEvents.EVENT_START))
 
 		const i = e.data.index
-
-		const {n, r} = Roll.random(this._mc)
+		const dataStr = this.selections[i].data
+		let log = this.selections[i].log
+		const {n, r} = Roll.random(this._mc, dataStr=="neta"?"sense":"luck")
+		let rate = this.getUpRate(r)
 		/**roll后马上执行的方法 */
 		let fn:()=>void = null
 		/**点击对话框后执行的方法 */
 		let fn2:()=>void = null
-
+		let getNeta = null
 		egret.Tween.get(this)
 		.wait(200)
 		.call(()=>{
 			WorldMap.showRollNum(n, r)
 		})
 		.wait(500)
-		.call(()=>{
-			const dataStr = this.selections[i].data
-			
-			let log = this.selections[i].log
-			let rate = this.getUpRate(r)
+		.call(()=>{	
 			switch(dataStr){
 				case "commu|money":		
 					const rate2 = rate * 10000 * (1 + this._mc.strength/10)							
 					log = this.getLog(r, log, dataStr)
-					fn2 = ()=>{
+					fn = () =>{
 						this._mc.data.commu = rate
 						this._mc.money += rate2
-						setTimeout(()=>{this.onLogTap()}, 200)
 					}
+					getNeta = this.checkIfGetNeta(this.selections[i].evt, r)
 					break
 				case "neta":
-					log = this.getLog(r, log, 'neta')
-					let getNeta = null
+					log = this.getLog(r, log, 'neta')			
 					switch(r){
 						case RollResult.BIG_SUCCESS:
 							getNeta = NetaFactory.getNetaWhichStatBetween(9, -1)
@@ -48,57 +45,75 @@ class NormalReal extends MapEvent{
 							getNeta = NetaFactory.getNetaWhichStatBetween(6, -1)
 							break
 						case RollResult.NORMAL:
-							getNeta = NetaFactory.getNetaWhichStatBetween(3, 9)
+							getNeta = NetaFactory.getNetaWhichStatBetween(6, 9)
 							break
 						case RollResult.FAIL:
-							getNeta = NetaFactory.getNetaWhichStatBetween(-1, 3)
+							getNeta = NetaFactory.getNetaWhichStatBetween(-1, 6)
 							break
 						case RollResult.BIG_FAIL:				
-						getNeta = NetaFactory.getNetaWhichStatBetween(-1, 3)			
+							getNeta = NetaFactory.getNetaWhichStatBetween(-1, 3)			
 							break
-					}
-					fn2 = ()=>{
-						this._mc.netaBag.modifyNeta(getNeta, 'get', true)
-						this._el.dispose()
-						this._el = null
-						setTimeout(()=>{
-							this._mc = null
-							this.dispatchEvent(new egret.Event(GameEvents.EVENT_FINISH))
-						}, 3000)
 					}
 					break
 				case "random":
 					const arr = ['commu','talk','strength','sense','sing','game','tech']
-					const i = Roll.random2(arr.length)
-					const prop = arr[i]
+					const i2 = Roll.random2(arr.length)
+					const prop = arr[i2]
 					if(rate == 0) rate = 0.5
 					log = this.getLog(r, log, prop)
 					fn = ()=>{
 						this._mc.data[prop] += rate
 					}
-					fn2 = ()=>{
-						this.onLogTap()
-					}
 					break
 				default:
 					log = this.getLog(r, log, '')
+					getNeta = this.checkIfGetNeta(this.selections[i].evt, r)
 					fn=()=>{
 						this._mc.data[dataStr] += rate
 					}
-					fn2 = ()=>{
-						this.onLogTap()
-					}
 					break
 			}
-			
+
+
+			fn2 = ()=>{
+				if(getNeta){
+					this._el.dispose()
+					this._el = null
+					const ngp:NetaGetPanel = this._mc.netaBag.modifyNeta(getNeta, 'get', true)
+					ngp.once(eui.UIEvent.REMOVED_FROM_STAGE, (evt)=>{
+						this._mc = null
+						this.dispatchEvent(new egret.Event(GameEvents.EVENT_FINISH))
+					}, this)
+				}else{
+					this.onLogTap()
+				}
+			}
+
 			const evtLog = WorldMap.showEvtLog(log)
 			this._el = evtLog
 			fn && fn()
-			evtLog.addEventListener("touchTap", (e)=>{
+			evtLog.once("touchTap", (e)=>{
 				fn2 && fn2()
-				
 			}, this)
 		})
+	}
+
+	protected checkIfGetNeta(netas:any[], rollR:RollResult){
+		if(!netas) return null
+		const {n, r} = Roll.random(this._mc, "sense")
+		if(r == RollResult.SUCCESS || r == RollResult.BIG_SUCCESS){
+			switch(rollR){
+				case RollResult.BIG_SUCCESS:
+				case RollResult.SUCCESS:
+					return NetaFactory.getNetaFromObj(netas[0].data)
+				case RollResult.NORMAL:
+					return NetaFactory.getNetaFromObj(netas[1].data)
+				case RollResult.FAIL:
+				case RollResult.BIG_FAIL:
+					return NetaFactory.getNetaFromObj(netas[2].data)
+			}
+		}	
+		return null
 	}
 
 	protected onLogTap(e:any=null){

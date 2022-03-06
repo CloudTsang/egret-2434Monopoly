@@ -39,7 +39,6 @@ class NetaFactory {
 		if(obj['class']){
 			const fn2 = egret.getDefinitionByName(obj['class'])
 			if(fn2) fn = fn2
-			
 		}
 		return new fn(obj)
 	}

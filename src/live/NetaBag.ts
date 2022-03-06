@@ -92,11 +92,17 @@ class NetaBag {
 	public modifyNeta(n:Neta, ty:"get"|"use", showInfo:boolean=false, num:number=1, checkEffect:boolean=true):any{
 		if(!n)return
 		let fn:(n:Neta, num:number)=>void
-		if(ty == 'get'){
-			this.add(n, num)
-		}else if(ty == 'use'){
-			this.minus(n, num)
+		try{
+			if(ty == 'get'){
+				this.add(n, num)
+			}else if(ty == 'use'){
+				this.minus(n, num)
+			}
+		}catch(err){
+			console.log("================")
+			console.log("modifyNeta Failed : ", n)
 		}
+		
 
 		let np = null
 		if(ty == 'get' && showInfo){
