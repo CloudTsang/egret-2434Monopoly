@@ -1,0 +1,29 @@
+{
+  "name": "2434Monopoly",
+  "version": "1.0.0",
+  "description": "2434大富翁",
+  "main": "main.js",
+  "author": "ChiWan",
+  "license": "MIT",
+  "build":{
+    "win": {
+        "icon": "favicon.ico",
+        "target": [
+            {
+                "target": "nsis",
+                "arch": [
+                    "ia32"
+                ]
+            }
+        ]
+    }
+  },
+  "scripts": {
+    "start": "electron .",
+    "electron:client": "cross-env electron ./app/",
+    "electron:copy:electron": "cpx ./app/**/*.js ./build",
+    "electron:build": "npm run electron:copy:electron",
+    "pack:win": "npm run electron:build && electron-builder --win",
+    "package":"electron-packager . 2434Monopoly --platform=win32 --arch=x64 --icon=favicon.ico --out=./out --asar --app-version=1.0.0 --overwrite --ignore=node_modules --electron-version 17.1.0"
+  }
+}
