@@ -29,18 +29,24 @@ class NetaFactory {
 	}
 
 	public static getNetaFromObj(obj:any):Neta{
-		let fn = Neta
-		if(obj['type'] == 'device'){
-			fn = Device
-		}else if(obj['type'] == 'song'){
-			fn = SongNeta
+		try{
+			let fn = Neta
+			if(obj['type'] == 'device'){
+				fn = Device
+			}else if(obj['type'] == 'song'){
+				fn = SongNeta
+			}
+			
+			if(obj['class']){
+				const fn2 = egret.getDefinitionByName(obj['class'])
+				if(fn2) fn = fn2
+			}
+			return new fn(obj)
+		}catch(err){
+			console.log(err)
+			return null
 		}
 		
-		if(obj['class']){
-			const fn2 = egret.getDefinitionByName(obj['class'])
-			if(fn2) fn = fn2
-		}
-		return new fn(obj)
 	}
 
 	/**获取总值在范围内的杂谈neta */

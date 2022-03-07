@@ -72,7 +72,7 @@ class MapEvent extends BaseObj{
 
 		if(this.log){
 			const lp = WorldMap.showEvtLog(this.log)
-			lp.addEventListener("touchTap", this.onLogTap, this)
+			lp.once("touchTap", this.onLogTap, this)
 		}
 		return null
 	}

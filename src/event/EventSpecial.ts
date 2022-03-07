@@ -21,7 +21,7 @@ class EventSpecial extends MapEvent{
 		const objs:any[] = RES.getRes(jsonArr[i])
 		i = Math.floor(Math.random()*objs.length)
 		//test
-		// const obj = objs[7]
+		// const obj = objs[3]
 		const obj = objs[i]
 		let fn = MapEvent
 		

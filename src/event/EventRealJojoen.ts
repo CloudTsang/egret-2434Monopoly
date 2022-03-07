@@ -9,7 +9,8 @@ class EventRealJojoen  extends MapEvent{
 		const ep = super.trigger(mc, cell) 
 		const cm = (ep as EvtPanel).customMenu
 		if(mc.money < 50000 || cell.npcs.length == 0){
-			//cm.setItemsDisable(1, true)
+			//test
+			cm.setItemsDisable(1, true)
 		}
 		if(mc.money < 10000){
 			cm.setItemsDisable(0, true)
@@ -42,7 +43,7 @@ class EventRealJojoen  extends MapEvent{
 		
 		const  [logIndex, netaIndex, buffTime, favor] = this.getRollData(r)
 		const log = this.selections[0].roll.data[logIndex].log
-		const netaData = this.netas[netaIndex]
+		const netaData = netaIndex!=-1?this.netas[netaIndex]:null
 		
 		egret.Tween.get(this)
 		.wait(100)
@@ -56,13 +57,20 @@ class EventRealJojoen  extends MapEvent{
 			const el = WorldMap.showEvtLog(log)
 			el.addEventListener("touchTap", (e)=>{
 				el.dispose()
-				const neta = NetaFactory.getNetaFromObj(netaData)
-				const ngp = mc.netaBag.modifyNeta(neta, 'get', true)
-				ngp.addEventListener(GameEvents.NETA_INFO_FINISH, (e)=>{
+				if(netaData){
+					const neta = NetaFactory.getNetaFromObj(netaData)
+					const ngp = mc.netaBag.modifyNeta(neta, 'get', true)
+					ngp.addEventListener(GameEvents.NETA_INFO_FINISH, (e)=>{
+						this._mc = null
+						this._cell = null
+						this.dispatchEvent(new egret.Event(GameEvents.EVENT_FINISH))
+					}, this)
+				}else{
 					this._mc = null
 					this._cell = null
 					this.dispatchEvent(new egret.Event(GameEvents.EVENT_FINISH))
-				}, this)
+				}
+				
 			}, this)
 		})		
 	}
@@ -71,7 +79,7 @@ class EventRealJojoen  extends MapEvent{
 		this.dispatchEvent(new egret.Event(GameEvents.EVENT_START))
 		const mc = this._mc
 		let {n, r} = Roll.random(mc)
-		// r = RollResult.BIG_SUCCESS
+		// r = RollResult.FAIL
 		if(r != RollResult.BIG_SUCCESS){
 			mc.money -= 50000
 		}

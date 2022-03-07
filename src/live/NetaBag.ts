@@ -89,7 +89,7 @@ class NetaBag {
 	 * @param ty 是获得还是使用
 	 * @param showInfo 是否显示获得信息
 	 */
-	public modifyNeta(n:Neta, ty:"get"|"use", showInfo:boolean=false, num:number=1, checkEffect:boolean=true):any{
+	public modifyNeta(n :Neta, ty:"get"|"use", showInfo:boolean=false, num:number=1, checkEffect:boolean=true):any{
 		if(!n)return
 		let fn:(n:Neta, num:number)=>void
 		try{

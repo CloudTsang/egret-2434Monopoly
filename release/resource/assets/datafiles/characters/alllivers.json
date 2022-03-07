@@ -661,5 +661,23 @@
     "name": "来栖夏芽",
     "des": "",
     "iconUrl": "livers5_json#natsume"
+  },
+  {
+    "ID": "myzm",
+    "name": "黛灰",
+    "des": "",
+    "iconUrl": "livers5_json#myzm"
+  },
+  {
+    "ID": "ars",
+    "name": "阿露丝",
+    "des": "",
+    "iconUrl": "livers5_json#ars"
+  },
+   {
+    "ID": "uiha",
+    "name": "相羽初叶",
+    "des": "",
+    "iconUrl": "livers5_json#uiha"
   }
 ]

@@ -330,7 +330,7 @@
         "cd":1,
         "songReq":1,    
         "data":{
-            "times":-1,
+            "times":1,
             "pop":1,
             "safe":5,
             "meme":2,
@@ -346,7 +346,7 @@
         "cd":1,
         "songReq":1,     
         "data":{
-            "times":-1,
+            "times":1,
             "pop":1,
             "safe":5,
             "meme":4,
@@ -363,7 +363,7 @@
         "cd":3,
         "songReq":5,       
         "data":{
-            "times":-1,
+            "times":1,
             "pop":2,
             "safe":4,
             "meme":4,
@@ -379,7 +379,7 @@
         "cd":3,
         "songReq":5,    
         "data":{
-            "times":-1,
+            "times":1,
             "pop":3,
             "safe":4,
             "meme":2,
@@ -395,7 +395,7 @@
         "cd":2,
         "songReq":1,    
         "data":{
-            "times":-1,
+            "times":1,
             "pop":2,
             "safe":3,
             "meme":3
@@ -453,13 +453,42 @@
         "iconUrl": "livers3_json#ngo",
 		"owner":"ngo",
         "des":"用了也能成为(天下无双)吗？",
-        "type":"spec",     
-        "iconUrl":"",
+        "type":"spec",  
         "data":{
             "times":1,
             "pop":1,
             "safe":4,
             "meme":5,
+            "long":false
+        }
+    },
+    {
+        "id":60,
+        "name":"霸王的《健身环》",
+        "iconUrl": "netaicons2_json#rfit",
+		"owner":"uiha",
+        "des":"任世宰的又一有力证据。",
+        "type":"game", 
+        "data":{
+            "times":1,
+            "pop":3,
+            "safe":3,
+            "meme":4,
+            "long":false
+        }
+    },
+    {
+        "id":61,
+        "name":"黑客的どーも",
+        "iconUrl": "livers5_json#myzm",
+		"owner":"myzm",
+        "des":"没有反应，只是一句问候。",
+        "type":"spec", 
+        "data":{
+            "times":1,
+            "pop":1,
+            "safe":3,
+            "meme":3,
             "long":false
         }
     }

@@ -23,7 +23,7 @@ class EventRealChurch  extends MapEvent{
 
 	protected wishHandler(){
 		this.dispatchEvent(new egret.Event(GameEvents.EVENT_START))
-		const n = Roll.random2(6)
+		const n = Roll.random2(6)+1
 		const log = this.selections[0].log
 		egret.Tween.get(this)
 		.wait(200)
@@ -33,9 +33,9 @@ class EventRealChurch  extends MapEvent{
 		.wait(1000)
 		.call(()=>{
 			const el = WorldMap.showEvtLog(log)
+			const buff = new LuckWish(this._mc, n)
+			this._mc.getBuff(buff)
 			el.addEventListener("touchTap", (e)=>{
-				const buff = new LuckWish(this._mc, n)
-				this._mc.getBuff(buff)
 				el.dispose()
 				this.dispatchEvent(new egret.Event(GameEvents.EVENT_FINISH))
 			}, this)
@@ -48,11 +48,11 @@ class EventRealChurch  extends MapEvent{
 		egret.Tween.get(this)
 		.wait(200)
 		.call(()=>{
+			const buff = new EnjoGuard(this._mc)
+			this._mc.removeBuff("Enjo")
+			this._mc.getBuff(buff)
 			const el = WorldMap.showEvtLog(log)
 			el.addEventListener("touchTap", (e)=>{
-				const buff = new EnjoGuard(this._mc)
-				this._mc.removeBuff("Enjo")
-				this._mc.getBuff(buff)
 				el.dispose()
 				this.dispatchEvent(new egret.Event(GameEvents.EVENT_FINISH))
 			}, this)
@@ -71,11 +71,29 @@ class EventRealChurch  extends MapEvent{
 		.call(()=>{
 			const el = WorldMap.showEvtLog(log)
 			el.addEventListener("touchTap", (e)=>{
-				mc.npc['sister']+=1
 				mc.anti -= 100
 				mc.money -= m
 				el.dispose()
-				this.dispatchEvent(new egret.Event(GameEvents.EVENT_FINISH))
+
+				const npcIDs:string[] = ['sister', 'myzm', 'kanae']
+				let npcObjs:NpcObj[] = []
+				for(let id of npcIDs){
+					mc.npc[id] += 1
+					for(let npc of Liver.allLivers){
+						if(npc.ID == id){
+							npcObjs.push({
+								...npc,
+								favor:mc.npc[npc.ID]
+							})
+						}
+					}
+				}
+				const np2:NpcPanel2 = WorldMap.showNpcPanel(npcObjs)
+				np2 && np2.once(eui.UIEvent.REMOVED_FROM_STAGE, (e)=>{
+					this.dispatchEvent(new egret.Event(GameEvents.EVENT_FINISH))
+				}, this)
+
+				
 			}, this)
 		})
 

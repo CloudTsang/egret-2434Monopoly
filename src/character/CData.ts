@@ -74,7 +74,7 @@ class CData {
 		 return this._money;
 	 }
 	 public set money(v : number) {
-		 if(v<0)return
+		 if(v<0) v=0
 		 if(this.moneyLock || this.allLock) return
 		 this._money = v;
 	 }

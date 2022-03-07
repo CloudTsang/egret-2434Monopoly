@@ -49,6 +49,7 @@ class SoundManager {
 		try{
 			if(this._isPausing)return
 			this._bgmChannel = this._bgm.play(0, loops?0:1);
+			this._bgmChannel.volume = 0.5
 		}catch(err){
 			console.error(err)
 		}	
@@ -73,6 +74,7 @@ class SoundManager {
 			return;	
 		}
 		this._bgmChannel = this._bgm.play(this._bgmPosition, 1);
+		this._bgmChannel.volume = 0.5
 		this._bgmChannel.addEventListener(egret.Event.SOUND_COMPLETE, this.onResumeOver, this)
 
 	}
@@ -82,6 +84,7 @@ class SoundManager {
 			return;	
 		}
 		this._bgmChannel = this._bgm.play(0, 0);
+		this._bgmChannel.volume = 0.5
 	
 	}
 

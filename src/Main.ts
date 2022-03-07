@@ -119,23 +119,13 @@ class Main extends egret.DisplayObjectContainer {
         bg.graphics.endFill()
         this.addChild(bg)
 
-    //    const cp = new CollaboPanel(["livers3_json#rion","livers3_json#rion",'livers3_json#rion','livers3_json#rion'])
-    //    cp.x = 100
-    //    cp.y = 100
-    //    this.addChild(cp)
-
-        // const lp = new EvtLog("hello");
-        // this.addChild(lp)
-
-        // return
-
-        // const dpanel = new DescriptPanel()
-        // dpanel.x = (stageW - dpanel.width)/2
-        // dpanel.y = (stageH - dpanel.height)/2
-        // this.addChild(dpanel)
-        // return
-
-        this.toTitle(null)
+        // this.toTitle(null)
+        this.toWorld({
+            data:{
+                //livers:[ 'mito_json']
+                livers:['mito_json', 'toya_json', 'rion_json', 'sasaki_json']
+            }
+        })
         return
 
     }
@@ -162,8 +152,8 @@ class Main extends egret.DisplayObjectContainer {
         this.addChild(playSelect)
     }
 
-    protected toWorld(e:egret.Event){
-         this.removeChild(this.currentScene)
+    protected toWorld(e:any){
+        if(this.currentScene) this.removeChild(this.currentScene)
 
         const mcs = e.data.livers//['mito_json', 'toya_json', 'rion_json', 'sasaki_json']
         if(!mcs)return

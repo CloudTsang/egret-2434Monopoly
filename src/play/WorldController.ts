@@ -162,11 +162,14 @@ class WorldController {
 				const ty2 = e.data.ty2
 				ctrller.menu && ctrller.map.removeMenu(ctrller.menu)
 				ctrller.stream = new Stream(mc, ctrller.curTurn, ty2, ctrller.cellDatas.getCell(ctrller.chessCurIndex).getNpc(mc.npc))
-				ctrller.stream.addEventListener(GameEvents.STREAM_END, this.onStreamEnd,this)
+				ctrller.stream.addEventListener(GameEvents.STREAM_END, ctrller.onStreamEnd,ctrller)
 
 				let menu = new StreamPreparePanel(mc.netaBag, ty2)
 				menu.addEventListener(GameEvents.STREAM_START, ctrller.onStreamStart, ctrller)
-				menu.addEventListener(GameEvents.MENU_CANCEL, ctrller.popMenu, ctrller)
+				menu.addEventListener(GameEvents.MENU_CANCEL, (e)=>{
+					ctrller._handling = false
+					ctrller.popMenu()
+				}, ctrller)
 
 				ctrller.stream.streamPreparePanel = menu
 				ctrller.pushMenu({data:menu})
@@ -214,16 +217,23 @@ class WorldController {
 	}
 
 	protected onEventFinish(e:egret.Event){
+		const cell = e.target as CellData
+		if(cell){
+			const cellEvt = cell.getEvent(this.stageMode[this.currentPlayer])
+			console.log(`${cellEvt.name}事件处理结束`)
+		}
 		this._handling = false
 		this.nextPlayer()
 	}
 
 	protected onStartPoint(e:any){
+		console.log("起点事件处理结束")
 		this.map.onStep(true, this.map)
 	}
 
 	protected onStartPointFinish(e:any){
-		this.map.onStep(true, this.map)
+		console.log("起点事件处理结束")
+		// this.map.onStep(true, this.map)
 		this.nextPlayer()
 	}
 

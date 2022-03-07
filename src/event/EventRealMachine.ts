@@ -54,7 +54,8 @@ class EventRealMachine  extends MapEvent{
 	private kickHandler(){
 		this.dispatchEvent(new egret.Event(GameEvents.EVENT_START))
 		let {n,r} = Roll.random(this._mc, "strength")
-		r = RollResult.BIG_FAIL
+		//test
+		// r = RollResult.BIG_SUCCESS
 		let fn:(e:any)=>void
 		let log:string
 		switch(r){
@@ -131,6 +132,8 @@ class EventRealMachine  extends MapEvent{
 	private bottomHandler(){
 		this.dispatchEvent(new egret.Event(GameEvents.EVENT_START))
 		let {n,r} = Roll.random(this._mc)
+		//test
+		// r = RollResult.BIG_SUCCESS
 		let fn:(e:any)=>void
 		let log:string
 		switch(r){
