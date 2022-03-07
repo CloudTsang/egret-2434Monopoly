@@ -119,13 +119,13 @@ class Main extends egret.DisplayObjectContainer {
         bg.graphics.endFill()
         this.addChild(bg)
 
-        // this.toTitle(null)
-        this.toWorld({
-            data:{
-                //livers:[ 'mito_json']
-                livers:['mito_json', 'toya_json', 'rion_json', 'sasaki_json']
-            }
-        })
+        this.toTitle(null)
+        // this.toWorld({
+        //     data:{
+        //         //livers:[ 'mito_json']
+        //         livers:['mito_json', 'toya_json', 'rion_json', 'sasaki_json']
+        //     }
+        // })
         return
 
     }

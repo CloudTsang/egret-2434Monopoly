@@ -114,7 +114,7 @@ class MapData {
 		}
 		indexes.splice(0,data.len/4-1)
 		//test
-		// arr2[1] = 2
+		// arr2[1] = 7
 
 		//确保每个事件出现至少一次
 		let i=0

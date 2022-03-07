@@ -167,9 +167,9 @@ class WorldMap extends eui.Component{
 			moveChessIndex, landY, jumpY, 
 			targetIndex, curIndex,direction, 
 		} = thisObj.stepObj
-		console.log("===========")
-		console.log(thisObj)
-		console.log(thisObj.stepObj)
+		// console.log("===========")
+		// console.log(thisObj)
+		// console.log(thisObj.stepObj)
 
 		if(curIndex == targetIndex){
 			thisObj.addChess(thisObj.chesses[moveChessIndex], moveChessIndex, targetIndex, false)
