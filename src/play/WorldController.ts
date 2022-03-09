@@ -1,4 +1,4 @@
-class WorldController {
+class WorldController extends egret.EventDispatcher implements IDisposable{
 	public players:MainCharacter[]
 	public map:WorldMap
 	public cPanel:CharaterPanel
@@ -26,11 +26,16 @@ class WorldController {
 
 	private _lock:boolean
 	private _handling:boolean
-	public constructor(stage:egret.Stage) {
+	private _maxTurn:number
+	public constructor(stage:egret.Stage, tnum:number = 10) {
+		super()
 		this.stage = stage
 		this.stageMode = [true,true,true,true]
 		// this.stageMode = [false,false,false,false]
 		this.curTurn = 1
+		this._maxTurn = tnum
+		//test
+		// this._maxTurn = 2
 		window['testPlay'] = ()=>{this.testPlay()}
 	}
 
@@ -86,6 +91,14 @@ class WorldController {
 		this.map.liverMenu.setPlayers(this.players)
 
 		this.stage.addEventListener("touchTap", this.onSound, this)
+	}
+
+	public async dispose(){
+		const ctrller = this
+		ctrller.map.dispose()
+		ctrller.cPanel && ctrller.cPanel.dispose()
+		ctrller.bagPanel && ctrller.bagPanel.dispose()
+		SoundManager.instance.stop()
 	}
 
 	private onSound(e:any){
@@ -261,12 +274,19 @@ class WorldController {
 		ctrller.menu = null
 
 		if(ctrller.currentPlayer == ctrller.players.length){
-			//下回合
+			
 			ctrller.currentPlayer = 0
-			ctrller.curTurn ++
-
-			//重新打乱npc分布？
-			ctrller.cellDatas.shuffleLiver()
+			if(ctrller.curTurn == ctrller._maxTurn){
+				ctrller.onGameFinish()
+				return 
+			}else{
+				//下回合
+				ctrller.curTurn ++
+				ctrller.map.setTurnNum(ctrller.curTurn, ctrller.curTurn == ctrller._maxTurn)
+				//重新打乱npc分布？
+				ctrller.cellDatas.shuffleLiver()
+			}
+			
 		}
 
 
@@ -285,8 +305,27 @@ class WorldController {
 
 		p.addEventListener(GameEvents.STAT_CHANGE, this.onLiverStatChange, this)
 		p.addEventListener(GameEvents.PLAYER_READY, this.onPlayerReady, this)
-		p.onTurnStart()
-		
+		p.onTurnStart()	
+	}
+
+	protected onGameFinish(){
+		let fevt:egret.Event = new egret.Event(GameEvents.GAME_FINISH)
+		let arr:IScore[] = []
+		for(let p of this.players){
+			arr.push({
+				name:p.name,
+				iconUrl:p.dispObj.vurl,
+				sub:p.subscribe,
+				stream:p.stream.length
+			})
+		}
+		arr = arr.sort((a,b):number=>{
+			return b.sub - a.sub
+		})
+		fevt.data = {
+			score:arr
+		}
+		this.dispatchEvent(fevt)
 	}
 
 	protected onPlayerReady(e:egret.Event){
@@ -531,7 +570,6 @@ class WorldController {
 	}
 
 	public testPlay(){
-		console.log(this, this.players, this.currentPlayer)
 		this.curPlayer.testPlay()
 	}
 }

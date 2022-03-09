@@ -216,7 +216,12 @@ class Chess extends egret.Sprite{
     }
 	//#endregion
 
-
+	public get vurl(){
+		return this.vUrl
+	}
+	public get rurl(){
+		return this.rUrl
+	}
 
 
 }

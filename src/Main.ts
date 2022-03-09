@@ -31,6 +31,7 @@ class Main extends egret.DisplayObjectContainer {
     private currentScene:egret.DisplayObject
     private stageW:number
     private stageH:number
+    private world:WorldController
     public constructor() {
         super();
         this.addEventListener(egret.Event.ADDED_TO_STAGE, this.onAddToStage, this);
@@ -122,7 +123,7 @@ class Main extends egret.DisplayObjectContainer {
         this.toTitle(null)
         // this.toWorld({
         //     data:{
-        //         //livers:[ 'mito_json']
+        //         // livers:[ 'mito_json', 'toya_json']
         //         livers:['mito_json', 'toya_json', 'rion_json', 'sasaki_json']
         //     }
         // })
@@ -131,6 +132,8 @@ class Main extends egret.DisplayObjectContainer {
     }
 
     protected toTitle(e:egret.Event){
+        SoundManager.instance.stop()
+        if(this.currentScene) this.removeChild(this.currentScene)
         const title = new TitlePage()
         title.width = this.stageW
         title.height = this.stageH
@@ -156,11 +159,26 @@ class Main extends egret.DisplayObjectContainer {
         if(this.currentScene) this.removeChild(this.currentScene)
 
         const mcs = e.data.livers//['mito_json', 'toya_json', 'rion_json', 'sasaki_json']
+        //test
+        // const mcs = ['mito_json']
+        const tnum = e.data.turn
         if(!mcs)return
         //  const mcs = [ 'mito_json']
         const world = new WorldController(this.stage)
         world.initMap()
         world.initPlayer(mcs)
         world.initUI()
+        world.once(GameEvents.GAME_FINISH, this.toScore, this)
+        this.world = world
+    }
+
+    protected toScore(e:any){
+        if(this.world){
+            this.world.dispose()
+        }
+        const score = new ScorePanel(e.data.score)
+        this.currentScene = score
+        this.addChild(score)     
+        score.once(GameEvents.BACK2TITLE, this.toTitle, this)
     }
 }

@@ -10,6 +10,9 @@ class RionSkill5  extends Skill{
 	}
 
 	public shouldTrigger(phrase:string,v:number=0):boolean{
+		if(this.niceClip == 0){
+			return false
+		}
 		if(phrase == GamePhrase.TURN_START){
 			if(this.clipTurn == 3){
 				return true
@@ -18,8 +21,8 @@ class RionSkill5  extends Skill{
 				this.clipTurn ++
 				return false
 			}
-			
 		}
+		
 		return super.shouldTrigger(phrase)
 	}
 

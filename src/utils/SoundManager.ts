@@ -96,6 +96,15 @@ class SoundManager {
 		}
 	}
 
+	public stop(){
+		if(this._bgm && this._bgmChannel){	
+			this._bgmChannel.stop();	
+			// this._bgm.close()
+			this._bgmChannel = null
+			this._bgm = null
+		}
+	}
+
 	public static get instance():SoundManager{
 		if(!SoundManager._ins){
 			SoundManager._ins = new SoundManager();

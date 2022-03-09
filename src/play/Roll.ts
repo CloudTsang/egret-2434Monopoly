@@ -26,7 +26,7 @@ class Roll {
 			n, r
 		}
 	}
-	/**普通的roll */
+	/**普通的roll 1-6 */
 	public static random2(n:number=6){
 		return Math.round(Math.random()*n)
 	}

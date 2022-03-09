@@ -3,6 +3,10 @@ class GameEvents{
 	public static readonly TO_PLAYER_SELECT:string = 'TO_PLAYER_SELECT'
 	/**游戏开始 */
 	public static readonly GAME_START:string = 'GAME_START'
+	/**游戏结束 */
+	public static readonly GAME_FINISH:string = 'GAME_FINISH'
+	/**返回标题 */
+	public static readonly BACK2TITLE:string = 'BACK2TITLE'
 
 	public static readonly VR_SWITCH:string = 'VR_SWITCH'
 	public static readonly START_ROLL:string = 'START_ROLL'

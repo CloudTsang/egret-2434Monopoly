@@ -114,7 +114,7 @@ class MapData {
 		}
 		indexes.splice(0,data.len/4-1)
 		//test
-		// arr2[1] = 7
+		// arr2[1] = 3
 
 		//确保每个事件出现至少一次
 		let i=0
@@ -230,7 +230,7 @@ class MapData {
 	public shuffleLiver(){
 		const data = this
 		const cells = data.datas
-		const l = Liver.allLivers.length - 4
+		// const l = Liver.allLivers.length - 4
 		data.getAllNpcsList()
 
 		for(let cell of cells){
@@ -246,7 +246,12 @@ class MapData {
 		}
 
 		const tmp = []
-		for(let i=0;i<data.allNpcIndexes.length; i++){
+		//分配每格至少一个npc
+		for(let i=0; i<data.len; i++){
+			cells[i].npcs.push(data.allNpcIndexes[i])
+		}
+
+		for(let i=data.len;i<data.allNpcIndexes.length; i++){
 			const cellI = Math.floor(Math.random()*(data.len-1))+1
 			if(cells[cellI].npcs.length >= 3){
 				continue

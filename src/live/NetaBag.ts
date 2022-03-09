@@ -124,8 +124,10 @@ class NetaBag {
 				}
 			}
 			n.onGain(tobj)
+
+			const trigger = this.mc.checkIfSkillsTriggered(GamePhrase.GET_NETA, Math.random())
+			trigger.triggerNeta(n)
 		}
-		
 		return np
 
 		

@@ -1,0 +1,84 @@
+<?xml version='1.0' encoding='utf-8'?>
+<e:Skin class="skins.scorePanel"
+	 width="1280"
+	height="720" xmlns:e="http://ns.egret.com/eui">
+    <e:Rect percentHeight="100" percentWidth="100" fillColor="0xECECEC"/>
+	<e:Group percentWidth="100" percentHeight="100">
+		<e:Group percentWidth="100" percentHeight="40">
+			<e:Image id="img0" width="120" height="240" x="691" y="128"/>
+             <e:Group percentHeight="100" width="20"/>
+            <e:Group percentHeight="100">
+                <e:Label text="进行直播" x="125" y="42" textColor="0x2E2A2A" size="42"/>
+                <e:Label id="txtStream0" text="0次" textColor="0x2E2A2A" size="58"/>
+                <e:Group percentWidth="100" height="20" x="108" y="236"/>
+                <e:Label text="获得订阅" textColor="0x2E2A2A" size="42"/>
+                <e:Label id="txtSub0" text="0人" textColor="0x2E2A2A" size="58"/>
+                <e:layout>
+                    <e:VerticalLayout horizontalAlign="center" verticalAlign="middle"/>
+                </e:layout>
+            </e:Group>
+
+			<e:layout>
+				<e:HorizontalLayout horizontalAlign="center" verticalAlign="middle"/>
+			</e:layout>
+		</e:Group>
+		<e:Group percentWidth="100" percentHeight="40" x="596" y="412">
+			<e:Group percentHeight="100" percentWidth="33">
+				<e:Group percentHeight="100" percentWidth="50" left="0">
+					<e:Image id="img1" width="120" height="200" horizontalCenter="0" verticalCenter="0"/>
+				</e:Group>
+                <e:Group percentHeight="100" percentWidth="50" right="0">
+                    <e:Label text="进行直播" x="125" y="42" textColor="0x2E2A2A"/>
+                    <e:Label id="txtStream1" text="0次" textColor="0x2E2A2A" size="48"/>
+                    <e:Group percentWidth="100" height="20" x="108" y="236"/>
+                    <e:Label text="获得订阅" textColor="0x2E2A2A"/>
+                    <e:Label id="txtSub1" text="0人" textColor="0x2E2A2A" size="48"/>
+                    <e:layout>
+                        <e:VerticalLayout horizontalAlign="center" verticalAlign="middle"/>
+                    </e:layout>
+                </e:Group>
+			</e:Group>
+            <e:Group percentHeight="100" percentWidth="33">
+				<e:Group percentHeight="100" percentWidth="50" left="0">
+					<e:Image id="img2" width="120" height="200" horizontalCenter="0" verticalCenter="0"/>
+				</e:Group>
+                <e:Group percentHeight="100" percentWidth="50" right="0">
+                    <e:Label text="进行直播" x="125" y="42" textColor="0x2E2A2A"/>
+                    <e:Label id="txtStream2" text="0次" textColor="0x2E2A2A" size="48"/>
+                    <e:Group percentWidth="100" height="20" x="108" y="236"/>
+                    <e:Label text="获得订阅" textColor="0x2E2A2A"/>
+                    <e:Label id="txtSub2" text="0人" textColor="0x2E2A2A" size="48"/>
+                    
+                    <e:layout>
+                        <e:VerticalLayout horizontalAlign="center" verticalAlign="middle"/>
+                    </e:layout>
+                </e:Group>
+			</e:Group>
+            <e:Group percentHeight="100" percentWidth="33">
+				<e:Group percentHeight="100" percentWidth="50" left="0">
+					<e:Image id="img3" width="120" height="200" horizontalCenter="0" verticalCenter="0"/>
+				</e:Group>
+                <e:Group percentHeight="100" percentWidth="50" right="0">
+                    <e:Label text="进行直播" x="125" y="42" textColor="0x2E2A2A"/>
+                    <e:Label id="txtStream3" text="0次" textColor="0x2E2A2A" size="48"/>
+                    <e:Group percentWidth="100" height="20" x="108" y="236"/>
+                    <e:Label text="获得订阅" textColor="0x2E2A2A"/>
+                    <e:Label id="txtSub3" text="0人" textColor="0x2E2A2A" size="48"/>
+                    
+                    <e:layout>
+                        <e:VerticalLayout horizontalAlign="center" verticalAlign="middle"/>
+                    </e:layout>
+                </e:Group>
+			</e:Group>
+			<e:layout>
+				<e:HorizontalLayout/>
+			</e:layout>
+		</e:Group>
+		<e:Group percentWidth="100" percentHeight="20" x="578" y="587">
+			<e:Button id="btnTitle" label="回到标题" horizontalCenter="0" verticalCenter="0"/>
+		</e:Group>
+		<e:layout>
+			<e:VerticalLayout/>
+		</e:layout>
+	</e:Group>
+</e:Skin>

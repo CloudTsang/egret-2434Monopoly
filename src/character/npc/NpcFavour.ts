@@ -21,6 +21,10 @@ class NpcFavour {
 	// 	}
 	// }
 
+	public getGift(key:string){
+		this.gift[key] = 1
+	}
+
 	public checkHasGift():string{
 		for(let key of this.keyArr){
 			if( this.gift[key]  == 0 && this[key] >= 3){

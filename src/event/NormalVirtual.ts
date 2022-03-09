@@ -96,6 +96,8 @@ class NormalVirtual extends MapEvent {
 		.wait(500)
 		.call(()=>{
 			const objs:NpcObj[] = this._cell.getNpc(this._mc.npc)
+			//test
+			// console.log("NpcObjs : ", objs)
 			const np = WorldMap.showNpcPanel(objs)
 			const evtLog = WorldMap.showEvtLog(log)
 			this._el = evtLog

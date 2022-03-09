@@ -184,8 +184,6 @@ class MainCharacter extends Liver{
 		}
 
 		let ngp:NetaGetPanel;
-
-		
 		
 		if(this.subscribe >= 100000 && !this.edata.has3D){
 			this.edata.has3D = true
@@ -207,6 +205,7 @@ class MainCharacter extends Liver{
 		if(npcHasGift){
 			const giftNeta = NetaFactory.getGiftNeta(npcHasGift)
 			if(giftNeta){
+				this.npc.getGift(npcHasGift)
 				this.netaBag.modifyNeta(giftNeta, 'get')
 				ngp = WorldMap.showGetNeta(giftNeta)
 			}

@@ -86,7 +86,8 @@ class EventRealEnkr  extends MapEvent{
 	private rikuHandler(){
 		this.dispatchEvent(new egret.Event(GameEvents.EVENT_START))
 		let {n, r} = Roll.random(this._mc, "commu")
-		r = RollResult.BIG_FAIL
+		//test
+		// r = RollResult.BIG_FAIL
 		const evt:any[] = this.selections[3].roll.evt
 		let fn:(e:any)=>void
 		let log:string

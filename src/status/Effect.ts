@@ -41,7 +41,9 @@ class EffectHandler extends BaseObj{
 				}
 				break
 			case EffectType.GET_NETA:
+				
 				const newNeta = NetaFactory.getNetaFromObj(data)
+				console.log(newNeta)
                 if(target.bag){
                     target.bag.modifyNeta(newNeta, "get" ,true)
                 }

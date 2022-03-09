@@ -27,7 +27,7 @@ class NetaGetPanel extends eui.Component  implements IDisposable {
 	public constructor() {
 		super()
 		this.skinName = 'resource/eui_skins/netapanel.exml'
-		this.addEventListener(eui.UIEvent.ADDED_TO_STAGE, this.onAdded, this)
+		this.once(eui.UIEvent.ADDED, this.onAdded, this)
 	}
 
 	protected createChildren(){
@@ -37,9 +37,10 @@ class NetaGetPanel extends eui.Component  implements IDisposable {
 
 
 	public dispose(){
+		NetaGetPanel.panel = null
 		this.parent && this.parent.removeChild(this)
 		this.dispatchEvent(new egret.Event( GameEvents.NETA_INFO_FINISH))
-		NetaGetPanel.panel = null
+		
 	}
 
 	private onAdded(e:any=null){

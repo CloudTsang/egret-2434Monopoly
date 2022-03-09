@@ -2,7 +2,8 @@
 	"skins": {
 		"eui.Button": "resource/eui_skins/normalbtn.exml",
 		"eui.CheckBox": "resource/eui_skins/CheckBoxSkin.exml",
-		"eui.RadioButton": "resource/eui_skins/RadioButtonSkin.exml"
+		"eui.RadioButton": "resource/eui_skins/RadioButtonSkin.exml",
+		"eui.HSlider": "resource/eui_skins/HSliderSkin.exml"
 	},
 	"autoGenerateExmlsList": true,
 	"exmls": [
@@ -19,6 +20,7 @@
 		"resource/eui_skins/evtpanel_shop.exml",
 		"resource/eui_skins/evtpanel.exml",
 		"resource/eui_skins/gameStartSetting.exml",
+		"resource/eui_skins/HSliderSkin.exml",
 		"resource/eui_skins/itemlist.exml",
 		"resource/eui_skins/itemListObj.exml",
 		"resource/eui_skins/livenetapanel.exml",
@@ -40,6 +42,7 @@
 		"resource/eui_skins/RadioButtonSkin.exml",
 		"resource/eui_skins/rollbtn.exml",
 		"resource/eui_skins/rollresult.exml",
+		"resource/eui_skins/scorePanel.exml",
 		"resource/eui_skins/streamlistobj.exml",
 		"resource/eui_skins/subscribe.exml",
 		"resource/eui_skins/titlePage.exml",

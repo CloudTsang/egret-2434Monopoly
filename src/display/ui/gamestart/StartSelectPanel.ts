@@ -1,15 +1,20 @@
 /**选择玩家的面板 */
 class StartSelectPanel extends eui.Component{
+	private TURNS:number[] = [10,20,30,50,100]
 	private livers:string[] = ['mito_json', 'toya_json', 'rion_json', 'sasaki_json',
 								'lize_json', 'chaika_json', 'umeo_json', 'siina_json']
 	private btnStart:eui.Button
 	private tagBtns:eui.Button[]
 	private useLivers:PlayerIcon[]
+	private tslider:eui.HSlider
+	private txtTurn:eui.Label
+	private curTurn:number
 
 	private dragging:eui.Button
 	private oriIcon:PlayerIcon
 	public constructor() {
 		super()
+		this.curTurn = this.TURNS[0]
 		this.skinName = 'resource/eui_skins/gameStartSetting.exml'
 		this.once(eui.UIEvent.ADDED_TO_STAGE, this.onAdded, this)
 	}
@@ -41,6 +46,7 @@ class StartSelectPanel extends eui.Component{
 		p.tagBtns = btns
 
 		p.btnStart.addEventListener("touchTap", p.onStartClick, p)
+		p.tslider.addEventListener(egret.Event.CHANGE, p.onTurnSliderChange, p)
 	}
 
 	protected onStartDrag(e:egret.TouchEvent){
@@ -98,8 +104,15 @@ class StartSelectPanel extends eui.Component{
 		}
 		let evt:egret.Event = new egret.Event(GameEvents.GAME_START)
 		evt.data = {
-			livers:jsonDatas
+			livers:jsonDatas,
+			turn:this.curTurn
 		}
 		this.dispatchEvent(evt)
+	}
+
+	protected onTurnSliderChange(e:any){
+		const i = this.tslider.value
+		this.curTurn = this.TURNS[i]
+		this.txtTurn.text = `${this.curTurn}`
 	}
 }

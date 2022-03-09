@@ -683,9 +683,17 @@
                                     "type":"device",     
                                     "iconUrl":"netaicons2_json#donguri",
                                     "class":"Donguri",
+                                    
                                     "data":{
                                         "times":1,
-                                        "effect":"(random)[{mc.npc.chaika}+0.5,{mc.npc.eli}+0.5,{mc.npc.elu}+0.5,{mc.npc.gweru}+0.5]"
+                                        "use":true,
+                                        "effect":[
+                                            {
+                                                "type":"STAT_CHANGE",
+                                                "trigger":"use",
+                                                "data":"(random)[{mc.npc.chaika}+0.5,{mc.npc.eli}+0.5,{mc.npc.elu}+0.5,{mc.npc.gweru}+0.5]"
+                                            }
+                                        ]
                                     }
                                 }
                             }

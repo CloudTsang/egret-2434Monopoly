@@ -11,6 +11,7 @@ class WorldMap extends eui.Component{
 	private rollbtn:RollBtn
 	private infobtn:LiverInfoBtn
 	private bagbtn:eui.Image
+	private txtTurn:eui.Label
 	public subs:Subscribe
 	public money:Money
 	public liverMenu:LiversMenu
@@ -86,6 +87,15 @@ class WorldMap extends eui.Component{
 
 	public showRollNum(n:number, r:string){
 		this.rollbtn.showRolledNum(n, r)
+	}
+
+	public setTurnNum(n:number, isLast:boolean=false){
+		if(isLast){
+			this.txtTurn.text = 'LAST TURN'		
+		}else{
+			this.txtTurn.text = `TURN ${n}`	
+		}
+
 	}
 
 	public setMode(v:boolean){
@@ -259,6 +269,7 @@ class WorldMap extends eui.Component{
 	public dispose(){
 		this.rollbtn.removeEventListener("touchTap", this.onRollBtnClicked, this)
 		this.vrbtn.removeEventListener("touchTap", this.onVRBtnClicked, this)
+		this.removeChildren()
 	}
 
 	public showSkillBar(s:Skill){

@@ -102,7 +102,8 @@ class Skill extends EffectHandler{
 			player:this.mc,
 			neta:neta,
 			mc:this.mc.ddata,
-			stream:stream
+			stream:stream,
+			bag:this.mc.netaBag
 		}
 
 		console.log("skill : ", this.name)

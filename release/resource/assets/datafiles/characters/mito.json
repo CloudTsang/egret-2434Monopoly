@@ -19,7 +19,7 @@
     {
       "id": 1,
       "name": "杂草Eater",
-      "des": "强大的造梗能力，一定几率在获得neta时额外获得一个小neta",
+      "des": "强大的造梗能力，一回合一次一定几率在获得neta时额外获得一个小neta",
       "type": "POSITIVE",
       "iconUrl": "",
       "phrase": "GET_NETA",
@@ -28,7 +28,7 @@
         {
           "type": "GET_NETA",
           "data": {
-              "id":4,
+              "id":1,
               "name":"委员长的体验谈",
               "des":"细小又有趣的日常体验",
               "type":"daily",     
@@ -71,7 +71,7 @@
     {
       "id": 4,
       "name": "混沌次文化",
-      "des": "小众的直播内容，一定几率降低使用neta的人气值",
+      "des": "小众的直播内容，一定几率小幅降低使用neta的人气值",
       "type": "NEGATIVE",
       "iconUrl": "",
       "phrase": "USE_NETA",
@@ -90,7 +90,7 @@
       "type": "HIDDEN",
       "iconUrl": "",
       "phrase": "BEFORE_STREAM",
-      "rate": "0.2",
+      "rate": "0.25",
       "req":"'{stream.ty}'=='TALK'",
       "effect": [
         {

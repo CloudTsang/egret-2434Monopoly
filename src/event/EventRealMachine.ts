@@ -41,7 +41,7 @@ class EventRealMachine  extends MapEvent{
 		egret.Tween.get(this)
 		.wait(200)
 		.call(()=>{
-			this._mc.money - 100
+			this._mc.money -= 100
 			const ngp = this._mc.netaBag.modifyNeta(neta, "get", true)
 			if(ngp){
 				ngp.addEventListener(eui.UIEvent.REMOVED_FROM_STAGE, (e)=>{

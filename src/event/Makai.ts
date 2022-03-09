@@ -18,7 +18,8 @@ class Makai extends MapEvent{
 
 	private onSummon(){
 		const roll = this.selections[0].roll
-		let r = Roll.random2(roll.range) 
+		let r = Roll.random2(roll.range)
+		if(r==0)r=1
 
 		egret.Tween.get(this)
 		.wait(200)
