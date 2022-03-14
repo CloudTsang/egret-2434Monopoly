@@ -91,15 +91,19 @@ class NormalVirtual extends MapEvent {
 		egret.Tween.get(this)
 		.wait(200)
 		.call(()=>{
-			WorldMap.showRollNum(n, r)
+			// WorldMap.showRollNum(n, r)
+			this.dispatchEvent(new RollEvent(n,r))
 		})
 		.wait(500)
 		.call(()=>{
 			const objs:NpcObj[] = this._cell.getNpc(this._mc.npc)
 			//test
 			// console.log("NpcObjs : ", objs)
-			const np = WorldMap.showNpcPanel(objs)
-			const evtLog = WorldMap.showEvtLog(log)
+			// const np = WorldMap.showNpcPanel(objs)
+			this.dispatchEvent(new NpcEvent(objs))
+			// const evtLog = WorldMap.showEvtLog(log)
+			const evtLog = new EvtLog(log)
+			this.dispatchEvent(new ShowEvent(evtLog, 'menu'))
 			this._el = evtLog
 			evtLog.addEventListener("touchTap", (e)=>{
 				fn && fn()
@@ -127,15 +131,17 @@ class NormalVirtual extends MapEvent {
 		egret.Tween.get(this)
 		.wait(200)
 		.call(()=>{
-			WorldMap.showRollNum(n, '')
+			// WorldMap.showRollNum(n, '')
+			this.dispatchEvent(new RollEvent(n, ''))
 		})
 		.wait(500)
 		.call(()=>{
 			fn()
-			const evtLog = WorldMap.showEvtLog(log)
+			// const evtLog = WorldMap.showEvtLog(log)
+			const evtLog = new EvtLog(log)
+			this.dispatchEvent(new ShowEvent(evtLog, 'menu'))
 			this._el = evtLog
 			evtLog.addEventListener("touchTap", (e)=>{
-				
 				this.onLogTap()
 			}, this)
 

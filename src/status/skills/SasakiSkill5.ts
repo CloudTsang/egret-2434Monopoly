@@ -30,7 +30,8 @@ class SasakiSkill5  extends Skill{
 
 	public triggerStream(stream:Stream){
 		console.log("skill : ", this.name)
-		WorldMap.showSkillBar(this)
+		// WorldMap.showSkillBar(this)
+		this.dispatchEvent(new SkillEvent(this))
 		this.mc.subscribe += this.counter * 10000
 		this.startCounting = false
 		this.counter = 0

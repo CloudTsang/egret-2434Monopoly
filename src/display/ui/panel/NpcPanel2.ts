@@ -20,6 +20,8 @@ class NpcPanel2 extends eui.Component{
 	public onAdded(e:any){
 		this.removeEventListener(eui.UIEvent.ADDED_TO_STAGE, this.onAdded, this)
 		const panel = this
+		panel.x = WorldData.STAGE_W
+		panel.y = WorldData.STAGE_H/2
 		for(let i=0; i<panel._npc.length; i++){
 			const n = panel._npc[i]
 			panel[`icon${i}`].texture = RES.getRes(n.iconUrl)

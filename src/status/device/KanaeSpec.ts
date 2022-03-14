@@ -15,7 +15,9 @@ class KanaeSpec  extends Device {
 		}else{
 			log = this.effect[0]['log']
 		}
-		let el = WorldMap.showEvtLog(log)
+		// let el = WorldMap.showEvtLog(log)
+		const el = new EvtLog(log)
+		this.dispatchEvent(new ShowEvent(el, 'menu'))
 		el.addEventListener("touchTap", (e)=>{
 			el.dispose()
 			this.dispatchEvent(new egret.Event(GameEvents.DEVICE_FINISH))

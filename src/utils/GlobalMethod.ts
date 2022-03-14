@@ -108,6 +108,5 @@ class GlobalMethod{
 			return fn.apply(null,args);
 		}
 	}
-		
 
 }

@@ -139,6 +139,7 @@ class WorldController extends egret.EventDispatcher implements IDisposable{
 
 			this.menus = []
 			cell.addEventListener(GameEvents.EVENT_START, this.onEventStart, this)
+			cell.addEventListener(GameEvents.STAT_CHANGE, this.onLiverStatChange, this)
 			cell.addEventListener(GameEvents.EVENT_FINISH, this.onEventFinish, this)
 			const menu = cell.trigger(this.stageMode[this.currentPlayer],
 						this.curPlayer)
@@ -255,6 +256,7 @@ class WorldController extends egret.EventDispatcher implements IDisposable{
 		this._shouldSkip = false
 		const cell:CellData = this.cellDatas.getCell(this.chessCurIndex )
 		cell.removeEventListener(GameEvents.EVENT_START, this.onEventStart, this)
+		cell.removeEventListener(GameEvents.STAT_CHANGE, this.onLiverStatChange, this)
 		cell.removeEventListener(GameEvents.EVENT_FINISH, this.onEventFinish, this)
 
 		const ctrller = this
@@ -340,7 +342,7 @@ class WorldController extends egret.EventDispatcher implements IDisposable{
 	}
 
 	protected onLiverStatChange(e:any=null){
-		const ty = e.data
+		const ty = e.data.type
 		switch(ty){
 			case "money":
 				this.map.money.setTween2Num(this.curPlayer.money)
@@ -350,6 +352,21 @@ class WorldController extends egret.EventDispatcher implements IDisposable{
 				break
 			case "skip":
 				this._shouldSkip = true
+				break
+			case "skill":
+				this.map.showSkillBar(e.data.skill)
+				break
+			case "npc":
+				this.map.showNpcPanel(e.data.npc)
+				break
+			case "roll":
+				this.map.showRollNum(e.data.number, e.data.result)
+				break
+			case "show":
+				this.map.addCompenent(e.data.disp, e.data.layer)
+				break
+			case "neta":
+				this.map.showGetNeta(e.data.neta)
 				break
 			default:
 				break
@@ -422,6 +439,7 @@ class WorldController extends egret.EventDispatcher implements IDisposable{
 		const n:Device = e.data.neta
 		const bp = this.bagPanel
 		const mc:MainCharacter = ctrller.curPlayer
+		n.addEventListener(GameEvents.STAT_CHANGE, ctrller.onLiverStatChange, ctrller)
 		n.addEventListener(GameEvents.DEVICE_FINISH, ctrller.onUseFinish, ctrller)
 		ctrller._handlingDevice = n
 
@@ -440,7 +458,7 @@ class WorldController extends egret.EventDispatcher implements IDisposable{
 				this.map.setMenuLayerVisible(false)
 				let tmp:number = ctrller.currentPlayer
 				if(n.target == EffectTarget.ALL_SELECT_ONE) tmp = -1
-				const psp:PlayerSelectPanel = WorldMap.showPlayerSelect(ctrller.players, tmp)
+				const psp:PlayerSelectPanel = ctrller.map.showPlayerSelect(ctrller.players, tmp)
 				psp.addEventListener(GameEvents.PLAYER_SELECTED, ctrller.onSelectPlayer, ctrller)
 				psp.addEventListener(GameEvents.PLAYER_SELECT_CANCEL, ctrller.onCancelSelectPlayer, ctrller)
 				// ctrller.onHideBag(null)
@@ -497,6 +515,7 @@ class WorldController extends egret.EventDispatcher implements IDisposable{
 
 	protected onUseFinish(e:egret.Event){
 		const n:Neta = e.target
+		n.removeEventListener(GameEvents.STAT_CHANGE, this.onLiverStatChange, this)
 		n.removeEventListener(GameEvents.DEVICE_FINISH, this.onUseFinish, this)
 		const mc:MainCharacter = this.curPlayer
 		

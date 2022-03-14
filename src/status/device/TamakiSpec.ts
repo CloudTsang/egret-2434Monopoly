@@ -11,7 +11,9 @@ class TamakiSpec extends Device{
 		if(!mc) return
 		this._mc = mc
 		
-		const el = WorldMap.showEvtLog(this.effect[0].data)
+		// const el = WorldMap.showEvtLog(this.effect[0].data)
+		const el = new EvtLog(this.effect[0].data)
+		this.dispatchEvent(new ShowEvent(el, 'menu'))
 		el.addEventListener("touchTap", (e)=>{
 			el.dispose()
 			this.roll()
@@ -60,7 +62,8 @@ class TamakiSpec extends Device{
 
 		egret.Tween.get(this)
 		.call(()=>{
-			WorldMap.showRollNum(n, '')
+			// WorldMap.showRollNum(n, '')
+			this.dispatchEvent(new RollEvent(n,''))
 		})
 		.wait(1000)
 		.call(()=>{

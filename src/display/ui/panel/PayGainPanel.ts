@@ -2,10 +2,12 @@ class PayGainPanel extends eui.Component{
 	private txtTitle:eui.Label
 	private txtNum:eui.Label
 	private n :number
-	public constructor(n:number) {
+	private cb:()=>void
+	public constructor(n:number, cb:()=>void=null) {
 		super()
 		this.addEventListener(eui.UIEvent.ADDED_TO_STAGE, this.onAdded, this)
 		this.n = n
+		this.cb = cb
 		this.skinName = "resource/eui_skins/paygainpanel.exml"
 	}
 
@@ -17,7 +19,6 @@ class PayGainPanel extends eui.Component{
 	}
 
 	public dispose(){
-		// this.removeEventListener("touchTap", this.onClick, this)
 		egret.Tween.get(this)
 		.to({
 			scaleX:0,
@@ -26,19 +27,27 @@ class PayGainPanel extends eui.Component{
 		this.parent && this.parent.removeChild(this)
 	}
 
+	protected onTouched(e:any):void{
+		this.cb && this.cb()
+	}
+
 	protected onAdded(e:any=null){
-		this.touchEnabled = true
-		this.touchChildren = true
-		this.removeEventListener(eui.UIEvent.ADDED_TO_STAGE, this.onAdded, this)
+		const panel = this
+		panel.touchEnabled = true
+		panel.touchChildren = true
+		panel.removeEventListener(eui.UIEvent.ADDED_TO_STAGE, panel.onAdded, panel)
+		panel.once(egret.TouchEvent.TOUCH_TAP, panel.onTouched, panel)
+		panel.x = (WorldData.STAGE_W - panel.width)/2
+		panel.y = (WorldData.STAGE_H - panel.height)/2	
 
-		if(this.n < 0){
-			this.currentState = 'lose'
+		if(panel.n < 0){
+			panel.currentState = 'lose'
 		}else{
-			this.currentState = 'win'
+			panel.currentState = 'win'
 		}
-		this.txtNum.text = ''+this.n
+		panel.txtNum.text = ''+panel.n
 
-		egret.Tween.get(this)
+		egret.Tween.get(panel)
 		.set({
 			scaleX:0,
 			scaleY:0

@@ -67,11 +67,14 @@ class EventRealEnkr  extends MapEvent{
 		 egret.Tween.get(this)
 		 .wait(200)
 		 .call(()=>{
-			 WorldMap.showRollNum(n, r)
+			//  WorldMap.showRollNum(n, r)
+			this.dispatchEvent(new RollEvent(n,r))
 		 })
 		 .wait(1000)
 		 .call(()=>{
-			const el = WorldMap.showEvtLog(log)
+			// const el = WorldMap.showEvtLog(log)
+			const el = new EvtLog(log)
+			this.dispatchEvent(new ShowEvent(el, 'menu'))
 			el.addEventListener("touchTap", (e)=>{
 				el.dispose()
 				if(r == RollResult.BIG_SUCCESS){
@@ -167,11 +170,14 @@ class EventRealEnkr  extends MapEvent{
 		egret.Tween.get(this)
 		.wait(200)
 		.call(()=>{
-			WorldMap.showRollNum(n, r)
+			// WorldMap.showRollNum(n, r)
+			this.dispatchEvent(new RollEvent(n,r))
 		})
 		.wait(1500)
 		.call(()=>{
-			const el = WorldMap.showEvtLog(log)
+			// const el = WorldMap.showEvtLog(log)
+			const el = new EvtLog(log)
+			this.dispatchEvent(new ShowEvent(el, 'menu'))
 			el.addEventListener("touchTap", fn, this)
 		})
 	}

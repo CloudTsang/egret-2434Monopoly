@@ -14,7 +14,7 @@ class SasakiSkill2  extends Skill{
 	public trigger(){
 		// return false
 		console.log("skill : ", this.name)
-		if(this.upNum == 0) WorldMap.showSkillBar(this)
+		if(this.upNum == 0) this.dispatchEvent(new SkillEvent(this))//WorldMap.showSkillBar(this)
 		this.upNum ++ 
 		this.mc.ddata.strength += this.upNum
 	}

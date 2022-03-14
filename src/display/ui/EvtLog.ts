@@ -40,13 +40,16 @@ class EvtLog extends eui.Component{
 	}
 
 	protected onAdded(e:any=null){
-		this.touchEnabled = true
-		this.touchChildren = true
-		this.txtDes.text = this.des
-		this.removeEventListener(eui.UIEvent.ADDED_TO_STAGE, this.onAdded, this)
+		const panel = this
+		panel.x = (WorldData.STAGE_W - panel.width)/2
+		panel.y = (WorldData.STAGE_H - panel.height)/2
+		panel.touchEnabled = true
+		panel.touchChildren = true
+		panel.txtDes.text = panel.des
+		panel.removeEventListener(eui.UIEvent.ADDED_TO_STAGE, panel.onAdded, panel)
 		// this.addEventListener("touchTap", this.onClick, this)
 
-		egret.Tween.get(this)
+		egret.Tween.get(panel)
 		.set({
 			scaleX:0,
 			scaleY:0

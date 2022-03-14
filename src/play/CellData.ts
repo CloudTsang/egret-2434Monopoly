@@ -2,6 +2,9 @@ class CellData extends egret.EventDispatcher{
 	private _r:MapEvent
 	private _v:MapEvent
 	public npcs:number[]
+
+	private _curE:MapEvent
+	private _events:string[]
 	public constructor(r:MapEvent, v:MapEvent){
 		super()
 		this._r = r
@@ -29,9 +32,24 @@ class CellData extends egret.EventDispatcher{
 	/**触发事件 */
 	public trigger(isv:boolean,	 mc:MainCharacter){
 		const e = this.getEvent(isv)
-		e.addEventListener(GameEvents.EVENT_START, this.onEvent, this)
-		e.addEventListener(GameEvents.EVENT_FINISH, this.onEvent, this)
+		this._curE = e
+		if(this._events){
+			for(let estr of this._events){
+				e.addEventListener(estr, this.onEvent, this)
+			}
+		}	
 		return e.trigger(mc,this)
+	}
+
+	public addEventListener(type: string, listener: Function, thisObject: any, useCapture?: boolean, priority?: number): void{
+		if(!this._events) this._events = []
+		this._events.push(type)
+		super.addEventListener(type, listener, thisObject, useCapture, priority)
+	}
+
+	public removeEventListener(type: string, listener: Function, thisObject: any, useCapture?: boolean): void{
+		this._curE && this._curE.removeEventListener(type, this.onEvent, this)
+		super.removeEventListener(type, listener, thisObject, useCapture)
 	}
 
 	private onEvent(e:egret.Event){		
@@ -114,7 +132,7 @@ class MapData {
 		}
 		indexes.splice(0,data.len/4-1)
 		//test
-		// arr2[1] = 3
+		// arr2[1] = 7
 
 		//确保每个事件出现至少一次
 		let i=0

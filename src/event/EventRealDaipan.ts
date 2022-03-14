@@ -25,7 +25,9 @@ class EventRealDaipan  extends MapEvent{
 			log = this.logs[2]
 		}
 
-		const el = WorldMap.showEvtLog(log)
+		// const el = WorldMap.showEvtLog(log)
+		const el = new EvtLog(log)
+		this.dispatchEvent(new ShowEvent(el, 'menu'))
 		el.once("touchTap", this.onLogTap, this)
 
 		return null
@@ -56,9 +58,9 @@ class EventRealDaipan  extends MapEvent{
 			}
 			if(arr.length == fupNpc)break
 		}
-		const np:NpcPanel2 = WorldMap.showNpcPanel(arr)
-
-
+		//const np:NpcPanel2 = WorldMap.showNpcPanel(arr)
+		const np = new NpcPanel2(arr)
+		this.dispatchEvent(new ShowEvent(np, 'top'))
 		if(neta){
 			const ngp:NetaGetPanel = mc.netaBag.modifyNeta(neta, 'get', true)
 			ngp.once(eui.UIEvent.REMOVED_FROM_STAGE, (e)=>{

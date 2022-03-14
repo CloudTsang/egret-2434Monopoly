@@ -29,9 +29,8 @@ class EventRealBQ  extends MapEvent{
 			}
 			if(arr.length == fupNpc)break
 		}
-		const np:NpcPanel2 = WorldMap.showNpcPanel(arr)
-
-
+		//const np:NpcPanel2 = WorldMap.showNpcPanel(arr)
+		this.dispatchEvent(new NpcEvent(arr))
 		const data = this.netas[0]
 		const neta = NetaFactory.getNetaFromObj(data)
 		const ngp:NetaGetPanel = this._mc.netaBag.modifyNeta(neta, 'get', true)

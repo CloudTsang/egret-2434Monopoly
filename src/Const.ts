@@ -33,6 +33,8 @@ class GameEvents{
 
 	public static readonly MENU_CANCEL:string = 'MENU_CANCEL'
 	public static readonly STAT_CHANGE:string = 'STAT_CHANGE'
+	/**触发技能 */
+	public static readonly SKILL_TRIGGERED:string = 'SKILL_TRIGGERED'
 	/**开始处理事件 */
 	public static readonly EVENT_START:string = 'EVENT_START'
 	/**事件处理完毕 */

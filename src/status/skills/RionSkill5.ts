@@ -28,7 +28,8 @@ class RionSkill5  extends Skill{
 
 	public trigger(){
 		console.log("skill : ", this.name)
-		WorldMap.showSkillBar(this)
+		// WorldMap.showSkillBar(this)
+		this.dispatchEvent(new SkillEvent(this))
 		this.mc.subscribe += this.niceClip * 5000
 		this.clipTurn = 0
 	}
@@ -38,7 +39,8 @@ class RionSkill5  extends Skill{
 			return
 		}
 		console.log("skill : ", this.name)
-		WorldMap.showSkillBar(this)
+		// WorldMap.showSkillBar(this)
+		this.dispatchEvent(new SkillEvent(this))
 		this.niceClip ++ 
 	}
 }

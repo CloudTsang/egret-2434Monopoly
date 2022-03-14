@@ -28,11 +28,14 @@ class EventRealChurch  extends MapEvent{
 		egret.Tween.get(this)
 		.wait(200)
 		.call(()=>{
-			WorldMap.showRollNum(n, '')
+			// WorldMap.showRollNum(n, '')
+			this.dispatchEvent(new RollEvent(n,''))
 		})
 		.wait(1000)
 		.call(()=>{
-			const el = WorldMap.showEvtLog(log)
+			// const el = WorldMap.showEvtLog(log)
+			const el = new EvtLog(log)
+			this.dispatchEvent(new ShowEvent(el, 'menu'))
 			const buff = new LuckWish(this._mc, n)
 			this._mc.getBuff(buff)
 			el.addEventListener("touchTap", (e)=>{
@@ -51,7 +54,9 @@ class EventRealChurch  extends MapEvent{
 			const buff = new EnjoGuard(this._mc)
 			this._mc.removeBuff("Enjo")
 			this._mc.getBuff(buff)
-			const el = WorldMap.showEvtLog(log)
+			// const el = WorldMap.showEvtLog(log)
+			const el = new EvtLog(log)
+			this.dispatchEvent(new ShowEvent(el, 'menu'))
 			el.addEventListener("touchTap", (e)=>{
 				el.dispose()
 				this.dispatchEvent(new egret.Event(GameEvents.EVENT_FINISH))
@@ -69,7 +74,9 @@ class EventRealChurch  extends MapEvent{
 		egret.Tween.get(this)
 		.wait(200)
 		.call(()=>{
-			const el = WorldMap.showEvtLog(log)
+			// const el = WorldMap.showEvtLog(log)
+			const el = new EvtLog(log)
+			this.dispatchEvent(new ShowEvent(el, 'menu'))
 			el.addEventListener("touchTap", (e)=>{
 				mc.anti -= 100
 				mc.money -= m
@@ -88,10 +95,12 @@ class EventRealChurch  extends MapEvent{
 						}
 					}
 				}
-				const np2:NpcPanel2 = WorldMap.showNpcPanel(npcObjs)
-				np2 && np2.once(eui.UIEvent.REMOVED_FROM_STAGE, (e)=>{
+				//const np2:NpcPanel2 = WorldMap.showNpcPanel(npcObjs)
+				const np2 = new NpcPanel2(npcObjs)
+				np2.once(eui.UIEvent.REMOVED_FROM_STAGE, (e)=>{
 					this.dispatchEvent(new egret.Event(GameEvents.EVENT_FINISH))
 				}, this)
+				this.dispatchEvent(new ShowEvent(np2, "top"))
 
 				
 			}, this)

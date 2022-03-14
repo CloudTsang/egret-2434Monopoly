@@ -75,7 +75,8 @@ class Skill extends EffectHandler{
 
 	public trigger(){
 		console.log("skill : ", this.name)
-		WorldMap.showSkillBar(this)
+		// WorldMap.showSkillBar(this)
+		this.dispatchEvent(new SkillEvent(this))
 		this.triggered = true
 		const obj = {
 			player:this.mc,
@@ -107,7 +108,8 @@ class Skill extends EffectHandler{
 		}
 
 		console.log("skill : ", this.name)
-		WorldMap.showSkillBar(this)
+		// WorldMap.showSkillBar(this)
+		this.dispatchEvent(new SkillEvent(this))
 		this.triggered = true
 		for(let e of this.effect){
 			const ty = e.type
@@ -130,7 +132,8 @@ class Skill extends EffectHandler{
 			return
 		}
 		console.log("skill : ", this.name)
-		WorldMap.showSkillBar(this)
+		// WorldMap.showSkillBar(this)
+		this.dispatchEvent(new SkillEvent(this))
 		this.triggered = true
 		for(let e of this.effect){
 			const ty = e.type

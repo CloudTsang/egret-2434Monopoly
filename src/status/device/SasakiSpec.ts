@@ -12,7 +12,8 @@ class SasakiSpec  extends Device {
 			...npc,
 			favor:mc.npc[npc.ID]
 		}
-		WorldMap.showNpcPanel([npcobj])
+		// WorldMap.showNpcPanel([npcobj])
+		this.dispatchEvent(new NpcEvent([npcobj]))
 		this.dispatchEvent(new egret.Event(GameEvents.DEVICE_FINISH))
 	}
 }

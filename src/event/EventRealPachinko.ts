@@ -61,18 +61,19 @@ class EventRealPachinko  extends MapEvent{
 		egret.Tween.get(this)
 		.wait(500)
 		.call(()=>{
-			WorldMap.showRollNum(n, r)
-			// this._mc.money += money2	
+			// WorldMap.showRollNum(n, r)
+			this.dispatchEvent(new RollEvent(n,r))
 		})
 		.wait(1000)
 		.call(()=>{
-			const el = WorldMap.showPayGainPanel(money2)	
 			this._mc.money += money2	
+			const el = new PayGainPanel(money2)//WorldMap.showPayGainPanel(money2)		
 			el.addEventListener("touchTap", (e)=>{							
 				this._mc = null
 				el.dispose()
 				this.dispatchEvent(new egret.Event(GameEvents.EVENT_FINISH))
 			}, this)
+			this.dispatchEvent(new ShowEvent(el, 'menu'))
 		})
 	}
 

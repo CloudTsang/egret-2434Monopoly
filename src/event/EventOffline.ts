@@ -25,7 +25,9 @@ class EventOffline extends MapEvent{
 		}
 		
 		const objs:NpcObj[] = this._cell.getNpc(this._mc.npc)
-		const np = WorldMap.showNpcPanel(objs)
+		//const np = WorldMap.showNpcPanel(objs)
+		const np = new NpcPanel2(objs)
+		this.dispatchEvent(new ShowEvent(np, 'top'))
 		np.addEventListener(eui.UIEvent.REMOVED_FROM_STAGE, (e)=>{
 			this.dispatchEvent(new egret.Event(GameEvents.EVENT_FINISH))
 		}, this)

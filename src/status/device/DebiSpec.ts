@@ -24,9 +24,6 @@ class DebiSpec  extends Device {
 			objarr.push(obj)
 		}
 		this.showChangedNpc(objarr, 0, 3)
-		
-		// WorldMap.showNpcPanel()
-		// this.dispatchEvent(new egret.Event(GameEvents.DEVICE_FINISH))
 	}
 
 	private showChangedNpc(arr:NpcObj[], from:number, to:number){
@@ -37,7 +34,8 @@ class DebiSpec  extends Device {
 		}
 
 		const arr2:NpcObj[] = arr.slice(from, to)
-		const p = WorldMap.showNpcPanel(arr2)
+		// const p = WorldMap.showNpcPanel(arr2)
+		const p = new NpcPanel2(arr2)
 		p.addEventListener(eui.UIEvent.REMOVED_FROM_STAGE, (e)=>{
 			if(isLast){
 				this.dispatchEvent(new egret.Event(GameEvents.DEVICE_FINISH))
@@ -45,5 +43,6 @@ class DebiSpec  extends Device {
 				this.showChangedNpc(arr, to, to+3)
 			}
 		}, this)
+		this.dispatchEvent(new ShowEvent(p, "top"))
 	}
 }

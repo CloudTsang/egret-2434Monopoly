@@ -9,7 +9,8 @@ class RionSkill1 extends Skill{
 		}
 		
 		console.log("skill : ", this.name)
-		WorldMap.showSkillBar(this)
+		// WorldMap.showSkillBar(this)
+		this.dispatchEvent(new SkillEvent(this))
 		stream.totSubAdd += (stream.collaboMems.length) * 10000
 	}
 

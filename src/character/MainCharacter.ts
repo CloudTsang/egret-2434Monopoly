@@ -55,7 +55,9 @@ class MainCharacter extends Liver{
 				cfn = egret.getDefinitionByName(s['class'])
 				if(!cfn) cfn = Skill
 			}
-			skills.push(new cfn(this,s))
+			const genSkill = new cfn(this,s)
+			genSkill.addEventListener(GameEvents.STAT_CHANGE, this.onSkillTriggered, this)
+			skills.push(genSkill)
 		}
 		this.skills = skills
 
@@ -98,11 +100,13 @@ class MainCharacter extends Liver{
 		return obj
 	}
 
+	public onSkillTriggered(e:egret.Event){
+		this.dispatchEvent(e)
+	}
+
 	public getBuff(nb:Buff){
 		if(nb.ID == 'Stop' || nb.ID == 'Sleep'){
-			let evt = new egret.Event(GameEvents.STAT_CHANGE)
-			evt.data = "skip"
-			this.dispatchEvent(evt)
+			this.dispatchEvent(new SkipEvent())
 		}
 		for(let b of this.buffs){
 			if(b.name == nb.name){				
@@ -189,7 +193,8 @@ class MainCharacter extends Liver{
 			this.edata.has3D = true
 			const neta3d = NetaFactory.getPresentNeta('3D披露') 
 			this.netaBag.modifyNeta(neta3d, 'get')
-			ngp = WorldMap.showGetNeta(neta3d)
+			//ngp = WorldMap.showGetNeta(neta3d)
+			ngp = NetaGetPanel.addNetaToShow(neta3d)
 		}
 
 		const evtHasNeta = this.edata.checkHasNewNeta()
@@ -197,7 +202,8 @@ class MainCharacter extends Liver{
 			const evtNeta = NetaFactory.getEvtNeta(evtHasNeta)
 			if(evtNeta){
 				this.netaBag.modifyNeta(evtNeta, 'get')
-				ngp = WorldMap.showGetNeta(evtNeta)
+				// ngp = WorldMap.showGetNeta(evtNeta)
+				ngp = NetaGetPanel.addNetaToShow(evtNeta)
 			}
 		}
 
@@ -207,11 +213,13 @@ class MainCharacter extends Liver{
 			if(giftNeta){
 				this.npc.getGift(npcHasGift)
 				this.netaBag.modifyNeta(giftNeta, 'get')
-				ngp = WorldMap.showGetNeta(giftNeta)
+				// ngp = WorldMap.showGetNeta(giftNeta)
+				ngp = NetaGetPanel.addNetaToShow(giftNeta)
 			}
 			
 		}
 		if(ngp){
+			this.dispatchEvent(new ShowEvent(ngp, "top"))
 			ngp.addEventListener(eui.UIEvent.REMOVED_FROM_STAGE,(uie)=>{
 				this.dispatchEvent(evt)
 			}, this)
@@ -284,9 +292,7 @@ class MainCharacter extends Liver{
 	}
 	public set money(v:number){
 		this.data.money = v
-		let e = new egret.Event(GameEvents.STAT_CHANGE)
-		e.data = "money"
-		this.dispatchEvent(e)
+		this.dispatchEvent(new MoneyEvent())
 		
 	}
 	public get subscribe(){
@@ -295,9 +301,7 @@ class MainCharacter extends Liver{
 	public set subscribe(v:number){
 		if(v<0)v=0
 		this._subscribe = v
-		let e = new egret.Event(GameEvents.STAT_CHANGE)
-		e.data = "subscribe"
-		this.dispatchEvent(e)
+		this.dispatchEvent(new SubscribeEvent())
 	}
 
 	public get anti(){

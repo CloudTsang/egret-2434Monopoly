@@ -64,7 +64,7 @@ class SoundManager {
 			s = this._bgs[name]
 		}
 		if(!s)return
-		if(this._isPausing)return
+		// if(this._isPausing)return
 		s.play(0,1)
 	}
 

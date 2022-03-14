@@ -106,7 +106,9 @@ class NetaBag {
 
 		let np = null
 		if(ty == 'get' && showInfo){
-			np = WorldMap.showGetNeta(n)
+			// np = WorldMap.showGetNeta(n)
+			np = NetaGetPanel.addNetaToShow(n)
+			this.mc.dispatchEvent(new ShowEvent(np, 'top'))
 		}
 
 		if(ty == 'get' && checkEffect){
@@ -129,8 +131,6 @@ class NetaBag {
 			trigger.triggerNeta(n)
 		}
 		return np
-
-		
 	}
 
 	/**随机丢失一个neta

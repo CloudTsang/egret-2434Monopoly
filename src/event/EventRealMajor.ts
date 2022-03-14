@@ -27,7 +27,9 @@ class EventRealMajor  extends MapEvent{
 			log = this.logs[4]
 		}
 
-		const el = WorldMap.showEvtLog(log)
+		// const el = WorldMap.showEvtLog(log)
+		const el = new EvtLog(log)
+		this.dispatchEvent(new ShowEvent(el, 'menu'))
 		el.once("touchTap", (e)=>{
 			el.dispose()
 			if(neta){

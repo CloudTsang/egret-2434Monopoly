@@ -119,11 +119,14 @@ class EventRealMachine  extends MapEvent{
 		egret.Tween.get(this)
 		.wait(500)
 		.call(()=>{
-			WorldMap.showRollNum(n, r)
+			// WorldMap.showRollNum(n, r)
+			this.dispatchEvent(new RollEvent(n,r))
 		})
 		.wait(1000)
 		.call(()=>{
-			const el = WorldMap.showEvtLog(log)
+			// const el = WorldMap.showEvtLog(log)
+			const el = new EvtLog(log)
+			this.dispatchEvent(new ShowEvent(el, 'menu'))
 			el.addEventListener("touchTap", fn, this)
 		})
 
@@ -193,11 +196,14 @@ class EventRealMachine  extends MapEvent{
 		egret.Tween.get(this)
 		.wait(500)
 		.call(()=>{
-			WorldMap.showRollNum(n, r)
+			// WorldMap.showRollNum(n, r)
+			this.dispatchEvent(new RollEvent(n,r))
 		})
 		.wait(1000)
 		.call(()=>{
-			const el = WorldMap.showEvtLog(log)
+			// const el = WorldMap.showEvtLog(log)
+			const el = new EvtLog(log)
+			this.dispatchEvent(new ShowEvent(el, 'menu'))
 			el.addEventListener("touchTap", fn, this)
 		})
 

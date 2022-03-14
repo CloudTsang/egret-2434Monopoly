@@ -6,6 +6,8 @@ class NetaGetPanel extends eui.Component  implements IDisposable {
 		let p = NetaGetPanel.panel
 		if(p==null){
 			p = new NetaGetPanel()
+			p.x = WorldData.STAGE_W
+			p.y = (WorldData.STAGE_H-p.height)/2
 			NetaGetPanel.panel = p
 		}
 		return p

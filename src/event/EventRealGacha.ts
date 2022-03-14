@@ -105,7 +105,8 @@ class EventRealGacha extends MapEvent{
 				}
 			}
 
-			WorldMap.showRollNum(r, gachaResult)
+			// WorldMap.showRollNum(r, gachaResult)
+			this.dispatchEvent(new RollEvent(r, gachaResult))
 		})
 		.wait(500)
 		.set({

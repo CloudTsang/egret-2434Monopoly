@@ -24,7 +24,8 @@ class Makai extends MapEvent{
 		egret.Tween.get(this)
 		.wait(200)
 		.call(()=>{
-			WorldMap.showRollNum(r, '')
+			// WorldMap.showRollNum(r, '')
+			this.dispatchEvent(new RollEvent(r, ''))
 		})
 		.wait(500)
 		.call(()=>{
@@ -84,7 +85,9 @@ class Makai extends MapEvent{
 			mc.npc['debi'] += up
 		}
 
-		const el:EvtLog = WorldMap.showEvtLog(log)
+		// const el:EvtLog = WorldMap.showEvtLog(log)
+		const el = new EvtLog(log)
+		this.dispatchEvent(new ShowEvent(el, 'menu'))
 		if(el){
 			el.addEventListener("touchTap", this.onLogTap, this)
 		}
@@ -95,7 +98,9 @@ class Makai extends MapEvent{
 		const mc = this._mc
 		const data = this.selections[0].roll.evt[1]
 		let log:string = data['log']
-		const el:EvtLog = WorldMap.showEvtLog(log)
+		// const el:EvtLog = WorldMap.showEvtLog(log)
+		const el = new EvtLog(log)
+		this.dispatchEvent(new ShowEvent(el, 'menu'))
 		mc.npc['inui'] += 0.5
 		if(el){
 			el.addEventListener("touchTap", this.onLogTap, this)
@@ -108,7 +113,9 @@ class Makai extends MapEvent{
 		const netadata = data.effect[0].data
 		const log = data.log
 		const n:Neta = NetaFactory.getNetaFromObj(netadata)
-		const el:EvtLog = WorldMap.showEvtLog(log)
+		// const el:EvtLog = WorldMap.showEvtLog(log)
+		const el = new EvtLog(log)
+		this.dispatchEvent(new ShowEvent(el, 'menu'))
 		mc.npc['roa'] += 0.5
 		
 		if(el){
@@ -136,7 +143,9 @@ class Makai extends MapEvent{
 				break
 			}
 		}
-		const el:EvtLog = WorldMap.showEvtLog(log)
+		// const el:EvtLog = WorldMap.showEvtLog(log)
+		const el = new EvtLog(log)
+		this.dispatchEvent(new ShowEvent(el, 'menu'))
 		mc.npc['maimoto'] += 0.5
 		
 		if(el){
@@ -149,7 +158,9 @@ class Makai extends MapEvent{
 		const data = this.selections[0].roll.evt[4]
 		let log = data['log']
 		mc.getBuff(new Sleep(mc, 1))
-		const el:EvtLog = WorldMap.showEvtLog(log)
+		// const el:EvtLog = WorldMap.showEvtLog(log)
+		const el = new EvtLog(log)
+		this.dispatchEvent(new ShowEvent(el, 'menu'))
 		mc.npc['ruru'] += 0.5
 		if(el){
 			el.addEventListener("touchTap", this.onLogTap, this)
@@ -162,7 +173,9 @@ class Makai extends MapEvent{
 		const netadata = data.effect[0].data
 		const log = data.log
 		const n:Neta = NetaFactory.getNetaFromObj(netadata)
-		const el:EvtLog = WorldMap.showEvtLog(log)
+		// const el:EvtLog = WorldMap.showEvtLog(log)
+		const el = new EvtLog(log)
+		this.dispatchEvent(new ShowEvent(el, 'menu'))
 		mc.npc['mao'] += 0.5
 		if(el){
 			el.addEventListener(egret.TouchEvent.TOUCH_TAP, (e)=>{

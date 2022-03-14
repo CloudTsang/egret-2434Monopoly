@@ -38,7 +38,9 @@ class EventRealNJU  extends MapEvent{
 			log = this.logs[0]
 		}
 		
-		const el = WorldMap.showEvtLog(log)
+		// const el = WorldMap.showEvtLog(log)
+		const el = new EvtLog(log)
+		this.dispatchEvent(new ShowEvent(el, 'menu'))
 		el.once("touchTap", (e)=>{
 			el.dispose()
 			if(neta){

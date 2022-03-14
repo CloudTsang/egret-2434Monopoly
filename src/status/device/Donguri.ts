@@ -21,11 +21,12 @@ class Donguri extends Device {
 			}
 		}
 		if(arr.length > 0){
-			const np = WorldMap.showNpcPanel(arr)
+			const np = new NpcPanel2(arr)
 			np.once(eui.UIEvent.REMOVED_FROM_STAGE, (e)=>{
 				np.dispose()
-				this.dispatchEvent(new egret.Event(GameEvents.DEVICE_FINISH))
 			}, this)
+			this.dispatchEvent(new ShowEvent(np, 'top'))
+			this.dispatchEvent(new egret.Event(GameEvents.DEVICE_FINISH))
 		}else{
 			this.dispatchEvent(new egret.Event(GameEvents.DEVICE_FINISH))
 		}

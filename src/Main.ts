@@ -29,8 +29,6 @@
 
 class Main extends egret.DisplayObjectContainer {
     private currentScene:egret.DisplayObject
-    private stageW:number
-    private stageH:number
     private world:WorldController
     public constructor() {
         super();
@@ -112,14 +110,14 @@ class Main extends egret.DisplayObjectContainer {
 
         LifecycleCallback.regist()
        
-        this.stageW = this.stage.stageWidth
-        this.stageH = this.stage.stageHeight
+        WorldData.STAGE_W = this.stage.stageWidth
+        WorldData.STAGE_H = this.stage.stageHeight
+
         const bg = new egret.Shape()
         bg.graphics.beginFill(0xBBBBBB)
-        bg.graphics.drawRect(0,0,this.stageW,this.stageH)
+        bg.graphics.drawRect(0,0,WorldData.STAGE_W,WorldData.STAGE_H)
         bg.graphics.endFill()
         this.addChild(bg)
-
         this.toTitle(null)
         // this.toWorld({
         //     data:{
@@ -135,8 +133,8 @@ class Main extends egret.DisplayObjectContainer {
         SoundManager.instance.stop()
         if(this.currentScene) this.removeChild(this.currentScene)
         const title = new TitlePage()
-        title.width = this.stageW
-        title.height = this.stageH
+        title.width = WorldData.STAGE_W
+        title.height = WorldData.STAGE_H
         this.currentScene = title
         this.addChild(title)
 
@@ -148,8 +146,8 @@ class Main extends egret.DisplayObjectContainer {
         this.removeChild(this.currentScene)
 
         const playSelect:StartSelectPanel = new StartSelectPanel()
-        playSelect.width = this.stageW
-        playSelect.height = this.stageH
+        playSelect.width = WorldData.STAGE_W
+        playSelect.height = WorldData.STAGE_H
         playSelect.once(GameEvents.GAME_START, this.toWorld, this)
         this.currentScene = playSelect
         this.addChild(playSelect)
@@ -163,7 +161,6 @@ class Main extends egret.DisplayObjectContainer {
         // const mcs = ['mito_json']
         const tnum = e.data.turn
         if(!mcs)return
-        //  const mcs = [ 'mito_json']
         const world = new WorldController(this.stage)
         world.initMap()
         world.initPlayer(mcs)

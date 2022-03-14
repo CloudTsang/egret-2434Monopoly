@@ -28,14 +28,21 @@ class NetaDeviceCurse  extends Device{
 			if(rate < 0){
 				SoundManager.instance.playBgs('dededon_short_mp3')
 			}
-			WorldMap.showRollNum(n, r)
+			this.dispatchEvent(new RollEvent(n,r))
 		})
 		.wait(500)
 		.call(()=>{
-			WorldMap.showCurseEffect(mc, effectee1, ()=>{
+			
+			const effect = new Curse()
+			this.dispatchEvent(new ShowEvent(effect, "top"))
+			effect.play(mc, effectee1, ()=>{
 				this.onCurse(rate, effectee1, effectee2)
 				this.dispatchEvent(new egret.Event(GameEvents.DEVICE_FINISH))
 			})
+			// WorldMap.showCurseEffect(mc, effectee1, ()=>{
+			// 	this.onCurse(rate, effectee1, effectee2)
+			// 	this.dispatchEvent(new egret.Event(GameEvents.DEVICE_FINISH))
+			// })
 			
 		})
 	}

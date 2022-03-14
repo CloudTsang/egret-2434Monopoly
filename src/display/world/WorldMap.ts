@@ -238,6 +238,11 @@ class WorldMap extends eui.Component{
 		return this.focusTo(i,animate,delay)
 	}
 
+	public focusToLiverAsync(n:number, animate:boolean=false, delay:number=200):Promise<{}>{
+		const i = this.chessArr[n]
+		return this.focusToAsync(i,animate,delay)
+	}
+
 	/**居中显示第n个格子 */
 	public focusTo(n:number, animate:boolean = false, delay:number=200):egret.Tween{
 		const cell  = this.cellsArr[n]
@@ -258,6 +263,29 @@ class WorldMap extends eui.Component{
 		}
 	}
 
+	public focusToAsync(n:number, animate:boolean = false, delay:number=200):Promise<{}>{
+		return new Promise((resolve, reject)=>{
+			const cell  = this.cellsArr[n]
+			const container = this.mapContainer
+			
+			if(!animate){
+				egret.Tween.get(container)
+				.set({
+					x: this.width/2 - cell.x - cell.width/2,
+					y: this.height/2 - cell.y - cell.height/2
+				})
+				.call(resolve)
+			}else{
+				egret.Tween.get(container)
+				.to({
+					x: this.width/2 - cell.x - cell.width/2,
+					y: this.height/2 - cell.y - cell.height/2
+				}, delay)
+				.call(resolve)
+			}
+		})
+	}
+
 	/**获取居中显示第n个格子时地图的位置*/
 	public getPositionWhileFocus(n:number){
 		const cell  = this.cellsArr[n]
@@ -274,6 +302,17 @@ class WorldMap extends eui.Component{
 
 	public showSkillBar(s:Skill){
 		const sb = new SkillBar(s)
+		switch(s.type){
+			case SkillType.POSITIVE:
+				// SoundManager.instance.playBgs('success2_mp3')
+				break
+			case SkillType.NEGATIVE:
+				// SoundManager.instance.playBgs('dededon_short_mp3')
+				break
+			case SkillType.HIDDEN:
+				SoundManager.instance.playBgs('success_mp3')
+				break
+		}
 		const sbs:SkillBar[] = this.skillBars
 		let position = sbs.length
 		for(let i=0;i<sbs.length;i++){
@@ -299,9 +338,50 @@ class WorldMap extends eui.Component{
 		for(let tsb of sbs){
 			if(tsb) return
 		}
-		// console.log("清空技能显示")
 		this.skillBars = []
 	}
+
+	public showNpcPanel(npcs:NpcObj[]){
+		const p = new NpcPanel2(npcs)
+		p.x = this.width
+		p.y = this.height/2
+		this.topContainer.addChild(p)
+		return p
+	}
+
+	public showGetNeta(n:Neta):NetaGetPanel|null{
+		const np = NetaGetPanel.addNetaToShow(n)
+		this.topContainer.addChild(np)
+		return np
+	}
+
+	public showPlayerSelect(players:MainCharacter[], current:number):PlayerSelectPanel{
+		let urls:string[] = []
+		for(let p of players){
+			urls.push(p.iconUrl)
+		}
+		const p = new PlayerSelectPanel(urls, current)
+		p.x = (this.width - p.width)/2
+		p.y = (this.height-p.height)/2
+		this.menuContainer.addChild(p)
+		return p
+	}
+
+	public  showEvtLog(des:string, url:string='', cb:(any)=>void=null):EvtLog|null{
+		const el = new EvtLog(des, url, cb)
+		this.menuContainer.addChild(el)
+		return el
+	}
+
+	public addCompenent(dispObj:any, layer:"menu"|"top"):any{
+		if(layer == "menu"){
+			this.menuContainer.addChild(dispObj)
+		}else if(layer == "top"){
+			this.topContainer.addChild(dispObj)
+		}
+		return dispObj
+	}
+
 
 	private onComplete(e:eui.UIEvent=null){
 		const map = this
@@ -385,124 +465,9 @@ class WorldMap extends eui.Component{
 		this.dispatchEvent(new egret.Event(GameEvents.SHOW_NETA_BAG))
 	}
 
-	public static showSkillBar(s:Skill):SkillBar|null{
-		if(!WorldMap.instance) return null
-		const ins = WorldMap.instance
-		switch(s.type){
-			case SkillType.POSITIVE:
-				// SoundManager.instance.playBgs('success2_mp3')
-				break
-			case SkillType.NEGATIVE:
-				// SoundManager.instance.playBgs('dededon_short_mp3')
-				break
-			case SkillType.HIDDEN:
-				SoundManager.instance.playBgs('success_mp3')
-				break
-		}
-		return ins.showSkillBar(s)
-	}
-
-	public static showGetNeta(n:Neta):NetaGetPanel|null{
-		if(!WorldMap.instance) return null
-		const ins = WorldMap.instance
-		const np = NetaGetPanel.addNetaToShow(n)
-		np.x = ins.width
-		np.y = (ins.height-np.height)/2
-		ins.topContainer.addChild(np)
-		return np
-	}
-
-	public static showRollNum(n:number, r:string){
-		if(!WorldMap.instance) return null
-		const ins = WorldMap.instance
-		ins.rollbtn.showRolledNum(n, r)
-	}
-
-	public static showEvtLog(des:string, url:string='', cb:(any)=>void=null):EvtLog|null{
-		if(!WorldMap.instance) return null
-	
-		const ins = WorldMap.instance
-		const el = new EvtLog(des, url, cb)
-		el.x = (ins.width - el.width)/2
-		el.y = (ins.height-el.height)/2
-		ins.menuContainer.addChild(el)
-		return el
-	}
-
-	public static showPayGainPanel(n:number, cb:(any)=>void=null):PayGainPanel|null{
-		if(!WorldMap.instance) return null
-		
-		const ins = WorldMap.instance
-		const el = new PayGainPanel(n)
-		el.x = (ins.width - el.width)/2
-		el.y = (ins.height-el.height)/2
-		ins.menuContainer.addChild(el)
-		return el
-	}
-
-	public static showNpcPanel(npcs:NpcObj[]):NpcPanel2{
-		if(!WorldMap.instance) return null
-		const ins = WorldMap.instance
-		const p = new NpcPanel2(npcs)
-		p.x = ins.width
-		p.y = ins.height/2
-		ins.topContainer.addChild(p)
-		return p
-	}
-
-	public static showPlayerSelect(players:MainCharacter[], current:number):PlayerSelectPanel{
-		if(!WorldMap.instance) return null
-		let urls:string[] = []
-		for(let p of players){
-			urls.push(p.iconUrl)
-		}
-		const ins = WorldMap.instance
-		const p = new PlayerSelectPanel(urls, current)
-		p.x = (ins.width - p.width)/2
-		p.y = (ins.height-p.height)/2
-		ins.menuContainer.addChild(p)
-		return p
-	}
-
-	public static showCurseEffect(cur:MainCharacter, tgt:MainCharacter, cb:()=>void=null){
-		if(!WorldMap.instance) return null
-		const ins = WorldMap.instance
-		const blackBack:BlackBack = new BlackBack(ins.width, ins.height)
-		ins.topContainer.addChild(blackBack)
-		blackBack.fadeIn()
-
-		const doll:CurseDoll = new CurseDoll()
-		doll.x = ins.width/2
-		doll.y = ins.height/2
-		ins.topContainer.addChild(doll)
-		SoundManager.instance.pause()
-		SoundManager.instance.playBgs('horror_mp3')
-		let tw1 = doll.fadeIn()
-		if(cur.index == tgt.index){
-			tw1 = tw1.wait(500)
-		}else{
-			tw1 = tw1.call(()=>{
-				ins.focusToLiver(tgt.index, true)
-			})
-		}
-		tw1.wait(1000)
-		doll.fadeOut(tw1)
-		.call(()=>{
-			blackBack.fadeOut()
-			tgt.dispObj.showAttacked()
-		})
-		.wait(500)
-		.call(()=>{
-			ins.focusToLiver(cur.index, true)
-			SoundManager.instance.resume()
-			cb&&cb()
-		})
-	}
-
 	public static focusToPlayer(p:MainCharacter){
 		if(!WorldMap.instance) return null
-		const ins = WorldMap.instance
-		return ins.focusToLiver(p.index, true)
+		return WorldMap.instance.focusToLiver(p.index, true)
 	}
 }
 

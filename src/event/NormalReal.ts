@@ -21,7 +21,8 @@ class NormalReal extends MapEvent{
 		egret.Tween.get(this)
 		.wait(200)
 		.call(()=>{
-			WorldMap.showRollNum(n, r)
+			this.dispatchEvent(new RollEvent(n,r))
+			//WorldMap.showRollNum(n, r)
 		})
 		.wait(500)
 		.call(()=>{	
@@ -89,7 +90,9 @@ class NormalReal extends MapEvent{
 				}
 			}
 
-			const evtLog = WorldMap.showEvtLog(log)
+			// const evtLog = WorldMap.showEvtLog(log)
+			const evtLog = new EvtLog(log)
+			this.dispatchEvent(new ShowEvent(evtLog, 'menu'))
 			this._el = evtLog
 			fn && fn()
 			evtLog.once("touchTap", (e)=>{

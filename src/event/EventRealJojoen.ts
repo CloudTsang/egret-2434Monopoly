@@ -48,13 +48,16 @@ class EventRealJojoen  extends MapEvent{
 		egret.Tween.get(this)
 		.wait(100)
 		.call(()=>{
-			WorldMap.showRollNum(n, r)
+			// WorldMap.showRollNum(n, r)
+			this.dispatchEvent(new RollEvent(n,r))
 			const buff = new StomachFull(mc, buffTime)
 			mc.getBuff(buff)
 		})
 		.wait(500)
 		.call(()=>{
-			const el = WorldMap.showEvtLog(log)
+			// const el = WorldMap.showEvtLog(log)
+			const el = new EvtLog(log)
+			this.dispatchEvent(new ShowEvent(el, 'menu'))
 			el.addEventListener("touchTap", (e)=>{
 				el.dispose()
 				if(netaData){
@@ -91,18 +94,22 @@ class EventRealJojoen  extends MapEvent{
 		egret.Tween.get(this)
 		.wait(100)
 		.call(()=>{
-			WorldMap.showRollNum(n, r)
+			// WorldMap.showRollNum(n, r)
+			this.dispatchEvent(new RollEvent(n,r))
 			const buff = new StomachFull(mc, buffTime)
 			mc.getBuff(buff)
 			for(let n of this._cell.npcs){
 				mc.npc[Liver.allLivers[n].ID]+=favor
 			}
 			const objs:NpcObj[] = this._cell.getNpc(this._mc.npc)
-			const np = WorldMap.showNpcPanel(objs)
+			// const np = WorldMap.showNpcPanel(objs)
+			this.dispatchEvent(new NpcEvent(objs))
 		})
 		.wait(500)
 		.call(()=>{
-			const el = WorldMap.showEvtLog(log)
+			// const el = WorldMap.showEvtLog(log)
+			const el = new EvtLog(log)
+			this.dispatchEvent(new ShowEvent(el, 'menu'))
 			el.addEventListener("touchTap", (e)=>{
 				el.dispose()
 				const neta = NetaFactory.getNetaFromObj(netaData)
