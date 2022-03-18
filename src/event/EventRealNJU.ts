@@ -17,7 +17,7 @@ class EventRealNJU  extends MapEvent{
 		let over3:number = 0
 		//npc中一个达到最高4或两个达到3可以获得nju neta
 		for(let id of mc.npc.IDs){
-			const f = mc.npc[id]
+			const f = mc.npc.getF(id)
 			if(f >= 3){
 				over3 ++
 			}

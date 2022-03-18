@@ -8,6 +8,8 @@ class EventShop  extends MapEvent{
 	public trigger(mc:MainCharacter, cell:CellData):EvtPanelShop|IDisposable{
 		this._mc = mc
 		this.createStore()
+		const strigger = mc.checkIfSkillsTriggered(GamePhrase.GO_SHOPPING, Roll.random3())
+		strigger.triggerBag(this.store)
 		const ep = new EvtPanelShop(this._mc, this.name, this.des, this.store, PanelType.SHOP)
 		ep.addEventListener(GameEvents.MENU_CANCEL, this.onCancel, this)
 		ep.addEventListener(GameEvents.NETA_CONFIRM, this.onBuy, this)

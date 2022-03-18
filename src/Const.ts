@@ -93,6 +93,15 @@ class GamePhrase{
 	/**发生炎上时 */
 	public static readonly STREAM_ENJO = 'STREAM_ENJO'
 
+	/**npc好感度上升 */
+	public static readonly NPC_UP = 'NPC_UP'
+	/**npc好感度下降 */
+	public static readonly NPC_DOWN = 'NPC_DOWN'
+	/**触发商店事件 */
+	public static readonly GO_SHOPPING = 'GO_SHOPPING'
+	/**随机结果判定 */
+	public static readonly ROLL_RESULT = 'ROLL_RESULT'
+
 }
 
 class EffectType{

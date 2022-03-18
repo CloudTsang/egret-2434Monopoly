@@ -53,10 +53,10 @@ class EventRealEnkr  extends MapEvent{
 
 	private get3_0Handler(){
 		this.dispatchEvent(new egret.Event(GameEvents.EVENT_START))
-		 let {n, r} = Roll.random(this._mc)
+		 let {n, r} = Roll.random(this._mc, "", true)
 		 let log:string = ''
 		 let neta:Neta
-		//  r = RollResult.BIG_SUCCESS
+
 		 if(r == RollResult.BIG_SUCCESS){
 			 log = this.selections[2].evt[1]
 		 }else{
@@ -88,12 +88,13 @@ class EventRealEnkr  extends MapEvent{
 
 	private rikuHandler(){
 		this.dispatchEvent(new egret.Event(GameEvents.EVENT_START))
-		let {n, r} = Roll.random(this._mc, "commu")
+		let {n, r} = Roll.random(this._mc, "commu", true)
 		//test
 		// r = RollResult.BIG_FAIL
 		const evt:any[] = this.selections[3].roll.evt
 		let fn:(e:any)=>void
 		let log:string
+
 		switch(r){
 			case RollResult.BIG_SUCCESS:
 				if(!this._mc.edata.major){

@@ -174,5 +174,37 @@
             "meme":1,
             "long":false
         }
+    },
+    {
+        "id":11,
+        "name":"Get Wild",
+        "des":"3年4班曾凭此曲在合唱比赛中取得优胜",
+        "iconUrl":"netaicons2_json#getwild",
+        "type":"song", 
+        "cd":3,
+        "songReq":1,    
+        "data":{
+            "times":-1,
+            "pop":2,
+            "safe":3,
+            "meme":3,
+            "long":false
+        }
+    },
+    {
+        "id":12,
+        "name":"One Last Kiss",
+        "des":"走出车站，到卢浮宫寻找蒙娜丽莎",
+        "iconUrl":"netaicons2_json#onelastkiss",
+        "type":"song", 
+        "cd":3,
+        "songReq":4,    
+        "data":{
+            "times":-1,
+            "pop":4,
+            "safe":3,
+            "meme":2,
+            "long":false
+        }
     }
 ]

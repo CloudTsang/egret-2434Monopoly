@@ -41,19 +41,16 @@ class EventRealDaipan  extends MapEvent{
 
 		let fupNpc:number = 0
 		let arr:NpcObj[] = []
-		if(mc.npc['sasaki']!=undefined){
-			mc.npc['sasaki'] += 0.5
+		if(mc.npc.modify('sasaki', 1)!=undefined){
 			fupNpc++
 		}
-		if(mc.npc['yashiro']!=undefined){
-			mc.npc['yashiro'] += 0.5
-			fupNpc++
-		}
+		mc.npc.modify('yashiro', 1)
+		fupNpc++
 		for(let npc of Liver.allLivers){
 			if(npc.ID == 'sasaki' || npc.ID == 'yashiro'){
 				arr.push({
 					...npc,
-					favor:mc.npc[npc.ID]
+					favor:mc.npc.getF(npc.ID)
 				})
 			}
 			if(arr.length == fupNpc)break

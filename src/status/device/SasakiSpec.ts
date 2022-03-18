@@ -7,10 +7,10 @@ class SasakiSpec  extends Device {
 		const mc:MainCharacter = obj.player
 		const npc = obj.npc as BaseLiver
 		if(!mc || !npc) return
-		mc.npc[npc.ID] += 5
+		const f = mc.npc.modify(npc.ID, 5)
 		const npcobj:NpcObj = {
 			...npc,
-			favor:mc.npc[npc.ID]
+			favor:f
 		}
 		// WorldMap.showNpcPanel([npcobj])
 		this.dispatchEvent(new NpcEvent([npcobj]))

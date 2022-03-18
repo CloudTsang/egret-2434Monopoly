@@ -40,10 +40,8 @@ class EffectHandler extends BaseObj{
 					console.error(err)
 				}
 				break
-			case EffectType.GET_NETA:
-				
+			case EffectType.GET_NETA:				
 				const newNeta = NetaFactory.getNetaFromObj(data)
-				console.log(newNeta)
                 if(target.bag){
                     target.bag.modifyNeta(newNeta, "get" ,true)
                 }
@@ -63,6 +61,10 @@ class EffectHandler extends BaseObj{
 					}
 				}
 				break
+			case EffectType.REMOVE_BUFF:
+				if(target.player){
+					target.player.removeBuff(data)
+				}
 			case EffectType.PLAY_BGS:
 				SoundManager.instance.playBgs(data)
 		}

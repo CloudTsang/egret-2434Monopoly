@@ -14,7 +14,9 @@ class DebiSpec  extends Device {
 		for(let s of dataStrArr){
 			const tmp = s.replace("{mc.npc.", "").split('}+')
 			const ID:string = tmp[0]
-			const num:number = mc.npc[ID] + parseFloat(tmp[1])
+			const d = parseFloat(tmp[1])
+			mc.npc.modify(ID, d)
+			const num:number = mc.npc.getF(ID)
 			const npc = Liver.allLivers.filter((v:BaseLiver)=>{return v.ID==ID})[0]
 			if(!npc)continue
 			const obj:NpcObj = {

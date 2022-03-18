@@ -10,27 +10,23 @@ class EventRealBQ  extends MapEvent{
 
 		const mc = this._mc
 
-		let fupNpc:number = 0
+		const fupNpc:number = 2
 		let arr:NpcObj[] = []
-		if(mc.npc['run']!=undefined){
-			mc.npc['run'] += 0.5
-			fupNpc++
-		}
-		if(mc.npc['ib']!=undefined){
-			mc.npc['ib'] += 0.5
-			fupNpc++
-		}
+		mc.npc.modify('run', 1)
+		mc.npc.modify('ib', 1)
+		
 		for(let npc of Liver.allLivers){
 			if(npc.ID == 'run' || npc.ID == 'ib'){
 				arr.push({
 					...npc,
-					favor:mc.npc[npc.ID]
+					favor:mc.npc.getF(npc.ID)
 				})
 			}
 			if(arr.length == fupNpc)break
 		}
-		//const np:NpcPanel2 = WorldMap.showNpcPanel(arr)
 		this.dispatchEvent(new NpcEvent(arr))
+
+
 		const data = this.netas[0]
 		const neta = NetaFactory.getNetaFromObj(data)
 		const ngp:NetaGetPanel = this._mc.netaBag.modifyNeta(neta, 'get', true)

@@ -1,12 +1,8 @@
 {
-    "options": {
-        "layoutGap": 2,
-        "extend": 0,
-        "layoutMath": "3",
-        "sizeMode": "free",
-        "useExtension": 0
-    },
+    "projectName": "neta2",
     "files": [
+        "./neta2/getwild.jpg",
+        "./neta2/onelastkiss.png",
         "./neta2/rionspec.jpg",
         "./neta2/tamkispec.jpg",
         "./neta2/himaspec.jpg",
@@ -24,8 +20,16 @@
         "./neta2/msmr.jpg",
         "./neta2/BQ.jpg",
         "./neta2/daipan.jpg",
-        "./neta2/nju.jpg"
+        "./neta2/nju.jpg",
+        "./neta2/donguri.jpg",
+        "./neta2/rfit.jpg"
     ],
-    "projectName": "neta2",
+    "options": {
+        "layoutMath": "3",
+        "sizeMode": "free",
+        "useExtension": 0,
+        "layoutGap": 2,
+        "extend": 0
+    },
     "version": 5
 }

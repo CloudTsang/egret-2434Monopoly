@@ -14,7 +14,6 @@ class NormalVirtual extends MapEvent {
 	protected onSelected(e:egret.Event){
 		// this.dispatchEvent(new egret.Event(GameEvents.EVENT_START))
 		const ty = e.data.ty
-		const {n, r} = Roll.random(this._mc)
 		const index = e.data.index
 		
 		switch(ty){
@@ -29,7 +28,7 @@ class NormalVirtual extends MapEvent {
 
 	private onWatch(index:number){
 		this.dispatchEvent(new egret.Event(GameEvents.EVENT_START))
-		let {n, r} = Roll.random(this._mc)
+		let {n, r} = Roll.random(this._mc, "", true)
 		let livers:BaseLiver[] = []
 		const mc = this._mc
 		for(let n of this._cell.npcs){
@@ -41,13 +40,13 @@ class NormalVirtual extends MapEvent {
 					this.onLogTap()
 				}
 		//test
-		// r = RollResult.BIG_SUCCESS
+		// r = RollResult.BIG_FAIL
 		switch(r){
 			case RollResult.BIG_SUCCESS:
 				//全部liver好感度上升1，且获得杂谈neta 
 				log = this.selections[index].evt[4].log
 				for(let l of livers){
-					mc.npc[l.ID] += 1
+					mc.npc.modify(l.ID, 1)
 				}
 				fn = ()=>{
 					const getNeta = NetaFactory.getNeta(NetaType.TALK)
@@ -62,32 +61,32 @@ class NormalVirtual extends MapEvent {
 				//全部liver好感度上升1
 				log = this.selections[index].evt[3].log
 				for(let l of livers){
-					mc.npc[l.ID] += 1
+					mc.npc.modify(l.ID, 1)
 				}
 				break
 			case RollResult.NORMAL:
 				//随机单个liver好感度上升1
 				log = this.selections[index].evt[2].log
 				const n = Math.floor(Math.random()*livers.length)
-				mc.npc[livers[n].ID] += 1
+				mc.npc.modify(livers[n].ID, 1)
 				log = log.replace("{result}", livers[n].name)
 				break
 			case RollResult.FAIL:
 				//随机单个liver好感度少许上升0.5
 				log = this.selections[index].evt[1].log
 				const m = Math.floor(Math.random()*livers.length)
-				mc.npc[livers[m].ID] += 0.5
+				mc.npc.modify(livers[m].ID, 0.5)
 				log = log.replace("{result}", livers[m].name)
 				break
 			case RollResult.BIG_FAIL:
 				//全部liver好感度上升0.1
 				log = this.selections[index].evt[0].log
 				for(let l of livers){
-					mc.npc[l.ID] += 0.1
+					mc.npc.modify(l.ID, 0.1)
 				}
 				break
 		}
-
+		
 		egret.Tween.get(this)
 		.wait(200)
 		.call(()=>{
@@ -102,6 +101,7 @@ class NormalVirtual extends MapEvent {
 			// const np = WorldMap.showNpcPanel(objs)
 			this.dispatchEvent(new NpcEvent(objs))
 			// const evtLog = WorldMap.showEvtLog(log)
+			// console.log(log)
 			const evtLog = new EvtLog(log)
 			this.dispatchEvent(new ShowEvent(evtLog, 'menu'))
 			this._el = evtLog
@@ -115,7 +115,7 @@ class NormalVirtual extends MapEvent {
 	private onRest(index:number){
 		this.dispatchEvent(new egret.Event(GameEvents.EVENT_START))
 		const oriLog = this.selections[index].log
-		const {n, r} = Roll.random(this._mc)
+		const {n, r} = Roll.random(this._mc, "", true)
 		let rate = this.getUpRate(r)
 		const arr = ['commu','talk','strength','sense','sing','game','tech']
 		const i = Math.floor(Math.random()*arr.length)

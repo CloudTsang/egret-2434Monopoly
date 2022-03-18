@@ -82,7 +82,7 @@ class Makai extends MapEvent{
 			log = data['log']
 		}else{
 			log = data['log2']
-			mc.npc['debi'] += up
+			mc.npc.modify("debi",up)
 		}
 
 		// const el:EvtLog = WorldMap.showEvtLog(log)
@@ -101,7 +101,7 @@ class Makai extends MapEvent{
 		// const el:EvtLog = WorldMap.showEvtLog(log)
 		const el = new EvtLog(log)
 		this.dispatchEvent(new ShowEvent(el, 'menu'))
-		mc.npc['inui'] += 0.5
+		mc.npc.modify('inui', 1)
 		if(el){
 			el.addEventListener("touchTap", this.onLogTap, this)
 		}
@@ -116,7 +116,7 @@ class Makai extends MapEvent{
 		// const el:EvtLog = WorldMap.showEvtLog(log)
 		const el = new EvtLog(log)
 		this.dispatchEvent(new ShowEvent(el, 'menu'))
-		mc.npc['roa'] += 0.5
+		mc.npc.modify('roa', 1)
 		
 		if(el){
 			el.addEventListener(egret.TouchEvent.TOUCH_TAP, (e)=>{
@@ -146,7 +146,7 @@ class Makai extends MapEvent{
 		// const el:EvtLog = WorldMap.showEvtLog(log)
 		const el = new EvtLog(log)
 		this.dispatchEvent(new ShowEvent(el, 'menu'))
-		mc.npc['maimoto'] += 0.5
+		mc.npc.modify('maimoto', 1)
 		
 		if(el){
 			el.addEventListener("touchTap", this.onLogTap, this)
@@ -161,7 +161,7 @@ class Makai extends MapEvent{
 		// const el:EvtLog = WorldMap.showEvtLog(log)
 		const el = new EvtLog(log)
 		this.dispatchEvent(new ShowEvent(el, 'menu'))
-		mc.npc['ruru'] += 0.5
+		mc.npc.modify('ruru', 1)
 		if(el){
 			el.addEventListener("touchTap", this.onLogTap, this)
 		}
@@ -176,7 +176,7 @@ class Makai extends MapEvent{
 		// const el:EvtLog = WorldMap.showEvtLog(log)
 		const el = new EvtLog(log)
 		this.dispatchEvent(new ShowEvent(el, 'menu'))
-		mc.npc['mao'] += 0.5
+		mc.npc.modify('mao', 1)
 		if(el){
 			el.addEventListener(egret.TouchEvent.TOUCH_TAP, (e)=>{
 				el.dispose()

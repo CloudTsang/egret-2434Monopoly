@@ -8,6 +8,7 @@ class Skill extends EffectHandler{
 	/**发动条件 */
 	protected req:string 
 	protected triggered:boolean 
+	/**是否可以一个回合内多次触发 */
 	protected always:boolean
 	protected _cd:number
 	
@@ -18,7 +19,9 @@ class Skill extends EffectHandler{
 		this.effect = data['effect']?data['effect']:[]
 		this.rate = data['rate']
 		this.phrase = data['phrase']
-		this.always = data['phrase'].indexOf("USE_")>=0
+		if(data['always']) this.always = data['always']
+		else this.always = data['phrase'].indexOf("USE_")>=0
+		
 		this.type = data['type']
 		this.req = data['req']
 		this.mc = mc
@@ -53,6 +56,7 @@ class Skill extends EffectHandler{
 			const re = new RegExp(/\{mc.*\}/)
 			let rateStr = this.rate
 			const arr = re.exec(rateStr)
+
 			if(arr){
 				for(let i of arr){
 					const prop = i.substring(4, i.length-1)
@@ -123,10 +127,12 @@ class Skill extends EffectHandler{
 			return
 		}
 		
-		const obj = {
+		const obj:TargetObj = {
 			player:this.mc,
 			stream:stream,
-			mc:this.mc.ddata
+			mc:this.mc.ddata,
+			mc2:this.mc.data,
+			mc3:this.mc.edata
 		}
 		if(!this.checkReq(this.req, obj)){
 			return
@@ -140,6 +146,19 @@ class Skill extends EffectHandler{
 			const data = e.data
 			this.handle(ty, data, obj)
 		}
+	}
+
+	public triggerBag(bag:NetaBag){
+		console.log("skill : ", this.name)
+		this.dispatchEvent(new SkillEvent(this))
+		this.triggered = true
+	}
+
+	public triggerRollResult(r:string){
+		console.log("skill : ", this.name)
+		this.dispatchEvent(new SkillEvent(this))
+		this.triggered = true
+		return r
 	}
 
 	

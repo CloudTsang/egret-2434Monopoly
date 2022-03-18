@@ -94,7 +94,8 @@
     "des": "",
     "iconUrl": "livers1_json#amamya",
     "tag": [
-      "loli"
+      "loli",
+      "resist"
     ]
   },
   {
@@ -123,7 +124,8 @@
     "iconUrl": "livers1_json#chaika",
     "tag": [
       "elf",
-      "nonhuman"
+      "nonhuman",
+      "resist"
     ]
   },
   {
@@ -185,7 +187,8 @@
     "iconUrl": "livers4_json#yorumi",
     "tag": [
       "smc",
-      "unchi"
+      "unchi",
+      "resist"
     ]
   },
   {
@@ -225,7 +228,8 @@
       "loli",
       "nonhuman",
       "unchi",
-      "flat"
+      "flat",
+      "resist"
     ]
   },
   {
@@ -247,7 +251,10 @@
     "ID": "putit",
     "name": "葡蒂",
     "des": "",
-    "iconUrl": "livers3_json#putit"
+    "iconUrl": "livers3_json#putit",
+    "tag":[
+      "resist"
+    ]
   },
   {
     "ID": "tamaki",
@@ -491,7 +498,11 @@
     "ID": "hayama",
     "name": "叶山舞铃",
     "des": "",
-    "iconUrl": "livers2_json#hayama"
+    "iconUrl": "livers2_json#hayama",
+    "tag":[
+      "jk",
+      "resist"
+    ]
   },
   {
     "ID": "hskw",
@@ -605,7 +616,8 @@
     "iconUrl": "livers4_json#siina",
     "tag": [
       "jk",
-      "kansai"
+      "kansai",
+      "resist"
     ]
   },
   {
@@ -642,7 +654,10 @@
     "ID": "tomoe",
     "name": "白雪巴",
     "des": "",
-    "iconUrl": "livers5_json#tomoe"
+    "iconUrl": "livers5_json#tomoe",
+    "tag":[
+      "resist"
+    ]
   },
   {
     "ID": "fuwa",
@@ -672,12 +687,18 @@
     "ID": "ars",
     "name": "阿露丝",
     "des": "",
-    "iconUrl": "livers5_json#ars"
+    "iconUrl": "livers5_json#ars",
+    "tag":[
+      "resist"
+    ]
   },
    {
     "ID": "uiha",
     "name": "相羽初叶",
     "des": "",
-    "iconUrl": "livers5_json#uiha"
+    "iconUrl": "livers5_json#uiha",
+    "tag":[
+      "resist"
+    ]
   }
 ]

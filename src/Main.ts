@@ -121,8 +121,8 @@ class Main extends egret.DisplayObjectContainer {
         this.toTitle(null)
         // this.toWorld({
         //     data:{
-        //         // livers:[ 'mito_json', 'toya_json']
-        //         livers:['mito_json', 'toya_json', 'rion_json', 'sasaki_json']
+        //         livers:[ 'umeo_json']
+        //         // livers:['mito_json', 'toya_json', 'rion_json', 'sasaki_json']
         //     }
         // })
         return

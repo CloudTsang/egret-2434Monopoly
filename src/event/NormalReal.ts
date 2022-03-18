@@ -11,7 +11,7 @@ class NormalReal extends MapEvent{
 		const i = e.data.index
 		const dataStr = this.selections[i].data
 		let log = this.selections[i].log
-		const {n, r} = Roll.random(this._mc, dataStr=="neta"?"sense":"luck")
+		let {n, r} = Roll.random(this._mc, dataStr=="neta"?"sense":"luck", true)
 		let rate = this.getUpRate(r)
 		/**roll后马上执行的方法 */
 		let fn:()=>void = null
@@ -103,7 +103,7 @@ class NormalReal extends MapEvent{
 
 	protected checkIfGetNeta(netas:any[], rollR:RollResult){
 		if(!netas) return null
-		const {n, r} = Roll.random(this._mc, "sense")
+		const {n, r} = Roll.random(this._mc, "sense", false)
 		if(r == RollResult.SUCCESS || r == RollResult.BIG_SUCCESS){
 			switch(rollR){
 				case RollResult.BIG_SUCCESS:

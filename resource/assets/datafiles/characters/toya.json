@@ -48,7 +48,7 @@
     {
       "id": 2,
       "name": "直播间即战场",
-      "des": "James个个都是人才。直播使用neta的人气值或谜因值的总和低于一定值时提升直播效果",
+      "des": "James个个都是人才。直播使用neta的总人气值或总谜因值中的一项低于10值时提升直播效果",
       "type": "POSITIVE",
       "iconUrl": "",
       "phrase": "BEFORE_STREAM",

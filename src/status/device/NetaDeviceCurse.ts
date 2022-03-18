@@ -10,7 +10,7 @@ class NetaDeviceCurse  extends Device{
 		const tgt = obj.tgtPlayer
 		if(!mc || !tgt) return
 		
-		let {n, r} = Roll.random(mc)
+		let {n, r} = Roll.random(mc, "", true)
 		const rate = this.getRate(r)
 		
 		let effectee1:MainCharacter

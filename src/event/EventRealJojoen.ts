@@ -36,7 +36,7 @@ class EventRealJojoen  extends MapEvent{
 	private soloHandler(){
 		this.dispatchEvent(new egret.Event(GameEvents.EVENT_START))
 		const mc = this._mc
-		let {n, r} = Roll.random(mc)
+		let {n, r} = Roll.random(mc, "", true)
 		if(r != RollResult.BIG_SUCCESS){
 			mc.money -= 10000
 		}
@@ -81,7 +81,7 @@ class EventRealJojoen  extends MapEvent{
 	private collaboHandler(){
 		this.dispatchEvent(new egret.Event(GameEvents.EVENT_START))
 		const mc = this._mc
-		let {n, r} = Roll.random(mc)
+		let {n, r} = Roll.random(mc, "", true)
 		// r = RollResult.FAIL
 		if(r != RollResult.BIG_SUCCESS){
 			mc.money -= 50000
@@ -99,7 +99,7 @@ class EventRealJojoen  extends MapEvent{
 			const buff = new StomachFull(mc, buffTime)
 			mc.getBuff(buff)
 			for(let n of this._cell.npcs){
-				mc.npc[Liver.allLivers[n].ID]+=favor
+				mc.npc.modify(Liver.allLivers[n].ID, favor)
 			}
 			const objs:NpcObj[] = this._cell.getNpc(this._mc.npc)
 			// const np = WorldMap.showNpcPanel(objs)

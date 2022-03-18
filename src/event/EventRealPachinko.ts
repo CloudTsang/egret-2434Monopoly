@@ -36,7 +36,7 @@ class EventRealPachinko  extends MapEvent{
 		this.dispatchEvent(new egret.Event(GameEvents.EVENT_START))
 
 		const mc = this._mc
-		let {n, r} = Roll.random(mc) 
+		let {n, r} = Roll.random(mc, "", true) 
 		// r = RollResult.BIG_SUCCESS
 		let money2 = 0
 		switch(r){

@@ -2,5 +2,89 @@
      "id":"lize",
      "name":"莉泽",
      "iconUrl":"livers3_json#lize",
-     "disable":true
+    "chessR": "chess_json#lizer",
+    "chessV": "chess_json#lizev",
+     "disable":false,
+     "data": {
+        "luck": 3,
+        "sense": 3,
+        "commu": 2,
+        "game": 2,
+        "sing": 2,
+        "talk": 4,
+        "tech": 3,
+        "strength": 3,
+        "money": 50000
+    },
+     "skill": [
+    {
+      "id": 1,
+      "name": "文武两道",
+      "des": "王者的学识必须是海纳百川！行动时一定概率发动，当回合多项能力提升",
+      "type": "POSITIVE",
+      "iconUrl": "",
+      "phrase": "BEFORE_ACTION",
+      "rate":"(1-{mc.luck}/10)/1.5",
+      "effect": [
+        {
+          "type": "TEMP_STAT_CHANGE",
+          "data": "{mc.game}+1,{mc.tech}+1,{mc.sing}+1,{mc.strength}+1,{mc.talk}+1"
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "name": "人望激热",
+      "des": "王者的作为必须是民心所向！商店事件中随机减半部分商品的售价",
+      "type": "POSITIVE",
+      "iconUrl": "",
+      "phrase": "GO_SHOPPING",
+      "rate": "1",
+      "class":"LizeSkill2"
+    },
+    {
+      "id": 3,
+      "name": "呼风唤雨",
+      "des": "王者的出行必须震撼天地！一定几率在<现实>棋盘中随机出<失败><普通>结果时变为<大失败>",
+      "type": "NEGATIVE",
+      "iconUrl": "",
+      "phrase": "ROLL_RESULT",
+      "rate":"(1-{mc.luck}/10)/2.5",
+      "class":"LizeSkill3"
+    },
+    {
+      "id": 4,
+      "name": "江山如画",
+      "des": "王者的艺术必须超凡脱俗！行动时一定概率品位中幅下降",
+      "type": "NEGATIVE",
+      "iconUrl": "",
+      "phrase": "BEFORE_ACTION",
+      "rate":"0.2",
+      "effect": [
+        {
+          "type": "TEMP_STAT_CHANGE",
+          "data": "{mc.sense}-3"
+        }
+      ]
+    },
+    {
+      "id": 5,
+      "name": "绝对王权",
+      "des": "王者的直播必须完美无缺！直播结束时一定几率大幅减少anti数，若处于炎上状态则消除炎上",
+      "type": "HIDDEN",
+      "iconUrl": "",
+      "phrase": "AFTER_STREAM",
+      "rate":"(1-{mc.luck}/10)/3",
+      "effect": [
+          {
+            "type":"STAT_CHANGE",
+            "data":"{player.anti}-100"
+          },
+          {
+            "type":"REMOVE_BUFF",
+            "data":"Enjo"
+          }
+      ]
+    }
+  ]
 }

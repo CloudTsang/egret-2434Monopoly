@@ -1,10 +1,10 @@
 {
   "id": "chaika",
   "name": "花畑柴卡",
-  "chessR": "chaikarmor_png",
-  "chessV": "chaika_png",
+  "chessR": "chess_json#chaikar",
+  "chessV": "chess_json#chaikav",
   "iconUrl":"livers1_json#chaika",
-  "disable":true,
+  "disable":false,
   "data": {
     "luck": 3,
     "sense": 2,
@@ -23,13 +23,13 @@
       "des": "不要叫我Leader！和反抗军Liver联动时大幅提升直播效果。",
       "type": "POSITIVE",
       "iconUrl": "",
+      "phrase": "BEFORE_STREAM",
+      "rate": "1",
       "class":"ChaikaSkill1",
       "effect": [
         {
           "type": "STAT_CHANGE",
-          "phrase": "AFTER_STREAM",
-          "rate": "1",
-          "data": "{stream.totSubAdd}+3000"
+          "data": "{stream.baseRate}+1.5"
         }
       ]
     },
@@ -40,44 +40,38 @@
       "type": "POSITIVE",
       "iconUrl": "",
       "phrase": "BEFORE_ACTION",
-      "rate": "0.25",
+      "rate": "(1-{mc.luck}/10)/2.5",
       "effect": [
         {
-          "type": "STAT_CHANGE",
-          "data": "{mc.sense}+2",
-          "time": [3,"T"]
-        },
-        {
           "type": "GET_BUFF",
-          "data": "AntiLock",
-          "time": [3,"T"]
+          "data": "Tawagega"
         }
       ]
     },
     {
       "id": 3,
-      "name": "我是梦追翔",
-      "des": "比本名用得还多的自我介绍。直播结束后低几率发动，下次直播只能进行歌回直播",
+      "name": "我是布莱恩",
+      "des": "他的本名无人知晓。直播使用neta的人气值低于3时低几率不增加粉丝增长速度",
       "type": "NEGATIVE",
       "iconUrl": "",
-      "phrase": "AFTER_STREAM",
-      "rate": "0.1",
-      "effect": [
-        {
-          "type": "GET_BUFF",
-          "data": "SingStreamLock"
-        }
-      ]
+      "phrase": "USE_NETA",
+      "rate": "(1-{mc.luck}/10)/3.5",
+      "class":"ChaikaSkill3"
     },
     {
       "id": 4,
       "name": "我是变态女装大叔",
-      "des": "好吧我承认了，那又怎样？获得neta时低几率发动，变为获得一个安全值更低的neta",
+      "des": "好吧我承认了，那又怎样？一定几率小幅降低当前使用neta的安全值",
       "type": "NEGATIVE",
       "iconUrl": "",
-      "phrase": "GET_NETA",
-      "rate": "0.15",
-      "class":"ChaikaSkill4"
+      "phrase": "USE_NETA",
+      "rate": "(1-{mc.luck}/10)/3",
+      "effect":[
+        {
+          "type":"STAT_CHANGE",
+           "data": "{neta.safe}-1"
+        }
+      ]
     },
     {
       "id": 5,
@@ -85,12 +79,12 @@
       "des": "长到可以当bgm的碎碎念。直播中一定几率发动，杂谈力大幅上升，交流力小幅下降，直播效果提升",
       "type": "HIDDEN",
       "iconUrl": "",
-      "phrase": "IN_STREAM",
+      "phrase": "BEFORE_STREAM",
       "rate": "0.25",
       "effect": [
         {
           "type": "TEMP_STAT_CHANGE",
-          "data": "{mc.talk}+5,{mc.commu}-2,{stream.totSubAdd}+1000"
+          "data": "{mc.talk}+4,{mc.commu}-2,{stream.baseRate}+0.2"
         }
       ]
     }

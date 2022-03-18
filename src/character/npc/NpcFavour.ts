@@ -1,7 +1,9 @@
 class NpcFavour {
 	protected gift:{[key:number]:number}
 	private keyArr:string[]
+	public lock:boolean
 	public constructor() {
+		this.lock = false
 		this.gift = {}
 		this.keyArr = []
 		for(let k of Liver.allLivers){
@@ -9,6 +11,20 @@ class NpcFavour {
 			this.keyArr.push(k.ID)
 			this.gift[k.ID] = 0
 		}
+	}
+
+	public modify(id:string, value:number){
+		let ori = this[id]
+		if(!this.lock && ori!=NaN && ori!=undefined){
+			ori += value
+			if(ori<0)ori=0
+		}
+		this[id] = ori
+		return ori
+	}
+
+	public getF(id:string){
+		return this[id]
 	}
 
 	public get IDs(){

@@ -28,6 +28,8 @@ class MainCharacter extends Liver{
 	public npc:NpcFavour
 	/**anti数，炎上或事故时增加，降低回合开始时的增长 */
 	private _anti:number
+	/**anti增长锁 */
+	public antiLock:boolean
 	/**收益，回到起点时得到的金钱量 */
 	public income:number
 	/**当前vr模式, true=virtual, false=real */
@@ -68,6 +70,7 @@ class MainCharacter extends Liver{
 		this.stream = []
 		this.buffs = []
 		this.netaBag = new NetaBag(this)
+		this.antiLock = false
 
 		//test
 		// this.getBuff(new Enjo(this, 3))
@@ -87,13 +90,14 @@ class MainCharacter extends Liver{
 		this.netaBag.test()
 	}
 
-	public checkIfSkillsTriggered(p:string, v:number=0):SkillsTrigger{
+	public checkIfSkillsTriggered(p:string, v:number=0, ranFunc?:()=>number):SkillsTrigger{
 		let obj:SkillsTrigger = new SkillsTrigger()
 		
 		const skills = this.skills
 		for(let i=0;i<skills.length;i++){
 			const s = skills[i]
-			if(s.shouldTrigger(p, v)){
+			const v2 = ranFunc?ranFunc():v
+			if(s.shouldTrigger(p, v2)){
 				obj.add(s)
 			}
 		}
@@ -308,9 +312,11 @@ class MainCharacter extends Liver{
 		return this._anti
 	}
 	public set anti(v:number){
+		if(this.antiLock && v>this._anti){
+			return
+		}
+		if(v<0) v = 0
 		console.log(`${this.name} 的anti变化至 ${v}`)
-		if(v<0)return 
 		this._anti = v
 	}
-
 }

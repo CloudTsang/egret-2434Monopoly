@@ -10,13 +10,13 @@ class Donguri extends Device {
 
 		const i = Math.floor(Math.random()*this.ELF_NPC.length)
 		const id = this.ELF_NPC[i]
-		mc.npc[id] += 1
+		mc.npc.modify(id, 1)
 		let arr:NpcObj[]
 		for(let n of Liver.allLivers){
 			if(n.ID == id){
 				arr = [{
 					...n,
-					favor:mc.npc[id]
+					favor:mc.npc.getF(id)
 				}]
 			}
 		}

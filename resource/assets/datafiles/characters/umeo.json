@@ -2,6 +2,84 @@
     "id":"umeo",
     "name":"梦追翔",
     "iconUrl":"livers4_json#umeo",
-    "disable":true
+    "chessR": "chess_json#umeor",
+    "chessV": "chess_json#umeov",
+    "disable":false,
+    "data": {
+        "luck": 2,
+        "sense": 3,
+        "commu": 5,
+        "game": 1,
+        "sing": 4,
+        "talk": 2,
+        "tech": 3,
+        "strength": 2,
+        "money": 30000
+    },
+    "skill": [
+    {
+      "id": 1,
+      "name": "追逐梦想2434年",
+      "des": "永不放弃的创作歌手。进行歌回直播后一定概率小幅提升品位和歌力",
+      "type": "POSITIVE",
+      "iconUrl": "",
+      "phrase": "AFTER_STREAM",
+      "req":"'{stream.ty}'=='SING'",
+      "rate": "(1-{mc.luck}/10)/2.5",
+      "effect": [
+        {
+          "type":"STAT_CHANGE",
+          "data":"{mc2.sense}+0.5,{mc2.sing}+1"
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "name": "指定司仪",
+      "des": "得心应手的话题流转。2人以上的联动直播时发动，直播效果大幅提升",
+      "type": "POSITIVE",
+      "iconUrl": "",
+      "phrase": "IN_STREAM_COLLABO",
+      "rate":"1",
+      "req":"{stream.collaboMems.length}>=2",
+      "class":"UmeoSkill2",
+      "effect": [
+        {
+          "type": "STAT_CHANGE",
+          "data": "{stream.baseRate}+2"
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "name": "主食是豆芽菜",
+      "des": "背负不能吃肉的罪孽。商店事件中一定概率发动，无法购买售价高于特定值的商品",
+      "type": "NEGATIVE",
+      "iconUrl": "",
+      "phrase": "GO_SHOPPING",
+      "rate": "0.5",
+      "class": "UmeoSkill3"
+    },
+    {
+      "id": 4,
+      "name": "Psychopath",
+      "des": "偶然泄露的黑暗。直播的总人气值低于10时，事故概率和anti数小幅上升",
+      "type": "NEGATIVE",
+      "iconUrl": "",
+      "phrase": "BEFORE_STREAM",
+      "rate": "(1-{mc.luck}/10)/3",
+      "class":"UmeoSkill4"
+    },
+    {
+      "id": 5,
+      "name": "舍弃了衣袖去战斗的男人",
+      "des": "回合开始时一定几率发动，全部歌曲类neta的使用冷却重置",
+      "type": "HIDDEN",
+      "iconUrl": "",
+      "phrase": "TURN_START",
+      "rate": "(1-{mc.luck}/10)/3",
+      "class":"UmeoSkill5"
+    }
+  ]
 
 }

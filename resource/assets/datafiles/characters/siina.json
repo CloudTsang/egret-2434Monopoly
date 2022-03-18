@@ -2,5 +2,88 @@
     "id":"siina",
     "name":"椎名唯华",
     "iconUrl":"livers4_json#siina",
-    "disable":true
+    "chessR": "chess_json#siinar",
+    "chessV": "chess_json#siinav",
+    "disable":false,
+    "data": {
+        "luck": 5,
+        "sense": 3,
+        "commu": 3,
+        "game": 2,
+        "sing": 2,
+        "talk": 3,
+        "tech": 1,
+        "strength": 1,
+        "money": 30000
+    },
+
+     "skill": [
+    {
+      "id": 1,
+      "name": "压倒的强运",
+      "des": "没有实力，全是运气。直播时一定概率根据运气提高直播效果",
+      "type": "POSITIVE",
+      "phrase": "BEFORE_STREAM",
+      "iconUrl": "",
+      "rate":"0.25",
+      "class":"SiinaSkill1"
+    },
+    {
+      "id": 2,
+      "name": "反抗军的气魄",
+      "des": "即将橄榄彩虹社。和反抗军Liver联动时，炎上率和事故率大幅降低，直播效果小幅上升。",
+      "type": "POSITIVE",
+      "iconUrl": "",
+      "phrase": "BEFORE_STREAM",
+      "rate": "1",
+      "class":"SiinaSkill2",
+      "effect":[
+        {
+          "type":"STAT_CHANGE",
+          "data":"{stream.baseRate}+0.3,{stream.accidentBaseRate}-3,{stream.enjoBaseRate}-3"
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "name": "人中之屑",
+      "des": "其实只是屑营业(目光游移)。触发Liver好感度提升时一定概率使提升无效。",
+      "type": "NEGATIVE",
+      "iconUrl": "",
+      "phrase": "BEFORE_ACTION",
+      "rate":"(1-{mc.commu}/10)/1.5",
+      "effect":[
+        {
+          "type":"GET_BUFF",
+          "data":"FavorLock"
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "name": "不会道歉的哦",
+      "des": "猩猩们的拳头硬了。直播中每次发生事故或炎上时直播效果均微小下降。",
+      "type": "NEGATIVE",
+      "iconUrl": "",
+      "phrase": "STREAM_ACCIDENT|STREAM_ENJO",
+      "rate": "1",
+      "always":true,
+      "effect":[
+        {
+          "type":"STAT_CHANGE",
+          "data":"{stream.baseRate}-0.1"
+        }
+      ]
+    },
+    {
+      "id": 5,
+      "name": "大福馅都爆出来了",
+      "des": "行动中随机到<大成功>以外结果时一定概率发动，结果上升一个档次",
+      "type": "HIDDEN",
+      "iconUrl": "",
+      "phrase": "ROLL_RESULT",
+      "rate": "(1-{mc.luck}/10)/3",
+      "class":"SiinaSkill5"
+    }
+  ]
 }

@@ -100,7 +100,7 @@ interface NetaBaseProp{
 		}
 	}
 
-	private reset(){
+	public reset(){
 		const n = this
 		n.pop = n._oriData.pop
 		n.meme = n._oriData.meme
@@ -140,6 +140,10 @@ class SongNeta extends Neta{
 
 	public startCD(){
 		this.curCD = this.cd+1
+	}
+
+	public clearCD(){
+		this.curCD = 0
 	}
 
 	public onCD(){

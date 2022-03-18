@@ -85,12 +85,12 @@ class EventRealChurch  extends MapEvent{
 				const npcIDs:string[] = ['sister', 'myzm', 'kanae']
 				let npcObjs:NpcObj[] = []
 				for(let id of npcIDs){
-					mc.npc[id] += 1
+					mc.npc.modify(id, 1)
 					for(let npc of Liver.allLivers){
 						if(npc.ID == id){
 							npcObjs.push({
 								...npc,
-								favor:mc.npc[npc.ID]
+								favor:mc.npc.getF(npc.ID)
 							})
 						}
 					}

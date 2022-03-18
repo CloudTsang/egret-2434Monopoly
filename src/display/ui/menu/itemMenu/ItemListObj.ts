@@ -50,7 +50,7 @@ class ItemListBuyObj extends ItemListNormalObj{
 	protected dataChanged(){
 		super.dataChanged()
 		this.txtNum.text = '$'+this.data.neta.value
-		const v = this.data.holded && this.data.neta.times == -1 || this.data.neta.times == 0
+		const v = this.data.holded && this.data.neta.times == -1 || this.data.neta.times == 0 || this.data.valueLock
 		this.currentState = v?"disabled":'up'
 	}
 }

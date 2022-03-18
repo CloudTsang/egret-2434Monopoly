@@ -16,9 +16,23 @@ class SkillsTrigger {
 			s.triggerNeta(n, stream)
 		}
 	}
+
 	public triggerStream(stream:Stream){
 		for(let s of this._arr){
 			s.triggerStream(stream)
 		}
+	}
+
+	public triggerBag(bag:NetaBag){
+		for(let s of this._arr){
+			s.triggerBag(bag)
+		}
+	}
+
+	public triggerRollResult(r:string){
+		for(let s of this._arr){
+			r = s.triggerRollResult(r)
+		}
+		return r
 	}
 }

@@ -1,6 +1,8 @@
 {
     "projectName": "chess",
     "files": [
+        "./umeor.png",
+        "./umeov.png",
         "./rionv.png",
         "./rionr.png",
         "./mitov.png",
@@ -8,10 +10,16 @@
         "./toya.png",
         "./toko.png",
         "./sasakiv.png",
-        "./sasakir.png"
+        "./sasakir.png",
+        "./lizev.png",
+        "./siinav.png",
+        "./chaikar.png",
+        "./chaikav.png",
+        "./lizer.png",
+        "./siinar.png"
     ],
     "options": {
-        "layoutMath": "3",
+        "layoutMath": "2",
         "sizeMode": "free",
         "useExtension": 0,
         "layoutGap": 2,

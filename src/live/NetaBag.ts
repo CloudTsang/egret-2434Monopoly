@@ -7,6 +7,7 @@ class NetaBag {
 	public present:Neta[]
 	public device:Device[]
 	private mc:MainCharacter
+	private _valueLock:number
 	public constructor(mc:MainCharacter=null) {
 		this.talk = []
 		this.game = []
@@ -15,6 +16,7 @@ class NetaBag {
 		this.present = []
 		this.device = []
 		this.mc = mc
+		this._valueLock = -1
 	}
 
 	public test(){
@@ -29,7 +31,12 @@ class NetaBag {
 			for(let obj of arr){
 				// if(Math.random()>0.5)continue
 				const n = NetaFactory.getNetaFromObj(obj)
-				this.modifyNeta(n, 'get', false, 1, false)
+				if(n.type == NetaType.TALK){
+					this.modifyNeta(n, 'get', false, 3, false)
+				}else{
+					this.modifyNeta(n, 'get', false, 1, false)
+				}
+				
 			}
 		}
 	}
@@ -48,19 +55,23 @@ class NetaBag {
 	public filterNeta2Shop(ty:NetaType, playerStore:NetaBag):INetaSelectObj[]{
 		const ns = this.filterNetas0(ty)
 		const ns2 = playerStore.filterNetas0(ty)
+		const maxValue = this._valueLock
 		const shopns = ns.map((v:Neta)=>{
+			const able = v.value > maxValue && maxValue != -1
 			for(let n of ns2){
 				if(n.name == v.name){
 					return {
 						neta:v,
 						selected:false,
-						holded:true
+						holded:true,
+						valueLock: able
 					}
 				}
 			}
 			return {
 				neta:v,
-				selected:false
+				selected:false,
+				valueLock: able
 			}
 		})
 		return shopns
@@ -204,6 +215,7 @@ class NetaBag {
 				return
 			}
 		}
+		if(n.times!=-1) n.times = num
 		arr.push(n)
 	}
 
@@ -246,10 +258,16 @@ class NetaBag {
 			}
 		}
 	}
+
+	/**可购买neta的价格上限，超过该价格的neta会显示disable样式，默认值为-1不限制 (梦追翔技能用属性 )*/
+	public set valueLock(v:number){
+		this._valueLock = v
+	}
 }
 
 interface INetaSelectObj{
 	neta:Neta,
 	selected:boolean
 	holded?:boolean
+	valueLock?:boolean
 }

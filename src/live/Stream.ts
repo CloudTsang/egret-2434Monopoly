@@ -165,7 +165,7 @@ class Stream extends egret.EventDispatcher{
 			return
 		}
 		const neta = st.netas[st.curIndex]
-		const stg = st.mc.checkIfSkillsTriggered(GamePhrase.USE_NETA, Roll.random3())
+		const stg = st.mc.checkIfSkillsTriggered(GamePhrase.USE_NETA, 0, Roll.random3)
 		stg.triggerNeta(neta, this)
 		let {n, r} = Roll.random(st.mc)
 		//test
@@ -264,6 +264,7 @@ class Stream extends egret.EventDispatcher{
 		console.log("增长率 : ", subPop, subMeme)
 		st.setComments(10, accident, enjo)
 		st.panel.streamPanel.useNeta(st.curIndex, st.totSubAdd, subPop, st.totSubSpd, subMeme, accident, enjo, st.netaCalcTimeout, st)
+		neta.reset()
 	}
 
 	protected setComments(num:number = 10, accident:boolean = false, enjo:boolean = false){
@@ -292,10 +293,10 @@ class Stream extends egret.EventDispatcher{
 	protected streamFinish(){
 		const st = this
 		const trigger = st.mc.checkIfSkillsTriggered(GamePhrase.AFTER_STREAM, Roll.random3())
-		trigger.triggerStream(this)
+		trigger.triggerStream(st)
 		st.panel.finishStream()
 		for(let mem of st.collaboMems){
-			st.mc.npc[mem] ++ 
+			st.mc.npc.modify(mem, 1) 
 		}
 		st.mc.subscribe += st.totSubAdd
 		st.mc.money += st.superchat
@@ -456,6 +457,7 @@ class Stream extends egret.EventDispatcher{
 	 * @param safe 当前neta安全值
 	 */
 	private getIfEnjo(safe:number){
+		//test
 		// return true
 		if(safe == -1){
 			return false

@@ -13,8 +13,7 @@ class ElfMori extends MapEvent {
 				this.onDonguri()
 				break
 			case 2:
-				if(this._mc.npc['elu'] > 0.5) this._mc.npc['elu'] -= 0.5
-				else this._mc.npc['elu'] = 0
+				this._mc.npc.modify('elu', -0.5)
 				this.dispatchEvent(new egret.Event(GameEvents.EVENT_FINISH))
 				break
 		}
@@ -25,9 +24,7 @@ class ElfMori extends MapEvent {
 		const mc = this._mc
 		const data = this.selections[0].data[0].data
 		const n = NetaFactory.getNetaFromObj(data)
-
-		if(mc.npc['elu'] > 2) this._mc.npc['elu'] -= 2
-		else mc.npc['elu'] = 0
+		mc.npc.modify('elu', -2)
 
 		const np = mc.netaBag.modifyNeta(n, 'get', true)
 		np.addEventListener(eui.UIEvent.REMOVED_FROM_STAGE, (e)=>{
