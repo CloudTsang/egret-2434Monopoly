@@ -50,6 +50,7 @@
         "des":"不是狸猫（左耳）也不是浣熊（右耳）,使用后大幅提升下一次直播效果",
         "type":"device",  
         "class":"PutitSpec",
+        "iconUrl":"livers3_json#putit",
         "data":{
             "use":true,
             "times":1,

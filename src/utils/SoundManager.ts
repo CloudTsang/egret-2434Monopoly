@@ -6,12 +6,15 @@ class SoundManager {
 	private _curBgmName:string
 	private _curLoop:boolean
 	private _isPausing:boolean
+	private _defaultVolume:number
 	private static _ins:SoundManager;
 
 	public constructor() {
 		LifecycleCallback.addFunc('bgm', ()=>{this.pause()}, ()=>{this.resume()})
 		this._bgs = {}
-
+		this._defaultVolume = 0.5
+		//test
+		// this._defaultVolume = 0
 		// const bgm:egret.Sound = new egret.Sound();
 		// bgm.addEventListener(egret.Event.COMPLETE, this.onLoadComplete, this)
 		// bgm.addEventListener(egret.IOErrorEvent.IO_ERROR, this.onLoadFailed, this)
@@ -49,7 +52,7 @@ class SoundManager {
 		try{
 			if(this._isPausing)return
 			this._bgmChannel = this._bgm.play(0, loops?0:1);
-			this._bgmChannel.volume = 0.5
+			this._bgmChannel.volume = this._defaultVolume
 		}catch(err){
 			console.error(err)
 		}	
@@ -74,7 +77,7 @@ class SoundManager {
 			return;	
 		}
 		this._bgmChannel = this._bgm.play(this._bgmPosition, 1);
-		this._bgmChannel.volume = 0.5
+		this._bgmChannel.volume = this._defaultVolume
 		this._bgmChannel.addEventListener(egret.Event.SOUND_COMPLETE, this.onResumeOver, this)
 
 	}
@@ -84,7 +87,7 @@ class SoundManager {
 			return;	
 		}
 		this._bgmChannel = this._bgm.play(0, 0);
-		this._bgmChannel.volume = 0.5
+		this._bgmChannel.volume = this._defaultVolume
 	
 	}
 

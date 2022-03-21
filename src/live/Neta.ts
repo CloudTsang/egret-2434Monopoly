@@ -12,7 +12,7 @@ interface NetaBaseProp{
 	/**谜因度，影响直播以外粉丝增长速度 */
 	public meme:number
 
-	private _oriData:NetaBaseProp
+	protected _oriData:NetaBaseProp
 
 	/**使用次数， -1为无限次 */
 	protected _times:number
@@ -123,6 +123,25 @@ interface NetaBaseProp{
 				return NetaType.DEVICE
 		}
 	} 
+}
+
+class GameNeta extends Neta{
+	private _reduce:number
+	private _usage:number
+	
+	public constructor(obj:any) {
+		super(obj)
+		this._reduce = obj['reduce']?obj['reduce']:5
+		this._usage = 0
+	}
+	public onUse(obj:TargetObj):any{
+		super.onUse(obj)
+		this._usage ++ 
+		if(this._usage == this._reduce){
+			console.log(`${this.name}效果衰减`)
+			this._oriData.pop = Math.round(this._oriData.pop/2)
+		}
+	}
 }
 
 class SongNeta extends Neta{

@@ -427,7 +427,7 @@ class Stream extends egret.EventDispatcher{
 	}
 
 	private getIfCollabo(){
-		
+		const present = this.type == StreamType.PRESENT
 		this.collaboMems = []
 		const commu = this.mc.commu
 		for(let npc of this.npcs){
@@ -439,7 +439,7 @@ class Stream extends egret.EventDispatcher{
 			// this.collaboMems.push(npc.ID)
 			// npc['joined'] = true
 			// continue
-			if(n2 > n){
+			if(n2 > n || present){
 				//加入联动
 				this.collaboMems.push(npc.ID)
 				npc['joined'] = true

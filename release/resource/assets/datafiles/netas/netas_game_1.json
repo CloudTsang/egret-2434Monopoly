@@ -4,7 +4,7 @@
         "name":"Apex",
         "des":"超人气生存FPS，手残也不至于落地成盒的设计是其特色",
         "type":"game",   
-        "iconUrl":"netaicons_json#apex",  
+        "iconUrl":"netaicons_json#apex", 
         "data":{
             "times":-1,
             "pop":5,
@@ -48,6 +48,7 @@
         "type":"game",   
         "iconUrl":"netaicons_json#xb2", 
         "class":"NetaGameXB2", 
+        "reduce":"10",
         "data":{
             "times":-1,
             "pop":2,
@@ -71,7 +72,7 @@
         "iconUrl":"netaicons_json#pokemon", 
         "data":{
             "times":-1,
-            "pop":4,
+            "pop":5,
             "safe":5,
             "meme":2,
             "long":true
@@ -97,6 +98,7 @@
         "des":"开放世界设计的典范名作",
         "type":"game",     
         "iconUrl":"netaicons_json#botw",
+        "reduce":"10",
         "data":{
             "times":-1,
             "pop":3,
@@ -113,6 +115,7 @@
         "type":"game",  
         "class":"NetaGameAegis13",  
         "iconUrl":"netaicons_json#aegis13", 
+        "reduce":"99",
         "data":{
             "times":-1,
             "pop":1,
@@ -134,9 +137,10 @@
         "des":"神回直播的孕育之地",
         "type":"game",    
         "iconUrl":"netaicons_json#mc", 
+        "reduce":"99",
         "data":{
             "times":-1,
-            "pop":3,
+            "pop":4,
             "safe":3,
             "meme":4,
             "long":false
@@ -148,6 +152,7 @@
         "des":"简短而适合直播的恐怖游戏，内容和医院没有任何关系。",
         "type":"game",    
         "iconUrl":"netaicons_json#yakinjiken", 
+        "reduce":2,
         "data":{
             "times":-1,
             "pop":2,
@@ -168,6 +173,34 @@
             "pop":4,
             "safe":4,
             "meme":3,
+            "long":false
+        }
+    },
+     {
+        "id":12,
+        "name":"力量实况棒球",
+        "des":"野球的时间哒！！！",
+        "type":"game",    
+        "iconUrl":"netaicons2_json#powbase", 
+        "data":{
+            "times":-1,
+            "pop":4,
+            "safe":2,
+            "meme":3,
+            "long":false
+        }
+    },
+     {
+        "id":13,
+        "name":"马里奥赛车",
+        "des":"知名道具系赛车游戏，为大赛备战吧。",
+        "type":"game",    
+        "iconUrl":"netaicons2_json#maricar", 
+        "data":{
+            "times":-1,
+            "pop":5,
+            "safe":3,
+            "meme":1,
             "long":false
         }
     }

@@ -44,13 +44,22 @@ class Main extends egret.DisplayObjectContainer {
             }
         })
 
-        egret.lifecycle.onPause = () => {
-            egret.ticker.pause();
-        }
+        // egret.lifecycle.onPause = () => {
+        //     egret.ticker.pause();
+        // }
 
-        egret.lifecycle.onResume = () => { 
-            egret.ticker.resume();
+        // egret.lifecycle.onResume = () => { 
+        //     egret.ticker.resume();
+        // }
+
+        LifecycleCallback.addFunc("ticker", 
+        ()=>{
+            egret.ticker.pause();
+        },
+        ()=>{
+             egret.ticker.resume();
         }
+        )
 
         //inject the custom material parser
         //注入自定义的素材解析器

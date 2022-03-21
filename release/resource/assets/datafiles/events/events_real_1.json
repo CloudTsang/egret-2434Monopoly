@@ -112,9 +112,9 @@
                                     "type":"daily",     
                                     "data":{
                                         "times":1,
-                                        "pop":2,
+                                        "pop":3,
                                         "safe":2,
-                                        "meme":3,
+                                        "meme":2,
                                         "long":false
                                     }
                                 }

@@ -35,6 +35,8 @@ class NetaFactory {
 				fn = Device
 			}else if(obj['type'] == 'song'){
 				fn = SongNeta
+			}else if(obj['type'] == 'game'){
+				fn = GameNeta
 			}
 			
 			if(obj['class']){

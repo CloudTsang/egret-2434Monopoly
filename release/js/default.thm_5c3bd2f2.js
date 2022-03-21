@@ -768,11 +768,11 @@ window.skins=window.skins||{};
 					new eui.AddItems("_Group5","_Group6",1,""),
 					new eui.SetProperty("_Label2","text","在[虚拟]棋盘中，可以进行消耗neta进行不同类型的直播，并且收获粉丝数。"),
 					new eui.SetProperty("_Image5","source","vmenu_jpg"),
-					new eui.SetProperty("_Label11","text","不同类型的直播\n对neta的需求不同"),
+					new eui.SetProperty("_Label12","text","不同类型的直播\n对neta的需求不同"),
 					new eui.SetProperty("_Image6","source","nselect_jpg"),
 					new eui.SetProperty("_Image6","width",200),
 					new eui.SetProperty("_Image6","height",240),
-					new eui.SetProperty("_Label12","text","部分neta有数量消耗\n或使用冷却的设定")
+					new eui.SetProperty("_Label13","text","部分neta有数量消耗\n或使用冷却的设定")
 				])
 			,
 			new eui.State ("p4",
@@ -802,7 +802,7 @@ window.skins=window.skins||{};
 		t.percentWidth = 95;
 		t.verticalCenter = 0;
 		t.layout = this._VerticalLayout1_i();
-		t.elementsContent = [this._Group6_i(),this._Label13_i()];
+		t.elementsContent = [this._Group6_i(),this._Label14_i()];
 		return t;
 	};
 	_proto._VerticalLayout1_i = function () {
@@ -942,7 +942,7 @@ window.skins=window.skins||{};
 		t.x = 384;
 		t.y = 120;
 		t.layout = this._VerticalLayout3_i();
-		t.elementsContent = [this._Label5_i(),this._Label6_i(),this._Label7_i(),this._Label8_i(),this._Label9_i(),this._Label10_i()];
+		t.elementsContent = [this._Label5_i(),this._Label6_i(),this._Label7_i(),this._Label8_i(),this._Label9_i(),this._Label10_i(),this._Label11_i()];
 		return t;
 	};
 	_proto._VerticalLayout3_i = function () {
@@ -954,7 +954,7 @@ window.skins=window.skins||{};
 	_proto._Label5_i = function () {
 		var t = new eui.Label();
 		t.percentWidth = 100;
-		t.size = 24;
+		t.size = 20;
 		t.text = "直播的最终效果将由neta的三个数值决定:";
 		t.x = 121;
 		t.y = 40;
@@ -972,13 +972,23 @@ window.skins=window.skins||{};
 	_proto._Label7_i = function () {
 		var t = new eui.Label();
 		t.percentWidth = 100;
+		t.size = 20;
+		t.text = "NPC赠礼以外的游戏类neta在多次使用后人气值会下降";
+		t.textColor = 0x8E8585;
+		t.x = 43;
+		t.y = 60;
+		return t;
+	};
+	_proto._Label8_i = function () {
+		var t = new eui.Label();
+		t.percentWidth = 100;
 		t.size = 24;
 		t.text = "SAFE(安全):影响直播发生炎上的概率";
 		t.x = 43;
 		t.y = 60;
 		return t;
 	};
-	_proto._Label8_i = function () {
+	_proto._Label9_i = function () {
 		var t = new eui.Label();
 		t.percentWidth = 100;
 		t.size = 20;
@@ -988,7 +998,7 @@ window.skins=window.skins||{};
 		t.y = 60;
 		return t;
 	};
-	_proto._Label9_i = function () {
+	_proto._Label10_i = function () {
 		var t = new eui.Label();
 		t.percentWidth = 100;
 		t.size = 24;
@@ -997,7 +1007,7 @@ window.skins=window.skins||{};
 		t.y = 60;
 		return t;
 	};
-	_proto._Label10_i = function () {
+	_proto._Label11_i = function () {
 		var t = new eui.Label();
 		t.percentWidth = 100;
 		t.size = 20;
@@ -1013,7 +1023,7 @@ window.skins=window.skins||{};
 		t.percentHeight = 100;
 		t.percentWidth = 50;
 		t.layout = this._VerticalLayout4_i();
-		t.elementsContent = [this._Label11_i()];
+		t.elementsContent = [this._Label12_i()];
 		return t;
 	};
 	_proto._VerticalLayout4_i = function () {
@@ -1032,9 +1042,9 @@ window.skins=window.skins||{};
 		t.width = 160;
 		return t;
 	};
-	_proto._Label11_i = function () {
+	_proto._Label12_i = function () {
 		var t = new eui.Label();
-		this._Label11 = t;
+		this._Label12 = t;
 		t.horizontalCenter = 0;
 		t.percentWidth = 100;
 		t.size = 24;
@@ -1051,7 +1061,7 @@ window.skins=window.skins||{};
 		t.x = 358;
 		t.y = 62;
 		t.layout = this._VerticalLayout5_i();
-		t.elementsContent = [this._Image6_i(),this._Label12_i()];
+		t.elementsContent = [this._Image6_i(),this._Label13_i()];
 		return t;
 	};
 	_proto._VerticalLayout5_i = function () {
@@ -1070,9 +1080,9 @@ window.skins=window.skins||{};
 		t.width = 140;
 		return t;
 	};
-	_proto._Label12_i = function () {
+	_proto._Label13_i = function () {
 		var t = new eui.Label();
-		this._Label12 = t;
+		this._Label13 = t;
 		t.horizontalCenter = 0;
 		t.percentWidth = 100;
 		t.size = 24;
@@ -1081,7 +1091,7 @@ window.skins=window.skins||{};
 		t.y = 150;
 		return t;
 	};
-	_proto._Label13_i = function () {
+	_proto._Label14_i = function () {
 		var t = new eui.Label();
 		t.percentWidth = 100;
 		t.size = 20;

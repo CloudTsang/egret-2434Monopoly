@@ -375,6 +375,35 @@
         ]
     },
     {
+        "name":"润滑液运动会",
+        "des":"前有死，所以是润滑液的时候了。",
+        "class":"EventRealGetSpecNeta",
+        "evt":[
+            {
+                "type":"SHOW_LOG",
+                "data":"被邀请了参加润滑液冰壶！但是这张生死状是怎么回事……"
+            },
+            {
+                "type":"GET_NETA",
+                "data":{
+                    "id":1,
+                    "name":"润滑液冰壶",
+                    "des":"健康又安全的新时代大人气体育活动。",
+                    "class":"RotionSports",
+                    "type":"present",   
+                    "iconUrl":"netaicons2_json#rotionsports",  
+                    "data":{
+                        "times":1,
+                        "pop":4,
+                        "safe":2,
+                        "meme":4,
+                        "long":false
+                    }
+                }
+            }
+        ]
+    },
+    {
         "name":"主流出道",
         "des":"唱片公司经纪人来了",
         "class":"EventRealMajor",

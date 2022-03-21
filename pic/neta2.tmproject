@@ -1,6 +1,7 @@
 {
     "projectName": "neta2",
     "files": [
+        "./neta2/kanda.jpg",
         "./neta2/getwild.jpg",
         "./neta2/onelastkiss.png",
         "./neta2/rionspec.jpg",
@@ -22,7 +23,15 @@
         "./neta2/daipan.jpg",
         "./neta2/nju.jpg",
         "./neta2/donguri.jpg",
-        "./neta2/rfit.jpg"
+        "./neta2/rfit.jpg",
+        "./neta2/rotion.jpg",
+        "./neta2/rotionsports.jpg",
+        "./neta2/policy.jpg",
+        "./neta2/simo1.jpg",
+        "./neta2/simo2.jpg",
+        "./neta2/mise.jpg",
+        "./neta2/nazono.jpg",
+        "./neta2/iwaiwa.jpg"
     ],
     "options": {
         "layoutMath": "3",

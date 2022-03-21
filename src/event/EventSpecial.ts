@@ -21,15 +21,19 @@ class EventSpecial extends MapEvent{
 		const objs:any[] = RES.getRes(jsonArr[i])
 		i = Math.floor(Math.random()*objs.length)
 		//test
-		// const obj = objs[3]
+		// const obj = objs[6]
+		// console.log(obj)
 		const obj = objs[i]
 		let fn = MapEvent
 		
 		if(obj['class']) fn = egret.getDefinitionByName(obj['class'])
-		this._curEvent = new fn(obj)
-		this._curEvent.addEventListener(GameEvents.EVENT_START, this.onEvent, this)
-		this._curEvent.addEventListener(GameEvents.EVENT_FINISH, this.onEvent, this)
-		return this._curEvent.trigger(mc,  cell) 
+		if(!fn) fn = MapEvent
+		const evt = new fn(obj)
+		this._curEvent = evt
+		evt.addEventListener(GameEvents.EVENT_START, this.onEvent, this)
+		evt.addEventListener(GameEvents.STAT_CHANGE, this.onEvent, this)
+		evt.addEventListener(GameEvents.EVENT_FINISH, this.onEvent, this)
+		return evt.trigger(mc,  cell) 
 		
 	}
 

@@ -316,6 +316,26 @@
         }   
     },
     {
+        "id":15,
+        "name":"桶装润滑液",
+        "des":"“主播用的哪个牌子的润滑液？”，进行润滑液直播时自动全部使用，根据使用数量提升直播效果。",
+        "value": 500,
+        "type":"device", 
+        "class":"NetaDeviceRotion",
+        "iconUrl":"netaicons2_json#rotion" ,
+        "data":{
+            "times":1,
+            "use":false,
+            "effect":[
+                {
+                    "type":"STAT_CHANGE",
+                    "trigger":"use",
+                    "data":"{stream.baseRate}+0.2"
+                }
+            ]
+        }   
+    },
+    {
         "id":"unchi",
         "name":"温热湿润的大便",
         "des":"刚排出来的大便，某个团体会定期购入一批，也有不少民间爱好者，用途未知。",

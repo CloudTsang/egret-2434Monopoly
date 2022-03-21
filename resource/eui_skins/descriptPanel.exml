@@ -28,8 +28,9 @@
 				<e:Image width="160" height="240" includeIn="p4" source="netastat_jpg" horizontalCenter="0" verticalCenter="0"/>
 			</e:Group>
 			<e:Group percentHeight="100" percentWidth="60" includeIn="p4" x="384" y="120">
-				<e:Label text="直播的最终效果将由neta的三个数值决定:" percentWidth="100" x="121" y="40" size="24"/>
+				<e:Label text="直播的最终效果将由neta的三个数值决定:" percentWidth="100" x="121" y="40" size="20"/>
 				<e:Label text="POP(人气):直接提升直播增加的粉丝数" percentWidth="100" x="43" y="60" size="24"/>
+                <e:Label text="NPC赠礼以外的游戏类neta在多次使用后人气值会下降" percentWidth="100" x="43" y="60" size="20" textColor="0x8E8585"/>
                 <e:Label text="SAFE(安全):影响直播发生炎上的概率" percentWidth="100" x="43" y="60" size="24"/>
                 <e:Label text="※当前版本的基础炎上概率在无道具技能影响的情况下在5~10%之间" percentWidth="100" x="43" y="60" size="20" textColor="0x8E8585"/>
                 <e:Label text="MEME(谜因):提升每回合开始时粉丝自动增长的数量" percentWidth="100" x="43" y="60" size="24"/>
