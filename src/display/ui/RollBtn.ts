@@ -6,7 +6,7 @@ class RollBtn extends eui.Component{
 
 	public constructor() {
 		super()
-		this.addEventListener(eui.UIEvent.COMPLETE, this.onComplete, this)
+		this.$addListener(eui.UIEvent.COMPLETE, this.onComplete, this)
 		this.skinName = "resource/eui_skins/rollbtn.exml"
 		
 	}
@@ -17,17 +17,16 @@ class RollBtn extends eui.Component{
 		}
 	}
 
-
+ 
 	private onComplete(e:any){
 		this.removeEventListener(eui.UIEvent.COMPLETE, this.onComplete, this)
 		this.result.touchEnabled = false
-		this.txtRollNum.touchEnabled = false
+		this.txtRollNum.touchEnabled = true
 	}
 
 	public showRolledNum(n:number, r:string){
 		let txt = this.txtRollNum
 		this.result.currentState = r
-
 		if(r == RollResult.BIG_SUCCESS){
 			SoundManager.instance.playBgs('success_mp3')
 		}else if(r == RollResult.BIG_FAIL){

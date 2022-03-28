@@ -14,7 +14,7 @@ class SoundManager {
 		this._bgs = {}
 		this._defaultVolume = 0.5
 		//test
-		// this._defaultVolume = 0
+		this._defaultVolume = 0
 		// const bgm:egret.Sound = new egret.Sound();
 		// bgm.addEventListener(egret.Event.COMPLETE, this.onLoadComplete, this)
 		// bgm.addEventListener(egret.IOErrorEvent.IO_ERROR, this.onLoadFailed, this)

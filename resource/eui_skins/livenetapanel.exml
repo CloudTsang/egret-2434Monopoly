@@ -1,27 +1,33 @@
 <?xml version='1.0' encoding='utf-8'?>
 <e:Skin class="skins.livenetapanel"
 	 width="800"
-	height="200" maxHeight="300" xmlns:e="http://ns.egret.com/eui" states="beforestream,onstream" >
+	height="200"  maxHeight="300" xmlns:e="http://ns.egret.com/eui" states="beforestream,onstream" >
 	<e:Group percentHeight="100" percentWidth="100" x="0" y="0">
 		<e:Rect percentHeight="100" percentWidth="100" x="0" y="0" fillColor="0x000000" fillAlpha="0.75"/>
 		<e:Group percentHeight="100" percentWidth="100" x="0" y="0">
 		<e:Group percentHeight="100" percentWidth="65">
 			<e:Label id="txtTip" bottom="5" horizontalCenter="0" size="22" includeIn="beforestream"/>
-			<e:Group percentWidth="94" percentHeight="75" horizontalCenter="0" top="10">
+			<!-- <e:Group id="netalistcontainer" percentWidth="94" percentHeight="75" maxHeight="200" maxHeight.onstream="100" horizontalCenter="0" top.beforestream="10"  bottom.onstream="10"> -->
+            <e:Group id="netalistcontainer" percentWidth="94" percentHeight="75" maxHeight="200" horizontalCenter="0" top="10" >
 			<e:Rect percentWidth="100" percentHeight="100" horizontalCenter="0" fillAlpha="0.6"/>
 			<e:Scroller id="itemScroller" percentWidth="100" percentHeight="100" horizontalCenter="0">
-				<e:List id="itemContainer" percentWidth="100" percentHeight="100" x="0" y="0" itemRendererSkinName="skins.streamlistobj">
+				<e:List id="itemContainer" percentWidth="100" percentHeight="100" x="0"  itemRendererSkinName="skins.streamlistobj">
 				<e:layout>
 					<e:HorizontalLayout verticalAlign="middle"/>
 				</e:layout>
 				</e:List>
 			</e:Scroller>
 			</e:Group>
+			<!-- <e:Image id="imgCurNeta" width="240" height="240" includeIn="onstream" horizontalCenter="0" top="10"/> -->
+			<e:layout.onstream>
+				<e:BasicLayout/>
+			</e:layout.onstream>
 		</e:Group>
 			<e:Group percentHeight="96" percentWidth="35" includeIn="onstream" x="610">
 				<e:Scroller id="commentScroller" percentWidth="100" percentHeight="100" verticalCenter="0">
 					<e:Group>
-						<e:List id="commentList" percentHeight="100" percentWidth="100" verticalCenter="0"/>
+						<e:List id="commentList" percentHeight="100" percentWidth="100" top="0"/>
+						<!-- <e:Image id="imgLiver" width="160" height="160" bottom="0" horizontalCenter="0" fillMode="scale"/> -->
 					</e:Group>
 				</e:Scroller>
 			</e:Group>

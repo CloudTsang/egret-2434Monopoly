@@ -65,24 +65,33 @@ class WorldMap extends eui.Component{
 	public addChess(c:Chess, index:number, i:number=0, newChess:boolean=true){
 		const cell = this.cellsArr[i]
 
-		const a = cell.width/4
+		const a = cell.width/8
 		let p = []
 		if(index == 0){
-			p = [1,2]
+			p = [1,3]
 		}else if(index == 1){
-			p = [3,2]
+			p = [5,3]
 		}else if(index == 2){
-			p = [1,4]
+			p = [3,7]
 		}else if(index == 3){
-			p = [3,4]
+			p = [7,7]
 		}
 
 		c.x = cell.x + a*p[0]
 		c.y = cell.y + a*p[1]
 		
-		this.chesses.push(c)
+		if(newChess){
+			this.chesses.push(c)
+		}
+		
 		this.chessArr[index] = i
-		this.mapContainer.addChildAt(c, index+1)
+		const tmp = this.chesses.filter((v:Chess)=>{
+			return v.y > c.y
+		})
+		const addIndex = this.chesses.length - tmp.length
+		// this.mapContainer.addChildAt(c, index+1)
+		// console.log(addIndex)
+		this.mapContainer.addChildAt(c, addIndex)
 	}
 
 	public showRollNum(n:number, r:string){
@@ -182,6 +191,7 @@ class WorldMap extends eui.Component{
 		// console.log(thisObj.stepObj)
 
 		if(curIndex == targetIndex){
+			console.log("step finish")
 			thisObj.addChess(thisObj.chesses[moveChessIndex], moveChessIndex, targetIndex, false)
 			thisObj._moveChess = null
 			thisObj.stepObj = null

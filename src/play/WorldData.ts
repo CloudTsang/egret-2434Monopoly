@@ -4,7 +4,7 @@ class WorldData {
 	public static STAGE_H:number
 	public static STAGE_W:number
 
-	public static cellSize = 160
+	public static cellSize = 200
 	/**棋盘格数 */
 	public static cellNum = 8
 }

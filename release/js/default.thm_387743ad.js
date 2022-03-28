@@ -531,7 +531,8 @@ window.skins=window.skins||{};
 		t.size = 24;
 		t.text = "其他Liver来联动了！";
 		t.verticalAlign = "middle";
-		t.visible = true;
+		t.visible = false;
+		t.width = 0;
 		t.x = 103;
 		t.y = 72;
 		return t;
@@ -1707,17 +1708,19 @@ window.skins=window.skins||{};
 	__extends(livenetapanel, _super);
 	function livenetapanel() {
 		_super.call(this);
-		this.skinParts = ["txtTip","itemContainer","itemScroller","commentList","commentScroller","txtNeta","txtPop","txtSafe","txtMeme","btnCancel","btnConfirm","btnContainer","txtDAdd","txtDSpd","txtSubAdd","txtSubSpd","streamResultContainer"];
+		this.skinParts = ["txtTip","itemContainer","itemScroller","netalistcontainer","commentList","commentScroller","txtNeta","txtPop","txtSafe","txtMeme","btnCancel","btnConfirm","btnContainer","txtDAdd","txtDSpd","txtSubAdd","txtSubSpd","streamResultContainer"];
 		
 		this.height = 200;
 		this.maxHeight = 300;
 		this.width = 800;
-		this.elementsContent = [this._Group11_i()];
+		this.elementsContent = [this._Group10_i()];
 		this.txtTip_i();
 		
-		this._Group4_i();
+		this._BasicLayout1_i();
 		
-		this._Group9_i();
+		this._Group3_i();
+		
+		this._Group8_i();
 		
 		this.btnContainer_i();
 		
@@ -1726,28 +1729,29 @@ window.skins=window.skins||{};
 		this.states = [
 			new eui.State ("beforestream",
 				[
-					new eui.AddItems("txtTip","_Group2",0,""),
-					new eui.AddItems("_Group9","_Group10",1,""),
-					new eui.AddItems("btnContainer","_Group10",1,"")
+					new eui.AddItems("txtTip","_Group1",0,""),
+					new eui.AddItems("_Group8","_Group9",1,""),
+					new eui.AddItems("btnContainer","_Group9",1,"")
 				])
 			,
 			new eui.State ("onstream",
 				[
-					new eui.AddItems("_Group4","_Group10",1,""),
+					new eui.AddItems("_Group3","_Group9",1,""),
 					new eui.AddItems("streamResultContainer","",1,""),
+					new eui.SetProperty("_Group1","layout",this._BasicLayout1),
 					new eui.SetProperty("_HorizontalLayout2","verticalAlign","middle")
 				])
 		];
 	}
 	var _proto = livenetapanel.prototype;
 
-	_proto._Group11_i = function () {
+	_proto._Group10_i = function () {
 		var t = new eui.Group();
 		t.percentHeight = 100;
 		t.percentWidth = 100;
 		t.x = 0;
 		t.y = 0;
-		t.elementsContent = [this._Rect1_i(),this._Group10_i()];
+		t.elementsContent = [this._Rect1_i(),this._Group9_i()];
 		return t;
 	};
 	_proto._Rect1_i = function () {
@@ -1760,15 +1764,15 @@ window.skins=window.skins||{};
 		t.y = 0;
 		return t;
 	};
-	_proto._Group10_i = function () {
+	_proto._Group9_i = function () {
 		var t = new eui.Group();
-		this._Group10 = t;
+		this._Group9 = t;
 		t.percentHeight = 100;
 		t.percentWidth = 100;
 		t.x = 0;
 		t.y = 0;
 		t.layout = this._HorizontalLayout2_i();
-		t.elementsContent = [this._Group2_i()];
+		t.elementsContent = [this._Group1_i()];
 		return t;
 	};
 	_proto._HorizontalLayout2_i = function () {
@@ -1776,12 +1780,12 @@ window.skins=window.skins||{};
 		this._HorizontalLayout2 = t;
 		return t;
 	};
-	_proto._Group2_i = function () {
+	_proto._Group1_i = function () {
 		var t = new eui.Group();
-		this._Group2 = t;
+		this._Group1 = t;
 		t.percentHeight = 100;
 		t.percentWidth = 65;
-		t.elementsContent = [this._Group1_i()];
+		t.elementsContent = [this.netalistcontainer_i()];
 		return t;
 	};
 	_proto.txtTip_i = function () {
@@ -1792,9 +1796,11 @@ window.skins=window.skins||{};
 		t.size = 22;
 		return t;
 	};
-	_proto._Group1_i = function () {
+	_proto.netalistcontainer_i = function () {
 		var t = new eui.Group();
+		this.netalistcontainer = t;
 		t.horizontalCenter = 0;
+		t.maxHeight = 200;
 		t.percentHeight = 75;
 		t.percentWidth = 94;
 		t.top = 10;
@@ -1825,7 +1831,6 @@ window.skins=window.skins||{};
 		t.percentHeight = 100;
 		t.percentWidth = 100;
 		t.x = 0;
-		t.y = 0;
 		t.layout = this._HorizontalLayout1_i();
 		return t;
 	};
@@ -1834,9 +1839,9 @@ window.skins=window.skins||{};
 		t.verticalAlign = "middle";
 		return t;
 	};
-	_proto._Group4_i = function () {
+	_proto._Group3_i = function () {
 		var t = new eui.Group();
-		this._Group4 = t;
+		this._Group3 = t;
 		t.percentHeight = 96;
 		t.percentWidth = 35;
 		t.x = 610;
@@ -1849,10 +1854,10 @@ window.skins=window.skins||{};
 		t.percentHeight = 100;
 		t.percentWidth = 100;
 		t.verticalCenter = 0;
-		t.viewport = this._Group3_i();
+		t.viewport = this._Group2_i();
 		return t;
 	};
-	_proto._Group3_i = function () {
+	_proto._Group2_i = function () {
 		var t = new eui.Group();
 		t.elementsContent = [this.commentList_i()];
 		return t;
@@ -1862,16 +1867,16 @@ window.skins=window.skins||{};
 		this.commentList = t;
 		t.percentHeight = 100;
 		t.percentWidth = 100;
-		t.verticalCenter = 0;
+		t.top = 0;
 		return t;
 	};
-	_proto._Group9_i = function () {
+	_proto._Group8_i = function () {
 		var t = new eui.Group();
-		this._Group9 = t;
+		this._Group8 = t;
 		t.percentHeight = 100;
 		t.percentWidth = 25;
 		t.layout = this._VerticalLayout1_i();
-		t.elementsContent = [this._Group5_i(),this._Group6_i(),this._Group7_i(),this._Group8_i()];
+		t.elementsContent = [this._Group4_i(),this._Group5_i(),this._Group6_i(),this._Group7_i()];
 		return t;
 	};
 	_proto._VerticalLayout1_i = function () {
@@ -1879,7 +1884,7 @@ window.skins=window.skins||{};
 		t.gap = 3;
 		return t;
 	};
-	_proto._Group5_i = function () {
+	_proto._Group4_i = function () {
 		var t = new eui.Group();
 		t.percentHeight = 25;
 		t.percentWidth = 100;
@@ -1903,7 +1908,7 @@ window.skins=window.skins||{};
 		t.verticalCenter = 0;
 		return t;
 	};
-	_proto._Group6_i = function () {
+	_proto._Group5_i = function () {
 		var t = new eui.Group();
 		t.percentHeight = 25;
 		t.percentWidth = 100;
@@ -1927,7 +1932,7 @@ window.skins=window.skins||{};
 		t.verticalCenter = 0;
 		return t;
 	};
-	_proto._Group7_i = function () {
+	_proto._Group6_i = function () {
 		var t = new eui.Group();
 		t.percentHeight = 25;
 		t.percentWidth = 100;
@@ -1951,7 +1956,7 @@ window.skins=window.skins||{};
 		t.verticalCenter = 0;
 		return t;
 	};
-	_proto._Group8_i = function () {
+	_proto._Group7_i = function () {
 		var t = new eui.Group();
 		t.percentHeight = 25;
 		t.percentWidth = 100;
@@ -2013,7 +2018,7 @@ window.skins=window.skins||{};
 		t.percentWidth = 100;
 		t.visible = true;
 		t.y = 200;
-		t.elementsContent = [this._Rect3_i(),this.txtDAdd_i(),this.txtDSpd_i(),this._Group13_i()];
+		t.elementsContent = [this._Rect3_i(),this.txtDAdd_i(),this.txtDSpd_i(),this._Group12_i()];
 		return t;
 	};
 	_proto._Rect3_i = function () {
@@ -2048,12 +2053,12 @@ window.skins=window.skins||{};
 		t.y = 40;
 		return t;
 	};
-	_proto._Group13_i = function () {
+	_proto._Group12_i = function () {
 		var t = new eui.Group();
 		t.percentHeight = 100;
 		t.percentWidth = 100;
 		t.layout = this._HorizontalLayout3_i();
-		t.elementsContent = [this._Label1_i(),this.txtSubAdd_i(),this._Group12_i(),this._Label2_i(),this.txtSubSpd_i()];
+		t.elementsContent = [this._Label1_i(),this.txtSubAdd_i(),this._Group11_i(),this._Label2_i(),this.txtSubSpd_i()];
 		return t;
 	};
 	_proto._HorizontalLayout3_i = function () {
@@ -2085,7 +2090,7 @@ window.skins=window.skins||{};
 		t.y = 29;
 		return t;
 	};
-	_proto._Group12_i = function () {
+	_proto._Group11_i = function () {
 		var t = new eui.Group();
 		t.percentHeight = 100;
 		t.width = 30;
@@ -2110,6 +2115,11 @@ window.skins=window.skins||{};
 		t.width = 140;
 		t.x = 216;
 		t.y = 29;
+		return t;
+	};
+	_proto._BasicLayout1_i = function () {
+		var t = new eui.BasicLayout();
+		this._BasicLayout1 = t;
 		return t;
 	};
 	return livenetapanel;
@@ -4785,10 +4795,8 @@ window.skins=window.skins||{};
 	_proto.result_i = function () {
 		var t = new RollResultLabel();
 		this.result = t;
-		t.height = 100;
 		t.touchChildren = false;
 		t.touchEnabled = false;
-		t.width = 500;
 		t.x = 139;
 		t.y = -72;
 		return t;
@@ -4800,8 +4808,6 @@ window.skins=window.skins||{};
 		_super.call(this);
 		this.skinParts = [];
 		
-		this.height = 100;
-		this.width = 250;
 		this.elementsContent = [this._Label1_i()];
 		this.states = [
 			new eui.State ("NORMAL",
@@ -4854,9 +4860,11 @@ window.skins=window.skins||{};
 	_proto._Label1_i = function () {
 		var t = new eui.Label();
 		this._Label1 = t;
+		t.background = false;
 		t.percentHeight = 100;
 		t.percentWidth = 100;
 		t.text = "";
+		t.touchEnabled = false;
 		return t;
 	};
 	return rollresutl;

@@ -144,7 +144,7 @@ class Stream extends egret.EventDispatcher{
 		console.log(`炎上发生基础倍率 : ${st.enjoBaseRate}`)
 
 		st.panel.setStreamData(st.netas, st.totPop, st.totSafe, st.totMeme, st.netaRequest)
-		st.panel.startStream()
+		st.panel.startStream(st.mc)
 		st.netaCalcTimeout()
 	}
 
@@ -267,7 +267,7 @@ class Stream extends egret.EventDispatcher{
 		neta.reset()
 	}
 
-	protected setComments(num:number = 10, accident:boolean = false, enjo:boolean = false){
+	protected setComments(num:number = 20, accident:boolean = false, enjo:boolean = false){
 		let carr = []
 		const st = this
 		for(let i=0;i<num; i++){

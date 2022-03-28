@@ -13,7 +13,10 @@ class Roll {
 		// 	return {n:5, r:RollResult.BIG_FAIL}
 		// }
 		// return {n:1,r:RollResult.BIG_FAIL}
-		const n = Math.floor(Math.random() * (4+mc.data[prop]))+1
+		let n = Math.floor(Math.random() * (4+mc.data[prop]))+1
+		if(window['roll']){
+			n = window['roll']
+		}
 		let r = ""
 		if(n >= 10){
 			r = RollResult.BIG_SUCCESS

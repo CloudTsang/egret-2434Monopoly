@@ -29,6 +29,9 @@ class StreamNetaPanel extends eui.Component  implements IDisposable{
 	private commentCollectdata:eui.ArrayCollection
 	private commentTimer:egret.Timer
 	private commentIndex:number
+
+	// private imgCurNeta:eui.Image
+	// private imgLiver:eui.Image
 	public constructor(t:string) {
 		super()
 		this._ty = t
@@ -53,10 +56,13 @@ class StreamNetaPanel extends eui.Component  implements IDisposable{
 		panel.itemContainer.dataProvider = panel.collectdata
 	}
 
-	public startStream(){
+	public startStream(liver:MainCharacter){
 		const panel = this
 		panel.currentState = 'onstream'
 		panel.commentList.itemRenderer = CommentListObj
+
+		// const tex = RES.getRes(liver.iconUrl) as egret.Texture
+		// panel.imgLiver.texture = tex
 
 		panel.commentTimer = new egret.Timer(200)
 		panel.commentTimer.addEventListener(egret.TimerEvent.TIMER, panel.omCommentRoll, panel)
@@ -96,6 +102,8 @@ class StreamNetaPanel extends eui.Component  implements IDisposable{
 			panel._curNeta.currentState = 'fire'
 			scale = 1
 		}
+		// panel.imgCurNeta.texture = panel._curNeta.icon?panel._curNeta.icon.texture:null
+		
 		panel.txtSubAdd.text = ''+t1
 		panel.txtSubSpd.text = ''+t3
 		panel.txtDAdd.text = '+'+t2
@@ -137,10 +145,10 @@ class StreamNetaPanel extends eui.Component  implements IDisposable{
 			return
 		}
 		const startI = panel.commentIndex
-		if(startI+5 > panel.commentRawdata.length){
+		if(startI+10 > panel.commentRawdata.length){
 			return
 		}
-		const endI = startI+5
+		const endI = startI+10
 		
 		const arr = panel.commentRawdata.slice(startI, endI)
 		panel.commentCollectdata = new eui.ArrayCollection(arr)

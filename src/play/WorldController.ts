@@ -125,6 +125,9 @@ class WorldController extends egret.EventDispatcher implements IDisposable{
 		const cell:CellData = this.cellDatas.getCell(curIndex)
 		if(curIndex == 0){
 			//回到起点
+			// console.log("back2start : ", finish)
+			cell.addEventListener(GameEvents.EVENT_START, this.onEventStart, this)
+			cell.addEventListener(GameEvents.STAT_CHANGE, this.onLiverStatChange, this)
 			cell.addEventListener(GameEvents.EVENT_FINISH, finish?this.onStartPointFinish:this.onStartPoint, this)
 			cell.trigger(this.stageMode[this.currentPlayer],
 						this.curPlayer)		
@@ -136,7 +139,6 @@ class WorldController extends egret.EventDispatcher implements IDisposable{
 			//test
 			// this.nextPlayer()
 			// return
-
 			this.menus = []
 			cell.addEventListener(GameEvents.EVENT_START, this.onEventStart, this)
 			cell.addEventListener(GameEvents.STAT_CHANGE, this.onLiverStatChange, this)
@@ -242,12 +244,14 @@ class WorldController extends egret.EventDispatcher implements IDisposable{
 
 	protected onStartPoint(e:any){
 		console.log("起点事件处理结束")
+		e.target.removeEventListener(GameEvents.EVENT_FINISH, this.onStartPoint, this)
 		this.map.onStep(true, this.map)
 	}
 
 	protected onStartPointFinish(e:any){
-		console.log("起点事件处理结束")
-		// this.map.onStep(true, this.map)
+		console.log("踏正起点事件处理结束")
+		this.map.onStep(true, this.map)
+		e.target.removeEventListener(GameEvents.EVENT_FINISH, this.onStartPointFinish, this)
 		this.nextPlayer()
 	}
 

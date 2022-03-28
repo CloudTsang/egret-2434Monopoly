@@ -9,5 +9,5 @@
 			<e:BasicLayout/>
 		</e:layout>
 	</e:Group>
-	<ns1:RollResultLabel id="result" width="500" height="100" x="139" y="-72" touchEnabled="false" touchChildren="false"/>
+	<ns1:RollResultLabel id="result" x="139" y="-72" touchEnabled="false" touchChildren="false"/>
 </e:Skin>

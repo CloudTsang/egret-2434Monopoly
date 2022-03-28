@@ -4,7 +4,7 @@
 	height="100" xmlns:e="http://ns.egret.com/eui">
 	<e:Rect percentHeight="100" percentWidth="100" x="0" y="0" fillAlpha="0.7"/>
 	<e:Group percentHeight="100" percentWidth="100" x="0" y="0">
-		<e:Label id="txtTip" text="其他Liver来联动了！" percentHeight="100" x="103" y="72" size="24" visible="true" verticalAlign="middle"/>
+		<e:Label id="txtTip" visible="false" text="其他Liver来联动了！" width="0" percentHeight="100" x="103" y="72" size="24" verticalAlign="middle"/>
 		<e:Group width="20"/>
 		<e:Group id="iconContainer"  percentWidth="100" x="55" y="76"/>
 		<e:layout>

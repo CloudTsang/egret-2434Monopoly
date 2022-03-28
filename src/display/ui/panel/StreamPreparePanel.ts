@@ -73,9 +73,9 @@ class StreamPreparePanel extends egret.Sprite  implements IDisposable{
 		this.streamPanel.setStreamData(n,pop,safe,meme,able)
 	}
 
-	public startStream(){
+	public startStream(liver:MainCharacter){
 		this.createTween2()
-		this.streamPanel.startStream()
+		this.streamPanel.startStream(liver)
 	}
 
 	public setCollabo(mems:string[]){
