@@ -12,6 +12,9 @@ class StartSelectPanel extends eui.Component{
 
 	private dragging:eui.Button
 	private oriIcon:PlayerIcon
+
+	private cpn2Hide0:eui.Component
+	private cpn2Hide1:eui.Component
 	public constructor() {
 		super()
 		this.curTurn = this.TURNS[0]
@@ -19,16 +22,19 @@ class StartSelectPanel extends eui.Component{
 		this.once(eui.UIEvent.ADDED_TO_STAGE, this.onAdded, this)
 	}
 
-	protected onAdded(e:any){
+	protected async onAdded(e:any){
 		const p = this
-		const livers = this.livers
+		const livers = p.livers
+		p.btnStart.visible = false
+		p.cpn2Hide0.visible = false
+		p.cpn2Hide1.visible = false
 
 		const useLivers:PlayerIcon[] = []
 		for(let i=0;i<livers.length; i++){
 			const obj = RES.getRes(livers[i])
 			const icon:PlayerIcon = p[`liver${i}`]
 			const able = obj['disable'] != true
-			icon.setPlayer(obj['iconUrl'], able, i)
+			await icon.setPlayer(obj['iconUrl'], able, i)
 			icon.touchEnabled = true
 			icon.touchChildren = true
 			if(able) useLivers.push(icon)
@@ -47,6 +53,10 @@ class StartSelectPanel extends eui.Component{
 
 		p.btnStart.addEventListener("touchTap", p.onStartClick, p)
 		p.tslider.addEventListener(egret.Event.CHANGE, p.onTurnSliderChange, p)
+
+		p.btnStart.visible = true
+		p.cpn2Hide0.visible = true
+		p.cpn2Hide1.visible = true
 	}
 
 	protected onStartDrag(e:egret.TouchEvent){

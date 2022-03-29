@@ -5,7 +5,6 @@ class Tawagega extends Buff{
 		this.des = '品位小幅上升且状态期间anti不会增长'
 		this.iconUrl = "icons_json#tawagega"
 		this.time = [t,'T']
-		this.on()
 	}
 
 	public on(){		

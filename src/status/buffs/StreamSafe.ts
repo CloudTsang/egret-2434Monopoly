@@ -5,7 +5,6 @@ class StreamSafe extends Buff{
 		this.des = '炎上和事故概率大幅降低'
 		this.iconUrl = "icons_json#fireguard"
 		this.time = [t,'S']
-		this.on()
 	}
 
 	public effect(obj:TargetObj){

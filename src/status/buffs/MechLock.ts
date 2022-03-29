@@ -5,7 +5,6 @@ class MechLock extends Buff{
 		this.des = 'PC设备的改变直播事故概率的效果无效'
 		this.iconUrl = 'icons_json#mechlock'
 		this.time = [t,"S"]
-		this.on()
 	}
 
 	public on(){

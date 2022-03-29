@@ -4,7 +4,6 @@ class FavorLock extends Buff{
 		this.name = '好感度固定'
 		this.des = '无法提升NPC好感度'
 		this.time = [t,'T']
-		this.on()
 	}
 
 	public on(){

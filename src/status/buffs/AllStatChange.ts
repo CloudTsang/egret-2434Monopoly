@@ -5,8 +5,6 @@ class AllStatChange  extends Buff{
 	public constructor(mc:MainCharacter, d:number, t:number=1) {
 		super(mc, t)
 		this._delta = d
-		this.on()
-		
 	}
 
 	public on(){

@@ -1291,11 +1291,11 @@ window.skins=window.skins||{};
 	__extends(gameStartSetting, _super);
 	function gameStartSetting() {
 		_super.call(this);
-		this.skinParts = ["liver0","liver1","liver2","liver3","liver4","liver5","liver6","liver7","tslider","txtTurn","btnStart"];
+		this.skinParts = ["cpn2Hide0","liver0","liver1","liver2","liver3","liver4","liver5","liver6","liver7","tslider","txtTurn","cpn2Hide1","btnStart"];
 		
 		this.height = 720;
 		this.width = 1280;
-		this.elementsContent = [this._Rect1_i(),this._Group7_i()];
+		this.elementsContent = [this._Rect1_i(),this._Group6_i()];
 	}
 	var _proto = gameStartSetting.prototype;
 
@@ -1306,12 +1306,12 @@ window.skins=window.skins||{};
 		t.percentWidth = 100;
 		return t;
 	};
-	_proto._Group7_i = function () {
+	_proto._Group6_i = function () {
 		var t = new eui.Group();
 		t.percentHeight = 100;
 		t.percentWidth = 100;
 		t.layout = this._VerticalLayout2_i();
-		t.elementsContent = [this._Group1_i(),this._Label1_i(),this._Group4_i(),this._Group5_i(),this.btnStart_i(),this._Group6_i()];
+		t.elementsContent = [this._Group1_i(),this.cpn2Hide0_i(),this._Group4_i(),this.cpn2Hide1_i(),this.btnStart_i(),this._Group5_i()];
 		return t;
 	};
 	_proto._VerticalLayout2_i = function () {
@@ -1328,8 +1328,9 @@ window.skins=window.skins||{};
 		t.y = 690;
 		return t;
 	};
-	_proto._Label1_i = function () {
+	_proto.cpn2Hide0_i = function () {
 		var t = new eui.Label();
+		this.cpn2Hide0 = t;
 		t.horizontalCenter = 0;
 		t.scaleX = 1;
 		t.scaleY = 1;
@@ -1438,13 +1439,14 @@ window.skins=window.skins||{};
 		t.width = 200;
 		return t;
 	};
-	_proto._Group5_i = function () {
+	_proto.cpn2Hide1_i = function () {
 		var t = new eui.Group();
+		this.cpn2Hide1 = t;
 		t.percentWidth = 100;
 		t.x = 870;
 		t.y = 657;
 		t.layout = this._HorizontalLayout3_i();
-		t.elementsContent = [this._Label2_i(),this.tslider_i(),this.txtTurn_i(),this._Label3_i()];
+		t.elementsContent = [this._Label1_i(),this.tslider_i(),this.txtTurn_i(),this._Label2_i()];
 		return t;
 	};
 	_proto._HorizontalLayout3_i = function () {
@@ -1453,7 +1455,7 @@ window.skins=window.skins||{};
 		t.verticalAlign = "middle";
 		return t;
 	};
-	_proto._Label2_i = function () {
+	_proto._Label1_i = function () {
 		var t = new eui.Label();
 		t.scaleX = 1;
 		t.scaleY = 1;
@@ -1484,7 +1486,7 @@ window.skins=window.skins||{};
 		t.y = 10;
 		return t;
 	};
-	_proto._Label3_i = function () {
+	_proto._Label2_i = function () {
 		var t = new eui.Label();
 		t.text = "个回合";
 		t.textColor = 0x2E2A2A;
@@ -1503,7 +1505,7 @@ window.skins=window.skins||{};
 		t.y = 640;
 		return t;
 	};
-	_proto._Group6_i = function () {
+	_proto._Group5_i = function () {
 		var t = new eui.Group();
 		t.percentHeight = 5;
 		t.width = 0;

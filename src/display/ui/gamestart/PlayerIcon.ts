@@ -13,13 +13,30 @@ class PlayerIcon extends eui.Component{
 		// }, this)
 	}
 
-	public setPlayer(iconUrl:string, useAble:boolean, index:number){
-		this.url = iconUrl
-		this.useable = useAble
-		this.img.source = iconUrl
-		this.currentState = useAble?"normal":"disable"
-		this.touchEnabled = useAble
-		this._index = index
+	public setPlayer(iconUrl:string, useAble:boolean, index:number):Promise<void>{
+		const icon = this
+		icon.url = iconUrl
+		icon.useable = useAble
+		icon.img.source = iconUrl
+		icon.currentState = useAble?"normal":"disable"
+		icon.touchEnabled = useAble
+		icon._index = index
+		return new Promise<void>((resolve, reject)=>{
+			egret.Tween.get(icon.img)
+			.set({
+				alpha:0,
+				scaleX:1.2,
+				scaleY:1.2
+			})
+			.to({
+				alpha:1,
+				scaleX:1,
+				scaleY:1
+			}, 200)
+			.call(resolve)	
+
+		})
+		
 	}
 
 	public setP(p:eui.Button){

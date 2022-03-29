@@ -411,5 +411,27 @@
                 }
             ]
         }
+    },
+    {
+        "id":21,
+        "name":"勇者的树莓",
+        "owner":"albio",
+        "des":"杀人树莓。持有时体力降低，可以转送给其他玩家，如果转送失败树莓将会增殖。",
+        "type":"device",
+        "class":"AboSpec",
+        "iconUrl": "livers1_json#abo",
+        "disable": true,
+        "data":{
+            "use":true,
+            "times":1,
+            "tgt":"SELECT_ONE",
+            "effect":[
+                {
+                    "type":"STAT_CHANGE",
+                    "trigger":"get",
+                    "data":"{mc.strength}-1"
+                }
+            ]
+        }
     }
 ]

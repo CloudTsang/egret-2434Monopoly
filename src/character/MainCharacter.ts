@@ -83,6 +83,7 @@ class MainCharacter extends Liver{
 		// this.data.sing = 10
 		// this.npc['kaede'] = 4
 		// this.npc['rin'] = 3
+		// this.npc.modify("albio", 3)
 
 	}
 
@@ -119,6 +120,7 @@ class MainCharacter extends Liver{
 			}
 		}
 		this.buffs.push(nb)
+		nb.on()
 	}
 
 	public removeBuff(id:string){
@@ -144,6 +146,7 @@ class MainCharacter extends Liver{
 	}
 
 	public onTurnStart(){
+		this.ddata = new CData()
 		let movable:boolean = true
 
 		let newSub = this.increase - this._anti
@@ -235,7 +238,7 @@ class MainCharacter extends Liver{
 	}
 
 	public onTurnEnd(){
-		this.ddata = new CData()
+		// this.ddata = new CData()
 	}
 
 	/**现实虚拟切换 */

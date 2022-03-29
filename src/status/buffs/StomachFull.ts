@@ -5,7 +5,6 @@ class StomachFull extends Buff{
 		this.des = '体力大幅提高，效果逐回合降低'
 		this.iconUrl = "icons_json#full"
 		this.time = [t,'T']
-		this.on()
 	}
 
 	public on(){		

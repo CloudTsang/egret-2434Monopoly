@@ -3,7 +3,7 @@ class Lunpapa extends Buff{
 		super(mc, t)
 		this.name = '55kg'
 		this.des = '行动时只能前进1格'
-		this.iconUrl = "icons_json#lunpapa"
+		// this.iconUrl = "icons_json#lunpapa"
 		this.time = [t,'T']
 	}
 }

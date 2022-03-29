@@ -5,7 +5,6 @@ class LuckCursed  extends Buff{
 		this.des = '被诅咒的状态，印堂发黑，运气大幅降低'
 		this.iconUrl = "icons_json#cursed"
 		this.time = [t,'T']
-		this.on()
 	}
 
 	public on(){		

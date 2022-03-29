@@ -5,6 +5,5 @@ class Stop extends Buff{
 		this.des = '跳过一次行动'
 		this.iconUrl = "icons_json#stopbuff"
 		this.time = [t,'T']
-		this.on()
 	}
 }

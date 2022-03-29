@@ -7,7 +7,6 @@ class Enjo  extends Buff{
 		this.iconUrl = "icons_json#fire"
 		this.time = [t,'T']
 		this._sw = false
-		this.on()
 	}
 
 	/**叠加同种buff效果 */

@@ -7,7 +7,6 @@ class Sleep extends Buff{
 		this.iconUrl = "icons_json#sleep"
 		this.time = [t,'T']
 		this._sw = false
-		this.on()
 	}
 
 	public on(){

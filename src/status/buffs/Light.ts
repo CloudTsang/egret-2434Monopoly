@@ -8,7 +8,6 @@ class Light extends Buff{
 		this.iconUrl = "icons_json#light"
 		this.time = [t,'T']
 		this._sw = false
-		this.on()
 	}
 
 	/**叠加同种buff效果 */
