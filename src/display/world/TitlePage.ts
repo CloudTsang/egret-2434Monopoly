@@ -3,6 +3,7 @@ class TitlePage extends eui.Component{
 	private img2:eui.Image
 
 	private btnStart:eui.Button
+	private btnStart2:eui.Button
 	private btnDes:eui.Button
 
 	private dp:DescriptPanel
@@ -23,10 +24,23 @@ class TitlePage extends eui.Component{
 		
 		this.btnDes.addEventListener("touchTap", this.onDesClick, this)
 		this.btnStart.addEventListener("touchTap", this.onStartClick, this)
+		this.btnStart2.addEventListener("touchTap", this.onStartClick2, this)
 	}
 
 	protected onStartClick(e:any=null){
-		this.dispatchEvent(new egret.Event(GameEvents.TO_PLAYER_SELECT))
+		let evt:egret.Event = new egret.Event(GameEvents.TO_PLAYER_SELECT)
+		evt.data = {
+			mode:GameMode.LOCAL_MULTI
+		}
+		this.dispatchEvent(evt)
+	}
+
+	protected onStartClick2(e:any=null){
+		let evt:egret.Event = new egret.Event(GameEvents.TO_PLAYER_SELECT)
+		evt.data = {
+			mode:GameMode.SINGLE
+		}
+		this.dispatchEvent(evt)
 	}
 
 	protected onDesClick(e:any):void{

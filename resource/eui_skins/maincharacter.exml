@@ -2,46 +2,46 @@
 <e:Skin class="maincharacter" width="700" height="500" xmlns:e="http://ns.egret.com/eui" xmlns:ns1="*" xmlns:w="http://ns.egret.com/wing">
 	<e:Group percentHeight="100" percentWidth="100" x="0" y="0" touchEnabled="true" touchChildren="true">
         
-		<e:Rect percentHeight="100" percentWidth="100" x="0" y="0" fillAlpha="0.75" ellipseWidth="50" fillColor="0x000000"/>
+		<e:Rect percentHeight="100" percentWidth="100" x="0" y="0" fillAlpha="1" ellipseWidth="50" strokeColor="0x000000" strokeWeight="5" fillColor="0xEAB35D"/>
 		<e:Group percentHeight="100" percentWidth="100" x="0" y="0">
 			<e:Group percentHeight="100" percentWidth="30" verticalCenter="0" horizontalCenter="0">
 				<e:Image id="img" percentWidth="70" percentHeight="28" x="90" y="194" source="resource/assets/mito.png"/>
 				<e:Group  height="10" x="52" y="330"/>
-				<e:Label id="txtName" x="103" y="338" size="26"/>
+				<e:Label id="txtName" x="103" y="338" size="26"  textColor="0x000000"/>
                 <e:Group  height="10" x="52" y="330"/>
 				<e:Group percentWidth="90" height="40" x="51" y="440">
 					<e:layout>
 						<e:BasicLayout/>
 					</e:layout>
-					<e:Label text="订阅数" verticalCenter="0" left="0" size="22"/>
-					<e:Label id="txtSubs" right="0" verticalCenter="0" size="26"/>
+					<e:Label text="订阅数" verticalCenter="0" left="0" size="22" textColor="0x000000"/>
+					<e:Label id="txtSubs" right="0" verticalCenter="0" size="26" textColor="0x000000"/>
 				</e:Group>
 
                 <e:Group percentWidth="90" height="40" x="51" y="440">
 					<e:layout>
 						<e:BasicLayout/>
 					</e:layout>
-					<e:Label text="增长速度" verticalCenter="0" left="0" size="22"/>
-					<e:Label id="txtIncrease" right="0" verticalCenter="0" size="26"/>
+					<e:Label text="增长速度" verticalCenter="0" left="0" size="22" textColor="0x000000"/>
+					<e:Label id="txtIncrease" right="0" verticalCenter="0" size="26" textColor="0x000000"/>
 				</e:Group>
 
                  <e:Group percentWidth="90" height="40" x="51" y="440">
 					<e:layout>
 						<e:BasicLayout/>
 					</e:layout>
-					<e:Label text="直播次数" verticalCenter="0" left="0" size="22"/>
-					<e:Label id="txtStream" right="0" verticalCenter="0" size="26"/>
+					<e:Label text="直播次数" verticalCenter="0" left="0" size="22" textColor="0x000000"/>
+					<e:Label id="txtStream" right="0" verticalCenter="0" size="26" textColor="0x000000"/>
 				</e:Group>
                 
                  <e:Group percentWidth="90" height="40" x="51" y="440">
 					<e:layout>
 						<e:BasicLayout/>
 					</e:layout>
-					<e:Label text="上次直播" verticalCenter="0" left="0" size="22"/>
-					<e:Label id="txtPrevStream" right="0" verticalCenter="0" size="26"/>
+					<e:Label text="上次直播" verticalCenter="0" left="0" size="22"  textColor="0x000000"/>
+					<e:Label id="txtPrevStream" right="0" verticalCenter="0" size="26" textColor="0x000000"/>
 				</e:Group>
                 <e:Group  height="10"  x="119" y="522"/>
-				<e:Label text="金钱 ¥" x="105" y="525" size="22"/>
+				<e:Label text="金钱 ¥" x="105" y="525" size="22" textColor="0x000000"/>
 				<e:Label id="txtMoney" text="" x="96" y="558" size="32" textColor="0xF6FF2F"/>
 				
 				
@@ -58,30 +58,30 @@
 								</e:Group>
 				<e:Group  percentHeight="40" percentWidth="100">
                     <e:Group percentWidth="95" height="44" x="14" y="-264" scaleX="1" scaleY="1">
-                        <e:Rect percentHeight="90" percentWidth="95" fillColor="0x4F79AD" verticalCenter="0" horizontalCenter="0" ellipseWidth="50"/>
+                        <e:Rect percentHeight="90" percentWidth="95" verticalCenter="0" horizontalCenter="0" ellipseWidth="50" fillColor="0xE5A137" strokeColor="0xECE6E6" strokeWeight="3"/>
                         <e:Image width="52" percentHeight="100" x="0" y="0" source="icons_json#pskill" />
-                        <e:Label id="txts1" percentWidth="85"  right="0" verticalCenter="0" text="" size="28" italic="true"/>
+                        <e:Label id="txts1" percentWidth="85"  right="0" verticalCenter="0" text="" size="28" italic="true" textColor="0x000000"/>
 						<e:Group name="containers1" percentHeight="100" percentWidth="100"/>
                     </e:Group>
 
                     <e:Group  percentWidth="95" height="44" x="206" y="255">
-                        <e:Rect percentHeight="90" percentWidth="95" fillColor="0x4F79AD" verticalCenter="0" horizontalCenter="0" ellipseWidth="50"/>
+                        <e:Rect percentHeight="90" percentWidth="95" fillColor="0xE5A137" verticalCenter="0" horizontalCenter="0" ellipseWidth="50" strokeColor="0xECE6E6" strokeWeight="3"/>
                         <e:Image width="52.567" percentHeight="100" x="0" y="0" source="icons_json#pskill" />
-                        <e:Label id="txts2" percentWidth="85"  right="0" verticalCenter="0" text="" size="28" italic="true"/>
+                        <e:Label id="txts2" percentWidth="85"  right="0" verticalCenter="0" text="" size="28" italic="true"  textColor="0x000000"/>
                         <e:Group name="containers2" percentHeight="100" percentWidth="100"/>
                     </e:Group>
 
                     <e:Group percentWidth="95" height="44" x="206" y="255">
-                        <e:Rect percentHeight="90" percentWidth="95" fillColor="0x4F79AD" verticalCenter="0" horizontalCenter="0" ellipseWidth="50"/>
+                        <e:Rect percentHeight="90" percentWidth="95" fillColor="0xE5A137" verticalCenter="0" horizontalCenter="0" ellipseWidth="50" strokeColor="0xECE6E6" strokeWeight="3"/>
                         <e:Image width="52.567" percentHeight="100" x="0" y="0" source="icons_json#nskill" />
-                        <e:Label id="txts3" percentWidth="85" right="0" verticalCenter="0" text="" size="28" italic="true"/>
+                        <e:Label id="txts3" percentWidth="85" right="0" verticalCenter="0" text="" size="28" italic="true"  textColor="0x000000"/>
                         <e:Group name="containers3" percentHeight="100" percentWidth="100"/>
                     </e:Group>
 
                     <e:Group percentWidth="95" height="44" x="14" y="-66" scaleX="1" scaleY="1">
-                        <e:Rect percentHeight="90" percentWidth="95" fillColor="0x4F79AD" verticalCenter="0" horizontalCenter="0" ellipseWidth="50"/>
+                        <e:Rect percentHeight="90" percentWidth="95" fillColor="0xE5A137" verticalCenter="0" horizontalCenter="0" ellipseWidth="50" strokeColor="0xECE6E6" strokeWeight="3"/>
                         <e:Image width="52.567" percentHeight="100" x="0" y="0" source="icons_json#nskill" />
-                        <e:Label id="txts4" percentWidth="85"  right="0" verticalCenter="0" text="" size="28" italic="true"/>
+                        <e:Label id="txts4" percentWidth="85"  right="0" verticalCenter="0" text="" size="28" italic="true"  textColor="0x000000"/>
                         <e:Group name="containers4" percentHeight="100" percentWidth="100"/>
                     </e:Group>
 
@@ -96,27 +96,27 @@
 					<e:Group percentHeight="90" percentWidth="100">
 						<e:Group  percentHeight="100" percentWidth="50" >
 							<e:Group percentHeight="25" percentWidth="100">
-								<e:Label text="L U C K" percentHeight="100" percentWidth="100" verticalAlign="bottom" textAlign="center" bold="true" textColor="0x1B4475" size="55"/>
-                                <e:Label text="运气：" left="30" verticalCenter="0" size="26"/>
-								<e:Label id="txtluck" text="" verticalCenter="0" right="30" bold="true"/>
+								<e:Label text="L U C K" percentHeight="100" percentWidth="100" verticalAlign="bottom" textAlign="center" bold="true" size="55" textColor="0xE4A035"/>
+                                <e:Label text="运气：" left="30" verticalCenter="0" size="26" textColor="0x000000"/>
+								<e:Label id="txtluck" text="" verticalCenter="0" right="30" bold="true" textColor="0x000000"/>
                                  <e:Group name="container0" percentHeight="100" percentWidth="100"/>
 							</e:Group>
                             <e:Group  percentHeight="25" percentWidth="100">
-								<e:Label text="S E N S E" percentHeight="100" percentWidth="100" verticalAlign="bottom" textAlign="center" bold="true" size="50" textColor="0x1B4475"/>
-                                <e:Label text="品位：" left="30" verticalCenter="0" size="26"/>
-								<e:Label id="txtSense" text="" verticalCenter="0" right="30" bold="true"/>
+								<e:Label text="S E N S E" percentHeight="100" percentWidth="100" verticalAlign="bottom" textAlign="center" bold="true" size="50" textColor="0xE4A035"/>
+                                <e:Label text="品位：" left="30" verticalCenter="0" size="26" textColor="0x000000"/>
+								<e:Label id="txtSense" text="" verticalCenter="0" right="30" bold="true" textColor="0x000000"/>
                                 <e:Group name="container1" percentHeight="100" percentWidth="100"/>
 							</e:Group>
                             <e:Group  percentHeight="25" percentWidth="100">
-								<e:Label text="C O M M U" percentHeight="100" percentWidth="100" verticalAlign="bottom" textAlign="center" bold="true" textColor="0x1B4475" size="46"/>
-                                <e:Label text="交流能力：" left="30" verticalCenter="0" size="26"/>
-								<e:Label id="txtCommu" text="" verticalCenter="0" right="30" bold="true"/>
+								<e:Label text="C O M M U" percentHeight="100" percentWidth="100" verticalAlign="bottom" textAlign="center" bold="true" textColor="0xE4A035" size="46"/>
+                                <e:Label text="交流能力：" left="30" verticalCenter="0" size="26" textColor="0x000000"/>
+								<e:Label id="txtCommu" text="" verticalCenter="0" right="30" bold="true" textColor="0x000000"/>
                                 <e:Group name="container2" percentHeight="100" percentWidth="100"/>
 							</e:Group>
                             <e:Group  percentHeight="25" percentWidth="100">
-								<e:Label text="STRENGTH" percentHeight="100" percentWidth="100" verticalAlign="middle" textAlign="center" bold="true" textColor="0x1B4475" size="40"/>
-                                <e:Label text="体能：" left="30" verticalCenter="0" size="26"/>
-								<e:Label id="txtStrength" text="" verticalCenter="0" right="30" bold="true"/>
+								<e:Label text="STRENGTH" percentHeight="100" percentWidth="100" verticalAlign="middle" textAlign="center" bold="true" textColor="0xE4A035" size="40"/>
+                                <e:Label text="体能：" left="30" verticalCenter="0" size="26" textColor="0x000000"/>
+								<e:Label id="txtStrength" text="" verticalCenter="0" right="30" bold="true" textColor="0x000000"/>
                                 <e:Group name="container3" percentHeight="100" percentWidth="100"/>
 							</e:Group>
 							<e:layout>
@@ -125,27 +125,27 @@
 						</e:Group>
                         <e:Group  percentHeight="100" percentWidth="50" >
 							<e:Group percentHeight="25" percentWidth="100">
-								<e:Label text="T A L K" percentHeight="100" percentWidth="100" verticalAlign="bottom" textAlign="center" bold="true" textColor="0x1B4475" size="55"/>
-                                <e:Label text="杂谈力：" left="30" verticalCenter="0" size="26"/>
-								<e:Label id="txtTalk" text="" verticalCenter="0" right="30" bold="true"/>
+								<e:Label text="T A L K" percentHeight="100" percentWidth="100" verticalAlign="bottom" textAlign="center" bold="true" textColor="0xE4A035" size="55"/>
+                                <e:Label text="杂谈力：" left="30" verticalCenter="0" size="26" textColor="0x000000"/>
+								<e:Label id="txtTalk" text="" verticalCenter="0" right="30" bold="true" textColor="0x000000"/>
                                 <e:Group name="container4" percentHeight="100" percentWidth="100"/>
 							</e:Group>
                             <e:Group  percentHeight="25" percentWidth="100">
-								<e:Label text="G A M E" percentHeight="100" percentWidth="100" verticalAlign="bottom" textAlign="center" bold="true" textColor="0x1B4475" size="55"/>
-                                <e:Label text="游戏力：" left="30" verticalCenter="0" size="26"/>
-								<e:Label id="txtGame" text="" verticalCenter="0" right="30" bold="true"/>
+								<e:Label text="G A M E" percentHeight="100" percentWidth="100" verticalAlign="bottom" textAlign="center" bold="true" textColor="0xE4A035" size="55"/>
+                                <e:Label text="游戏力：" left="30" verticalCenter="0" size="26" textColor="0x000000"/>
+								<e:Label id="txtGame" text="" verticalCenter="0" right="30" bold="true" textColor="0x000000"/>
                                 <e:Group name="container5" percentHeight="100" percentWidth="100"/>
 							</e:Group>
                             <e:Group percentHeight="25" percentWidth="100">
-								<e:Label text="S I N G" percentHeight="100" percentWidth="100" verticalAlign="bottom" textAlign="center" bold="true" textColor="0x1B4475" size="55"/>
-                                <e:Label text="歌力：" left="30" verticalCenter="0" size="26"/>
-								<e:Label id="txtSing" text="" verticalCenter="0" right="30" bold="true"/>
+								<e:Label text="S I N G" percentHeight="100" percentWidth="100" verticalAlign="bottom" textAlign="center" bold="true" textColor="0xE4A035" size="55"/>
+                                <e:Label text="歌力：" left="30" verticalCenter="0" size="26" textColor="0x000000"/>
+								<e:Label id="txtSing" text="" verticalCenter="0" right="30" bold="true" textColor="0x000000"/>
                                 <e:Group name="container6" percentHeight="100" percentWidth="100"/>
 							</e:Group>
                             <e:Group  percentHeight="25" percentWidth="100">
-								<e:Label text="T E C H" percentHeight="100" percentWidth="100" verticalAlign="bottom" textAlign="center" bold="true" textColor="0x1B4475" size="55"/>
-                                <e:Label text="技术力：" left="30" verticalCenter="0" size="26"/>
-								<e:Label id="txtTech" text="" verticalCenter="0" right="30" bold="true"/>
+								<e:Label text="T E C H" percentHeight="100" percentWidth="100" verticalAlign="bottom" textAlign="center" bold="true" size="55" textColor="0xE4A035"/>
+                                <e:Label text="技术力：" left="30" verticalCenter="0" size="26" textColor="0x000000"/>
+								<e:Label id="txtTech" text="" verticalCenter="0" right="30" bold="true" textColor="0x000000"/>
                                 <e:Group name="container7" percentHeight="100" percentWidth="100"/>
 							</e:Group>
 							<e:layout>

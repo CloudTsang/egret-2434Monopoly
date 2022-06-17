@@ -205,3 +205,10 @@ class EffectTarget{
 	/** 一格内全部NPC*/
 	public static readonly ALL_NPC = 'ALL_NPC'
 }
+
+enum GameMode{
+	/**本地多人 */
+	LOCAL_MULTI,
+	/**单人*/
+	SINGLE 
+}

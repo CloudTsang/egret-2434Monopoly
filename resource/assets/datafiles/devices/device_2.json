@@ -7,6 +7,7 @@
         "type":"device", 
         "class":"NetaDeviceCurse",
         "iconUrl":"netaicons_json#curse",
+        "multonly":true,
         "data":{
             "times":1,
             "use":true,
@@ -23,6 +24,7 @@
         "des":"诅咒人偶，可以使诅咒对象炎上若干回合，但是小心诅咒反噬。",
         "value": 10000,
         "type":"device", 
+        "multonly":true,
         "iconUrl":"netaicons_json#curse",
         "class":"NetaDeviceCurse",
         "data":{
@@ -42,6 +44,7 @@
         "des":"诅咒人偶，可以使诅咒对象运气大幅下降若干回合，但是小心诅咒反噬。",
         "value": 10000,
         "type":"device", 
+        "multonly":true,
         "iconUrl":"netaicons_json#curse",
         "class":"NetaDeviceCurse",
         "data":{
@@ -60,6 +63,7 @@
         "des":"诅咒人偶，可以使诅咒对象丢失若干个neta，但是小心诅咒反噬。",
         "value": 10000,
         "type":"device", 
+        "multonly":true,
         "iconUrl":"netaicons_json#curse",
         "class":"NetaDeviceCurse",
         "data":{
@@ -78,6 +82,7 @@
         "des":"诅咒人偶，可以抢夺诅咒对象的订阅数，但是小心诅咒反噬。",
         "value": 20000,
         "type":"device", 
+        "multonly":true,
         "iconUrl":"netaicons_json#curse",
         "class":"NetaDeviceCurse",
         "data":{

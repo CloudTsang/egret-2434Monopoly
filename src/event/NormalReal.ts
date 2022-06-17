@@ -31,7 +31,8 @@ class NormalReal extends MapEvent{
 					const rate2 = rate * 10000 * (1 + this._mc.strength/10)							
 					log = this.getLog(r, log, dataStr)
 					fn = () =>{
-						this._mc.data.commu = rate
+						// console.log(rate, this._mc.data)
+						this._mc.data.commu += rate
 						this._mc.money += rate2
 					}
 					getNeta = this.checkIfGetNeta(this.selections[i].evt, r)

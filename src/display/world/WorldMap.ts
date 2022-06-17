@@ -1,5 +1,7 @@
 class WorldMap extends eui.Component{
 	private _dragController:DragController
+	private bgR:eui.Image
+	private bgV:eui.Image
 	private mapContainer:eui.Group
 	private cellContainer:eui.Group
 	private bottomBar:eui.Group
@@ -111,6 +113,10 @@ class WorldMap extends eui.Component{
 		for(let cell of this.cellsArr){
 			cell.setMode(v)
 		}
+		this.bgV.visible = v
+		this.bgR.visible = !v
+		
+		
 	}
 
 	//#region  棋子移动逻辑

@@ -1,10 +1,12 @@
 <?xml version='1.0' encoding='utf-8'?>
 <e:Skin class="skins.mainstage"
-	 width="480"
-	height="480" xmlns:e="http://ns.egret.com/eui" xmlns:ns1="*" xmlns:w="http://ns.egret.com/wing">
-	<e:Group percentWidth="100" percentHeight="100" locked="true">
+	 width="1280"
+	height="720" xmlns:e="http://ns.egret.com/eui" xmlns:ns1="*" xmlns:w="http://ns.egret.com/wing">
+	<e:Group percentWidth="100" percentHeight="100">
 		<e:Rect percentHeight="100" percentWidth="100" x="0" y="0" fillAlpha="1" scaleX="1" scaleY="1" fillColor="0xECECEC"/>
-		<e:Image source="icons_json#2434logo" verticalCenter="0" horizontalCenter="0" x="240" y="240" scaleX="1" scaleY="1"/>
+		<!-- <e:Image source="icons_json#2434logo" verticalCenter="0" horizontalCenter="0" x="240" y="240" scaleX="1" scaleY="1"/> -->
+         <e:Image id="bgV" source="bgv_jpg" percentHeight="100" percentWidth="100"  alpha="0.3"/>
+		<e:Image id="bgR" percentHeight="100" percentWidth="100" source="bgr_jpg" alpha="0.3" visible="false"/>
 	</e:Group>
 	<e:Group id="mapContainer" x="0" y="0" locked="true">
 		<e:Group id="cellContainer" percentHeight="100" percentWidth="100" x="0" y="0"/>

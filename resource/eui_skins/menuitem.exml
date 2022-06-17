@@ -2,7 +2,7 @@
 <e:Skin class="skins.menuitem"
 	width="360"
 	height="40" xmlns:e="http://ns.egret.com/eui" states="up,down,disabled" >
-	<e:Rect percentWidth="100" percentHeight="100" fillColor="0x4F79AD"  ellipseWidth="50" fillColor.down="0x365D8D" fillColor.up="0x6BA4EA" horizontalCenter="0" fillColor.disabled="0x6BA4EA"/>
-	<e:Label id="labelDisplay" percentWidth="80" percentHeight="100" verticalAlign="middle" textAlign="center" size="24"  wordWrap="false" multiline="false" textColor.disabled="0x7F7B7B" touchEnabled.disabled="false" horizontalCenter="0"/>
-    <e:Label id="labelSub" percentHeight="100" verticalAlign="middle" textAlign="center" size="20" wordWrap="false" multiline="false" textColor.disabled="0x7F7B7B" touchEnabled.disabled="false" right="20"/>
+	<e:Rect percentWidth="100" percentHeight="100" fillColor="0xE5A137"  ellipseWidth="50" horizontalCenter="0" fillColor.up="0xE5A137" fillColor.down="0xCA8211" fillColor.disabled="0x97610C" strokeColor="0xE5E0E0" strokeWeight="3"/>
+	<e:Label id="labelDisplay"  text="test" percentWidth="80" percentHeight="100" verticalAlign="middle" textAlign="center" size="24"  wordWrap="false" multiline="false" textColor.disabled="0x7F7B7B" touchEnabled.disabled="false" horizontalCenter="0" textColor="0x000000"/>
+    <e:Label id="labelSub" percentHeight="100" verticalAlign="middle" textAlign="center" size="20" wordWrap="false" multiline="false" textColor.disabled="0x7F7B7B" touchEnabled.disabled="false" right="20" textColor="0x000000"/>
 </e:Skin>

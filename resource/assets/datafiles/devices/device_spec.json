@@ -31,6 +31,7 @@
         "des":"不可原谅！（斩。使其他liver各随机失去两个neta",
         "type":"device",   
         "class":"RionSpec",  
+        "multonly":true,
         "iconUrl":"netaicons2_json#rionspec",
         "data":{
             "use":true,
@@ -112,6 +113,7 @@
         "des":"为什么要越线？因为线就在那里。使用后选择一位liver,之后3回合每回合只能前进1格",
         "type":"device", 
         "class":"HimaSpec", 
+        "multonly":true,
         "iconUrl":"netaicons2_json#himaspec",   
         "data":{
             "use":true,
@@ -338,6 +340,7 @@
         "iconUrl": "livers3_json#maimoto",
         "type":"device",    
         "class":"MaimotoSpec", 
+        "multonly":true,
         "data":{
             "use":true,
             "tgt":"SELECT_ONE",
@@ -377,6 +380,7 @@
         "type":"device",
         "class":"FurenSpec",
         "iconUrl": "livers2_json#furen",
+        "multonly":true,
         "data":{
             "use":true,
             "times":1,
@@ -399,6 +403,7 @@
         "type":"device",
         "class":"RTVSpec",
         "iconUrl": "livers4_json#tv",
+        "multonly":true,
         "data":{
             "use":true,
             "times":1,
@@ -408,6 +413,29 @@
                     "type":"GET_BUFF",
                     "trigger":"use",
                     "data":"Stop"
+                }
+            ]
+        }
+    },
+    {
+        "id":21,
+        "name":"勇者的树莓",
+        "owner":"albio",
+        "des":"杀人树莓。持有时体力降低，可以转送给其他玩家，如果转送失败树莓将会增殖。",
+        "type":"device",
+        "class":"AboSpec",
+        "iconUrl": "livers1_json#abo",
+        "multonly":true,
+        "disable": true,
+        "data":{
+            "use":true,
+            "times":1,
+            "tgt":"SELECT_ONE",
+            "effect":[
+                {
+                    "type":"STAT_CHANGE",
+                    "trigger":"get",
+                    "data":"{mc.strength}-1"
                 }
             ]
         }

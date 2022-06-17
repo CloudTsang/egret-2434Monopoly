@@ -42,7 +42,9 @@ class StartSelectPanel extends eui.Component{
 		p.useLivers = useLivers
 
 		let btns:eui.Button[] = []
-		for(let i=0;i<4;i++){
+		let num = 4
+		if(WorldData.gameMode == GameMode.SINGLE) num = 1
+		for(let i=0;i<num;i++){
 			const b = new eui.Button()
 			b.label = `${i+1}P`
 			btns.push(b)

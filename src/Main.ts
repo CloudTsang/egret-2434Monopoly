@@ -154,6 +154,7 @@ class Main extends egret.DisplayObjectContainer {
     protected toPlayerSelect(e:egret.Event){
         this.removeChild(this.currentScene)
 
+        WorldData.gameMode = e.data.mode
         const playSelect:StartSelectPanel = new StartSelectPanel()
         playSelect.width = WorldData.STAGE_W
         playSelect.height = WorldData.STAGE_H
