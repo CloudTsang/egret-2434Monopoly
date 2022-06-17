@@ -1,0 +1,34 @@
+[
+    {
+        "id":78,
+        "name":"异度之刃2-第七、八章",
+        "des":"尼娅和大家和最燃的高潮\n(进行数次[异度之刃2]直播后获得)",
+        "type":"game",  
+        "req":"xb2",   
+        "iconUrl":"netaicons_json#xb278",
+        "data":{
+            "times":1,
+            "pop":4,
+            "safe":4,
+            "meme":4,
+            "long":false
+        }
+    },
+    {
+        "id":13,
+        "name":"海滨假日",
+        "des":"爱的ME·LO·DY\n(进行数次[十三机兵防卫圈]直播后获得)",
+        "type":"song", 
+        "req":"aegis13",
+        "iconUrl":"netaicons_json#seasidevoca",
+        "cd":1,
+        "songReq":3,    
+        "data":{
+            "times":-1,
+            "pop":1,
+            "safe":4,
+            "meme":2,
+            "long":true
+        }
+    }
+]

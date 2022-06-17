@@ -1,0 +1,704 @@
+[
+  {
+    "ID": "mito",
+    "name": "月之美兔",
+    "des": "",
+    "iconUrl": "livers3_json#mito",
+    "tag": [
+      "jk",
+      "first"
+    ]
+  },
+  {
+    "ID": "kaede",
+    "name": "樋口枫",
+    "des": "",
+    "iconUrl": "livers1_json#deron",
+    "tag": [
+      "jk",
+      "first",
+      "kansai"
+    ]
+  },
+  {
+    "ID": "rin",
+    "name": "静凛",
+    "des": "",
+    "iconUrl": "livers3_json#rin",
+    "tag": [
+      "jk",
+      "first"
+    ]
+  },
+  {
+    "ID": "moira",
+    "name": "莫伊拉",
+    "des": "",
+    "iconUrl": "livers3_json#moira",
+    "tag": [
+      "god",
+      "nonhuman",
+      "naizi",
+      "first"
+    ]
+  },
+  {
+    "ID": "elu",
+    "name": "艾露",
+    "des": "",
+    "iconUrl": "livers1_json#elu",
+    "tag": [
+      "elf",
+      "nonhuman",
+      "first"
+    ]
+  },
+  {
+    "ID": "toya",
+    "name": "剑持刀也",
+    "des": "",
+    "iconUrl": "livers4_json#toya",
+    "tag": [
+      "second",
+      "jk"
+    ]
+  },
+  {
+    "ID": "utako",
+    "name": "铃鹿诗子",
+    "des": "",
+    "iconUrl": "livers4_json#utako",
+    "tag": [
+      "second",
+      "bl"
+    ]
+  },
+  {
+    "ID": "rikiichi",
+    "name": "周力一",
+    "des": "",
+    "iconUrl": "livers3_json#riki"
+  },
+  {
+    "ID": "mikodo",
+    "name": "龙胆尊",
+    "des": "",
+    "iconUrl": "livers3_json#mikodo",
+    "tag": [
+      "nonhuman"
+    ]
+  },
+  {
+    "ID": "amamya",
+    "name": "天宫心",
+    "des": "",
+    "iconUrl": "livers1_json#amamya",
+    "tag": [
+      "loli",
+      "resist"
+    ]
+  },
+  {
+    "ID": "dola",
+    "name": "多拉",
+    "des": "",
+    "iconUrl": "livers1_json#dola",
+    "tag": [
+      "nonhuman",
+      "naizi"
+    ]
+  },
+  {
+    "ID": "mugi",
+    "name": "家长麦",
+    "des": "",
+    "iconUrl": "livers3_json#mugi",
+    "tag": [
+      "second"
+    ]
+  },
+  {
+    "ID": "chaika",
+    "name": "花畑柴卡",
+    "des": "",
+    "iconUrl": "livers1_json#chaika",
+    "tag": [
+      "elf",
+      "nonhuman",
+      "resist"
+    ]
+  },
+  {
+    "ID": "ange",
+    "name": "安洁",
+    "des": "",
+    "iconUrl": "livers1_json#ange",
+    "tag": [
+      "3baka",
+      "flat"
+    ]
+  },
+  {
+    "ID": "midori",
+    "name": "绿仙",
+    "des": "",
+    "iconUrl": "livers3_json#midori"
+  },
+  {
+    "ID": "yashiro",
+    "name": "社筑",
+    "des": "",
+    "iconUrl": "livers4_json#yashiro"
+  },
+  {
+    "ID": "yama",
+    "name": "山神歌留多",
+    "des": "",
+    "iconUrl": "livers4_json#yama"
+  },
+  {
+    "ID": "kuzuha",
+    "name": "葛叶",
+    "des": "",
+    "iconUrl": "livers2_json#kuzuha"
+  },
+  {
+    "ID": "ririmu",
+    "name": "莉莉姆",
+    "des": "",
+    "iconUrl": "livers3_json#ririmu",
+    "tag": [
+      "loli"
+    ]
+  },
+  {
+    "ID": "shellin",
+    "name": "谢林",
+    "des": "",
+    "iconUrl": "livers4_json#shellin",
+    "tag": [
+      "unchi"
+    ]
+  },
+  {
+    "ID": "yorumi",
+    "name": "夜见蕾娜",
+    "des": "",
+    "iconUrl": "livers4_json#yorumi",
+    "tag": [
+      "smc",
+      "unchi",
+      "resist"
+    ]
+  },
+  {
+    "ID": "kou",
+    "name": "卯月光",
+    "des": "",
+    "iconUrl": "livers2_json#kou"
+  },
+  {
+    "ID": "chima",
+    "name": "町田千麻",
+    "des": "",
+    "iconUrl": "livers1_json#chima"
+  },
+  {
+    "ID": "inui",
+    "name": "戊亥床",
+    "des": "",
+    "iconUrl": "livers2_json#inui",
+    "tag": [
+      "nonhuman",
+      "3baka"
+    ]
+  },
+  {
+    "ID": "kanda",
+    "name": "神田笑一",
+    "des": "",
+    "iconUrl": "livers2_json#kanda"
+  },
+  {
+    "ID": "mao",
+    "name": "魔使真央",
+    "des": "",
+    "iconUrl": "livers3_json#mao",
+    "tag": [
+      "loli",
+      "nonhuman",
+      "unchi",
+      "flat",
+      "resist"
+    ]
+  },
+  {
+    "ID": "levi",
+    "name": "蕾比",
+    "des": "",
+    "iconUrl": "livers3_json#levi",
+    "tag": [
+      "nonhuman"
+    ]
+  },
+  {
+    "ID": "rion",
+    "name": "鹰宫莉音",
+    "des": "",
+    "iconUrl": "livers3_json#rion"
+  },
+  {
+    "ID": "putit",
+    "name": "葡蒂",
+    "des": "",
+    "iconUrl": "livers3_json#putit",
+    "tag":[
+      "resist"
+    ]
+  },
+  {
+    "ID": "tamaki",
+    "name": "文野环",
+    "des": "",
+    "iconUrl": "livers4_json#tamaki",
+    "tag": [
+      "second"
+    ]
+  },
+  {
+    "ID": "kanae",
+    "name": "叶",
+    "des": "",
+    "iconUrl": "livers2_json#kanae"
+  },
+  {
+    "ID": "hima",
+    "name": "本间向日葵",
+    "des": "",
+    "iconUrl": "livers2_json#hima",
+    "tag": [
+      "jk",
+      "kansai",
+      "loli"
+    ]
+  },
+  {
+    "ID": "kagami",
+    "name": "加贺美隼人",
+    "des": "",
+    "iconUrl": "livers2_json#kagami",
+    "tag": [
+      "smc"
+    ]
+  },
+  {
+    "ID": "lize",
+    "name": "莉泽",
+    "des": "",
+    "iconUrl": "livers3_json#lize",
+    "tag": [
+      "3baka"
+    ]
+  },
+  {
+    "ID": "umeo",
+    "name": "梦追翔",
+    "des": "",
+    "iconUrl": "livers4_json#umeo"
+  },
+  {
+    "ID": "debi",
+    "name": "德比",
+    "des": "",
+    "iconUrl": "livers1_json#debi",
+    "tag": [
+      "nonhuman",
+      "unchi"
+    ]
+  },
+  {
+    "ID": "mirei",
+    "name": "郡道美玲",
+    "des": "",
+    "iconUrl": "livers3_json#mirei",
+    "tag": [
+      "flat"
+    ]
+  },
+  {
+    "ID": "fumi",
+    "name": "文美",
+    "des": "",
+    "iconUrl": "livers1_json#fumi",
+    "tag": [
+      "god",
+      "nonhuman"
+    ]
+  },
+  {
+    "ID": "maimoto",
+    "name": "舞元启介",
+    "des": "",
+    "iconUrl": "livers3_json#maimoto"
+  },
+  {
+    "ID": "furen",
+    "name": "芙莲",
+    "des": "",
+    "iconUrl": "livers2_json#furen",
+    "tag": [
+      "naizi"
+    ]
+  },
+  {
+    "ID": "ritsukin",
+    "name": "樱凛月",
+    "des": "",
+    "iconUrl": "livers4_json#tv"
+  },
+  {
+    "ID": "sasaki",
+    "name": "笹木咲",
+    "des": "",
+    "iconUrl": "livers4_json#sasaki",
+    "tag": [
+      "jk",
+      "kansai",
+      "flat"
+    ]
+  },
+  {
+    "ID": "chitose",
+    "name": "久远千岁",
+    "des": "",
+    "iconUrl": "livers1_json#477"
+  },
+  {
+    "ID": "albio",
+    "name": "艾克斯",
+    "des": "",
+    "iconUrl": "livers1_json#abo"
+  },
+  {
+    "ID": "akabane",
+    "name": "赤羽叶子",
+    "des": "",
+    "iconUrl": "livers1_json#akabane",
+    "tag": [
+      "jk"
+    ]
+  },
+  {
+    "ID": "akkina",
+    "name": "三枝明那",
+    "des": "",
+    "iconUrl": "livers1_json#akn"
+  },
+  {
+    "ID": "amemori",
+    "name": "雨森小夜",
+    "des": "",
+    "iconUrl": "livers1_json#amemori",
+    "tag": [
+      "jk"
+    ]
+  },
+  {
+    "ID": "arisu",
+    "name": "物述有栖",
+    "des": "",
+    "iconUrl": "livers1_json#arisu",
+    "tag": [
+      "loli",
+      "second"
+    ]
+  },
+  {
+    "ID": "bell",
+    "name": "贝尔蒙德",
+    "des": "",
+    "iconUrl": "livers1_json#bell",
+    "tag": [
+      "nonhuman"
+    ]
+  },
+  {
+    "ID": "chigusa",
+    "name": "西园千草",
+    "des": "",
+    "iconUrl": "livers1_json#chigusa",
+    "tag": [
+      "jk"
+    ]
+  },
+  {
+    "ID": "chihiro",
+    "name": "勇气千寻",
+    "des": "",
+    "iconUrl": "livers1_json#chihiro",
+    "tag": [
+      "first"
+    ]
+  },
+  {
+    "ID": "de",
+    "name": "铃木胜",
+    "des": "",
+    "iconUrl": "livers1_json#de"
+  },
+  {
+    "ID": "eli",
+    "name": "艾莉",
+    "des": "",
+    "iconUrl": "livers1_json#eli",
+    "tag": [
+      "loli"
+    ]
+  },
+  {
+    "ID": "gibara",
+    "name": "御伽原江良",
+    "des": "",
+    "iconUrl": "livers2_json#gibara"
+  },
+  {
+    "ID": "giru3",
+    "name": "吉尔扎连III世",
+    "des": "",
+    "iconUrl": "livers2_json#giru3",
+    "tag": [
+      "second"
+    ]
+  },
+  {
+    "ID": "gweru",
+    "name": "圭利",
+    "des": "",
+    "iconUrl": "livers2_json#gweru"
+  },
+  {
+    "ID": "hajime",
+    "name": "涉谷初",
+    "des": "",
+    "iconUrl": "livers2_json#hajime",
+    "tag": [
+      "first"
+    ]
+  },
+  {
+    "ID": "hakase",
+    "name": "叶加濑冬雪",
+    "des": "",
+    "iconUrl": "livers2_json#hakase",
+    "tag": [
+      "smc"
+    ]
+  },
+  {
+    "ID": "hayama",
+    "name": "叶山舞铃",
+    "des": "",
+    "iconUrl": "livers2_json#hayama",
+    "tag":[
+      "jk",
+      "resist"
+    ]
+  },
+  {
+    "ID": "hskw",
+    "name": "星川莎拉",
+    "des": "",
+    "iconUrl": "livers2_json#hoshikawa",
+    "tag": [
+      "jk"
+    ]
+  },
+  {
+    "ID": "kazaki",
+    "name": "森中花咲",
+    "des": "",
+    "iconUrl": "livers2_json#kazaki",
+    "tag": [
+      "loli",
+      "second"
+    ]
+  },
+  {
+    "ID": "nagao",
+    "name": "长尾景",
+    "des": "",
+    "iconUrl": "livers2_json#kn"
+  },
+  {
+    "ID": "mahi",
+    "name": "雪城真寻",
+    "des": "",
+    "iconUrl": "livers3_json#mahi",
+    "tag": [
+      "jk"
+    ]
+  },
+  {
+    "ID": "meiji",
+    "name": "童田明治",
+    "des": "",
+    "iconUrl": "livers3_json#meiji",
+    "tag": [
+      "naizi"
+    ]
+  },
+  {
+    "ID": "ngo",
+    "name": "周央珊瑚",
+    "des": "",
+    "iconUrl": "livers3_json#ngo"
+  },
+  {
+    "ID": "haruka",
+    "name": "小野町春香",
+    "des": "",
+    "iconUrl": "livers3_json#okami",
+    "tag": [
+      "jk",
+      "loli"
+    ]
+  },
+  {
+    "ID": "riri",
+    "name": "夕阳莉莉",
+    "des": "",
+    "iconUrl": "livers3_json#riri",
+    "tag": [
+      "second"
+    ]
+  },
+  {
+    "ID": "roa",
+    "name": "梦月萝娅",
+    "des": "",
+    "iconUrl": "livers4_json#roa",
+    "tag": [
+      "nonhuman"
+    ]
+  },
+  {
+    "ID": "run",
+    "name": "早濑走",
+    "des": "",
+    "iconUrl": "livers4_json#run",
+    "tag": [
+      "bl",
+      "loli"
+    ]
+  },
+  {
+    "ID": "ruru",
+    "name": "铃原露露",
+    "des": "",
+    "iconUrl": "livers4_json#ruru",
+    "tag": [
+      "nonhuman"
+    ]
+  },
+  {
+    "ID": "setomi",
+    "name": "濑户美夜子",
+    "des": "",
+    "iconUrl": "livers4_json#setomi",
+    "tag": [
+      "jk"
+    ]
+  },
+  {
+    "ID": "siina",
+    "name": "椎名唯华",
+    "des": "",
+    "iconUrl": "livers4_json#siina",
+    "tag": [
+      "jk",
+      "kansai",
+      "resist"
+    ]
+  },
+  {
+    "ID": "sister",
+    "name": "修女克蕾亚",
+    "des": "",
+    "iconUrl": "livers4_json#sister",
+    "tag": [
+      "loli"
+    ]
+  },
+  {
+    "ID": "nui",
+    "name": "纽伊",
+    "des": "",
+    "iconUrl": "livers4_json#socie",
+    "tag": [
+      "naizi"
+    ]
+  },
+  {
+    "ID": "ib",
+    "name": "易卜拉欣",
+    "des": "",
+    "iconUrl": "livers5_json#ib"
+  },
+  {
+    "ID": "kira",
+    "name": "空星煌",
+    "des": "",
+    "iconUrl": "livers5_json#kira"
+  },
+  {
+    "ID": "tomoe",
+    "name": "白雪巴",
+    "des": "",
+    "iconUrl": "livers5_json#tomoe",
+    "tag":[
+      "resist"
+    ]
+  },
+  {
+    "ID": "fuwa",
+    "name": "不破凑",
+    "des": "",
+    "iconUrl": "livers5_json#fuwa"
+  },
+  {
+    "ID": "kaida",
+    "name": "甲斐田晴",
+    "des": "",
+    "iconUrl": "livers5_json#kaida"
+  },
+   {
+    "ID": "natsume",
+    "name": "来栖夏芽",
+    "des": "",
+    "iconUrl": "livers5_json#natsume"
+  },
+  {
+    "ID": "myzm",
+    "name": "黛灰",
+    "des": "",
+    "iconUrl": "livers5_json#myzm"
+  },
+  {
+    "ID": "ars",
+    "name": "阿露丝",
+    "des": "",
+    "iconUrl": "livers5_json#ars",
+    "tag":[
+      "resist"
+    ]
+  },
+   {
+    "ID": "uiha",
+    "name": "相羽初叶",
+    "des": "",
+    "iconUrl": "livers5_json#uiha",
+    "tag":[
+      "resist"
+    ]
+  }
+]

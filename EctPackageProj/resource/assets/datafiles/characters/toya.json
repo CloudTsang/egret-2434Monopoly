@@ -1,0 +1,115 @@
+{
+  "id": "toya",
+  "name": "剑持刀也",
+  "chessR": "chess_json#toko",
+  "chessV": "chess_json#toya",
+  "iconUrl":"livers4_json#toya",
+  "data": {
+    "luck": 3,
+    "sense": 4,
+    "commu": 4,
+    "game": 2,
+    "sing": 3,
+    "talk": 4,
+    "tech": 1,
+    "strength": 5,
+    "money": 30000
+  },
+  "skill": [
+    {
+      "id": 1,
+      "name": "棉花糖之王",
+      "des": "每隔一定回合数获得一个棉花糖neta",
+      "type": "POSITIVE",
+      "iconUrl": "",
+      "rate": "1",
+      "phrase": "TURN_START",
+      "class":"ToyaSkill1",
+      "effect": [
+        {
+          "type": "GET_NETA",
+          "data": {
+            "id":1,
+            "name":"棉花糖",
+            "des":"来自James们的k(l)u(o)s(v)o(e)",
+            "iconUrl":"netaicons2_json#msmr",
+            "type":"daily",     
+            "data":{
+                "times":1,
+                "pop":2,
+                "safe":2,
+                "meme":2,
+                "long":false
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "name": "直播间即战场",
+      "des": "James个个都是人才。直播使用neta的总人气值或总谜因值中的一项低于10值时提升直播效果",
+      "type": "POSITIVE",
+      "iconUrl": "",
+      "phrase": "BEFORE_STREAM",
+      "rate": "1",
+      "class":"ToyaSkill2",
+      "effect": [
+        {
+          "type": "STAT_CHANGE",
+          "data": "{stream.baseRate}+0.25"
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "name": "坠入虚空",
+      "des": "比本人的脸还熟悉的虚空，小幅提高直播事故的出现率",
+      "type": "NEGATIVE",
+      "iconUrl": "",
+      "phrase": "BEFORE_STREAM",
+      "rate": "(1-{mc.tech}/10)/2",
+      "effect": [
+        {
+          "type": "STAT_CHANGE",
+          "data": "{stream.accidentBaseRate}+1"
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "name": "机械苦手",
+      "des": "显卡是什么？配信中低几率技术力下跌且降低事故几率的设备效果无效",
+      "type": "NEGATIVE",
+      "iconUrl": "",
+      "phrase": "BEFORE_STREAM",
+      "rate": "0.2",
+      "effect": [
+        {
+          "type": "TEMP_STAT_CHANGE",
+          "data": "{mc.tech}-1"
+        },
+        {
+          "type": "GET_BUFF",
+          "data": "MechLock"
+        }
+      ]
+    },
+    {
+      "id": 5,
+      "name": "ロリロリロリロリ~",
+      "des": "毫不掩饰的危险人物，与下巴认证Liver联动时数项能力大幅上升",
+      "type": "HIDDEN",
+      "iconUrl": "",
+      "phrase": "IN_STREAM_COLLABO",
+      "rate": "1",
+      "class":"ToyaSkill5",
+      "effect": [
+        {
+          "type": "TEMP_STAT_CHANGE",
+          "data": "{mc.strength}+5,{mc.communicate}+3,{mc.talk}+2,{mc.game}+2"
+        }
+      ]
+    }
+  ]
+}

@@ -5,17 +5,17 @@
   "main": "main.js",
   "author": "ChiWan",
   "license": "MIT",
-  "build":{
+  "build": {
     "win": {
-        "icon": "favicon.ico",
-        "target": [
-            {
-                "target": "nsis",
-                "arch": [
-                    "ia32"
-                ]
-            }
-        ]
+      "icon": "favicon.ico",
+      "target": [
+        {
+          "target": "nsis",
+          "arch": [
+            "ia32"
+          ]
+        }
+      ]
     }
   },
   "scripts": {
@@ -24,6 +24,13 @@
     "electron:copy:electron": "cpx ./app/**/*.js ./build",
     "electron:build": "npm run electron:copy:electron",
     "pack:win": "npm run electron:build && electron-builder --win",
-    "package":"electron-packager . 2434Monopoly --platform=win32 --arch=x64 --icon=favicon.ico --out=./out --asar --app-version=1.0.0 --overwrite --ignore=node_modules --electron-version 17.1.0"
+    "package": "electron-packager . 2434Monopoly --platform=win32 --arch=x64 --icon=favicon.ico --out=./out --asar --app-version=1.0.0 --overwrite --ignore=node_modules --electron-version 17.1.0"
+  },
+  "dependencies": {
+    "cpx": "^1.5.0"
+  },
+  "devDependencies":{
+    "electron": "^19.0.4",
+    "electron-builder": "^23.0.3"
   }
 }

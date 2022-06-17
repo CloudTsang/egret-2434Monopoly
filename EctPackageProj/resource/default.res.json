@@ -1,0 +1,370 @@
+{
+	"groups": [
+		{
+			"keys": "description_json,mito_json,toya_json,rion_json,hima_json,lize_json,sasaki_json,chaika_json,neta_spec_1_json,netas_daily_1_json,netas_present_1_json,netas_song_1_json,netas_readme_json,netas_game_1_json,events_real_1_json,events_virtual_1_json,liver_readme_json,icons_json,chess_json,mapicons_json,radiobutton_select_disabled_png,radiobutton_select_down_png,radiobutton_select_up_png,radiobutton_unselect_png,checkbox_select_disabled_png,checkbox_select_down_png,checkbox_select_up_png,checkbox_unselect_png,netaicons_json,comment_1_json,alllivers_json,livers1_json,livers3_json,livers4_json,livers2_json,device_1_json,device_2_json,netaicons2_json,events_real_2_json,device_spec_json,neta_spec_2_json,firep1_png,firep1_json,firep2_png,firep3_png,firep2_json,firep3_json,vtl3_mp3,dededon_short_mp3,fire_mp3,horror_mp3,success_mp3,success2_mp3,sword_mp3,vtl1_mp3,vtl2_mp3,livers5_json,netastat_jpg,nselect_jpg,rmenu_jpg,vmenu_jpg,title_nazono_png,umeo_json,siina_json,words_json,thumb_png,tracklight_png,track_sb_png,bgr_jpg,bgv_jpg",
+			"name": "preload"
+		}
+	],
+	"resources": [
+		{
+			"url": "config/description.json",
+			"type": "json",
+			"name": "description_json"
+		},
+		{
+			"url": "assets/datafiles/characters/mito.json",
+			"type": "json",
+			"name": "mito_json"
+		},
+		{
+			"url": "assets/datafiles/characters/toya.json",
+			"type": "json",
+			"name": "toya_json"
+		},
+		{
+			"url": "assets/datafiles/characters/rion.json",
+			"type": "json",
+			"name": "rion_json"
+		},
+		{
+			"url": "assets/datafiles/characters/hima.json",
+			"type": "json",
+			"name": "hima_json"
+		},
+		{
+			"url": "assets/datafiles/characters/lize.json",
+			"type": "json",
+			"name": "lize_json"
+		},
+		{
+			"url": "assets/datafiles/characters/sasaki.json",
+			"type": "json",
+			"name": "sasaki_json"
+		},
+		{
+			"url": "assets/datafiles/characters/chaika.json",
+			"type": "json",
+			"name": "chaika_json"
+		},
+		{
+			"url": "assets/datafiles/netas/neta_spec_1.json",
+			"type": "json",
+			"name": "neta_spec_1_json"
+		},
+		{
+			"url": "assets/datafiles/netas/netas_daily_1.json",
+			"type": "json",
+			"name": "netas_daily_1_json"
+		},
+		{
+			"url": "assets/datafiles/netas/netas_present_1.json",
+			"type": "json",
+			"name": "netas_present_1_json"
+		},
+		{
+			"url": "assets/datafiles/netas/netas_song_1.json",
+			"type": "json",
+			"name": "netas_song_1_json"
+		},
+		{
+			"url": "assets/datafiles/netas/netas_readme.json",
+			"type": "json",
+			"name": "netas_readme_json"
+		},
+		{
+			"url": "assets/datafiles/netas/netas_game_1.json",
+			"type": "json",
+			"name": "netas_game_1_json"
+		},
+		{
+			"url": "assets/datafiles/events/events_real_1.json",
+			"type": "json",
+			"name": "events_real_1_json"
+		},
+		{
+			"url": "assets/datafiles/events/events_virtual_1.json",
+			"type": "json",
+			"name": "events_virtual_1_json"
+		},
+		{
+			"url": "assets/datafiles/characters/liver_readme.json",
+			"type": "json",
+			"name": "liver_readme_json"
+		},
+		{
+			"url": "assets/icons.json",
+			"type": "sheet",
+			"name": "icons_json",
+			"subkeys": "2434logo,bag,ban1,btnok,btnokdisable,btnx,close,confirmbtn,confirmbtn_down,daily,device,fire,fire2,game,get,hskill,infobtn,meme,money,neta,nskill,pop,present,pskill,roll1,safe,song,spec,vrbtn1"
+		},
+		{
+			"url": "assets/chess.json",
+			"type": "sheet",
+			"name": "chess_json",
+			"subkeys": "mitor,mitov,rionr,rionv,sasakir,sasakiv,toko,toya"
+		},
+		{
+			"url": "assets/mapicons.json",
+			"type": "sheet",
+			"name": "mapicons_json",
+			"subkeys": "2434logo2,ban,build,build2434,buildchurch,buildjojoen,buildpck,buildshop,daikai,elfmori,eventr,makai,rest,rire,tete"
+		},
+		{
+			"url": "assets/RadioButton/radiobutton_select_disabled.png",
+			"type": "image",
+			"name": "radiobutton_select_disabled_png"
+		},
+		{
+			"url": "assets/RadioButton/radiobutton_select_down.png",
+			"type": "image",
+			"name": "radiobutton_select_down_png"
+		},
+		{
+			"url": "assets/RadioButton/radiobutton_select_up.png",
+			"type": "image",
+			"name": "radiobutton_select_up_png"
+		},
+		{
+			"url": "assets/RadioButton/radiobutton_unselect.png",
+			"type": "image",
+			"name": "radiobutton_unselect_png"
+		},
+		{
+			"url": "assets/CheckBox/checkbox_select_disabled.png",
+			"type": "image",
+			"name": "checkbox_select_disabled_png"
+		},
+		{
+			"url": "assets/CheckBox/checkbox_select_down.png",
+			"type": "image",
+			"name": "checkbox_select_down_png"
+		},
+		{
+			"url": "assets/CheckBox/checkbox_select_up.png",
+			"type": "image",
+			"name": "checkbox_select_up_png"
+		},
+		{
+			"url": "assets/CheckBox/checkbox_unselect.png",
+			"type": "image",
+			"name": "checkbox_unselect_png"
+		},
+		{
+			"url": "assets/netaicons.json",
+			"type": "sheet",
+			"name": "netaicons_json",
+			"subkeys": "aegis13,apex,botw,chigyu,empty,europo,firemori,freesia,freesiachima,genshin,gettingoverit,hanzawa,mc,mukate,pokemon,seasidevoca,sekiro,tv2,vtl,xb2,xb278"
+		},
+		{
+			"url": "assets/datafiles/comment/comment_1.json",
+			"type": "json",
+			"name": "comment_1_json"
+		},
+		{
+			"url": "assets/datafiles/characters/alllivers.json",
+			"type": "json",
+			"name": "alllivers_json"
+		},
+		{
+			"url": "assets/livers1.json",
+			"type": "sheet",
+			"name": "livers1_json",
+			"subkeys": "477,abo,akabane,akn,amamya,amemori,ange,arisu,bell,chaika,chigusa,chihiro,chima,de,debi,deron,dola,eli,elu,fumi"
+		},
+		{
+			"url": "assets/livers3.json",
+			"type": "sheet",
+			"name": "livers3_json",
+			"subkeys": "levi,lize,mahi,maimoto,mao,meiji,midori,mikodo,mirei,mito,moira,mugi,ngo,okami,putit,riki,rin,rion,riri,ririmu"
+		},
+		{
+			"url": "assets/livers4.json",
+			"type": "sheet",
+			"name": "livers4_json",
+			"subkeys": "masiro,roa,run,ruru,sasaki,setomi,shellin,shiba,siina,sister,socie,sukoya,tamaki,toya,tv,umeo,utako,yama,yashiro,yorumi"
+		},
+		{
+			"url": "assets/livers2.json",
+			"type": "sheet",
+			"name": "livers2_json",
+			"subkeys": "furen,gaku,gibara,giru3,gweru,hajime,hakase,hayama,hima,hoshikawa,ichiko,inui,kagami,kanae,kanda,kazaki,kn,kou,kuzuha,kyoko"
+		},
+		{
+			"name": "device_1_json",
+			"type": "json",
+			"url": "assets/datafiles/devices/device_1.json"
+		},
+		{
+			"name": "device_2_json",
+			"type": "json",
+			"url": "assets/datafiles/devices/device_2.json"
+		},
+		{
+			"name": "netaicons2_json",
+			"type": "sheet",
+			"url": "assets/netaicons2.json",
+			"subkeys": "msmr"
+		},
+		{
+			"name": "events_real_2_json",
+			"type": "json",
+			"url": "assets/datafiles/events/events_real_2.json"
+		},
+		{
+			"name": "device_spec_json",
+			"type": "json",
+			"url": "assets/datafiles/devices/device_spec.json"
+		},
+		{
+			"name": "neta_spec_2_json",
+			"type": "json",
+			"url": "assets/datafiles/netas/neta_spec_2.json"
+		},
+		{
+			"name": "firep1_png",
+			"type": "image",
+			"url": "assets/fire/firep1.png"
+		},
+		{
+			"name": "firep1_json",
+			"type": "json",
+			"url": "assets/fire/firep1.json"
+		},
+		{
+			"name": "firep2_png",
+			"type": "image",
+			"url": "assets/fire/firep2.png"
+		},
+		{
+			"name": "firep3_png",
+			"type": "image",
+			"url": "assets/fire/firep3.png"
+		},
+		{
+			"name": "firep2_json",
+			"type": "json",
+			"url": "assets/fire/firep2.json"
+		},
+		{
+			"name": "firep3_json",
+			"type": "json",
+			"url": "assets/fire/firep3.json"
+		},
+		{
+			"name": "vtl3_mp3",
+			"type": "sound",
+			"url": "assets/bgs/vtl3.mp3"
+		},
+		{
+			"name": "dededon_short_mp3",
+			"type": "sound",
+			"url": "assets/bgs/dededon_short.mp3"
+		},
+		{
+			"name": "fire_mp3",
+			"type": "sound",
+			"url": "assets/bgs/fire.mp3"
+		},
+		{
+			"name": "horror_mp3",
+			"type": "sound",
+			"url": "assets/bgs/horror.mp3"
+		},
+		{
+			"name": "success_mp3",
+			"type": "sound",
+			"url": "assets/bgs/success.mp3"
+		},
+		{
+			"name": "success2_mp3",
+			"type": "sound",
+			"url": "assets/bgs/success2.mp3"
+		},
+		{
+			"name": "sword_mp3",
+			"type": "sound",
+			"url": "assets/bgs/sword.mp3"
+		},
+		{
+			"name": "vtl1_mp3",
+			"type": "sound",
+			"url": "assets/bgs/vtl1.mp3"
+		},
+		{
+			"name": "vtl2_mp3",
+			"type": "sound",
+			"url": "assets/bgs/vtl2.mp3"
+		},
+		{
+			"name": "livers5_json",
+			"type": "sheet",
+			"url": "assets/livers5.json",
+			"subkeys": "ib,kira,fuwa,tomoe,natsume,kaida"
+		},
+		{
+			"name": "netastat_jpg",
+			"type": "image",
+			"url": "assets/des/netastat.jpg"
+		},
+		{
+			"name": "nselect_jpg",
+			"type": "image",
+			"url": "assets/des/nselect.jpg"
+		},
+		{
+			"name": "rmenu_jpg",
+			"type": "image",
+			"url": "assets/des/rmenu.jpg"
+		},
+		{
+			"name": "vmenu_jpg",
+			"type": "image",
+			"url": "assets/des/vmenu.jpg"
+		},
+		{
+			"name": "title_nazono_png",
+			"type": "image",
+			"url": "assets/des/title_nazono.png"
+		},
+		{
+			"name": "umeo_json",
+			"type": "json",
+			"url": "assets/datafiles/characters/umeo.json"
+		},
+		{
+			"name": "siina_json",
+			"type": "json",
+			"url": "assets/datafiles/characters/siina.json"
+		},
+		{
+			"name": "words_json",
+			"type": "json",
+			"url": "assets/datafiles/events/words.json"
+		},
+		{
+			"name": "thumb_png",
+			"type": "image",
+			"url": "assets/Slider/thumb.png"
+		},
+		{
+			"name": "tracklight_png",
+			"type": "image",
+			"url": "assets/Slider/tracklight.png"
+		},
+		{
+			"name": "track_sb_png",
+			"type": "image",
+			"url": "assets/Slider/track_sb.png"
+		},
+		{
+			"name": "bgr_jpg",
+			"type": "image",
+			"url": "assets/bgr.jpg"
+		},
+		{
+			"name": "bgv_jpg",
+			"type": "image",
+			"url": "assets/bgv.jpg"
+		}
+	]
+}

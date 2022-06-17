@@ -1,0 +1,103 @@
+{
+  "id": "mito",
+  "name": "月之美兔",
+  "chessR": "chess_json#mitor",
+  "chessV": "chess_json#mitov",
+  "iconUrl":"livers3_json#mito",
+  "data": {
+    "luck": 2,
+    "sense": 4,
+    "commu": 3,
+    "game": 2,
+    "sing": 2,
+    "talk": 5,
+    "tech": 2,
+    "strength": 2,
+    "money": 30000
+  },
+  "skill": [
+    {
+      "id": 1,
+      "name": "杂草Eater",
+      "des": "强大的造梗能力，一回合一次一定几率在获得neta时额外获得一个小neta",
+      "type": "POSITIVE",
+      "iconUrl": "",
+      "phrase": "GET_NETA",
+      "rate": "{mc.sense}/10",
+      "effect": [
+        {
+          "type": "GET_NETA",
+          "data": {
+              "id":1,
+              "name":"委员长的体验谈",
+              "des":"细小又有趣的日常体验",
+              "type":"daily",     
+              "data":{
+                  "times":1,
+                  "pop":2,
+                  "safe":-1,
+                  "meme":2,
+                  "long":false
+              }
+          }
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "name": "由我来挡住",
+      "des": "为了守护直播间舍弃自我。直播中一定几率无效一次直播事故",
+      "type": "POSITIVE",
+      "iconUrl": "",
+      "phrase": "STREAM_ACCIDENT",
+      "rate": "{mc.tech}/10*2",
+      "class":"MitoSkill2"
+    },
+    {
+      "id": 3,
+      "name": "本质杂鱼",
+      "des": "垃圾杂鱼拳法宗师，一定几率行动时当回合能力降低",
+      "type": "NEGATIVE",
+      "iconUrl": "",
+      "phrase": "BEFORE_ACTION",
+      "rate": "(1-{mc.luck}/10)/2",
+      "effect": [
+        {
+          "type": "TEMP_STAT_CHANGE",
+          "data": "{mc.game}-2,{mc.tech}-1,{mc.sing}-1,{mc.strength}-2"
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "name": "混沌次文化",
+      "des": "小众的直播内容，一定几率小幅降低使用neta的人气值",
+      "type": "NEGATIVE",
+      "iconUrl": "",
+      "phrase": "USE_NETA",
+      "rate": "0.4",
+      "effect": [
+        {
+          "type": "STAT_CHANGE",
+          "data": "{neta.pop}-1"
+        }
+      ]
+    },
+    {
+      "id": 5,
+      "name": "○○的开始",
+      "des": "一次,二次三次。杂谈直播时一定几率当回合杂谈力和使用neta的谜因值超大幅上升",
+      "type": "HIDDEN",
+      "iconUrl": "",
+      "phrase": "BEFORE_STREAM",
+      "rate": "0.25",
+      "req":"'{stream.ty}'=='TALK'",
+      "effect": [
+        {
+          "type": "TEMP_STAT_CHANGE",
+          "data": "{mc.talk}+10,{stream.meme}+3"
+        }
+      ]
+    }
+  ]
+}
