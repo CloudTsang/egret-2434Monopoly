@@ -29,6 +29,8 @@ class Stream extends egret.EventDispatcher{
 	public accidentBaseRate:number
 	/**基础炎上率，越小发生炎上的概率越低，可以为负数， */
 	public enjoBaseRate:number
+	/**基础联动发生率 */
+	public collaboBaseRate:number
 
 	private rollCb:(n:number,r:string)=>void=null
 
@@ -74,11 +76,15 @@ class Stream extends egret.EventDispatcher{
 		this.baseRate = this.getBaseRate()
 		this.accidentBaseRate = 0
 		this.enjoBaseRate = 1
+		this.collaboBaseRate = 1
 		if(this.ty == StreamType.GAME){
 			this.accidentBaseRate = 1
 		}
 		if(this.ty == StreamType.TALK){
 			this.enjoBaseRate = 1.5
+		}
+		if(this.ty == StreamType.PRESENT){
+			this.collaboBaseRate = 1.25
 		}
 	}
 
@@ -122,6 +128,9 @@ class Stream extends egret.EventDispatcher{
 
 		for(let d of st.mc.netaBag.device){
 			d.onHold(st.tgtObj)
+		}
+		if(st.mc.equipment){
+			st.mc.equipment.onHold(st.tgtObj)
 		}
 
 		st.getIfCollabo()
@@ -433,7 +442,7 @@ class Stream extends egret.EventDispatcher{
 		for(let npc of this.npcs){
 			const f = npc.favor
 			const n = Roll.random2(100)
-			const n2 = f*10*(1+commu/5)
+			const n2 = (f*10*(1+commu/5))*this.collaboBaseRate
 			// console.log(npc.name, commu, n, n2)
 			//test
 			// this.collaboMems.push(npc.ID)

@@ -98,6 +98,7 @@ class NetaSelectPanel extends egret.Sprite{
 					NetaType.GAME,
 					NetaType.SONG,
 					NetaType.DEVICE,
+					NetaType.EQUIPMENT
 				]
 				break
 			case PanelType.SHOP2:
@@ -112,8 +113,15 @@ class NetaSelectPanel extends egret.Sprite{
 					NetaType.SONG,
 					NetaType.PRESENT,
 					NetaType.SPEC,
-					NetaType.DEVICE
+					NetaType.DEVICE,
+					NetaType.EQUIPMENT
 				]
+				break
+			case PanelType.EQUIPMENT:
+				tabArr = [
+					NetaType.EQUIPMENT
+				]
+				break
 			
 		}
 		const tabsWid = this._width / tabArr.length
@@ -121,7 +129,6 @@ class NetaSelectPanel extends egret.Sprite{
 		for(let i=0;i<tabArr.length;i++){
 			let t:Tab;
 			t = new Tab(tabsWid, i , tabArr[i])
-			
 			t.x = i*t.width
 			t.addEventListener(egret.TouchEvent.TOUCH_TAP, this.onTabSelected, this);
 			this.addChild(t)

@@ -14,6 +14,8 @@ class CharaterPanel extends eui.Component  implements IDisposable{
 	private txts3:eui.Label
 	private txts4:eui.Label
 
+	private txteq:eui.Label
+
 	private txtluck:eui.Label
 	private txtSense:eui.Label
 	private txtCommu:eui.Label
@@ -66,6 +68,7 @@ class CharaterPanel extends eui.Component  implements IDisposable{
 		panel.txts2.text = mc.skills[1].name
 		panel.txts3.text = mc.skills[2].name
 		panel.txts4.text = mc.skills[3].name
+		panel.txteq.text = mc.equipment?mc.equipment.name:"无装备"
 
 		panel.txtluck.text = ""+Math.floor(mc.luck)
 		panel.txtSense.text = ""+Math.floor(mc.sense)
@@ -153,6 +156,9 @@ class CharaterPanel extends eui.Component  implements IDisposable{
 			case "container7":
 				s = panel.tips["tech"]
 				break
+			case "containereq":
+				panel.dispatchEvent(new egret.Event(GameEvents.TO_CHOOSE_EQUIPMENT))
+				return
 
 			default:
 				if(t.name.indexOf("buff_")>=0){
@@ -178,7 +184,7 @@ class CharaterPanel extends eui.Component  implements IDisposable{
 		this.buffContainer.addChild(bmp)
 		const ch = this.height * (this.buffContainer.percentHeight/100)
 		const scale = bmp.height/bmp.width
-		bmp.height = ch
+		bmp.height = ch * 0.8
 		bmp.width = bmp.height/scale
 		bmp.x = curx + 10
 		bmp.y = (ch-bmp.height)/2

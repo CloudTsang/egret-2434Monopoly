@@ -21,7 +21,7 @@ class StreamPreparePanel extends egret.Sprite  implements IDisposable{
 
 		this.prepare = ty!=''
 
-		let dwidth:number = 800
+		let dwidth:number = 900
 		let dx = (sW - dwidth)/2
 		if(this.prepare){
 			let streamPanel = new StreamNetaPanel(ty)

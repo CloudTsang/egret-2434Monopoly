@@ -1,7 +1,7 @@
 {
     "id":"siina",
     "name":"椎名唯华",
-    "iconUrl":"livers4_json#siina",
+    "iconUrl":"livers1_json#siina",
     "chessR": "chess_json#siinar",
     "chessV": "chess_json#siinav",
     "disable":false,

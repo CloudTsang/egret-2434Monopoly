@@ -92,6 +92,7 @@ class ItemList extends eui.Component{
 				container.itemRenderer = ItemListBuyObj
 				break
 			case PanelType.NORMAL:
+			case PanelType.EQUIPMENT:
 				container.itemRenderer = ItemListNormalObj
 				break
 			default:

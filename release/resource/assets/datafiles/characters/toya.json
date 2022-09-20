@@ -3,7 +3,7 @@
   "name": "剑持刀也",
   "chessR": "chess_json#toko",
   "chessV": "chess_json#toya",
-  "iconUrl":"livers4_json#toya",
+  "iconUrl":"livers1_json#toya",
   "data": {
     "luck": 3,
     "sense": 4,
@@ -64,7 +64,7 @@
     {
       "id": 3,
       "name": "坠入虚空",
-      "des": "比本人的脸还熟悉的虚空，小幅提高直播事故的出现率",
+      "des": "比本人的脸还熟悉的虚空，小幅提高当次直播的事故出现率",
       "type": "NEGATIVE",
       "iconUrl": "",
       "phrase": "BEFORE_STREAM",
@@ -79,7 +79,7 @@
     {
       "id": 4,
       "name": "机械苦手",
-      "des": "显卡是什么？配信中低几率技术力下跌且降低事故几率的设备效果无效",
+      "des": "显卡是什么？当次配信中低几率技术力下跌且装备效果无效",
       "type": "NEGATIVE",
       "iconUrl": "",
       "phrase": "BEFORE_STREAM",
@@ -98,7 +98,7 @@
     {
       "id": 5,
       "name": "ロリロリロリロリ~",
-      "des": "毫不掩饰的危险人物，与下巴认证Liver联动时数项能力大幅上升",
+      "des": "毫不掩饰的危险人物，与下巴认证Liver联动时当次直播中数项能力大幅上升",
       "type": "HIDDEN",
       "iconUrl": "",
       "phrase": "IN_STREAM_COLLABO",
@@ -107,7 +107,7 @@
       "effect": [
         {
           "type": "TEMP_STAT_CHANGE",
-          "data": "{mc.strength}+5,{mc.communicate}+3,{mc.talk}+2,{mc.game}+2"
+          "data": "{mc.strength}+5,{mc.communicate}+3,{mc.talk}+3,{mc.game}+3"
         }
       ]
     }

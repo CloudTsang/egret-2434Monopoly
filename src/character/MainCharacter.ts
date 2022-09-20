@@ -26,6 +26,8 @@ class MainCharacter extends Liver{
 	public netaBag:NetaBag
 	/**liver好感度 */
 	public npc:NpcFavour
+	/**直播装备 */
+	public equipment:Equipment
 	/**anti数，炎上或事故时增加，降低回合开始时的增长 */
 	private _anti:number
 	/**anti增长锁 */
@@ -298,6 +300,8 @@ class MainCharacter extends Liver{
 		return this.data.money
 	}
 	public set money(v:number){
+		const trigger = this.checkIfSkillsTriggered(GamePhrase.GET_MONEY, Roll.random3())
+		trigger.triggerNumber(v-this.data.money)
 		this.data.money = v
 		this.dispatchEvent(new MoneyEvent())
 		

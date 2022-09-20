@@ -1,0 +1,80 @@
+{
+  "id": "100w",
+  "name": "壹百满天原莎乐美",
+  "chessR": "chess_json#100wr",
+  "chessV": "chess_json#100wv",
+  "iconUrl":"livers1_json#100w",
+  "data": {
+    "luck": 4,
+    "sense": 3,
+    "commu": 2,
+    "game": 3,
+    "sing": 1,
+    "talk": 4,
+    "tech": 2,
+    "strength": 3,
+    "money": 20000
+  },
+  "skill": [
+    {
+      "id": 1,
+      "name": "展现真正的自我跌丝袜",
+      "des": "外在是虚拟的，内在却无比真实。直播结束后一定概率发动，粉丝增长速度中幅上升。",
+      "type": "POSITIVE",
+      "iconUrl": "",
+      "phrase": "AFTER_STREAM",
+      "rate": "{mc.luck}/10",
+      "effect": [
+        {
+          "type": "STAT_CHANGE",
+          "data": "{mc.increase}+5000"
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "name": "是尊敬的药草跌丝袜",
+      "des": "并不会被用来指代奇怪的草。使用道具时低概率发动，随机一项能力小幅上升",
+      "type": "POSITIVE",
+      "iconUrl": "",
+      "phrase": "USE_ITEM",
+      "rate": "{mc.luck}/10/2",
+      "class":"SlmSkill2"
+    },
+    {
+      "id": 3,
+      "name": "庶民气场跌丝袜",
+      "des": "啊哈哈哈……哦呵呵呵。获得金钱时一定概率发动，所获得的金钱量大幅下降",
+      "type": "NEGATIVE",
+      "iconUrl": "",
+      "phrase": "GET_MONEY",
+      "rate": "(1-{mc.luck}/10)/2",
+      "class":"SlmSkill3"
+    },
+    {
+      "id": 4,
+      "name": "SOLO出道跌丝袜",
+      "des": "贴贴的那一天，有可能到来吗……？开始直播时一定概率发动，出现联动的概率中幅降低",
+      "type": "NEGATIVE",
+      "iconUrl": "",
+      "phrase": "BEFORE_STREAM",
+      "rate": "0.5",
+      "effect": [
+        {
+          "type": "STAT_CHANGE",
+          "data": "{stream.collaboBaseRate}/2"
+        }
+      ]
+    },
+    {
+      "id": 5,
+      "name": "最速黄金传说跌丝袜",
+      "des": "回合开始时的粉丝数每次到达10万的整数倍时发动，全部能力小幅上升。",
+      "type": "HIDDEN",
+      "iconUrl": "",
+      "phrase": "TURN_START",
+      "rate": "1",
+      "class":"SlmSkill5"
+    }
+  ]
+}

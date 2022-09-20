@@ -121,6 +121,8 @@ interface NetaBaseProp{
 				return NetaType.PRESENT
 			case "device":
 				return NetaType.DEVICE
+			case "equipment":
+				return NetaType.EQUIPMENT
 		}
 	} 
 }

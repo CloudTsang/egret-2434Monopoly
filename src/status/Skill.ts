@@ -161,6 +161,13 @@ class Skill extends EffectHandler{
 		return r
 	}
 
+	public triggerNumber(v:number){
+		console.log("skill : ", this.name)
+		this.dispatchEvent(new SkillEvent(this))
+		this.triggered = true
+		return v
+	}
+
 	
 
 }

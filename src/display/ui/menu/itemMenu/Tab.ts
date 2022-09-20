@@ -74,6 +74,8 @@ class Tab extends egret.Sprite{
 				return "icons_json#spec"
 			case NetaType.DEVICE:
 				return "icons_json#device"
+			case NetaType.EQUIPMENT:
+				return "icons_json#equipment"
 		}
 	}
 }

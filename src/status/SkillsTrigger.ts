@@ -35,4 +35,11 @@ class SkillsTrigger {
 		}
 		return r
 	}
+
+	public triggerNumber(v:number){
+		for(let s of this._arr){
+			v = s.triggerNumber(v)
+		}
+		return v
+	}
 }

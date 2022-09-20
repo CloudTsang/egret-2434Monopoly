@@ -51,6 +51,8 @@ class GameEvents{
 	public static readonly STREAM_ENJO:string = 'STREAM_ENJO'
 	/**直播事故 */
 	public static readonly STREAM_ACCIDENT:string = 'STREAM_ACCIDENT'
+	/**前往选择装备 */
+	public static readonly TO_CHOOSE_EQUIPMENT:string = 'TO_CHOOST_EQUIPMENT'
 }
 
 class GamePhrase{
@@ -101,6 +103,8 @@ class GamePhrase{
 	public static readonly GO_SHOPPING = 'GO_SHOPPING'
 	/**随机结果判定 */
 	public static readonly ROLL_RESULT = 'ROLL_RESULT'
+	/**获得金钱 */
+	public static readonly GET_MONEY = 'GET_MONEY'
 
 }
 
@@ -139,7 +143,8 @@ enum NetaType{
 	SONG,
 	SPEC,
 	PRESENT,
-	DEVICE
+	DEVICE,
+	EQUIPMENT
 }
 
 /**neta菜单使用场景 */
@@ -151,7 +156,9 @@ enum PanelType{
 	/**稻草人商店 */
 	SHOP2,
 	/**一览*/  
-	NORMAL
+	NORMAL,
+	/**装备 */
+	EQUIPMENT,
 }
 
 class SkillType{

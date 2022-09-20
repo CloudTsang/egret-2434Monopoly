@@ -42,11 +42,6 @@ class Device extends Neta{
 	}
 }
 
-class PC extends Device{
-	public constructor(obj:any) {
-		super(obj)
-	}
-}
 
 /**随回合经过变化的道具接口 */
 interface ChangeableDevice{

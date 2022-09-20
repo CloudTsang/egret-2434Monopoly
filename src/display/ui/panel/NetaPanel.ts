@@ -46,7 +46,7 @@ class NetaPanel extends eui.Component  implements IDisposable{
 		if(n.name.length >= 9) panel.txtName.size = 24
 		else panel.txtName.size = 30
 		panel.txtDes.text = n.des
-		if(n.type == NetaType.DEVICE){
+		if(n.type == NetaType.DEVICE || n.type == NetaType.EQUIPMENT){
 			panel.statContainer.visible = false
 		}else{
 			panel.statContainer.visible = true
@@ -72,7 +72,21 @@ class NetaPanel extends eui.Component  implements IDisposable{
 			if(n.type == NetaType.DEVICE){
 				panel.btn.visible = (n as Device).useable
 				panel.btn.enabled = n.times > 0
-			}else{
+				panel.btn.labelDisplay.text = panel._shop?'购买':'使用'
+			}
+			else if(n.type == NetaType.EQUIPMENT){
+				if(panel._shop){
+					panel.btn.enabled = n.times > 0
+					panel.btn.labelDisplay.text = '购买'
+				}else if((n as Equipment).isEquipped){
+					panel.btn.enabled = false
+					panel.btn.labelDisplay.text = '已装备'
+				}else{
+					panel.btn.enabled = true
+					panel.btn.labelDisplay.text = '装备'
+				}
+			}
+			else{
 				panel.btn.visible = false
 			}
 			panel.txtHold.visible = false

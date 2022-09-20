@@ -8,6 +8,7 @@ class LizeSkill2 extends Skill{
 		this.setHalfValue(bag.game, base)
 		this.setHalfValue(bag.song, base)
 		this.setHalfValue(bag.device, base)
+		this.setHalfValue(bag.equipment, base)
 		super.triggerBag(bag)
 	}
 

@@ -32,7 +32,7 @@ class EventShop  extends MapEvent{
 
 	protected createStore(){
 		const nb:NetaBag = new NetaBag()
-		const jsonFile = ['netas_game_1_json','netas_song_1_json','device_1_json']
+		const jsonFile = ['netas_game_1_json','netas_song_1_json','device_1_json', 'equipment_json']
 		for(let jsonu of jsonFile){
 			const arr = RES.getRes(jsonu)
 			if(!arr)continue

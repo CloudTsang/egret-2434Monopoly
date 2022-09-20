@@ -1,7 +1,7 @@
 {
     "id":"umeo",
     "name":"梦追翔",
-    "iconUrl":"livers4_json#umeo",
+    "iconUrl":"livers1_json#umeo",
     "chessR": "chess_json#umeor",
     "chessV": "chess_json#umeov",
     "disable":false,

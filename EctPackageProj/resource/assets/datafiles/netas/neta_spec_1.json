@@ -5,7 +5,7 @@
 		"owner":"kaede",
         "des":"是爷爷开着拖拉机犁过的田地的味道呢~",
         "type":"spec",  
-         "iconUrl": "livers1_json#deron",   
+         "iconUrl": "livers2_json#deron",   
         "data":{
             "times":1,
             "pop":2,
@@ -20,7 +20,7 @@
 		"owner":"rin",
         "des":"kksk大量发生",
         "type":"spec",    
-        "iconUrl": "livers3_json#rin", 
+        "iconUrl": "livers2_json#rin", 
         "data":{
             "times":1,
             "pop":3,
@@ -35,7 +35,7 @@
 		"owner":"elu",
         "des":"（总之这里是elu的全名）",
         "type":"spec",  
-        "iconUrl":"livers1_json#elu",   
+        "iconUrl":"livers2_json#elu",   
         "data":{
             "times":1,
             "pop":3,
@@ -50,7 +50,7 @@
         "name":"下巴的RAP Battle",
 		"owner":"toya",
         "des":"omehhhnhktnindy!",
-        "iconUrl": "livers4_json#toya",
+        "iconUrl": "livers1_json#toya",
         "type":"spec",     
         "data":{
             "times":1,
@@ -66,7 +66,7 @@
         "name":"尸套龙的F1赛车",
 		"owner":"utako",
         "des":"发动机，开启！频道，关闭！",
-        "iconUrl": "livers4_json#utako",
+        "iconUrl": "livers2_json#utako",
         "type":"spec",     
         "data":{
             "times":1,
@@ -83,7 +83,7 @@
         "name":"道化师的Get Down",
 		"owner":"rikiichi",
         "des":"主播平常就是这样的吗？",
-        "iconUrl": "livers3_json#riki",
+        "iconUrl": "livers2_json#riki",
         "type":"spec",     
         "data":{
             "times":1,
@@ -99,7 +99,7 @@
         "name":"发芽紫薯的日本酒",
 		"owner":"mikodo",
         "des":"饮酒适量，注意护肝。",
-         "iconUrl": "livers3_json#mikodo",
+         "iconUrl": "livers2_json#mikodo",
         "type":"spec",     
         "data":{
             "times":1,
@@ -114,7 +114,7 @@
         "name":"龙巫女的#@&%¥",
 		"owner":"amamya",
         "des":"等等……你说这是什么来着？！",
-        "iconUrl": "livers1_json#amamya",
+        "iconUrl": "livers2_json#amamya",
         "type":"spec",     
         "data":{
             "times":1,
@@ -129,7 +129,7 @@
         "name":"火龙的茶",
         "owner":"dola",
         "des":"老身先喝杯茶——！",
-        "iconUrl": "livers5_json#azuma",
+        "iconUrl": "livers2_json#azuma",
         "type":"spec",
         "data":{
             "times":1,
@@ -144,7 +144,7 @@
         "name":"尼特的Full Combo",
 		"owner":"mugi",
         "des":"请不要这样。真恶心。臭不要脸。太放肆了。请你回炉重造吧可以吗。谢谢你。拜拜。",
-        "iconUrl": "livers3_json#mugi",
+        "iconUrl": "livers2_json#mugi",
         "type":"spec",     
         "data":{
             "times":1,
@@ -190,7 +190,7 @@
         "name":"绿色的企划书",
         "owner":"midori",
 		"des":"这就是大家庭啊（互殴",
-        "iconUrl": "livers3_json#midori",
+        "iconUrl": "livers2_json#midori",
         "type":"spec",     
         "data":{
             "times":1,
@@ -206,7 +206,7 @@
         "name":"社畜的音游手台",
         "owner":"yashiro",
 		"des":"有时间玩音游说明工作还不够多",
-        "iconUrl": "livers4_json#yashiro",
+        "iconUrl": "livers2_json#yashiro",
         "type":"spec",     
         "data":{
             "times":1,
@@ -266,7 +266,7 @@
         "name":"女王的鞭子",
         "owner":"tomoe",
         "des":"可以把大叔liver们和频道一起打掉的鞭子",
-        "iconUrl": "livers5_json#tomoe",
+        "iconUrl": "livers2_json#tomoe",
         "type":"spec",
         "data":{
             "times":1,
@@ -282,7 +282,7 @@
         "name":"牛郎的踢门",
         "owner":"fuwa",
         "des":"蚌——————————！！！！！",
-        "iconUrl": "livers5_json#fuwa",
+        "iconUrl": "livers2_json#fuwa",
         "type":"spec",
         "data":{
             "times":1,
@@ -298,7 +298,7 @@
         "owner":"ririmu",
         "des":"从什么时候开始是朋友呢？",
         "type":"spec",
-        "iconUrl": "livers3_json#ririmu",
+        "iconUrl": "livers2_json#ririmu",
         "data":{
             "times":1,
             "pop":2,
@@ -312,7 +312,7 @@
         "name":"侦探的！！！！！！！！！！！！",
         "owner":"shellin",
         "des":"使用这个在打招呼对决里胜出吧。",
-        "iconUrl": "livers4_json#shellin",
+        "iconUrl": "livers2_json#shellin",
         "type":"spec",
         "data":{
             "times":1,
@@ -328,7 +328,7 @@
         "name":"魔术师的《钱钱之歌》",
 		"owner":"yorumi",
         "des":"塞尔达传说时之笛的主题曲（误）",
-        "iconUrl": "livers4_json#yorumi",
+        "iconUrl": "livers2_json#yorumi",
         "type":"song",     
         "cd":1,
         "songReq":1,    
@@ -456,7 +456,7 @@
     {
         "id":59,
         "name":"环境保护家的米娜撒嘛",
-        "iconUrl": "livers3_json#ngo",
+        "iconUrl": "livers2_json#ngo",
 		"owner":"ngo",
         "des":"用了也能成为(天下无双)吗？",
         "type":"spec",  
@@ -486,7 +486,7 @@
     {
         "id":61,
         "name":"黑客的どーも",
-        "iconUrl": "livers5_json#myzm",
+        "iconUrl": "livers2_json#myzm",
 		"owner":"myzm",
         "des":"没有反应，只是一句问候。",
         "type":"spec", 
@@ -494,6 +494,36 @@
             "times":1,
             "pop":1,
             "safe":3,
+            "meme":3,
+            "long":false
+        }
+    },
+    {
+        "id":62,
+        "name":"大小姐的胃镜照片",
+        "iconUrl": "livers1_json#100w",
+		"owner":"100w",
+        "des":"我正在吃饭怎么给我k……好怪哦再看一眼。",
+        "type":"spec", 
+        "data":{
+            "times":1,
+            "pop":4,
+            "safe":2,
+            "meme":6,
+            "long":false
+        }
+    },
+    {
+        "id":63,
+        "name":"天堂鸟的F语言",
+        "iconUrl": "livers2_json#enna",
+		"owner":"enna",
+        "des":"学会了就能和ENliver无障碍交流了呢。",
+        "type":"spec", 
+        "data":{
+            "times":1,
+            "pop":2,
+            "safe":2,
             "meme":3,
             "long":false
         }

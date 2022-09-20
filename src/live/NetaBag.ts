@@ -6,6 +6,7 @@ class NetaBag {
 	public spec:Neta[]
 	public present:Neta[]
 	public device:Device[]
+	public equipment:Equipment[]
 	private mc:MainCharacter
 	private _valueLock:number
 	public constructor(mc:MainCharacter=null) {
@@ -15,6 +16,7 @@ class NetaBag {
 		this.spec = []
 		this.present = []
 		this.device = []
+		this.equipment = []
 		this.mc = mc
 		this._valueLock = -1
 	}
@@ -24,7 +26,8 @@ class NetaBag {
 						'netas_present_1_json', 'netas_song_1_json',
 						'device_1_json',
 						'device_2_json',
-						'device_spec_json']
+						'device_spec_json',
+						"equipment_json", "equipment_spec_json"]
 		for(let jsonu of jsonFile){
 			const arr = RES.getRes(jsonu)
 			if(!arr)continue
@@ -91,6 +94,8 @@ class NetaBag {
 				return this.spec
 			case NetaType.PRESENT:
 				return this.present
+			case NetaType.EQUIPMENT:
+				return this.equipment
 		}
 	}
 
@@ -112,6 +117,7 @@ class NetaBag {
 		}catch(err){
 			console.log("================")
 			console.log("modifyNeta Failed : ", n)
+			console.log("reason : ", err)
 		}
 		
 
@@ -205,6 +211,9 @@ class NetaBag {
 			case NetaType.SPEC:
 				arr = this.spec
 				break	
+			case NetaType.EQUIPMENT:
+				arr = this.equipment
+				break
 		}
 		for(let tmp of arr){
 			if(tmp.name == n.name){
@@ -240,6 +249,9 @@ class NetaBag {
 			case NetaType.SPEC:
 				arr = this.spec
 				break	
+			case NetaType.EQUIPMENT:
+				arr = this.equipment
+				break
 		}
 		for(let i=0;i<arr.length;i++){
 			let tmp = arr[i]

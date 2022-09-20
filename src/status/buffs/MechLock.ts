@@ -8,7 +8,7 @@ class MechLock extends Buff{
 	}
 
 	public on(){
-		for(let d of this.mc.netaBag.device){
+		for(let d of this.mc.netaBag.equipment){
 			const id = d.ID//egret.getQualifiedClassName(d)
 			const isPC = id.indexOf('PC') >= 0
 			if(!isPC) continue
@@ -17,7 +17,7 @@ class MechLock extends Buff{
 	}
 
 	public off(){
-		for(let d of this.mc.netaBag.device){
+		for(let d of this.mc.netaBag.equipment){
 			const id = d.ID//egret.getQualifiedClassName(d)
 			const isPC = id.indexOf('PC') >= 0
 			if(!isPC) continue

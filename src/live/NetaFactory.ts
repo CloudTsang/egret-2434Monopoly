@@ -31,12 +31,19 @@ class NetaFactory {
 	public static getNetaFromObj(obj:any):Neta{
 		try{
 			let fn = Neta
-			if(obj['type'] == 'device'){
-				fn = Device
-			}else if(obj['type'] == 'song'){
-				fn = SongNeta
-			}else if(obj['type'] == 'game'){
-				fn = GameNeta
+			switch(obj['type']){
+				case 'device':
+					fn = Device
+					break
+				case 'song':
+					fn = SongNeta
+					break
+				case 'game':
+					fn = GameNeta
+					break
+				case 'equipment':
+					fn = Equipment
+					break
 			}
 			
 			if(obj['class']){

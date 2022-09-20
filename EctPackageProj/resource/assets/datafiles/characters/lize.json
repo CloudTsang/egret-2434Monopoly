@@ -1,7 +1,7 @@
 {
      "id":"lize",
      "name":"莉泽",
-     "iconUrl":"livers3_json#lize",
+     "iconUrl":"livers1_json#lize",
     "chessR": "chess_json#lizer",
     "chessV": "chess_json#lizev",
      "disable":false,

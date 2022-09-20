@@ -51,7 +51,7 @@
         "des":"不是狸猫（左耳）也不是浣熊（右耳）,使用后大幅提升下一次直播效果",
         "type":"device",  
         "class":"PutitSpec",
-        "iconUrl":"livers3_json#putit",
+        "iconUrl":"livers2_json#putit",
         "data":{
             "use":true,
             "times":1,
@@ -164,7 +164,7 @@
         "owner":"lize",
 		"des":"望着就能平复心情（？）使用后大幅降低下次直播的事故率和炎上率",
         "type":"device",
-        "iconUrl": "livers3_json#lize",
+        "iconUrl": "livers1_json#lize",
         "data":{
             "use":true,
             "times":1,
@@ -181,7 +181,7 @@
         "owner":"umeo",
 		"des":"最强司仪的实力。使用后大幅提升下次直播的交流力",
         "type":"device",
-        "iconUrl": "livers4_json#umeo",
+        "iconUrl": "livers1_json#umeo",
         "data":{
             "use":true,
             "times":1,
@@ -196,10 +196,10 @@
         "id":10,
         "name":"熊猫人的水族馆门票",
         "owner":"sasaki",
-		"des":"价值一万元的门票，使用后大幅提升随机liver的好感度",
+		"des":"价值一万元的门票，使用后极大幅提升随机liver的好感度",
         "type":"device",   
         "class":"SasakiSpec", 
-        "iconUrl": "livers4_json#sasaki", 
+        "iconUrl": "livers1_json#sasaki", 
         "data":{
             "use":true,
             "times":1,
@@ -217,7 +217,7 @@
         "owner":"siina",
         "des":"没有反应，只是瓶普通的盐，使用了可能运气会变好一些，也可能是心理作用",
         "type":"device",
-        "iconUrl": "livers4_json#siina",
+        "iconUrl": "livers1_json#siina",
         "data":{
             "use":true,
             "times":1,
@@ -271,7 +271,7 @@
         "des":"拉达粉激怒！使用后anti少量变多但下一次直播效果大幅上升",
         "type":"device",
         "class":"MireiSpec",
-        "iconUrl": "livers3_json#mirei",
+        "iconUrl": "livers2_json#mirei",
         "data":{
             "use":true,
             "times":1,
@@ -295,7 +295,7 @@
         "owner":"ib",
         "des":"mc建筑大师的心得。使用后小幅提升品位和游戏力",
         "type":"device",
-        "iconUrl": "livers5_json#ib",
+        "iconUrl": "livers2_json#ib",
         "data":{
             "use":true,
             "times":1,
@@ -337,7 +337,7 @@
         "name":"燃料的燃料",
         "owner":"maimoto",
 		"des":"火 ○○ 火。使用后选择一位liver发生炎上。",
-        "iconUrl": "livers3_json#maimoto",
+        "iconUrl": "livers2_json#maimoto",
         "type":"device",    
         "class":"MaimotoSpec", 
         "multonly":true,
@@ -402,7 +402,7 @@
         "des":"第2434号样品就决定是你了。使用后选择一个liver跳过一回合行动",
         "type":"device",
         "class":"RTVSpec",
-        "iconUrl": "livers4_json#tv",
+        "iconUrl": "livers2_json#tv",
         "multonly":true,
         "data":{
             "use":true,
@@ -424,7 +424,7 @@
         "des":"杀人树莓。持有时体力降低，可以转送给其他玩家，如果转送失败树莓将会增殖。",
         "type":"device",
         "class":"AboSpec",
-        "iconUrl": "livers1_json#abo",
+        "iconUrl": "livers2_json#abo",
         "multonly":true,
         "disable": true,
         "data":{
@@ -436,6 +436,26 @@
                     "type":"STAT_CHANGE",
                     "trigger":"get",
                     "data":"{mc.strength}-1"
+                }
+            ]
+        }
+    },
+    {
+        "id":1,
+        "name":"炎之妖精的语音合成",
+        "owner":"seffyna",
+        "des":"噗哇，我要橄榄这个频道。使用后下次直播时的直播效果大幅上升，炎上概率小幅上升。",
+        "type":"device",
+        "iconUrl": "netaicons2_json#seffynatts",
+        "data":{
+            "times":1,
+            "use":true,
+            "effect":
+            [
+                {
+                    "type":"GET_BUFF",
+                    "trigger":"use",
+                    "data":"Mechaffyna"
                 }
             ]
         }

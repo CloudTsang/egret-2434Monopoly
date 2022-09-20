@@ -16,6 +16,8 @@ class Chess extends egret.Sprite{
 	private _moveJumpH:number
 	private _cellSize:number
 
+	// private _pixelFilter = new egret.GlowFilter(0x000000, 1, 10, 10, 1)
+
 	/**实例化棋子显示对象
 	 * @param v 虚拟形象图片url
 	 * @param r 现实形象图片url 
@@ -38,6 +40,7 @@ class Chess extends egret.Sprite{
 		// this.anchorOffsetX = w/2
 		this.anchorOffsetY = h
 		this.loadPic()
+		// this.filters = [this._pixelFilter]
 	}
 	
 	public dispose(){
@@ -113,6 +116,7 @@ class Chess extends egret.Sprite{
 			let filter = new  egret.GlowFilter(0xFFFFFF, 0.7, 200, 200, 5)
 			this.filters = [filter]
 		}else{
+			// this.filters = [this._pixelFilter]
 			this.filters = []
 		}
 	}

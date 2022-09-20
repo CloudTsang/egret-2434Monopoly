@@ -411,6 +411,7 @@ class WorldController extends egret.EventDispatcher implements IDisposable{
 		cpanel.x = (ctrller.stage.stageWidth - cpanel.width)/2
 		cpanel.y = (ctrller.stage.stageHeight - cpanel.height)/2
 		cpanel.addEventListener(GameEvents.MENU_CANCEL, ctrller.onHideLiver, ctrller)
+		cpanel.addEventListener(GameEvents.TO_CHOOSE_EQUIPMENT, ctrller.onChooseEquiment, ctrller)
 		ctrller.cPanel = cpanel
 		ctrller.stage.addChild(cpanel)
 	}
@@ -422,6 +423,23 @@ class WorldController extends egret.EventDispatcher implements IDisposable{
 		this.cPanel = null
 	}
 
+	protected onChooseEquiment(e:any){
+		const ctrller = this
+		if(ctrller.bagPanel){
+			ctrller.bagPanel.dispose()
+			ctrller.bagPanel = null
+			return
+		}
+		if(ctrller._handling) return
+		if(ctrller._handlingDevice) return
+		ctrller.onShowLiver(null)
+		let bagPanel = new StreamPreparePanel(ctrller.players[ctrller.currentPlayer].netaBag, '', PanelType.EQUIPMENT)
+		bagPanel.addEventListener(GameEvents.MENU_CANCEL, ctrller.onHideBag2, ctrller)
+		bagPanel.addEventListener(GameEvents.NETA_CONFIRM, ctrller.onUseNeta, ctrller)
+		ctrller.bagPanel = bagPanel
+		ctrller.stage.addChild(bagPanel)
+	}
+
 	protected onShowNetaBag(e:any){
 		const ctrller = this
 		if(ctrller.bagPanel){
@@ -429,6 +447,8 @@ class WorldController extends egret.EventDispatcher implements IDisposable{
 			ctrller.bagPanel = null
 			return
 		}
+		if(ctrller._handling) return
+		if(ctrller._handlingDevice) return
 		let bagPanel = new StreamPreparePanel(ctrller.players[ctrller.currentPlayer].netaBag, '', PanelType.NORMAL)
 		bagPanel.addEventListener(GameEvents.MENU_CANCEL, ctrller.onHideBag, ctrller)
 		bagPanel.addEventListener(GameEvents.NETA_CONFIRM, ctrller.onUseNeta, ctrller)
@@ -440,59 +460,72 @@ class WorldController extends egret.EventDispatcher implements IDisposable{
 		const ctrller = this
 		if(ctrller._handling) return
 		if(ctrller._handlingDevice) return
-		const n:Device = e.data.neta
+		const n0:Neta = e.data.neta
 		const bp = this.bagPanel
 		const mc:MainCharacter = ctrller.curPlayer
-		n.addEventListener(GameEvents.STAT_CHANGE, ctrller.onLiverStatChange, ctrller)
-		n.addEventListener(GameEvents.DEVICE_FINISH, ctrller.onUseFinish, ctrller)
-		ctrller._handlingDevice = n
+		if(n0 instanceof Equipment){
+			const n:Equipment = n0 as Equipment
+			if(mc.equipment){
+				if(mc.equipment == n){
+					return
+				}
+				mc.equipment.isEquipped = false
+			}
+			mc.equipment = n as Equipment
+			mc.equipment.isEquipped = true
+			bp.setNeta(n)
 
-		switch(n.target){
-			case EffectTarget.SELF:
-				n.onUse({player:mc, mc:mc.ddata, mc2:mc.data})
-				break
-			case EffectTarget.SELF_ROLL:
-				ctrller.onHideBag(null)
-				n.onUse({player:mc, mc:mc.ddata, mc2:mc.data})
-				break
-			case EffectTarget.SELECT_ONE:
-			case EffectTarget.ALL_SELECT_ONE:
-				//选择使用对象时先隐藏当前菜单
-				// if(ctrller.menu) ctrller.map.removeMenu(ctrller.menu)
-				this.map.setMenuLayerVisible(false)
-				let tmp:number = ctrller.currentPlayer
-				if(n.target == EffectTarget.ALL_SELECT_ONE) tmp = -1
-				const psp:PlayerSelectPanel = ctrller.map.showPlayerSelect(ctrller.players, tmp)
-				psp.addEventListener(GameEvents.PLAYER_SELECTED, ctrller.onSelectPlayer, ctrller)
-				psp.addEventListener(GameEvents.PLAYER_SELECT_CANCEL, ctrller.onCancelSelectPlayer, ctrller)
-				// ctrller.onHideBag(null)
-				this.stage.removeChild(this.bagPanel)
-				ctrller.map.addChild(psp)
-				ctrller.playerSelectPanel = psp
-				
-				break
-			case EffectTarget.OTHER_ALL:
-				this.map.setMenuLayerVisible(false)
-				ctrller.onHideBag(null)
-				let tgts:MainCharacter[] = []
-				for(let p of this.players){
-					if(p == mc) continue
-					tgts.push(p)
-				}
-				n.onUse({player:mc, mc:mc.ddata, mc2:mc.data, tgtPlayer:tgts})
-				break
-			case EffectTarget.RANDOM_ONE_NPC:
-				const cell = ctrller.cellDatas.getCell(ctrller.chessCurIndex)
-				const npcs = cell.npcs
-				let tgtNpc:number
-				if(npcs.length == 0) {
-					tgtNpc = Math.floor(Math.random()*Liver.allLivers.length)
-				}else{
-					tgtNpc = npcs[Math.floor(Math.random()*npcs.length)]
-				}
-				const npc = Liver.allLivers[tgtNpc]
-				n.onUse({player:mc, mc:mc.ddata, mc2:mc.data, npc:npc})
-				break
+		}else{
+			const n:Device = n0 as Device
+			n.addEventListener(GameEvents.STAT_CHANGE, ctrller.onLiverStatChange, ctrller)
+			n.addEventListener(GameEvents.DEVICE_FINISH, ctrller.onUseFinish, ctrller)
+			ctrller._handlingDevice = n
+			switch(n.target){
+				case EffectTarget.SELF:
+					n.onUse({player:mc, mc:mc.ddata, mc2:mc.data})
+					break
+				case EffectTarget.SELF_ROLL:
+					ctrller.onHideBag(null)
+					n.onUse({player:mc, mc:mc.ddata, mc2:mc.data})
+					break
+				case EffectTarget.SELECT_ONE:
+				case EffectTarget.ALL_SELECT_ONE:
+					//选择使用对象时先隐藏当前菜单
+					// if(ctrller.menu) ctrller.map.removeMenu(ctrller.menu)
+					this.map.setMenuLayerVisible(false)
+					let tmp:number = ctrller.currentPlayer
+					if(n.target == EffectTarget.ALL_SELECT_ONE) tmp = -1
+					const psp:PlayerSelectPanel = ctrller.map.showPlayerSelect(ctrller.players, tmp)
+					psp.addEventListener(GameEvents.PLAYER_SELECTED, ctrller.onSelectPlayer, ctrller)
+					psp.addEventListener(GameEvents.PLAYER_SELECT_CANCEL, ctrller.onCancelSelectPlayer, ctrller)
+					// ctrller.onHideBag(null)
+					this.stage.removeChild(this.bagPanel)
+					ctrller.map.addChild(psp)
+					ctrller.playerSelectPanel = psp
+					break
+				case EffectTarget.OTHER_ALL:
+					this.map.setMenuLayerVisible(false)
+					ctrller.onHideBag(null)
+					let tgts:MainCharacter[] = []
+					for(let p of this.players){
+						if(p == mc) continue
+						tgts.push(p)
+					}
+					n.onUse({player:mc, mc:mc.ddata, mc2:mc.data, tgtPlayer:tgts})
+					break
+				case EffectTarget.RANDOM_ONE_NPC:
+					const cell = ctrller.cellDatas.getCell(ctrller.chessCurIndex)
+					const npcs = cell.npcs
+					let tgtNpc:number
+					if(npcs.length == 0) {
+						tgtNpc = Math.floor(Math.random()*Liver.allLivers.length)
+					}else{
+						tgtNpc = npcs[Math.floor(Math.random()*npcs.length)]
+					}
+					const npc = Liver.allLivers[tgtNpc]
+					n.onUse({player:mc, mc:mc.ddata, mc2:mc.data, npc:npc})
+					break
+			}
 		}
 	}
 
@@ -505,6 +538,8 @@ class WorldController extends egret.EventDispatcher implements IDisposable{
 		const mc:MainCharacter = this.curPlayer
 		const tgtp:MainCharacter[] = [this.players[i]]
 		this._handlingDevice.onUse({player:mc, mc:mc.ddata, mc2:mc.data, tgtPlayer:tgtp})
+
+		
 	}
 
 	protected onCancelSelectPlayer(e:egret.Event){
@@ -537,6 +572,9 @@ class WorldController extends egret.EventDispatcher implements IDisposable{
 		// this.popMenu()
 		this.map.setMenuLayerVisible(true)
 
+		const trigger = mc.checkIfSkillsTriggered(GamePhrase.USE_ITEM, Roll.random3())
+		trigger.trigger()
+
 		//使用道具完毕后检测到陷入停止状态时轮到下一位玩家
 		if(this._shouldSkip){
 			this.nextPlayer()
@@ -550,7 +588,11 @@ class WorldController extends egret.EventDispatcher implements IDisposable{
 		this.bagPanel.removeEventListener(GameEvents.NETA_CONFIRM, this.onUseNeta, this)
 		this.bagPanel.dispose()
 		this.bagPanel = null
-	
+	}
+
+	protected onHideBag2(e:any){
+		this.onHideBag(e)
+		this.onShowLiver(null)
 	}
 
 	protected onMenuClosed(e:egret.Event){
