@@ -1,5 +1,5 @@
 /**状态基类 */
-class Buff extends BaseObj{
+class Buff extends BaseObj implements ISavable{
 	/**持续时间，0：数字，1：T回合S直播E发动效果 */
 	public time:[number,"T"|"S"|"E"]
 	/**buff是否不会在角色面板上显示图标 */
@@ -70,5 +70,12 @@ class Buff extends BaseObj{
 	/**叠加同种buff效果 */
 	public add(obj:Buff){
 		this.time[0] += obj.time[0]
+	}
+
+	public get saveObj(){
+		return {
+			id:this.ID,
+			time:this.time[0]
+		}
 	}
 }

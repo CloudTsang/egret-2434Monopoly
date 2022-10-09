@@ -1,4 +1,4 @@
-class CellData extends egret.EventDispatcher{
+class CellData extends egret.EventDispatcher implements ISavable{
 	private _r:MapEvent
 	private _v:MapEvent
 	public npcs:number[]
@@ -66,9 +66,13 @@ class CellData extends egret.EventDispatcher{
 	public get v(){
 		return this._v
 	}
+
+	public get saveObj(){
+		return [this._r.name, this._v.name]
+	}
 }
 
-class MapData {
+class MapData implements ISavable{
 	private datas:CellData[]
 	private rI:number[]
 	private vI:number[]
@@ -77,11 +81,16 @@ class MapData {
 	private livers:string[][]
 	private len:number
 	private allNpcIndexes:number[]
-	public constructor() {
+	public constructor(save:string[][]=null) {
 		this.len = WorldData.cellNum * 4 - 4
-		this.createR()
-		this.createV()
-
+		if(!save){
+			this.createR()
+			this.createV()
+		}else{
+			this.createR2(save)
+			this.createV2(save)
+		}
+		
 		let datas:CellData[] = []
 		for(let i=0; i <this.len; i++){
 			const cell = new CellData(this.r[this.rI[i]],this.v[this.vI[i]])
@@ -168,6 +177,37 @@ class MapData {
 		data.rI = arr2
 	}
 
+	private createR2(save:string[][]){
+		const data = this
+		let objs:any[] = RES.getRes("events_real_1_json")
+		objs = objs.filter((v:any)=>{return !v['disable']})
+		let arr:MapEvent[] = []
+		let arr2:number[] = []
+		for(let i=0; i<objs.length; i++){
+			const obj = objs[i]
+			let fn = MapEvent
+			if(obj['class']){
+				fn = egret.getDefinitionByName(obj['class'])
+				if(!fn) fn = MapEvent
+			}
+			arr.push(new fn(objs[i]))
+		}
+		for(let vre of save){
+			let tmpi = 1
+			for(let i=0; i<arr.length; i++){
+				const n = arr[i].name
+				const n2 = vre[1]
+				if(n == n2){
+					tmpi = i
+					break
+				}
+			}
+			arr2.push(tmpi)
+		}
+		data.r = arr
+		data.rI = arr2
+	}
+
 	private createV(){
 		const data = this
 		let objs:any[] = RES.getRes("events_virtual_1_json")
@@ -244,6 +284,40 @@ class MapData {
 		data.vI = arr2
 	}
 
+	private createV2(save:string[][]){
+		const data = this
+		let objs:any[] = RES.getRes("events_virtual_1_json")
+
+		objs = objs.filter((v:any)=>{return !v['disable']})
+
+		let arr:MapEvent[] = []
+		let arr2:number[] = []
+
+		for(let i=0; i<objs.length; i++){
+			const obj = objs[i]
+			let fn = MapEvent
+			if(obj['class']){
+				fn = egret.getDefinitionByName(obj['class'])
+				if(!fn) fn = MapEvent
+			}
+			arr.push(new fn(objs[i]))
+		}
+		for(let vre of save){
+			let tmpi = 1
+			for(let i=0; i<arr.length; i++){
+				const n = arr[i].name
+				const n2 = vre[0]
+				if(n == n2){
+					tmpi = i
+					break
+				}
+			}
+			arr2.push(tmpi)
+		}
+		data.v = arr
+		data.vI = arr2
+	}
+
 	/**分配npc位置 */
 	public shuffleLiver(){
 		const data = this
@@ -288,5 +362,13 @@ class MapData {
 			npcIndexes.push(i)
 		}
 		this.allNpcIndexes = npcIndexes
+	}
+
+	public get saveObj(){
+		let arr = []
+		for(let d of this.datas){
+			arr.push([d.v.name, d.r.name])
+		}
+		return arr
 	}
 }

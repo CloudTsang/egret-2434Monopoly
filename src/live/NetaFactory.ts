@@ -134,4 +134,55 @@ class NetaFactory {
 			}
 		}
 	}
+
+	public static loadAllNetas(save:INetaSaveObj[]){
+		const urls:string[] = [
+			'netas_daily_1_json', 'netas_game_1_json', 'netas_song_1_json',
+			'netas_present_1_json', 'neta_spec_1_json', 'neta_spec_2_json',
+			'device_spec_json', 'device_1_json', 'device_2_json',
+			'equipment_json', 'equipment_spec_json'
+		]
+		let arr:any[] = []
+		for(let u of urls){
+			arr = arr.concat(RES.getRes(u))
+		}
+		const ret:Neta[] = []
+		for(let i=0; i<NetaType.LEN; i++){
+			let tmp = save.filter((v:INetaSaveObj)=>{
+				return v.ty == i
+			})
+			const tystr = Neta.type2str(i)
+			let tmp2 = arr.filter((v:any)=>{
+				return v['type'] == tystr
+			})
+
+			for(let obj1 of tmp){
+				const n1 = obj1.name
+				let rawdata:any = null
+				let buildFn = Neta
+				for(let obj2 of tmp2){
+					const n2 = obj2['name']
+					if(n1 == n2){
+						rawdata = obj2
+						break
+					}
+				}
+				if(rawdata){
+					const n = NetaFactory.getNetaFromObj(rawdata)
+					if(n instanceof GameNeta){
+						(n as GameNeta).usage = (obj1 as IGameSaveObj).usage
+					}
+					if(n instanceof SongNeta){
+						(n as SongNeta).cd = (obj1 as ISongSaveObj).curCD
+					}
+					n.pop = obj1.pop
+					n.safe = obj1.safe
+					n.meme = obj1.meme
+					n.times = obj1.times
+					ret.push(n)
+				}
+			}
+		}
+		return ret
+	}
 }

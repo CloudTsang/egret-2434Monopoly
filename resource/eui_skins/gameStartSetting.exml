@@ -40,7 +40,8 @@
 			</e:layout>
 		</e:Group>
 		<e:Button id="btnStart" label="开始游戏" horizontalCenter="0" bottom="40" x="560" y="640" scaleX="1" scaleY="1"/>
-        <e:Group width="0" percentHeight="5" x="885" y="690"/>
+        <e:Group width="0" x="885" y="690" height="5"/>
+		<e:Label text="※玩家行动结束后将进行自动保存" x="1010" y="674" textColor="0x2E2A2A"/>
 		<e:layout>
 			<e:VerticalLayout horizontalAlign="center" verticalAlign="middle"/>
 		</e:layout>

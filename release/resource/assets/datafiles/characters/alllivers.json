@@ -727,13 +727,13 @@
     "ID":"akiraray",
     "name":"明乐玲",
     "des":"",
-    "iconUrl":"liver6_json#akiraray"
+    "iconUrl":"livers2_json#akiraray"
   },
   {
     "ID":"seffyna",
     "name":"Seffyna",
     "des":"",
-    "iconUrl":"liver6_json#seffyna"
+    "iconUrl":"livers2_json#seffyna"
   },
   {
     "ID":"nagi",
@@ -745,18 +745,18 @@
     "ID":"enna",
     "name":"Enna",
     "des":"",
-    "iconUrl":"liver6_json#enna"
+    "iconUrl":"livers2_json#enna"
   },
   {
     "ID":"rosemi",
     "name":"Rosemi",
     "des":"",
-    "iconUrl":"liver6_json#rosemi"
+    "iconUrl":"livers2_json#rosemi"
   },
   {
     "ID":"pomu",
     "name":"Pomu",
     "des":"",
-    "iconUrl":"liver6_json#pomu"
+    "iconUrl":"livers2_json#pomu"
   }
 ]

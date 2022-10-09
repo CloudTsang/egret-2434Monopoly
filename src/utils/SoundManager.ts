@@ -12,9 +12,9 @@ class SoundManager {
 	public constructor() {
 		LifecycleCallback.addFunc('bgm', ()=>{this.pause()}, ()=>{this.resume()})
 		this._bgs = {}
-		// this._defaultVolume = 0.5
+		this._defaultVolume = 0.5
 		//test
-		this._defaultVolume = 0
+		// this._defaultVolume = 0
 		// const bgm:egret.Sound = new egret.Sound();
 		// bgm.addEventListener(egret.Event.COMPLETE, this.onLoadComplete, this)
 		// bgm.addEventListener(egret.IOErrorEvent.IO_ERROR, this.onLoadFailed, this)

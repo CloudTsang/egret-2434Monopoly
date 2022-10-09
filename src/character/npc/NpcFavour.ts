@@ -1,16 +1,26 @@
-class NpcFavour {
-	protected gift:{[key:number]:number}
+class NpcFavour implements ISavable{
+	protected gift:{[key:string]:number}
 	private keyArr:string[]
+	
 	public lock:boolean
-	public constructor() {
-		this.lock = false
-		this.gift = {}
-		this.keyArr = []
+	public constructor(saveObj:any=null) {
+		const t = this
+		t.lock = false
+		t.gift = {}
+		t.keyArr = []
 		for(let k of Liver.allLivers){
-			this[k.ID] = 1
-			this.keyArr.push(k.ID)
-			this.gift[k.ID] = 0
+			t.keyArr.push(k.ID)
+			if(saveObj && saveObj[k.ID]){
+				t[k.ID] = saveObj[k.ID][0]
+				t.gift[k.ID] = saveObj[k.ID][1]
+			}else{
+				t[k.ID] = 1
+				t.gift[k.ID] = 0
+			}
+			
 		}
+		
+		
 	}
 
 	public modify(id:string, value:number){
@@ -42,8 +52,9 @@ class NpcFavour {
 	}
 
 	public checkHasGift():string{
-		for(let key of this.keyArr){
-			if( this.gift[key]  == 0 && this[key] >= 3){
+		const t = this
+		for(let key of t.keyArr){
+			if( t.gift[key]  == 0 && t[key] >= 3){
 				return key
 			}
 		}
@@ -74,5 +85,23 @@ class NpcFavour {
 
 	public get random(){
 		return 0
+	}
+
+	public get saveObj(){
+		const t = this
+		const obj = {}
+		for(let key of t.keyArr){
+			obj[key] = [ t[key], t.gift[key] ]
+		}
+		return obj
+	}
+	
+	public set saveObj(v:any){
+		const t = this
+		for(let key in v){
+			const tmp:number = v[key]
+			t[key] = tmp[0]
+			t.gift[key] = tmp[1]
+		}
 	}
 }

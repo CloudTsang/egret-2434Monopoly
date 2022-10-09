@@ -16,6 +16,7 @@ class Enjo  extends Buff{
 
 	public on(){
 		if(this._sw)return 
+		if(this.time[0] == 0) return
 		this._sw = true
 		this.mc.dispObj.showFire(true)
 	}

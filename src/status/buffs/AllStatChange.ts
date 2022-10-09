@@ -4,6 +4,7 @@ class AllStatChange  extends Buff{
 	private _arr:string[] = ['luck', 'sense', 'commu', 'strength', 'talk', 'game', 'sing', 'tech']
 	public constructor(mc:MainCharacter, d:number, t:number=1) {
 		super(mc, t)
+		this.name = '全能力变化'
 		this._delta = d
 	}
 

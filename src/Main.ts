@@ -116,7 +116,8 @@ class Main extends egret.DisplayObjectContainer {
      * Create a game scene
      */
     private createGameScene() {
-
+        // const n = new Connection()
+        // return
         LifecycleCallback.regist()
        
         WorldData.STAGE_W = this.stage.stageWidth
@@ -148,6 +149,7 @@ class Main extends egret.DisplayObjectContainer {
         this.addChild(title)
 
         title.once(GameEvents.TO_PLAYER_SELECT, this.toPlayerSelect, this)
+        title.once(GameEvents.LOAD_GAME, this.onLoadGame, this)
 
     }
 
@@ -165,18 +167,38 @@ class Main extends egret.DisplayObjectContainer {
 
     protected toWorld(e:any){
         if(this.currentScene) this.removeChild(this.currentScene)
-
+        SaveData.delete()
         const mcs = e.data.livers//['mito_json', 'toya_json', 'rion_json', 'sasaki_json']
         //test
         // const mcs = ['mito_json']
         const tnum = e.data.turn
         if(!mcs)return
-        const world = new WorldController(this.stage)
+        const world = new WorldController(this.stage, tnum)
         world.initMap()
         world.initPlayer(mcs)
         world.initUI()
         world.once(GameEvents.GAME_FINISH, this.toScore, this)
         this.world = world
+    }
+
+    protected onLoadGame(e:egret.Event){
+        if(this.currentScene) this.removeChild(this.currentScene)
+        if(!SaveData.gameData) return
+        const d = SaveData.gameData
+        WorldData.gameMode = d.mode
+        const tnum = d.maxTurn
+        let mcs = []
+        for(let p of d.players){
+            mcs.push(`${p.id}_json`)
+        }
+        const world = new WorldController(this.stage, tnum)
+        world.initMap()
+        world.initPlayer(mcs)
+        world.initUI()
+        world.once(GameEvents.GAME_FINISH, this.toScore, this)
+        this.world = world
+
+
     }
 
     protected toScore(e:any){

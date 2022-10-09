@@ -1,5 +1,5 @@
 /**角色数据 */
-class CData {
+class CData implements ISavable{
 	public allLock:boolean = false
 	/**所持金 */
 	private _money:number = 0
@@ -122,6 +122,34 @@ class CData {
 		 if(v<0 && this._minusLock)return
 		 if(this.techLock || this.allLock) return
 		 this._tech = v;
+	 }
+
+	 public get saveObj(){
+		 const t = this
+		 return {
+			 commu: t.commu,
+			 tech: t.tech,
+			 talk: t.talk,
+			 strength: t.strength,
+			 luck: t.luck,
+			 game: t.game,
+			 sing: t.sing,
+			 sense: t.sense,
+			 money: t.money
+		 }
+	 }
+
+	 public set saveObj(v:ICDataSaveObj){
+		 const t = this
+		 t._commu = v.commu
+		 t._game = v.game
+		 t._luck = v.luck
+		 t._sing = v.sing
+		 t._money = v.money
+		 t._talk = v.talk
+		 t._sense = v.sense
+		 t._strength = v.strength
+		 t._tech = v.tech
 	 }
 	 
 }

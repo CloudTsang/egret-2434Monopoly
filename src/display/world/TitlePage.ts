@@ -5,6 +5,7 @@ class TitlePage extends eui.Component{
 	private btnStart:eui.Button
 	private btnStart2:eui.Button
 	private btnDes:eui.Button
+	private btnLoad:eui.Button
 
 	private dp:DescriptPanel
 	public constructor() {
@@ -23,8 +24,16 @@ class TitlePage extends eui.Component{
 		}, 500, egret.Ease.elasticOut)
 		
 		this.btnDes.addEventListener("touchTap", this.onDesClick, this)
-		this.btnStart.addEventListener("touchTap", this.onStartClick, this)
-		this.btnStart2.addEventListener("touchTap", this.onStartClick2, this)
+		this.btnStart.once("touchTap", this.onStartClick, this)
+		this.btnStart2.once("touchTap", this.onStartClick2, this)
+		
+		if(SaveData.load()){
+			this.btnLoad.visible = true
+			this.btnLoad.once("touchTap", this.onStartClick3, this)
+		}else{
+			this.btnLoad.visible = false
+		}
+
 	}
 
 	protected onStartClick(e:any=null){
@@ -40,6 +49,11 @@ class TitlePage extends eui.Component{
 		evt.data = {
 			mode:GameMode.SINGLE
 		}
+		this.dispatchEvent(evt)
+	}
+
+	protected onStartClick3(e:any=null){
+		let evt:egret.Event = new egret.Event(GameEvents.LOAD_GAME)
 		this.dispatchEvent(evt)
 	}
 

@@ -12,16 +12,17 @@ class LiversMenu extends eui.Component{
 	private iconContainers:eui.Component[]
 	public constructor(players:MainCharacter[]) {
 		super()
+		this._current = 0
 		// this.addEventListener(eui.UIEvent.COMPLETE, this.onComplete, this)
 		this.skinName = 'resource/eui_skins/liversmenu.exml'
 	}
 
-	public setPlayers(players:MainCharacter[]){
+	public setPlayers(players:MainCharacter[], cur:number = 0){
 		this.iconUrls = []
 		for(let p of players){
 			this.iconUrls.push(p.iconUrl)
 		}
-		this._current = 0
+		this._current = cur
 		this.onComplete()
 	}
 
@@ -42,7 +43,7 @@ class LiversMenu extends eui.Component{
 			menu.icons.push(bmp)
 			menu.covers.push(cover)
 		}
-		this.current = 0
+		this.current = this._current
 	}
 
 	private onClick(e:egret.TouchEvent = null){

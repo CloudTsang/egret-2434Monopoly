@@ -1,5 +1,5 @@
 /***触发事件的相关计数 */
-class EventData {
+class EventData implements ISavable{
 	/**召唤恶魔的次数 */
 	public devil:number = 0
 	/**是否已升级至3.0 */
@@ -29,5 +29,16 @@ class EventData {
 			return 'xb2'
 		}
 		return null
+	}
+
+	public get saveObj(){
+		return this
+	}
+
+	public set saveObj(v:any){
+		const t = this
+		for(let key in v){
+			t[key] = v[key]
+		}
 	}
 }

@@ -1,4 +1,4 @@
-class WorldController extends egret.EventDispatcher implements IDisposable{
+class WorldController extends egret.EventDispatcher implements IDisposable, ISavable{
 	public players:MainCharacter[]
 	public map:WorldMap
 	public cPanel:CharaterPanel
@@ -16,7 +16,7 @@ class WorldController extends egret.EventDispatcher implements IDisposable{
 
 	private cellDatas:MapData
 	private stream:Stream
-	/**当前玩家所在棋子的索引 */
+	/**玩家所在棋子的索引 */
 	private chessCellIndexes:number[]
 
 	/**正在处理效果中的道具  */
@@ -32,15 +32,22 @@ class WorldController extends egret.EventDispatcher implements IDisposable{
 		this.stage = stage
 		this.stageMode = [true,true,true,true]
 		// this.stageMode = [false,false,false,false]
-		this.curTurn = 1
-		this._maxTurn = tnum
+		if(SaveData.gameData){
+			const d = SaveData.gameData
+			this.curTurn = d.curTurn
+			this._maxTurn = d.maxTurn
+		}else{
+			this.curTurn = 1
+			this._maxTurn = tnum
+		}
+		
 		//test
 		// this._maxTurn = 2
 		window['testPlay'] = ()=>{this.testPlay()}
 	}
 
 	public initMap(){
-		this.cellDatas = new MapData()
+		this.cellDatas = new MapData(SaveData.gameData?SaveData.gameData.cell:null)
 
 		let map = new WorldMap(this.cellDatas)
 		map.addEventListener(GameEvents.START_ROLL, this.onStartRoll, this)
@@ -53,7 +60,8 @@ class WorldController extends egret.EventDispatcher implements IDisposable{
 
 	public initPlayer(arr:string[]){
         let mcarr:MainCharacter[] = []
-		this.chessCellIndexes = [0,0,0,0]
+		const t = this
+		t.chessCellIndexes = [0,0,0,0]
 
 		let mcdatas:any[] = []
 		let pIDs:string[] = []
@@ -64,21 +72,31 @@ class WorldController extends egret.EventDispatcher implements IDisposable{
 			pIDs.push(mcdata['id'])
         }
 		Liver.init(pIDs)
-
-		for(let i=0;i<mcdatas.length;i++){
-			const mcdata = mcdatas[i]
-			let mc = new MainCharacter(mcdata, i)
-            mcarr.push(mc)
-			this.map.addChess(mc.dispObj, mc.index)
+        if(!SaveData.gameData){
+			for(let i=0;i<mcdatas.length;i++){
+				const mcdata = mcdatas[i]
+				let mc = new MainCharacter(mcdata, i)
+				mcarr.push(mc)
+				t.map.addChess(mc.dispObj, mc.index)
+			}
+		}else{
+			const d = SaveData.gameData
+			for(let i=0;i<mcdatas.length;i++){
+				const mcdata = mcdatas[i]
+				let mc = new MainCharacter(mcdata, i)
+				mc.load(d.players[i])
+				mcarr.push(mc)
+				t.map.addChess(mc.dispObj, mc.index, d.chessCellIndexes[i])
+			}
+			t.chessCellIndexes = d.chessCellIndexes
 		}
 
-		this.players = mcarr
-		this.currentPlayer = 0
-
-		const fp = this.players[0]
-		this.map.subs.setNum(fp.subscribe)
-		this.map.money.setNum(fp.money)
-		this.map.focusTo(0)
+		t.players = mcarr
+		t.currentPlayer = SaveData.gameData?SaveData.gameData.curPlayer:0
+		const fp = t.players[t.currentPlayer]
+		t.map.subs.setNum(fp.subscribe)
+		t.map.money.setNum(fp.money)
+		t.map.focusTo(t.chessCellIndexes[t.currentPlayer])
 		fp.addEventListener(GameEvents.STAT_CHANGE, this.onLiverStatChange, this)
 		fp.addEventListener(GameEvents.PLAYER_READY, this.onPlayerReady, this)
 		fp.onTurnStart()
@@ -88,7 +106,7 @@ class WorldController extends egret.EventDispatcher implements IDisposable{
 
 	public initUI(){
 		this.menus = []
-		this.map.liverMenu.setPlayers(this.players)
+		this.map.liverMenu.setPlayers(this.players, this.currentPlayer)
 
 		this.stage.addEventListener("touchTap", this.onSound, this)
 	}
@@ -271,7 +289,6 @@ class WorldController extends egret.EventDispatcher implements IDisposable{
 		cp.removeEventListener(GameEvents.STAT_CHANGE, this.onLiverStatChange, this)
 		cp.removeEventListener(GameEvents.PLAYER_READY, this.onPlayerReady, this)
 		cp.onTurnEnd()
-
 		ctrller.currentPlayer ++
 		for(let m of ctrller.menus){
 			m && m.dispose()
@@ -284,6 +301,7 @@ class WorldController extends egret.EventDispatcher implements IDisposable{
 			ctrller.currentPlayer = 0
 			if(ctrller.curTurn == ctrller._maxTurn){
 				ctrller.onGameFinish()
+				SaveData.delete()
 				return 
 			}else{
 				//下回合
@@ -295,7 +313,7 @@ class WorldController extends egret.EventDispatcher implements IDisposable{
 			
 		}
 
-
+		SaveData.save(ctrller)
 		const p = ctrller.players[ctrller.currentPlayer]
 		const cur = ctrller.stageMode[ctrller.currentPlayer]
 		ctrller.phrase = GamePhrase.TURN_START
@@ -636,5 +654,21 @@ class WorldController extends egret.EventDispatcher implements IDisposable{
 
 	public testPlay(){
 		this.curPlayer.testPlay()
+	}
+
+	public get saveObj(){
+		const t = this
+		const obj = {
+			mode:WorldData.gameMode,
+			players: t.players.map((p:MainCharacter)=>{
+				return p.saveObj
+			}),
+			cell: t.cellDatas.saveObj,
+			curPlayer: t.currentPlayer,
+			curTurn: t.curTurn,
+			maxTurn: t._maxTurn,
+			chessCellIndexes: t.chessCellIndexes
+		}
+		return obj
 	}
 }

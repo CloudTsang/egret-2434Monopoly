@@ -5,6 +5,9 @@
 ![pic](https://gitee.com/cloudtsang/egret-2434Monopoly/raw/main/screenshot/02.jpg)
 
 
+现进度：加入少量海外势liver数据，加入自动存档功能（debug中），~~豆猫莎皇在做了~~
+
+
 运行
 
 ```

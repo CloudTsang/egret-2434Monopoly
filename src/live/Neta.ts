@@ -4,7 +4,7 @@ interface NetaBaseProp{
 	meme:number
 }
 
- class Neta extends EffectHandler{
+ class Neta extends EffectHandler implements ISavable{
 	/**人气度，影响直播获取的粉丝数 */
 	public pop:number
 	/**安全度，影响直播炎上或被ban的概率 */
@@ -34,7 +34,7 @@ interface NetaBaseProp{
 		this.ID = egret.getQualifiedClassName(this)//obj['id']
 		this.name = obj['name']
 		this.des = obj['des']
-		this.type = this.str2type(obj['type'])
+		this.type = Neta.str2type(obj['type'])
 
 		const data = obj['data']
 		this.owner = obj['owner']?obj['owner']:null
@@ -107,7 +107,7 @@ interface NetaBaseProp{
 		n.safe = n._oriData.safe
 	}
 
-	private str2type(s:string){
+	public static str2type(s:string){
 		switch(s){
 			case "song":
 				return NetaType.SONG
@@ -125,6 +125,41 @@ interface NetaBaseProp{
 				return NetaType.EQUIPMENT
 		}
 	} 
+
+	public static type2str(t:NetaType){
+		switch(t){
+			case NetaType.DEVICE:
+				return "device"
+			case NetaType.SONG:
+				return 'song'
+			case NetaType.EQUIPMENT:
+				return 'equipment'
+			case NetaType.GAME:
+				return 'game'
+			case NetaType.SPEC:
+				return 'spec'
+			case NetaType.PRESENT:
+				return "present"
+			case NetaType.TALK:
+				return 'daily'
+		}
+	}
+
+	protected baseSaveObj():any{
+		const t = this
+		return {
+			name: t.name,
+			ty: t.type,
+			pop: t.pop,
+			meme: t.meme,
+			safe: t.safe,
+			times: t._times
+		}
+	}
+
+	public get saveObj(){
+		return this.baseSaveObj()
+	}
 }
 
 class GameNeta extends Neta{
@@ -136,13 +171,32 @@ class GameNeta extends Neta{
 		this._reduce = obj['reduce']?obj['reduce']:5
 		this._usage = 0
 	}
+
+	public set usage(v:number){
+		const t = this
+		t._usage = v
+		if(t._usage == t._reduce){
+			console.log(`${t.name}效果衰减`)
+			t._oriData.pop = Math.round(t._oriData.pop/2)
+		}
+	}
+
+	public get usage(){
+		return this._usage
+	}
+
 	public onUse(obj:TargetObj):any{
 		super.onUse(obj)
-		this._usage ++ 
-		if(this._usage == this._reduce){
-			console.log(`${this.name}效果衰减`)
-			this._oriData.pop = Math.round(this._oriData.pop/2)
+		this.usage -= 1
+	}
+
+	public get saveObj(){
+		let obj =  this.baseSaveObj()
+		obj = {
+			...obj,
+			usage: this._usage
 		}
+		return obj
 	}
 }
 
@@ -151,7 +205,7 @@ class SongNeta extends Neta{
 	public songReq:number
 	/**每隔cd回合才能使用一次歌唱neta */
 	public cd:number
-	protected curCD:number
+	public curCD:number
 	public constructor(obj:any) {
 		super(obj)
 		this.songReq = obj['songReq']?obj['songReq']:1
@@ -175,6 +229,17 @@ class SongNeta extends Neta{
 
 	public get usable(){
 		return this.curCD == 0
+	}
+
+	public get saveObj(){
+		const t = this
+		let obj = t.baseSaveObj()
+		
+		obj = {
+			...obj,
+			curCD: t.curCD
+		}
+		return obj
 	}
 }
  

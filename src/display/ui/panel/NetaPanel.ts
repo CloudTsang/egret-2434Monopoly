@@ -136,6 +136,8 @@ class NetaPanel extends eui.Component  implements IDisposable{
 				return "icons_json#device"
 			case NetaType.PRESENT:
 				return "icons_json#present"
+			case NetaType.EQUIPMENT:
+				return "icons_json#equipment"
 		}
 	}
 }

@@ -1,4 +1,4 @@
-class MapEvent extends BaseObj{
+class MapEvent extends BaseObj implements ISavable{
 	protected selections:SelectionObj[]
 	protected className:string
 	protected buffName:string
@@ -106,6 +106,12 @@ class MapEvent extends BaseObj{
 
 	public dipose(){
 		
+	}
+
+	public get saveObj(){
+		return {
+			name: this.name
+		}
 	}
 }
 

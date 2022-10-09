@@ -1,5 +1,5 @@
 /**可操作角色 */
-class MainCharacter extends Liver{
+class MainCharacter extends Liver implements ISavable{
 	/**现实 */
 	protected reality:Reality;
 	/**虚拟 */
@@ -75,7 +75,7 @@ class MainCharacter extends Liver{
 		this.antiLock = false
 
 		//test
-		// this.getBuff(new Enjo(this, 3))
+		// if(this.index == 0)this.getBuff(new Enjo(this, 3))
 		// this.getBuff(new Light(this, 3))
 		// this.data.money = 5000000
 		// this.increase = 1
@@ -86,7 +86,41 @@ class MainCharacter extends Liver{
 		// this.npc['kaede'] = 4
 		// this.npc['rin'] = 3
 		// this.npc.modify("albio", 3)
+	}
 
+	public load(save:ICharacterSaveObj){
+		const t = this
+		t._subscribe = save.subs
+		t.increase = save.increase
+		t.income = save.income
+		t._anti = save.anti
+		t.stream = save.stream
+
+		t.data.saveObj = save.data
+		t.ddata.saveObj = save.data2
+		t.edata.saveObj = save.edata
+		t.npc.saveObj = save.npc
+		t.netaBag.saveObj = save.neta
+		if(save.equipment && save.equipment!=''){
+			for(let eq of t.netaBag.equipment){
+				if(eq.name == save.equipment){
+					eq.isEquipped = true
+					t.equipment = eq
+					break
+					
+				}
+			}
+		}
+
+
+		for(let bn0 of save.buff){
+			const bn = egret.getDefinitionByName(bn0.id)
+			if(bn){
+				const buff = new bn(t, bn0.time)
+				t.getBuff(buff)
+			}
+		}
+		
 	}
 
 	public testPlay(){
@@ -325,5 +359,29 @@ class MainCharacter extends Liver{
 		if(v<0) v = 0
 		console.log(`${this.name} 的anti变化至 ${v}`)
 		this._anti = v
+	}
+
+	public get saveObj(){
+		const t = this
+		const obj = {
+			index: t.index,
+			id: t.ID,
+			data: t.data.saveObj,
+			data2: t.ddata.saveObj,
+			edata: t.edata.saveObj,
+			stream: t.stream,
+			equipment: t.equipment? t.equipment.name:null,
+			
+			buff: t.buffs.map((b:Buff)=>{
+				return b.saveObj
+			}),
+			neta: t.netaBag.saveObj,
+			npc: t.npc.saveObj,
+			subs: t._subscribe,
+			increase: t.increase,
+			income: t.income,
+			anti: t._anti 
+		}
+		return obj
 	}
 }

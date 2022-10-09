@@ -1,6 +1,8 @@
 class GameEvents{
 	/**前往角色选择页面 */
 	public static readonly TO_PLAYER_SELECT:string = 'TO_PLAYER_SELECT'
+	/**读取游戏 */
+	public static readonly LOAD_GAME:string = 'LOAD_GAME'
 	/**游戏开始 */
 	public static readonly GAME_START:string = 'GAME_START'
 	/**游戏结束 */
@@ -144,7 +146,8 @@ enum NetaType{
 	SPEC,
 	PRESENT,
 	DEVICE,
-	EQUIPMENT
+	EQUIPMENT,
+	LEN
 }
 
 /**neta菜单使用场景 */

@@ -1,5 +1,5 @@
 /** 持有neta集合*/
-class NetaBag {
+class NetaBag implements ISavable{
 	public talk:Neta[]
 	public game:Neta[]
 	public song:SongNeta[]
@@ -274,6 +274,50 @@ class NetaBag {
 	/**可购买neta的价格上限，超过该价格的neta会显示disable样式，默认值为-1不限制 (梦追翔技能用属性 )*/
 	public set valueLock(v:number){
 		this._valueLock = v
+	}
+
+	public get saveObj(){
+		const t = this
+		function f(arr:Neta[]):any[]{
+			return arr.map((v:Neta)=>{
+				return v.saveObj
+			})
+		}
+		let arr = []
+		arr = arr.concat(f(t.talk))
+		arr = arr.concat(f(t.game))
+		arr = arr.concat(f(t.song))
+		arr = arr.concat(f(t.device))
+		arr = arr.concat(f(t.equipment))
+		arr = arr.concat(f(t.present))
+		arr = arr.concat(f(t.spec))
+		return arr
+	}
+	
+	public set saveObj(v:INetaSaveObj[]){
+		const t = this
+		const netas = NetaFactory.loadAllNetas(v)
+		t.talk = netas.filter((v:Neta)=>{
+			return v.type == NetaType.TALK
+		})
+		t.game = netas.filter((v:Neta)=>{
+			return v.type == NetaType.GAME
+		})
+		t.song = netas.filter((v:Neta)=>{
+			return v.type == NetaType.SONG
+		}) as SongNeta[]
+		t.device = netas.filter((v:Neta)=>{
+			return v.type == NetaType.DEVICE
+		}) as Device[]
+		t.equipment = netas.filter((v:Neta)=>{
+			return v.type == NetaType.EQUIPMENT
+		}) as Equipment[]
+		t.spec = netas.filter((v:Neta)=>{
+			return v.type == NetaType.SPEC
+		})
+		t.present = netas.filter((v:Neta)=>{
+			return v.type == NetaType.PRESENT
+		})
 	}
 }
 
