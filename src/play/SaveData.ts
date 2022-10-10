@@ -12,6 +12,7 @@ class SaveData {
 	}
 
 	public static delete(){
+		SaveData.gameData = null
 		localStorage.removeItem('savedata')
 	}
 }
