@@ -13,7 +13,7 @@ class StartSelectPanel extends eui.Component{
 	private dragging:eui.Button
 	private oriIcon:PlayerIcon
 
-	private cpn2Hide0:eui.Component
+	private cpn2Hide0:eui.Label
 	private cpn2Hide1:eui.Component
 	public constructor() {
 		super()
@@ -55,10 +55,17 @@ class StartSelectPanel extends eui.Component{
 
 		p.btnStart.addEventListener("touchTap", p.onStartClick, p)
 		p.tslider.addEventListener(egret.Event.CHANGE, p.onTurnSliderChange, p)
+		
 
 		p.btnStart.visible = true
 		p.cpn2Hide0.visible = true
 		p.cpn2Hide1.visible = true
+		if(WorldData.gameMode == GameMode.SINGLE){
+			p.TURNS = [50, 100, 200, 500, 9999]
+			p.curTurn = p.TURNS[0]
+			p.txtTurn.text = `${p.curTurn}`
+			p.cpn2Hide0.text = "拖动标签选择游玩Liver"
+		}
 	}
 
 	protected onStartDrag(e:egret.TouchEvent){

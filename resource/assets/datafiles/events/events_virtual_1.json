@@ -499,6 +499,7 @@
     },
     {
         "id":6,
+        "singleDisable":true,
         "name":"直播休止日",
         "des":"休息是为了重新出发",
         "iconUrl":"mapicons_json#rest",

@@ -14,7 +14,7 @@ class WorldController extends egret.EventDispatcher implements IDisposable, ISav
 
 	public curTurn:number
 
-	private cellDatas:MapData
+	private cellDatas:MapData|MapDataSingle
 	private stream:Stream
 	/**玩家所在棋子的索引 */
 	private chessCellIndexes:number[]
@@ -47,10 +47,14 @@ class WorldController extends egret.EventDispatcher implements IDisposable, ISav
 	}
 
 	public initMap(){
-		this.cellDatas = new MapData(SaveData.gameData?SaveData.gameData.cell:null)
-
+		if(WorldData.gameMode == GameMode.SINGLE){
+			this.cellDatas = new MapDataSingle()
+		}else{
+			this.cellDatas = new MapData(SaveData.gameData?SaveData.gameData.cell:null)
+		}	
 		let map = new WorldMap(this.cellDatas)
 		map.addEventListener(GameEvents.START_ROLL, this.onStartRoll, this)
+		map.addEventListener(GameEvents.ROLL_NETA, this.onStartRoll, this)
 		map.addEventListener(GameEvents.VR_SWITCH, this.onVRSwitch, this)
 		map.addEventListener(GameEvents.SHOW_LIVER_DETAIL, this.onShowLiver, this)
 		map.addEventListener(GameEvents.SHOW_NETA_BAG, this.onShowNetaBag, this)
@@ -124,26 +128,34 @@ class WorldController extends egret.EventDispatcher implements IDisposable, ISav
 		SoundManager.instance.play('vtl1_mp3', true)
 	}
 
-	protected onStartRoll(e:any){
-		if(this._lock){
+	protected onStartRoll(e:egret.Event){
+		const t = this
+		if(t._lock){
 			return
 		}
-		this._lock = true
-		this.phrase = GamePhrase.DICE_ROLL
-		let n = this.curPlayer.checkStepNum()
-		if(n == 0){
-			n = Roll.random(this.curPlayer).n
-		}
-		this.map.showRollNum(n, RollResult.NORMAL)
-		this.map.walkChess(this.currentPlayer, n, (i:number, v:boolean)=>{this.onChessStep(i,v)})
+		t._lock = true
+		t.phrase = GamePhrase.DICE_ROLL
+		let n = t.curPlayer.checkStepNum()
+		
+		if(e.type == GameEvents.ROLL_NETA){
+			if(n == 0){
+				n = e.data.p
+			}
+		}else{
+			if(n == 0){
+				n = Roll.random(t.curPlayer).n
+			}
+			t.map.showRollNum(n, RollResult.NORMAL)
+		}	
+		t.curPlayer.movedStep = n
+		t.map.walkChess(t.currentPlayer, n, (i:number, v:boolean)=>{t.onChessStep(i,v)})
 	}
 
 	protected onChessStep(curIndex:number, finish:boolean){
 		this.chessCurIndex = curIndex
 		const cell:CellData = this.cellDatas.getCell(curIndex)
-		if(curIndex == 0){
+		if(cell.r instanceof StartPoint){
 			//回到起点
-			// console.log("back2start : ", finish)
 			cell.addEventListener(GameEvents.EVENT_START, this.onEventStart, this)
 			cell.addEventListener(GameEvents.STAT_CHANGE, this.onLiverStatChange, this)
 			cell.addEventListener(GameEvents.EVENT_FINISH, finish?this.onStartPointFinish:this.onStartPoint, this)
@@ -157,6 +169,7 @@ class WorldController extends egret.EventDispatcher implements IDisposable, ISav
 			//test
 			// this.nextPlayer()
 			// return
+			
 			this.menus = []
 			cell.addEventListener(GameEvents.EVENT_START, this.onEventStart, this)
 			cell.addEventListener(GameEvents.STAT_CHANGE, this.onLiverStatChange, this)
@@ -169,6 +182,21 @@ class WorldController extends egret.EventDispatcher implements IDisposable, ISav
 			}
 			this.showMenu(menu)
 		} 
+	}
+
+	protected removeSteppedCell(){
+		if(WorldData.gameMode != GameMode.SINGLE) return
+		const t = this
+		const tmp = t.chessCurIndex
+		const data = (t.cellDatas as MapDataSingle)
+		t.chessCurIndex = 0;
+		data.removeSteppedCell(tmp)
+		t.map.removeSteppedCell(tmp)
+
+		if(data.length < 15){
+			data.generateMonthCell()
+			t.map.drawMapSingle()
+		}
 	}
 
 	protected showMenu(menu:any){
@@ -274,6 +302,7 @@ class WorldController extends egret.EventDispatcher implements IDisposable, ISav
 	}
 
 	protected nextPlayer(){
+		this.removeSteppedCell()
 		this._handling = false
 		this._shouldSkip = false
 		const cell:CellData = this.cellDatas.getCell(this.chessCurIndex )
@@ -317,7 +346,6 @@ class WorldController extends egret.EventDispatcher implements IDisposable, ISav
 		const p = ctrller.players[ctrller.currentPlayer]
 		const cur = ctrller.stageMode[ctrller.currentPlayer]
 		ctrller.phrase = GamePhrase.TURN_START
-		
 		ctrller.map.subs.setNum(p.subscribe)
 		ctrller.map.money.setNum(p.money)
 		ctrller.map.setMode(cur)
@@ -326,7 +354,7 @@ class WorldController extends egret.EventDispatcher implements IDisposable, ISav
 		}
 		ctrller.map.liverMenu.current = ctrller.currentPlayer
 		ctrller.map.focusToLiver(ctrller.currentPlayer, true)	
-
+		if(WorldData.gameMode == GameMode.SINGLE)ctrller.map.showRollNeta(p.netaBag.getRollNeta())
 		p.addEventListener(GameEvents.STAT_CHANGE, this.onLiverStatChange, this)
 		p.addEventListener(GameEvents.PLAYER_READY, this.onPlayerReady, this)
 		p.onTurnStart()	

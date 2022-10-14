@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='utf-8'?>
 <e:Skin class="skins.descriptPanel"
 	width="700"
-	height="450" xmlns:e="http://ns.egret.com/eui" states="p1,p2,p3,p4" >
+	height="450" xmlns:e="http://ns.egret.com/eui" states="p1,p2,p3,p4,p5" >
 	<e:Rect percentWidth="100" percentHeight="100" fillAlpha="0.8" ellipseWidth="50"/>
 	<e:Group id="contents" percentWidth="95" percentHeight="90" horizontalCenter="0" verticalCenter="0">
 		<e:layout>
@@ -24,6 +24,16 @@
 			<e:layout>
 				<e:HorizontalLayout verticalAlign="middle" horizontalAlign="center"/>
 			</e:layout>
+			<e:Label text="~ 关于荣冠ONE ~" includeIn="p5" x="234" y="41"/>
+			<e:Group height="10" includeIn="p5" x="207" y="69"/>
+			<e:Label text="可以专注培养一名Liver，在随机生成的日程上前进的单人模式。\n此模式下粉丝增长量将与前进格数有关。" includeIn="p5" x="198" y="82" size="24"/>
+			<e:Group height="10" includeIn="p5" x="291" y="108"/>
+			<e:Label text="决定前进格数时，除了普通的随机之外，还会从已有的Neta中\n随机抽取3个，玩家可选择1个根据其数值直接决定前进格数。" includeIn="p5" x="295" y="128" size="24"/>
+			<e:Group height="10"/>
+			<e:Image width="300" height="180" includeIn="p5" x="357" y="264" source="rollneta_jpg"/>
+			<e:layout.p5>
+				<e:VerticalLayout horizontalAlign="center"/>
+			</e:layout.p5>
 			<e:Group percentWidth="40" percentHeight="100"  includeIn="p4" x="368" y="108">
 				<e:Image width="160" height="240" includeIn="p4" source="netastat_jpg" horizontalCenter="0" verticalCenter="0"/>
 			</e:Group>

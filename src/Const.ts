@@ -55,6 +55,8 @@ class GameEvents{
 	public static readonly STREAM_ACCIDENT:string = 'STREAM_ACCIDENT'
 	/**前往选择装备 */
 	public static readonly TO_CHOOSE_EQUIPMENT:string = 'TO_CHOOST_EQUIPMENT'
+	/**使用neta点数决定roll结果 */
+	public static readonly ROLL_NETA:string = 'ROLL_NETA'
 }
 
 class GamePhrase{

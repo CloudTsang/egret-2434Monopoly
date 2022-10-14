@@ -38,6 +38,10 @@ class MainCharacter extends Liver implements ISavable{
 	protected _current:boolean
 	
 	public index:number
+	/**前进格数 */
+	private _movedStep:number
+	/**总前进格数 */
+	public totalMovedStep:number
 	public constructor(obj:any, index:number) {
 		super()
 		this.index = index
@@ -49,7 +53,8 @@ class MainCharacter extends Liver implements ISavable{
 		this.iconUrl = obj['iconUrl']
 		this.dispObj = new Chess(obj["chessV"], obj['chessR'])
 		this.npc = new NpcFavour()
-
+		this._movedStep = 0
+		this.totalMovedStep = 0
 		this._current = true
 		
 		let skills:Skill[] = []
@@ -182,33 +187,36 @@ class MainCharacter extends Liver implements ISavable{
 	}
 
 	public onTurnStart(){
+		const t = this
 		this.ddata = new CData()
 		let movable:boolean = true
 
-		let newSub = this.increase - this._anti
+		let newSub = t.increase - t._anti
+
+		
 		if(newSub<0)newSub=0
 
 		//回合开始技能判定
-		const t = this.checkIfSkillsTriggered(GamePhrase.TURN_START, Roll.random3())
-		t.trigger()
-		for(let s of this.skills){
+		const trigger = t.checkIfSkillsTriggered(GamePhrase.TURN_START, Roll.random3())
+		trigger.trigger()
+		for(let s of t.skills){
 			s.cd()
 		}
 
 		//buff转cd
 		let i=0
-		while(i<this.buffs.length){
-			let b = this.buffs[i]
+		while(i<t.buffs.length){
+			let b = t.buffs[i]
 			if(b.time[0]>=1){
 				if(b.ID == 'Stop' || b.ID == 'Sleep') movable = false
 				if(b.ID == 'Enjo'){
 					//炎上期间粉丝停止并可以负增长
-					newSub = Math.min(0, this.increase - this._anti)
+					newSub = Math.min(0, t.increase - t._anti)
 				}
 			}
 			b.turnCD()
 			if(b.overed){
-				this.buffs.splice(i,1)
+				t.buffs.splice(i,1)
 				continue
 			}
 			b.on()
@@ -216,14 +224,18 @@ class MainCharacter extends Liver implements ISavable{
 		}
 
 		//歌曲neta转cd
-		for(let sn of this.netaBag.song){
+		for(let sn of t.netaBag.song){
 			// console.log(sn.name)
 			sn.onCD()
 		}
 
-		this.netaBag.checkDeviceChange()
+		t.netaBag.checkDeviceChange()
 
-		this.subscribe += newSub		
+		if(WorldData.gameMode == GameMode.SINGLE){
+			//荣冠模式下订阅增长按移动格数计算
+			newSub = Math.round(newSub/7*(t._movedStep+1))
+		}
+		t.subscribe += newSub		
 
 		let evt = new egret.Event(GameEvents.PLAYER_READY)
 		evt.data = {
@@ -232,42 +244,42 @@ class MainCharacter extends Liver implements ISavable{
 
 		let ngp:NetaGetPanel;
 		
-		if(this.subscribe >= 100000 && !this.edata.has3D){
-			this.edata.has3D = true
+		if(t.subscribe >= 100000 && !t.edata.has3D){
+			t.edata.has3D = true
 			const neta3d = NetaFactory.getPresentNeta('3D披露') 
-			this.netaBag.modifyNeta(neta3d, 'get')
+			t.netaBag.modifyNeta(neta3d, 'get')
 			//ngp = WorldMap.showGetNeta(neta3d)
 			ngp = NetaGetPanel.addNetaToShow(neta3d)
 		}
 
-		const evtHasNeta = this.edata.checkHasNewNeta()
+		const evtHasNeta = t.edata.checkHasNewNeta()
 		if(evtHasNeta){
 			const evtNeta = NetaFactory.getEvtNeta(evtHasNeta)
 			if(evtNeta){
-				this.netaBag.modifyNeta(evtNeta, 'get')
+				t.netaBag.modifyNeta(evtNeta, 'get')
 				// ngp = WorldMap.showGetNeta(evtNeta)
 				ngp = NetaGetPanel.addNetaToShow(evtNeta)
 			}
 		}
 
-		const npcHasGift = this.npc.checkHasGift()
+		const npcHasGift = t.npc.checkHasGift()
 		if(npcHasGift){
 			const giftNeta = NetaFactory.getGiftNeta(npcHasGift)
 			if(giftNeta){
-				this.npc.getGift(npcHasGift)
-				this.netaBag.modifyNeta(giftNeta, 'get')
+				t.npc.getGift(npcHasGift)
+				t.netaBag.modifyNeta(giftNeta, 'get')
 				// ngp = WorldMap.showGetNeta(giftNeta)
 				ngp = NetaGetPanel.addNetaToShow(giftNeta)
 			}
 			
 		}
 		if(ngp){
-			this.dispatchEvent(new ShowEvent(ngp, "top"))
+			t.dispatchEvent(new ShowEvent(ngp, "top"))
 			ngp.addEventListener(eui.UIEvent.REMOVED_FROM_STAGE,(uie)=>{
-				this.dispatchEvent(evt)
-			}, this)
+				t.dispatchEvent(evt)
+			}, t)
 		}else{
-			this.dispatchEvent(evt)
+			t.dispatchEvent(evt)
 		}
 		
 		
@@ -347,6 +359,11 @@ class MainCharacter extends Liver implements ISavable{
 		if(v<0)v=0
 		this._subscribe = v
 		this.dispatchEvent(new SubscribeEvent())
+	}
+
+	public set movedStep(v:number){
+		this._movedStep = v
+		this.totalMovedStep += v
 	}
 
 	public get anti(){

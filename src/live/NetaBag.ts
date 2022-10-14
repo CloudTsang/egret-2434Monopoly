@@ -319,6 +319,17 @@ class NetaBag implements ISavable{
 			return v.type == NetaType.PRESENT
 		})
 	}
+
+	public getRollNeta(){
+		const t = this
+		const arr = [].concat(t.talk,t.game,t.song,t.present, t.spec)
+		if(arr.length == 0) return null
+		let ret:Neta[] = []
+		for(let i=0;i<3;i++){
+			ret.push(arr[Math.floor(Math.random()*arr.length)])
+		}
+		return ret
+	}
 }
 
 interface INetaSelectObj{

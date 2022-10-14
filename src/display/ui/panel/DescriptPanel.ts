@@ -5,7 +5,7 @@ class DescriptPanel extends eui.Component{
 	protected cur:number
 	public constructor() {
 		super()
-		this.stats =  ['p1', 'p2', 'p3', 'p4']
+		this.stats =  ['p1', 'p2', 'p3', 'p4', 'p5']
 		this.cur = 0
 		this.skinName = 'resource/eui_skins/descriptPanel.exml'
 		this.once(eui.UIEvent.ADDED_TO_STAGE, this.onAdded, this)

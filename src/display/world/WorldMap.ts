@@ -26,10 +26,10 @@ class WorldMap extends eui.Component{
 	private chessArr:number[]
 	private tw:egret.Tween
 	private _lock:boolean
-	private data:MapData
-
+	private data:MapData|MapDataSingle
+	
 	private static instance:WorldMap
-	public constructor(data:MapData) {
+	public constructor(data:MapData|MapDataSingle) {
 		super()
 		this.addEventListener(eui.UIEvent.COMPLETE, this.onComplete, this)
 		
@@ -38,6 +38,8 @@ class WorldMap extends eui.Component{
 		
 		this.width = egret.MainContext.instance.stage.stageWidth
 		this.height = egret.MainContext.instance.stage.stageHeight
+		this.cellsArr = []
+		this.cellsMap = {}
 		this.chesses = []
 		this.skillBars = []
 		this.data = data
@@ -70,7 +72,11 @@ class WorldMap extends eui.Component{
 		const a = cell.width/8
 		let p = []
 		if(index == 0){
-			p = [1,3]
+			if(WorldData.gameMode == GameMode.SINGLE){
+				p = [4,4]
+			}else{
+				p = [1,3]
+			}	
 		}else if(index == 1){
 			p = [5,3]
 		}else if(index == 2){
@@ -91,13 +97,15 @@ class WorldMap extends eui.Component{
 			return v.y > c.y
 		})
 		const addIndex = this.chesses.length - tmp.length
-		// this.mapContainer.addChildAt(c, index+1)
-		// console.log(addIndex)
 		this.mapContainer.addChildAt(c, addIndex)
 	}
 
 	public showRollNum(n:number, r:string){
 		this.rollbtn.showRolledNum(n, r)
+	}
+
+	public showRollNeta(arr:Neta[]){
+		this.rollbtn.setRollNeta(arr)
 	}
 
 	public setTurnNum(n:number, isLast:boolean=false){
@@ -237,6 +245,10 @@ class WorldMap extends eui.Component{
 				moveChessY:landY
 			}, 100)
 			.call(()=>{
+				if(WorldData.gameMode == GameMode.SINGLE){
+					const cell = thisObj.cellsArr[thisObj.stepObj.curIndex]
+					cell.parent && cell.parent.removeChild(cell)
+				}
 				thisObj.stepObj.curIndex = target
 				thisObj.stepCallback && thisObj.stepCallback(target, target == targetIndex)
 				// thisObj.startWalk(step, thisObj)
@@ -263,18 +275,23 @@ class WorldMap extends eui.Component{
 	public focusTo(n:number, animate:boolean = false, delay:number=200):egret.Tween{
 		const cell  = this.cellsArr[n]
 		const container = this.mapContainer
-		
+		let nx = this.width/2 - cell.x - cell.width/2
+		let ny = this.height/2 - cell.y - cell.height/2
+		if(WorldData.gameMode == GameMode.SINGLE){
+			nx -= this.width/4
+			ny -= 100
+		}
 		if(!animate){
 			return egret.Tween.get(container)
 			.set({
-				x: this.width/2 - cell.x - cell.width/2,
-				y: this.height/2 - cell.y - cell.height/2
+				x: nx,
+				y: ny,
 			})
 		}else{
 			return egret.Tween.get(container)
 			.to({
-				x: this.width/2 - cell.x - cell.width/2,
-				y: this.height/2 - cell.y - cell.height/2
+				x: nx, 
+				y: ny,
 			}, delay)
 		}
 	}
@@ -282,20 +299,25 @@ class WorldMap extends eui.Component{
 	public focusToAsync(n:number, animate:boolean = false, delay:number=200):Promise<{}>{
 		return new Promise((resolve, reject)=>{
 			const cell  = this.cellsArr[n]
-			const container = this.mapContainer
-			
+			const container = this.mapContainer			
+			let nx = this.width/2 - cell.x - cell.width/2
+			let ny = this.height/2 - cell.y - cell.height/2
+			if(WorldData.gameMode == GameMode.SINGLE){
+				nx -= this.width/4
+				ny -= 100
+			}
 			if(!animate){
 				egret.Tween.get(container)
 				.set({
-					x: this.width/2 - cell.x - cell.width/2,
-					y: this.height/2 - cell.y - cell.height/2
+					x: nx,
+					y: ny
 				})
 				.call(resolve)
 			}else{
 				egret.Tween.get(container)
 				.to({
-					x: this.width/2 - cell.x - cell.width/2,
-					y: this.height/2 - cell.y - cell.height/2
+					x: nx,
+					y: ny
 				}, delay)
 				.call(resolve)
 			}
@@ -305,13 +327,30 @@ class WorldMap extends eui.Component{
 	/**获取居中显示第n个格子时地图的位置*/
 	public getPositionWhileFocus(n:number){
 		const cell  = this.cellsArr[n]
-		const x = this.width/2 - cell.x - cell.width/2
-		const y = this.height/2 - cell.y - cell.height/2
+		let x = this.width/2 - cell.x - cell.width/2
+		let y = this.height/2 - cell.y - cell.height/2
+		if(WorldData.gameMode == GameMode.SINGLE){
+			x -= this.width/4
+			y -= 100
+		}
 		return new egret.Point(x, y)
+	}
+
+	public removeSteppedCell(n:number){
+		const t = this
+		t.cellsArr.splice(0, n)
+		const z = WorldData.cellSize
+		for(let i=0; i<t.cellsArr.length; i++){
+			t.cellsArr[i].x = i * z
+		}
+		t.mapContainer.x += n*z
+		t.chesses[0].x -= n*z
+		t.chessArr[0] -= n
 	}
 
 	public dispose(){
 		this.rollbtn.removeEventListener("touchTap", this.onRollBtnClicked, this)
+		this.rollbtn.removeEventListener(GameEvents.ROLL_NETA, this.onRollNeta, this)
 		this.vrbtn.removeEventListener("touchTap", this.onVRBtnClicked, this)
 		this.removeChildren()
 	}
@@ -405,17 +444,25 @@ class WorldMap extends eui.Component{
 		map.removeEventListener(eui.UIEvent.COMPLETE, map.onComplete, map)
 
 		map.rollbtn.addEventListener("touchTap", map.onRollBtnClicked, map)
+		map.rollbtn.addEventListener(GameEvents.ROLL_NETA, map.onRollNeta, map)
 		map.vrbtn.addEventListener("touchTap", map.onVRBtnClicked, map)
 		map.infobtn.addEventListener("touchTap", map.onInfoBtnClick, map)
 		map.bagbtn.addEventListener("touchTap", map.onBagBtnClicked, map)
 		map.liverMenu.addEventListener(GameEvents.FOCUS2LIVER, map.onFocus2Liver, map)
+		if(WorldData.gameMode == GameMode.SINGLE){
+			map.drawMapSingle()
+		}else{
+			map.drawMapMulti()
+		}
+	}
 
+	private drawMapMulti(){
+		const map = this
 		const s = WorldData.cellNum
 		const z = WorldData.cellSize
 		map.mapContainer.width = s*z
 		map.mapContainer.height = s*z
 		map._dragController = new DragController(map.mapContainer, (v:boolean)=>{this.setIsDragging(v)})
-
 		const totCellNum:number = s*4 - 4
 		let cells:MapCell[] = []
 		let cells2:{[key:string]:number} = {}
@@ -450,6 +497,33 @@ class WorldMap extends eui.Component{
 		map.chessArr = [0,0,0,0]
 	}
 
+	public drawMapSingle(){
+		const map = this
+		const s = map.data.length
+		const z = WorldData.cellSize
+		map.mapContainer.width = s*z
+		map.mapContainer.height = z
+		const totCellNum:number = s
+		// map._dragController = new DragController(map.mapContainer, (v:boolean)=>{this.setIsDragging(v)})
+		let cells:MapCell[] = []
+		let cells2:{[key:string]:number} = map.cellsMap
+		for(let i=map.cellsArr.length; i<totCellNum; i++){
+			const data = map.data.getCell(i)
+			let cell = new MapCell(data.v.iconUrl, data.r.iconUrl)
+			let cx = i
+			let cy = 0
+			cell.x = cx*z
+			cell.cx = cx
+			cell.cy = cy
+			cells.push(cell)
+			cells2[`${cx}_${cy}`] = i
+			map.cellContainer.addChild(cell)
+		}
+		map.cellsArr = map.cellsArr.concat(cells)
+		
+		map.chessArr = [0,0,0,0]
+	}
+
 	private setIsDragging(v:boolean){
 		this.bottomBar.touchEnabled = !v
 		this.bottomBar.touchChildren = !v
@@ -466,6 +540,10 @@ class WorldMap extends eui.Component{
 	
 	private onRollBtnClicked(e:any){
 		this.dispatchEvent(new egret.Event(GameEvents.START_ROLL))
+	}
+
+	private onRollNeta(e:egret.Event){
+		this.dispatchEvent(e)
 	}
 	
 
