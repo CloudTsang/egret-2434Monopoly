@@ -3,6 +3,8 @@
   "name": "月之美兔",
   "chessR": "chess_json#mitor",
   "chessV": "chess_json#mitov",
+  "skeV":"mito",
+  "skeR":"mitor",
   "iconUrl":"livers1_json#mito",
   "data": {
     "luck": 2,

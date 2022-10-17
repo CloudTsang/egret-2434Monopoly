@@ -48,7 +48,7 @@ class WorldController extends egret.EventDispatcher implements IDisposable, ISav
 
 	public initMap(){
 		if(WorldData.gameMode == GameMode.SINGLE){
-			this.cellDatas = new MapDataSingle()
+			this.cellDatas = new MapDataSingle(SaveData.gameData?SaveData.gameData.cell:null)
 		}else{
 			this.cellDatas = new MapData(SaveData.gameData?SaveData.gameData.cell:null)
 		}	
@@ -697,6 +697,7 @@ class WorldController extends egret.EventDispatcher implements IDisposable, ISav
 			maxTurn: t._maxTurn,
 			chessCellIndexes: t.chessCellIndexes
 		}
+		console.log(obj)
 		return obj
 	}
 }

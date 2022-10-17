@@ -109,4 +109,41 @@ class GlobalMethod{
 		}
 	}
 
+	//添加龙骨动画
+  public static addArmature(data:ISkeleData):ISkelObj {
+    /**骨骼的实体数据**/
+    let armature: dragonBones.Armature;
+    /**骨骼的可视对象**/
+    let armatureDisplay:dragonBones.EgretArmatureDisplay;
+    //读取一个骨骼数据,并创建实例显示到舞台
+    var skeletonData = RES.getRes(data['ske']);
+    var textureData = RES.getRes(data['tex']);
+    var texture = RES.getRes(data['png']);
+    var factory: dragonBones.EgretFactory = new dragonBones.EgretFactory();
+    var parseDragonBonesData=factory.parseDragonBonesData(skeletonData);
+    factory.addDragonBonesData(parseDragonBonesData);
+    factory.addTextureAtlasData(factory.parseTextureAtlasData(textureData, texture));
+
+    armature = factory.buildArmature(parseDragonBonesData.armatureNames[0]);
+    armatureDisplay = armature.display;
+    factory.clock.add(armature);
+    
+    //启动骨骼动画播放
+    //armature.animation.gotoAndPlay('stand');
+    egret.Ticker.getInstance().register(function (frameTime: number) { factory.clock.advanceTime(0.0001) }, this);
+	return {armature, armatureDisplay}
+  }
+
+}
+
+interface ISkeleData{
+	ske:string
+	tex:string
+	png:string
+}
+
+interface ISkelObj{
+	armature: dragonBones.Armature
+    /**骨骼的可视对象**/
+    armatureDisplay:dragonBones.EgretArmatureDisplay
 }

@@ -160,7 +160,7 @@ class WorldMap extends eui.Component{
 			wm.tmpContainer.addChild(chess)
 			chess.x = tmpx
 			chess.y = tmpy
-
+			chess.walk()
 			const landY = chess.y
 			const jumpY = chess.y - chess.jumpHeight
 			this._moveChess = chess
@@ -207,6 +207,7 @@ class WorldMap extends eui.Component{
 		if(curIndex == targetIndex){
 			console.log("step finish")
 			thisObj.addChess(thisObj.chesses[moveChessIndex], moveChessIndex, targetIndex, false)
+			thisObj._moveChess.reset()
 			thisObj._moveChess = null
 			thisObj.stepObj = null
 			thisObj._lock = false
@@ -453,6 +454,9 @@ class WorldMap extends eui.Component{
 			map.drawMapSingle()
 		}else{
 			map.drawMapMulti()
+		}
+		if(SaveData.gameData){
+			map.txtTurn.text = `TURN ${SaveData.gameData.curTurn}`	
 		}
 	}
 

@@ -11,21 +11,32 @@ class MapDataSingle implements ISavable{
 	private _cellToShuffleLiver:number
 	private readonly month:number = 30
 	public constructor(save:string[][]=null) {
-		this.generateMonthCell()
+		this.generateMonthCell(save)
 	}
 
 	/**生成30格 */
-	public generateMonthCell():CellData[]{
+	public generateMonthCell(save:string[][]=null):CellData[]{
 		const t = this
-		const vI = t.createV()
-		const rI = t.createR()
+
+		let vI:number[]
+		let rI:number[]
+		if(!save){
+			vI = t.createV()
+			rI = t.createR()
+
+			if(!t._started){
+				t.datas.push(new CellData(t.r[0], t.v[0]))
+				t._started = true
+			}
+		}else{
+			vI = t.createV2(save)
+			rI = t.createR2(save)
+		}
 		if(vI.length != rI.length){
 			throw new Error('Single mode map generation error!')
 		}
-		if(!t._started){
-			t.datas.push(new CellData(t.r[0], t.v[0]))
-			t._started = true
-		}	
+		console.log(rI)
+			
 		let arr:CellData[] = []
 		for(let i=0; i<vI.length; i++){
 			const cell = new CellData(t.r[rI[i]], t.v[vI[i]])
@@ -60,7 +71,6 @@ class MapDataSingle implements ISavable{
 			}
 			data.v = arr
 		}
-		
 
 		for(let i=0; i<data.month-1; i++){
 			arr2.push(-1)
@@ -83,6 +93,43 @@ class MapDataSingle implements ISavable{
 		data.vI = data.vI.concat(arr2)
 		return arr2
 	}
+
+	
+	private createV2(save:string[][]){
+		const data = this
+		let arr2:number[] = []
+		if(!data.v){
+			let arr:MapEvent[] = []
+			let objs:any[] = RES.getRes("events_virtual_1_json")
+			objs = objs.filter((v:any)=>{return !v['disable']  && !v['singleDisable']})
+			for(let i=0; i<objs.length; i++){
+				const obj = objs[i]
+				let fn = MapEvent
+				if(obj['class']){
+					fn = egret.getDefinitionByName(obj['class'])
+					if(!fn) fn = MapEvent
+				}
+				arr.push(new fn(objs[i]))
+			}
+			data.v = arr
+		}
+		for(let vre of save){
+			let tmpi = 1
+			for(let i=0; i<data.v.length; i++){
+				const n = data.v[i].name
+				const n2 = vre[0]
+				if(n == n2){
+					tmpi = i
+					break
+				}
+			}
+			arr2.push(tmpi)
+		}
+		data.vI = data.vI.concat(arr2)
+		return arr2
+	}
+
+	
 
 	private createR():number[]{
 		const data = this
@@ -122,6 +169,42 @@ class MapDataSingle implements ISavable{
 			arr2[index] = evtI
 		}
 		arr2[data.month - 1] = 0
+		data.rI = data.rI.concat(arr2)
+		return arr2
+	}
+
+	
+	private createR2(save:string[][]){
+		const data = this
+		let arr2:number[] = []
+		if(!data.r){
+			let arr:MapEvent[] = []
+			let objs:any[] = RES.getRes("events_real_1_json")
+			objs = objs.filter((v:any)=>{return !v['disable']  && !v['singleDisable']})
+			for(let i=0; i<objs.length; i++){
+				const obj = objs[i]
+				let fn = MapEvent
+				if(obj['class']){
+					fn = egret.getDefinitionByName(obj['class'])
+					if(!fn) fn = MapEvent
+				}
+				arr.push(new fn(objs[i]))
+			}
+			data.r = arr
+		}
+
+		for(let vre of save){
+			let tmpi = 1
+			for(let i=0; i<data.r.length; i++){
+				const n = data.r[i].name
+				const n2 = vre[1]
+				if(n == n2){
+					tmpi = i
+					break
+				}
+			}
+			arr2.push(tmpi)
+		}
 		data.rI = data.rI.concat(arr2)
 		return arr2
 	}

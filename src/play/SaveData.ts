@@ -52,6 +52,7 @@ interface ICharacterSaveObj{
 	/**回到起点收入 */
 	income: number,
 	anti: number,
+	totalStep: number
 }
 
 interface ICDataSaveObj{

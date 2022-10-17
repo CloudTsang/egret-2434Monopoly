@@ -1,8 +1,8 @@
 class Chess extends egret.Sprite{
 	protected vUrl:string
 	protected rUrl:string
-	protected vBmp:egret.Bitmap
-	protected rBmp:egret.Bitmap
+	protected vBmp:egret.DisplayObject
+	protected rBmp:egret.DisplayObject
 
 	protected fireBmp:EnjoFire//egret.Bitmap
 	protected sleepBmp:egret.Bitmap
@@ -16,6 +16,12 @@ class Chess extends egret.Sprite{
 	private _moveJumpH:number
 	private _cellSize:number
 
+	private _skelDataV:ISkeleData
+	private _skelDataR:ISkeleData
+	private _skelV:ISkelObj
+	private _skelR:ISkelObj
+	private _curSkel:ISkelObj
+
 	// private _pixelFilter = new egret.GlowFilter(0x000000, 1, 10, 10, 1)
 
 	/**实例化棋子显示对象
@@ -24,7 +30,7 @@ class Chess extends egret.Sprite{
 	 * @param w 显示对象宽
 	 * @param h 显示对象高
 	 */
-	public constructor(v:string, r:string, w:number=240, h:number=240) {
+	public constructor(v:string, r:string, skelr:ISkeleData=null, skelv:ISkeleData=null, w:number=240, h:number=240,) {
 		super()
 		this.vUrl = v
 		this.rUrl = r
@@ -33,6 +39,8 @@ class Chess extends egret.Sprite{
 		this._switchJumpH = h/10
 		this._moveJumpH = h/3
 		this._cellSize = WorldData.cellSize
+		this._skelDataR = skelr
+		this._skelDataV = skelv
 
 		// const filter = new egret.GlowFilter(0x000000,1,15,15,3)
 		// this.filters = [filter]
@@ -60,15 +68,16 @@ class Chess extends egret.Sprite{
 			return
 		}
 		chess._lock = true
-		let oriBmp:egret.Bitmap
-		let newBmp:egret.Bitmap
+		let oriBmp:egret.DisplayObject
+		let newBmp:egret.DisplayObject
 		if(isv){
 			oriBmp = chess.rBmp
 			newBmp = chess.vBmp
-			
+			chess._curSkel = chess._skelV
 		}else{
 			oriBmp = chess.vBmp
 			newBmp = chess.rBmp
+			chess._curSkel = chess._skelR
 		}
 		if(!tw){
 			oriBmp.parent && chess.removeChild(oriBmp)
@@ -77,7 +86,6 @@ class Chess extends egret.Sprite{
 			return
 		}
 		const oriY = chess.y
-		
 		egret.Tween.get(chess)
 		.to({
 			y:chess.y - chess._switchJumpH
@@ -152,26 +160,66 @@ class Chess extends egret.Sprite{
 		}, 400, egret.Ease.elasticOut)
 	}
 
+	public walk(){
+		const  t= this
+		if(!t._curSkel) return
+		t._curSkel.armature.animation.timeScale = 2
+		t._curSkel.armature.animation.gotoAndPlay("walk")
+	}
+
+	public reset(){
+		const t = this
+		if(!t._curSkel) return
+		t._curSkel.armature.animation.gotoAndStop("walk", 0)
+	}
+
 	private loadPic(){
 		const chess = this
-		let vBmp = new egret.Bitmap()
-		vBmp.texture = RES.getRes(chess.vUrl) as egret.Texture
-		const scale = vBmp.width/vBmp.height
-		vBmp.height =  chess.height/1.5
-		vBmp.width = vBmp.height * scale	
-		vBmp.x = -vBmp.width/2
-		vBmp.y = chess.height-vBmp.height
-		chess.vBmp = vBmp
+
+		let vBmp:egret.DisplayObject
+		if(chess._skelDataV){
+			const obj = GlobalMethod.addArmature(chess._skelDataV)
+			vBmp = obj.armatureDisplay
+			const scale = (chess.height/1.5) / vBmp.height
+			vBmp.scaleX = scale
+			vBmp.scaleY = scale
+			vBmp.x = -(vBmp.width*scale)/2
+			
+			vBmp.y = chess.height-vBmp.height * scale
+			chess._skelV = obj
+			chess.vBmp = vBmp
+		}else{
+			vBmp = new egret.Bitmap(RES.getRes(chess.vUrl) as egret.Texture)
+			const scale = vBmp.width/vBmp.height
+			vBmp.height =  chess.height/1.5
+			vBmp.width = vBmp.height * scale	
+			vBmp.x = -vBmp.width/2
+			vBmp.y = chess.height-vBmp.height
+			chess.vBmp = vBmp
+		}
+
+		let rBmp:egret.DisplayObject
+		if(chess._skelDataR){
+			const obj = GlobalMethod.addArmature(chess._skelDataR)
+			rBmp = obj.armatureDisplay
+			const scale = (chess.height/1.5) / rBmp.height
+			rBmp.scaleX = scale
+			rBmp.scaleY = scale
+			rBmp.x = -(rBmp.width*scale)/2
+			
+			rBmp.y = chess.height-rBmp.height * scale
+			chess._skelR = obj
+			chess.rBmp = rBmp
+		}else{
+			rBmp = new egret.Bitmap(RES.getRes(chess.rUrl) as egret.Texture)
+			const scale = rBmp.width/rBmp.height
+			rBmp.height =  chess.height/1.5
+			rBmp.width = rBmp.height * scale	
+			rBmp.x = -rBmp.width/2
+			rBmp.y = chess.height-rBmp.height
+			chess.rBmp = rBmp
+		}
 		
-		let rBmp = new egret.Bitmap()
-		rBmp.texture = RES.getRes(chess.rUrl) as egret.Texture
-		const scale2 = rBmp.width/rBmp.height
-		rBmp.height =  chess.height/1.5
-		rBmp.width = rBmp.height * scale2	
-		rBmp.x = -rBmp.width/2
-		rBmp.y = chess.height-rBmp.height
-		
-		chess.rBmp = rBmp
 		chess.setMode(true)
 	}
 

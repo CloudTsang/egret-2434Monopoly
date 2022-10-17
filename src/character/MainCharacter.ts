@@ -42,6 +42,9 @@ class MainCharacter extends Liver implements ISavable{
 	private _movedStep:number
 	/**总前进格数 */
 	public totalMovedStep:number
+
+	public skelDataV:ISkeleData
+	public skelDataR:ISkeleData
 	public constructor(obj:any, index:number) {
 		super()
 		this.index = index
@@ -51,7 +54,23 @@ class MainCharacter extends Liver implements ISavable{
 		this.ddata = new CData()
 		this.edata = new EventData()
 		this.iconUrl = obj['iconUrl']
-		this.dispObj = new Chess(obj["chessV"], obj['chessR'])
+		if(obj['skeV']){
+			const skev = obj['skeV']
+			this.skelDataV = {
+				ske: `${skev}_ske_json`,
+				tex: `${skev}_tex_json`,
+				png: `${skev}_tex_png`,
+			}
+		}
+		if(obj['skeR']){
+			const sker = obj['skeR']
+			this.skelDataR = {
+				ske: `${sker}_ske_json`,
+				tex: `${sker}_tex_json`,
+				png: `${sker}_tex_png`,
+			}
+		}
+		this.dispObj = new Chess(obj["chessV"], obj['chessR'], this.skelDataR, this.skelDataV)
 		this.npc = new NpcFavour()
 		this._movedStep = 0
 		this.totalMovedStep = 0
@@ -106,6 +125,7 @@ class MainCharacter extends Liver implements ISavable{
 		t.edata.saveObj = save.edata
 		t.npc.saveObj = save.npc
 		t.netaBag.saveObj = save.neta
+		t.totalMovedStep = save.totalStep
 		if(save.equipment && save.equipment!=''){
 			for(let eq of t.netaBag.equipment){
 				if(eq.name == save.equipment){
@@ -397,7 +417,8 @@ class MainCharacter extends Liver implements ISavable{
 			subs: t._subscribe,
 			increase: t.increase,
 			income: t.income,
-			anti: t._anti 
+			anti: t._anti,
+			totalStep: t.totalMovedStep
 		}
 		return obj
 	}

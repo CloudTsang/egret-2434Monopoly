@@ -1,7 +1,7 @@
 {
 	"groups": [
 		{
-			"keys": "description_json,mito_json,toya_json,rion_json,hima_json,lize_json,sasaki_json,chaika_json,neta_spec_1_json,netas_daily_1_json,netas_present_1_json,netas_song_1_json,netas_readme_json,netas_game_1_json,events_real_1_json,events_virtual_1_json,liver_readme_json,icons_json,chess_json,mapicons_json,radiobutton_select_disabled_png,radiobutton_select_down_png,radiobutton_select_up_png,radiobutton_unselect_png,checkbox_select_disabled_png,checkbox_select_down_png,checkbox_select_up_png,checkbox_unselect_png,netaicons_json,comment_1_json,alllivers_json,livers1_json,livers2_json,device_1_json,device_2_json,netaicons2_json,events_real_2_json,device_spec_json,neta_spec_2_json,firep1_png,firep1_json,firep2_png,firep3_png,firep2_json,firep3_json,vtl3_mp3,dededon_short_mp3,fire_mp3,horror_mp3,success_mp3,success2_mp3,sword_mp3,vtl1_mp3,vtl2_mp3,netastat_jpg,nselect_jpg,rmenu_jpg,vmenu_jpg,title_nazono_png,umeo_json,siina_json,words_json,thumb_png,tracklight_png,track_sb_png,bgr_jpg,bgv_jpg,100w_json,equipment_spec_json,equipment_json,rollneta_jpg",
+			"keys": "description_json,mito_json,toya_json,rion_json,hima_json,lize_json,sasaki_json,chaika_json,neta_spec_1_json,netas_daily_1_json,netas_present_1_json,netas_song_1_json,netas_readme_json,netas_game_1_json,events_real_1_json,events_virtual_1_json,liver_readme_json,icons_json,chess_json,mapicons_json,radiobutton_select_disabled_png,radiobutton_select_down_png,radiobutton_select_up_png,radiobutton_unselect_png,checkbox_select_disabled_png,checkbox_select_down_png,checkbox_select_up_png,checkbox_unselect_png,netaicons_json,comment_1_json,alllivers_json,livers1_json,livers2_json,device_1_json,device_2_json,netaicons2_json,events_real_2_json,device_spec_json,neta_spec_2_json,firep1_png,firep1_json,firep2_png,firep3_png,firep2_json,firep3_json,vtl3_mp3,dededon_short_mp3,fire_mp3,horror_mp3,success_mp3,success2_mp3,sword_mp3,vtl1_mp3,vtl2_mp3,netastat_jpg,nselect_jpg,rmenu_jpg,vmenu_jpg,title_nazono_png,umeo_json,siina_json,words_json,thumb_png,tracklight_png,track_sb_png,bgr_jpg,bgv_jpg,100w_json,equipment_spec_json,equipment_json,rollneta_jpg,mito_tex_png,mito_ske_json,mito_tex_json,mitor_tex_png,mitor_ske_json,mitor_tex_json",
 			"name": "preload"
 		}
 	],
@@ -367,6 +367,36 @@
 			"name": "rollneta_jpg",
 			"type": "image",
 			"url": "assets/des/rollneta.jpg"
+		},
+		{
+			"name": "mito_tex_png",
+			"type": "image",
+			"url": "assets/ske/mito_tex.png"
+		},
+		{
+			"name": "mito_ske_json",
+			"type": "json",
+			"url": "assets/ske/mito_ske.json"
+		},
+		{
+			"name": "mito_tex_json",
+			"type": "json",
+			"url": "assets/ske/mito_tex.json"
+		},
+		{
+			"name": "mitor_tex_png",
+			"type": "image",
+			"url": "assets/ske/mitor_tex.png"
+		},
+		{
+			"name": "mitor_ske_json",
+			"type": "json",
+			"url": "assets/ske/mitor_ske.json"
+		},
+		{
+			"name": "mitor_tex_json",
+			"type": "json",
+			"url": "assets/ske/mitor_tex.json"
 		}
 	]
 }
