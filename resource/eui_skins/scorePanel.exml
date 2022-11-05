@@ -22,7 +22,7 @@
 				<e:HorizontalLayout horizontalAlign="center" verticalAlign="middle"/>
 			</e:layout>
 		</e:Group>
-		<e:Group percentWidth="100" percentHeight="40" x="596" y="412">
+		<e:Group id="groupMulti" percentWidth="100" percentHeight="40" x="596" y="412">
 			<e:Group percentHeight="100" percentWidth="33">
 				<e:Group percentHeight="100" percentWidth="50" left="0">
 					<e:Image id="img1" width="120" height="200" horizontalCenter="0" verticalCenter="0"/>

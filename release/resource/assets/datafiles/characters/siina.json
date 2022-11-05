@@ -1,7 +1,7 @@
 {
     "id":"siina",
     "name":"椎名唯华",
-    "iconUrl":"livers1_json#siina",
+    "iconUrl":"livers2_json#siina_thumb",
     "chessR": "chess_json#siinar",
     "chessV": "chess_json#siinav",
     "disable":false,
@@ -85,5 +85,11 @@
       "rate": "(1-{mc.luck}/10)/3",
       "class":"SiinaSkill5"
     }
+  ],
+  "initNeta":[
+    "灵能力者的盐",
+    "恋爱循环",
+    "力量实况野球拳",
+    "B级综艺"
   ]
 }

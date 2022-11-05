@@ -3,7 +3,7 @@
   "name": "笹木咲",
   "chessR": "chess_json#sasakir",
   "chessV": "chess_json#sasakiv",
-   "iconUrl":"livers1_json#sasaki",
+   "iconUrl":"livers2_json#sasaki_thumb",
   "data": {
     "luck": 3,
     "sense": 2,
@@ -94,5 +94,11 @@
         }
       ]
     }
+  ],
+  "initNeta":[
+    "熊猫人的水族馆门票",
+    "鱿型对喷",
+    "L2D表情练习",
+    "恋爱循环"
   ]
 }

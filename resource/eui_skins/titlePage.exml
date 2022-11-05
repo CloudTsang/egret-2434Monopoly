@@ -3,14 +3,15 @@
 	 width="1280"
 	height="720" xmlns:e="http://ns.egret.com/eui">
 	<e:Rect percentHeight="100" percentWidth="100" fillColor="0xECECEC"/>
-	<e:Image id="img1" width="400" height="360" source="title_nazono_png" top="20" horizontalCenter="-300" anchorOffsetX="400" anchorOffsetY="180"/>
+	<e:Image id="img1" width="400" height="360" top="20" horizontalCenter="-300" anchorOffsetX="400" anchorOffsetY="180" source="desp_json#title_nazono"/>
 	<e:Image id="img2" width="400" height="360" top="-58" horizontalCenter="300" source="icons_json#2434logo" rotation="30"/>
 	<e:Group percentWidth="100" height="200" x="0" top="120">
 		<e:Rect percentWidth="100" percentHeight="100" fillColor="0xECECEC" scaleX="1" scaleY="1" fillAlpha="0.5" y="0"/>
-		<e:Label text="NIJISANJI大富翁" x="0" y="59" textColor="0x423939" bold="true" size="80" percentWidth="100" textAlign="center"/>
+		<e:Label text="2434彩虹社荣冠" x="0" y="59" textColor="0x423939" bold="true" size="80" percentWidth="100" textAlign="center"/>
 	</e:Group>
-	<e:Button id="btnStart" label="单机大富翁模式" y="389.66" width="271.89" height="85.09" horizontalCenter="0"/>
+	<e:Button id="btnStart" label="单机大富翁模式" y="496.66" width="271.89" height="85.09" horizontalCenter="0"/>
 	<e:Button id="btnDes" label="玩法简介" y="609.612" width="271.89" height="85.09" right="30"/>
-	<e:Button id="btnStart2" label="荣冠ONE模式" y="496.618"  width="271.89" height="85.09" horizontalCenter="0"/>
-	<e:Button id="btnLoad" label="继续游戏" x="504" y="605" width="271" height="85"/>
+	<e:Button id="btnLoad" label="继续游戏" y="605" width="271" height="85" horizontalCenter="-0.5"/>
+	<e:Button id="btnRank" label="排行榜" y="492.31" width="271" height="85" right="30"/>
+	<e:Button id="btnStart2" label="荣冠ONE模式" y="387" width="271.89" height="85.09" horizontalCenter="0"/>
 </e:Skin>

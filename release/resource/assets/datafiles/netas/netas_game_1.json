@@ -1,7 +1,7 @@
 [
     {
         "id":1,
-        "name":"Apex",
+        "name":"顶尖猎手",
         "des":"超人气生存FPS，手残也不至于落地成盒的设计是其特色",
         "type":"game",   
         "iconUrl":"netaicons_json#apex", 
@@ -43,7 +43,7 @@
     },
     {
         "id":4,
-        "name":"异度之刃2",
+        "name":"莫纳德2",
         "des":"有着超一流美少女角色的超王道JRPG",
         "type":"game",   
         "iconUrl":"netaicons_json#xb2", 
@@ -66,7 +66,7 @@
     },
     {
         "id":6,
-        "name":"宝可梦",
+        "name":"口袋妖孽",
         "des":"考验配信者演技的知名游戏系列",
         "type":"game",    
         "iconUrl":"netaicons_json#pokemon", 
@@ -80,7 +80,7 @@
     },
     {
         "id":7,
-        "name":"原神",
+        "name":"黑暗降临",
         "des":"火爆全球的二次元开放世界游戏。",
         "type":"game",   
         "iconUrl":"netaicons_json#genshin",  
@@ -94,7 +94,7 @@
     },
     {
         "id":8,
-        "name":"塞尔达传说-旷野之息",
+        "name":"林克传说-王国之息",
         "des":"开放世界设计的典范名作",
         "type":"game",     
         "iconUrl":"netaicons_json#botw",
@@ -110,7 +110,7 @@
     
      {
         "id":13,
-        "name":"十三机兵防卫圈",
+        "name":"孝良高中防卫圈",
         "des":"还没有liver播过的超神作，制作者私心塞进来了。",
         "type":"game",  
         "class":"NetaGameAegis13",  
@@ -133,7 +133,7 @@
     },
     {
         "id":9,
-        "name":"MineCraft",
+        "name":"全民挖钻石",
         "des":"神回直播的孕育之地",
         "type":"game",    
         "iconUrl":"netaicons_json#mc", 
@@ -148,7 +148,7 @@
     },
     {
         "id":10,
-        "name":"夜勤事件",
+        "name":"夜勤异变",
         "des":"简短而适合直播的恐怖游戏，内容和医院没有任何关系。",
         "type":"game",    
         "iconUrl":"netaicons_json#yakinjiken", 
@@ -163,7 +163,7 @@
     },
      {
         "id":11,
-        "name":"怪物猎人",
+        "name":"贵物猎人",
         "des":"知名共斗游戏，当然一个人也是可以玩的。",
         "type":"game",    
         "iconUrl":"netaicons_json#mh", 
@@ -178,7 +178,7 @@
     },
      {
         "id":12,
-        "name":"力量实况棒球",
+        "name":"实况力量野球拳",
         "des":"野球的时间哒！！！",
         "type":"game",    
         "iconUrl":"netaicons2_json#powbase", 
@@ -192,7 +192,7 @@
     },
      {
         "id":13,
-        "name":"马里奥赛车",
+        "name":"水管工赛车",
         "des":"知名道具系赛车游戏，为大赛备战吧。",
         "type":"game",    
         "iconUrl":"netaicons2_json#maricar", 
@@ -201,6 +201,20 @@
             "pop":5,
             "safe":3,
             "meme":1,
+            "long":false
+        }
+    },
+    {
+        "id":14,
+        "name":"鱿型对喷",
+        "des":"国民游戏新ip，暴打你的是小学生.jpg",
+        "type":"game",
+        "iconUrl":"netaicons2_json#splatoon", 
+        "data":{
+            "times":-1,
+            "pop":5,
+            "safe":4,
+            "meme":3,
             "long":false
         }
     }

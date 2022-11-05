@@ -107,6 +107,23 @@
         }   
     },
     {
+        "id":12,
+        "name":"豆芽菜",
+        "des":"超商低价区招牌，有空气水准的饱腹感。使用后当回合体力小幅提升",
+        "value": 200,
+        "type":"device", 
+        "iconUrl":"netaicons2_json#johnny",
+        "data":{
+            "times":1,
+            "use":true,
+            "effect":[{
+                "type":"TEMP_STAT_CHANGE",
+                "trigger":"use",
+                "data":"{mc.strength}+1"
+            }]
+        }   
+    },
+    {
         "id":13,
         "name":"龙角散",
         "des":"知名品牌的润喉糖，使用后当回合小幅提升杂谈和歌回直播的效果",

@@ -1,7 +1,9 @@
 <?xml version='1.0' encoding='utf-8'?>
 <e:Skin class="skins.gameStartSetting"
 	 width="1280"
-	height="720" xmlns:e="http://ns.egret.com/eui" xmlns:ns1="*">
+	height="720" xmlns:e="http://ns.egret.com/eui" xmlns:ns1="*" xmlns:w="http://ns.egret.com/wing" xmlns:tween="egret.tween.*">
+	<w:Declarations>
+	</w:Declarations>
 	<e:Rect percentHeight="100" percentWidth="100" fillColor="0xECECEC"/>
 	<e:Group  percentHeight="100" percentWidth="100">
 		<e:Group width="0" percentHeight="5" x="885" y="690"/>

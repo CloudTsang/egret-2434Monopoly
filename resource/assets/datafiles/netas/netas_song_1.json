@@ -1,7 +1,7 @@
 [
     {
         "id":1,
-        "name":"Virtual To Live",
+        "name":"VtL",
         "des":"只有一句歌词（雾）的彩虹社社歌",
         "type":"song",     
         "iconUrl":"netaicons_json#vtl",
@@ -17,7 +17,7 @@
     },
     {
         "id":2,
-        "name":"Freesia",
+        "name":"小苍兰",
         "des":"不要停下来啊",
         "type":"song",  
         "iconUrl":"netaicons_json#freesia", 
@@ -65,7 +65,7 @@
     },
      {
         "id":5,
-        "name":"红莲华",
+        "name":"红莲滑",
         "des":"那部大热门动画的主题曲",
         "type":"song", 
         "iconUrl":"netaicons_json#kurenge",
@@ -97,7 +97,7 @@
     },
      {
         "id":7,
-        "name":"NicoNico组曲",
+        "name":"N站组曲",
         "des":"#查询直播间观众平均年龄",
         "type":"song", 
         "iconUrl":"netaicons_json#niconico",
@@ -129,7 +129,7 @@
     },
      {
         "id":8,
-        "name":"残酷天使的行动纲领",
+        "name":"少年啊成为神话吧",
         "des":"已然成为神话的KTV热门歌曲王者",
         "type":"song", 
         "iconUrl":"netaicons_json#evaop",
@@ -161,7 +161,7 @@
     },
      {
         "id":10,
-        "name":"Wonder Never Land",
+        "name":"WNL",
         "des":"彩虹社新一代合唱曲",
         "iconUrl":"netaicons_json#wnl",
         "type":"song", 
@@ -204,6 +204,22 @@
             "pop":4,
             "safe":3,
             "meme":2,
+            "long":false
+        }
+    },
+    {
+        "id":13,
+        "name":"恋爱循环",
+        "des":"只要不变成念经就可以萌度暴涨的名曲。",
+        "iconUrl":"netaicons2_json#demosonnanjya",
+        "type":"song", 
+        "cd":3,
+        "songReq":3,    
+        "data":{
+            "times":-1,
+            "pop":3,
+            "safe":3,
+            "meme":4,
             "long":false
         }
     }

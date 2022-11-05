@@ -30,12 +30,12 @@
 			<e:Group height="10" includeIn="p5" x="291" y="108"/>
 			<e:Label text="决定前进格数时，除了普通的随机之外，还会从已有的Neta中\n随机抽取3个，玩家可选择1个根据其数值直接决定前进格数。" includeIn="p5" x="295" y="128" size="24"/>
 			<e:Group height="10"/>
-			<e:Image width="300" height="180" includeIn="p5" x="357" y="264" source="rollneta_jpg"/>
+			<e:Image width="300" height="180" includeIn="p5" x="357" y="264" source="desp_json#rollneta"/>
 			<e:layout.p5>
 				<e:VerticalLayout horizontalAlign="center"/>
 			</e:layout.p5>
 			<e:Group percentWidth="40" percentHeight="100"  includeIn="p4" x="368" y="108">
-				<e:Image width="160" height="240" includeIn="p4" source="netastat_jpg" horizontalCenter="0" verticalCenter="0"/>
+				<e:Image width="160" height="240" includeIn="p4" horizontalCenter="0" verticalCenter="0" source="desp_json#netastat"/>
 			</e:Group>
 			<e:Group percentHeight="100" percentWidth="60" includeIn="p4" x="384" y="120">
 				<e:Label text="直播的最终效果将由neta的三个数值决定:" percentWidth="100" x="121" y="40" size="20"/>
@@ -50,7 +50,7 @@
 				</e:layout>
 			</e:Group>
             <e:Group percentWidth="50" percentHeight="100" includeIn="p2,p3">
-				<e:Image height="240" width="160" includeIn="p2,p3" source="rmenu_jpg" top="0" horizontalCenter="0" source.p3="vmenu_jpg"/>
+				<e:Image height="240" width="160" includeIn="p2,p3" source="rmenu_jpg" top="0" horizontalCenter="0" source.p2="desp_json#rmenu" source.p3="desp_json#vmenu"/>
 				<e:Label text="不同选项提升的能力不同" percentWidth="100" y="150" size="24" textAlign="center" horizontalCenter="0" text.p3="不同类型的直播\n对neta的需求不同"/>
 							<e:layout>
 								<e:VerticalLayout horizontalAlign="center" verticalAlign="middle"/>
@@ -59,7 +59,7 @@
 			
 			<e:Group percentWidth="50" percentHeight="100" includeIn="p2,p3" x="358" y="62">
 				<e:Image width="140" height="140" source="mapicons_json#eventr" horizontalCenter="0" top="20" 
-                source.p3="nselect_jpg" width.p3="200" height.p3="240"/>
+                width.p3="200" height.p3="240" source.p3="desp_json#nselect"/>
 				<e:Label text="踏入[?]格子触发各种特殊事件" percentWidth="100" y="150" size="24" textAlign="center" horizontalCenter="0" text.p3="部分neta有数量消耗\n或使用冷却的设定"/>
 				<e:layout>
 					<e:VerticalLayout horizontalAlign="center" verticalAlign="middle"/>
@@ -68,5 +68,5 @@
 		</e:Group>
 		<e:Label text="点击以继续" percentWidth="100" x="37" y="254" size="20" textAlign="center" textColor="0x8E8E8E"/>
 	</e:Group>
-	<e:Image id="btnCancel"  source="icons_json#close" width="40" height="40" y="-20" x="-20"/>
+	<e:Image id="btnCancel"  source="icons_json#close" width="60" height="60" y="-30" x="-30"/>
 </e:Skin>

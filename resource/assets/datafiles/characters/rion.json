@@ -3,7 +3,7 @@
   "name": "鹰宫莉音",
   "chessR": "chess_json#rionr",
   "chessV": "chess_json#rionv",
-   "iconUrl":"livers1_json#rion",
+   "iconUrl":"livers2_json#rion_thumb",
   "data": {
     "luck": 3,
     "sense": 4,
@@ -94,5 +94,11 @@
         }
       ]
     }
+  ],
+  "initNeta":[
+    "恶役大小姐的†钻石剑†",
+    "考拉的大便",
+    "黑暗降临",
+    "在东京中央土下座"
   ]
 }

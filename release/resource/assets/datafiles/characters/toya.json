@@ -3,7 +3,7 @@
   "name": "剑持刀也",
   "chessR": "chess_json#toko",
   "chessV": "chess_json#toya",
-  "iconUrl":"livers1_json#toya",
+  "iconUrl":"livers2_json#toya_thumb",
   "data": {
     "luck": 3,
     "sense": 4,
@@ -111,5 +111,11 @@
         }
       ]
     }
+  ],
+  "initNeta":[
+    "水管工赛车",
+    "精灵的全名咏唱",
+    "下巴的RAP Battle",
+    "新型号电脑（促销中）"
   ]
 }

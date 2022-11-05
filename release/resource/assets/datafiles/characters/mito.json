@@ -5,7 +5,7 @@
   "chessV": "chess_json#mitov",
   "skeV":"mito",
   "skeR":"mitor",
-  "iconUrl":"livers1_json#mito",
+  "iconUrl":"livers2_json#mito_thumb",
   "data": {
     "luck": 2,
     "sense": 4,
@@ -101,5 +101,11 @@
         }
       ]
     }
+  ],
+  "initNeta":[
+    "洗衣机",
+    "欧洲企划",
+    "委员长的尤克里里",
+    "蜈蚣人间"
   ]
 }

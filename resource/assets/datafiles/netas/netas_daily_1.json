@@ -15,7 +15,7 @@
     },
     {
         "id":2,
-        "name":"半泽直树",
+        "name":"在东京中央土下座",
         "des":"下克上的职场剧名作，危险操作，请勿模仿~",
         "type":"daily",  
         "iconUrl":"netaicons_json#hanzawa",   
@@ -30,7 +30,7 @@
     {
         "id":3,
         "name":"热门动画讨论",
-        "des":"鬼灭之刃、赛马娘、东京复仇者（含咒术回战）",
+        "des":"鬼·马·卍（咒）",
         "type":"daily",     
         "iconUrl":"netaicons_json#tv2",
         "data":{
@@ -43,7 +43,7 @@
     },
     {
         "id":4,
-        "name":"人体蜈蚣",
+        "name":"蜈蚣人间",
         "des":"orzorzorzorzorz",
         "type":"daily",     
         "iconUrl":"netaicons_json#mukate",
@@ -86,7 +86,7 @@
     },
     {
         "id":7,
-        "name":"游戏王梗连发",
+        "name":"DA☆ZE☆王梗连发",
         "des":"若在联动中使用便是炒起气氛和冷场在一线间的高手向话题",
         "iconUrl":"netaicons_json#ygo",
         "type":"daily",     
@@ -100,7 +100,7 @@
     },
     {
         "id":8,
-        "name":"高达梗连发",
+        "name":"萝卜梗连发",
         "des":"根据用梗的出处，有可能连人生轨迹都被推断出来的危险话题。",
         "type":"daily",     
         "iconUrl":"netaicons_json#gundum",
@@ -184,7 +184,7 @@
     },
     {
         "id":14,
-        "name":"黄段子",
+        "name":"三俗段子",
         "des":"听到会发出“你是小学生吗？！”的程度",
         "type":"daily",    
         "iconUrl":"netaicons2_json#simo1", 
@@ -198,8 +198,8 @@
     },
     {
         "id":14,
-        "name":"露骨黄段子",
-        "des":"把○○插入××然后△△直到□□",
+        "name":"露骨三俗段子",
+        "des":"把○○放入××然后△△直到□□",
         "type":"daily",   
         "iconUrl":"netaicons2_json#simo2",  
         "data":{

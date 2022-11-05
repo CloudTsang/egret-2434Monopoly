@@ -3,7 +3,7 @@
   "name": "花畑柴卡",
   "chessR": "chess_json#chaikar",
   "chessV": "chess_json#chaikav",
-  "iconUrl":"livers1_json#chaika",
+  "iconUrl":"livers2_json#chaika_thumb",
   "disable":false,
   "data": {
     "luck": 3,
@@ -88,5 +88,11 @@
         }
       ]
     }
+  ],
+  "initNeta":[
+    "田角美术室",
+    "吸音材料",
+    "B级综艺",
+    "男大姐的让老子也加入罢"
   ]
 }

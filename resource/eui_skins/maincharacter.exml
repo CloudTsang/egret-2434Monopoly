@@ -174,7 +174,7 @@
 				<e:HorizontalLayout/>
 			</e:layout>
 		</e:Group>
-        <e:Image id="btnClose" width="30" height="30" x="10.9" y="9.547" scaleX="1" scaleY="1" fillMode="scale" source="icons_json#close" touchEnabled="true"/>
+        <e:Image id="btnClose" width="50" height="50" x="10.9" y="9.547" scaleX="1" scaleY="1" fillMode="scale" source="icons_json#close" touchEnabled="true"/>
         <!-- <e:Image id="btnClose" width="50" height="50" x="10.9" y="9.547" scaleX="1" scaleY="1" fillMode="scale" source="resource/assets/icons.json#close"/> -->
 	</e:Group>
 	<e:Group id="containerTips" width="300" height="100" maxWidth="300" maxHeight="100" x="775" y="93" visible="false" touchEnabled="false" touchChildren="false">

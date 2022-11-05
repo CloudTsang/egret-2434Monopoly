@@ -3,7 +3,7 @@
 	 width="200"
 	height="250" xmlns:e="http://ns.egret.com/eui" states="usable,disable" >
 	<e:Rect percentHeight="100" percentWidth="100" fillColor="0xCECECE"/>
-	<e:Image id="img" width="200" height="200" x="0" y="0"/>
+	<e:Image id="img" width="200" height="200" horizontalCenter="0" top="0"/>
 	<e:Group id="pcontainer" width="200" height="50" includeIn="usable" x="0" y="200">
 		<e:layout>
 			<e:VerticalLayout horizontalAlign="center" verticalAlign="middle"/>

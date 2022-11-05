@@ -7,12 +7,10 @@
 		"js/game.min_ce13e75b.js",
 		"js/tween.min_6c5a88f9.js",
 		"js/promise.min_83a6a5d.js",
-		"js/egretmgobe.min_3490453c.js",
-		"js/particle.min_d717ba80.js",
-		"js/dragonBones.min_6252b9c4.js"
+		"js/particle.min_d717ba80.js"
 	],
 	"game": [
-		"js/default.thm_f871e955.js",
-		"js/main.min_70a6e682.js"
+		"js/default.thm_1cd8db62.js",
+		"js/main.min_571e74d7.js"
 	]
 }

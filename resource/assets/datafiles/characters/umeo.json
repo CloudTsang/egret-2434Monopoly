@@ -1,7 +1,7 @@
 {
     "id":"umeo",
     "name":"梦追翔",
-    "iconUrl":"livers1_json#umeo",
+    "iconUrl":"livers2_json#umeo_thumb",
     "chessR": "chess_json#umeor",
     "chessV": "chess_json#umeov",
     "disable":false,
@@ -80,6 +80,12 @@
       "rate": "(1-{mc.luck}/10)/3",
       "class":"UmeoSkill5"
     }
+  ],
+  "initNeta":[
+    "田角美术室",
+    "Get Wild",
+    "无袖男的话筒",
+    "豆芽菜"
   ]
 
 }

@@ -1,7 +1,7 @@
 {
      "id":"lize",
      "name":"莉泽",
-     "iconUrl":"livers1_json#lize",
+     "iconUrl":"livers2_json#lize_thumb",
     "chessR": "chess_json#lizer",
     "chessV": "chess_json#lizev",
      "disable":false,
@@ -86,5 +86,11 @@
           }
       ]
     }
+  ],
+  "initNeta":[
+    "生死观讨论",
+    "皇女的沥青",
+    "赫露艾斯塔圣剑",
+    "炼金术师的《梦》"
   ]
 }
