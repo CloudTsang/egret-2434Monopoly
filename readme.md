@@ -157,5 +157,3 @@ safe（安全值）：影响直播炎上概率，这个概率的计算式我其�
 ![pic](https://gitee.com/cloudtsang/egret-2434Monopoly/raw/main/screenshot/05.jpg)
 
 ![pic](https://gitee.com/cloudtsang/egret-2434Monopoly/raw/main/screenshot/06.jpg)
-
-![pic](https://gitee.com/cloudtsang/egret-2434Monopoly/raw/main/screenshot/07.jpg)
